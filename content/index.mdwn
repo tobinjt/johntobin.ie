@@ -18,8 +18,3 @@ Computer Science in 2002, and I recently finished an M.Sc. in Computer Science
 [[my_publications_page|publications]].  I studied for my M.Sc. in evenings and
 weekends, in addition to my full-time job, and completed it in two years, the
 minimum time period permitted.
-
-You may be interested in [[programs_I_have_written|programs]], or
-[[Debian_packages_I_have_created|packages]]; both [[programs]] and [[packages]]
-were written as part of my job, and are copyright &copy; [Trinity College
-Dublin](http://www.tcd.ie/).
