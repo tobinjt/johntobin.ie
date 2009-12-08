@@ -1,0 +1,87 @@
+<TMPL_UNLESS NAME='package'>
+
+This template lists information about a Debian package.  It requires the
+following parameters:
+
+[[table header="no" data="""
+package|The package name.
+version|The package version.
+section|The section the package belongs in, e.g. editors, graphics,
+non-free/mail.
+architecture|The architecture(s) the package can be built for.
+depends|Other packages this package depends on.
+recommends (optional)|Other packages this package recommends.
+suggests (optional)|Other packages this package suggests.
+description_short|The first line of the package's description.
+description_long|The remainder of the package's description.
+homepage (optional)|A URL where the package's original source can be found.
+tarball (optional)|Original source tarball.
+deb (optional)|A binary .deb.
+diff|The diff that is applied to the source tarball before building the binary .deb.
+"""]]
+
+<TMPL_ELSE>
+
+#### <a name="<TMPL_VAR NAME='package'>"></a> <TMPL_VAR NAME='package'> ####
+
+<table class="package">
+<tr>
+<td> Version </td>
+<td> <TMPL_VAR NAME='version'> </td>
+</tr>
+<tr>
+<td> Section </td>
+<td> <TMPL_VAR NAME='section'> </td>
+</tr>
+<tr>
+<td> Architecture </td>
+<td> <TMPL_VAR NAME='architecture'> </td>
+</tr>
+<tr>
+<td> Depends </td>
+<td> <TMPL_VAR NAME='depends'> </td>
+</tr>
+<TMPL_IF NAME='recommends'>
+<tr>
+<td> Recommends </td>
+<td> <TMPL_VAR NAME='recommends'> </td>
+</tr>
+</TMPL_IF>
+<TMPL_IF NAME='suggests'>
+<tr>
+<td> Suggests </td>
+<td> <TMPL_VAR NAME='suggests'> </td>
+</tr>
+</TMPL_IF>
+<tr>
+<td> Description </td>
+<td> <TMPL_VAR NAME='description_short'>
+<TMPL_VAR NAME='description_long'>
+</td>
+</tr>
+<TMPL_IF NAME='homepage'>
+<tr>
+<td> Homepage </td>
+<td> <a href="<TMPL_VAR NAME='raw_homepage'>"><TMPL_VAR NAME='raw_homepage'></a> </td>
+</tr>
+</TMPL_IF>
+<TMPL_IF NAME='tarball'>
+<tr>
+<td> Source </td>
+<td> <a href="<TMPL_VAR NAME='raw_tarball'>"><TMPL_VAR NAME='raw_tarball'></a> </td>
+</tr>
+</TMPL_IF>
+<TMPL_IF NAME='diff'>
+<tr>
+<td> Diff </td>
+<td> <a href="<TMPL_VAR NAME='raw_diff'>"><TMPL_VAR NAME='raw_diff'></a> </td>
+</tr>
+</TMPL_IF>
+<TMPL_IF NAME='deb'>
+<tr>
+<td> Package </td>
+<td> <a href="<TMPL_VAR NAME='raw_deb'>"><TMPL_VAR NAME='raw_deb'></a> </td>
+</tr>
+</TMPL_IF>
+</table>
+</TMPL_UNLESS>

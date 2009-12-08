@@ -1,0 +1,53 @@
+/* Move the sidebar to the left, and make sure the content doesn't wrap under
+ * it.
+ */
+#sidebar {
+    /* Creates a nice space between lines. */
+	line-height: 3ex;
+	width: 17ex;
+	float: left;
+	margin: 0px;
+	padding-left: 10px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-top: 0px;
+}
+
+#content {
+    /* #content->margin-left == #sidebar->padding-left + #sidebar->width + #sidebar->padding-right */
+    margin-left: 20ex;
+}
+
+/* Centre the page contents. */
+body {
+    margin-right: auto;
+    margin-left: auto;
+    /* XXX Why does the page not narrow when there's no content? */
+    max-width: 120ex;
+}
+
+/* Put the last modified date on the right, in a smaller, lighter font. */
+.pagedate {
+    text-align: right;
+    font-size: smaller;
+    font-weight: lighter;
+}
+
+/* The border is intrusive when the footer only contains the date. */
+#pageinfo {
+    border-top: none;
+}
+
+/* package tables */
+.package td {
+    vertical-align: top;
+    padding-left: 1ex;
+}
+
+/* Table of contents */
+.toc li.L3 {
+	list-style: upper-roman;
+}
+.toc li.L4 {
+	list-style: decimal;
+}
