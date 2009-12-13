@@ -1,0 +1,13 @@
+All packages are built for [Debian
+Lenny](http://www.debian.org/releases/lenny/), but will probably build without a
+problem on other [Debian releases](http://www.debian.org/releases/),
+[Ubuntu](http://www.ubuntu.com/), or other Debian-derived distributions; if you
+have any problems, I'm happy to accept bug reports and or patches (see
+[[contact_details]]).  The packaging is licenced under the terms of the [GNU
+GENERAL PUBLIC LICENSE](http://www.gnu.org/licenses/gpl.html); this does not
+change the terms of the original software licence.  
+
+[[!toc levels="2"]]
+
+### Open-source packages ###
+### Closed-source packages ###
