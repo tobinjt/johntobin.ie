@@ -1,1 +1,1 @@
-[[!inline "tagged(programming)"]]
+[[!inline pages="tagged(programming)" archive="yes"]]

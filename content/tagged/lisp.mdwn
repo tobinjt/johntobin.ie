@@ -1,1 +1,1 @@
-[[!inline "tagged(lisp)"]]
+[[!inline pages="tagged(lisp)" archive="yes"]]
