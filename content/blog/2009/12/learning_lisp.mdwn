@@ -10,7 +10,7 @@ and their Computation by Machine (Part
 I)](http://www-formal.stanford.edu/jmc/recursive.html), the original paper about
 LISP.  It's very clearly written, and explains the design of LISP so well (in
 only 34 pages) that someone could make a reasonable attempt at implementing LISP
-based solely on the reading it.  Inspired by the paper, I dug out my books and
+based solely on reading it.  Inspired by the paper, I dug out my books and
 started learning LISP; I've now reached a point where the solutions to some
 exercises are interesting enough to post.
 
@@ -36,6 +36,12 @@ My solution:
         )
       )
     )
+
+I like tail recursion: lots of problems are simpler to solve recursively, and
+knowing that a tail recursive call will be optimised to a goto satisfies the
+part of my mind that thinks "What if my function is run on a list with 1000
+elements?  Would I be better writing it iteratively, so that it doesn't run out
+of stack space?".
 
 ---
 
@@ -103,5 +109,11 @@ The point of this exercise was to use optional parameters; if I was writing
       )
     )
 
+My first inclination when writing a fibonacci function is to use
+[Memoization](http://en.wikipedia.org/wiki/Memoization); if I was writing it in
+Perl I would use the standard module
+[Memoize](http://search.cpan.org/~mjd/Memoize-1.01/Memoize.pm), where fibonacci
+is presented as an example in the documentation.  I don't know yet how hard it
+would be to do this in LISP, but I expect that closures should be easy enough.
 
 [[!tag lisp programming]]
