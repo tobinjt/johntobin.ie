@@ -1,2 +1,1 @@
-[[!inline pages="tagged/*" archive="yes" sort="title"]]
 [[!pagestats pages="tagged/*"]]
