@@ -1,1 +1,1 @@
-[[!include "tagged(programming)"]]
+[[!inline "tagged(programming)"]]
