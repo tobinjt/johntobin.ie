@@ -1,0 +1,1 @@
+[[!inline pages="tagged(__TAG__)" archive="yes"]]
