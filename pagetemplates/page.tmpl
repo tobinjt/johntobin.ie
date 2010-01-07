@@ -14,13 +14,16 @@
 </head>
 <body>
 
-<div class="header">
+<div id="header">
+<div id="header-inner">
+<div id="title">
 <span>
 <TMPL_LOOP NAME="PARENTLINKS">
 <a href="<TMPL_VAR NAME=URL>"><TMPL_VAR NAME=PAGE></a>/ 
 </TMPL_LOOP>
 <TMPL_VAR TITLE>
 </span>
+</div>
 <TMPL_IF SIDEBAR>
 <div id="sidebar">
 <TMPL_VAR SIDEBAR>
@@ -33,10 +36,13 @@
 
 
 <div id="content">
+<div id="content-inner">
 <TMPL_VAR CONTENT>
+</div>
 </div>
 
 <div id="footer">
+<div id="footer-inner">
 <div id="pageinfo">
 
 <TMPL_IF NAME="TAGS">
@@ -70,6 +76,7 @@ Last edited <TMPL_VAR NAME=MTIME>
 </div>
 <TMPL_IF EXTRAFOOTER><TMPL_VAR EXTRAFOOTER></TMPL_IF>
 <!-- from <TMPL_VAR NAME=WIKINAME> -->
+</div>
 </div>
 
 </body>
