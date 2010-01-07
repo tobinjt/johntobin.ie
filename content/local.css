@@ -11,9 +11,12 @@
     padding-top: 0px;
 }
 
-#header {
+#sidebar, #header, #header a {
     background: #000000;
-    color: #EEEEEE;
+    color: #EEEEEE !important;
+}
+
+#header {
     padding-top: 20px;
     padding-bottom: 2px;
 }
@@ -23,7 +26,6 @@
 }
 
 #header a {
-    color: #EEEEEE;
     text-decoration: none;
 }
 
