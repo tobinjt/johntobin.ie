@@ -60,3 +60,16 @@
 .toc li.L4 {
 	list-style: decimal;
 }
+
+/* Inline pages */
+.inlinefooter {
+    top-border-style: dotted;
+    border-color: #CCCCC;
+    padding-bottom: 10px;
+    border-width: thin;
+}
+.inlinepage {
+    border: none;
+    padding-left: 0px;
+    padding-right: 0px;
+}
