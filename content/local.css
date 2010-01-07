@@ -14,6 +14,12 @@
 #header {
     background: #000000;
     color: #EEEEEE;
+    padding-top: 20px;
+    padding-bottom: 2px;
+}
+
+#title {
+    font-size: 30px;
 }
 
 #header a {
@@ -26,16 +32,7 @@
     margin-right: auto;
     margin-left: auto;
     /* XXX Why does the page not narrow when there's no content? */
-    max-width: 120ex;
-}
-
-
-/* Centre the page contents. */
-body {
-    margin-right: auto;
-    margin-left: auto;
-    /* XXX Why does the page not narrow when there's no content? */
-    max-width: 120ex;
+    max-width: 90ex;
 }
 
 /* Put the last modified date on the right, in a smaller, lighter font. */
