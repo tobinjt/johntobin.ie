@@ -83,5 +83,11 @@ diff|The diff that is applied to the source tarball before building the binary .
 <td> <a href="<TMPL_VAR NAME='raw_deb'>"><TMPL_VAR NAME='raw_deb'></a> </td>
 </tr>
 </TMPL_IF>
+<TMPL_IF NAME='note'>
+<tr>
+<td> Note </td>
+<td> <TMPL_VAR NAME='note'> </td>
+</tr>
+</TMPL_IF>
 </table>
 </TMPL_UNLESS>
