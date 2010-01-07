@@ -1,7 +1,1 @@
-[[Home|/index]]
-
-[[Blog]]
-
-[[Publications]]
-
-[[Contact details]]
+[ [[Home|/index]] ] [ [[Blog]] ] [ [[Publications]] ] [ [[Contact details]] ]
