@@ -1,3 +1,5 @@
+[[!meta title="Home"]]
+
 Hi, I'm John Tobin, a Unix Systems Administrator in the [School of Computer
 Science and Statistics](http://www.scss.tcd.ie/), [Trinity College
 Dublin](http://www.tcd.ie/).  My responsibilities include:
