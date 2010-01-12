@@ -1,1 +1,1 @@
-[[!inline pages="blog/*"]]
+[[!inline pages="blog/*" description="John Tobin's blog"]]
