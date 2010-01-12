@@ -65,8 +65,8 @@
 
 /* Inline pages */
 .inlinefooter {
-    top-border-style: dotted;
-    border-color: #CCCCC;
+    border-style: dotted none dotted none;
+    border-color: #CCCCCC;
     padding-bottom: 10px;
     border-width: thin;
 }
