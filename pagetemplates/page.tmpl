@@ -3,7 +3,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>John Tobin: <TMPL_VAR TITLE></title>
+        <title>
+            <TMPL_IF NAME="PARENTLINKS">
+                John Tobin: <TMPL_VAR TITLE>
+            <TMPL_ELSE>
+                John Tobin
+            </TMPL_IF>
+        </title>
         <TMPL_IF NAME="FAVICON">
             <link rel="icon" href="<TMPL_VAR BASEURL><TMPL_VAR FAVICON>" type="image/x-icon" />
         </TMPL_IF>
