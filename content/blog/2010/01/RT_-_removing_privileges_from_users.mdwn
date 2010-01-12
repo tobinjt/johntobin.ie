@@ -1,4 +1,4 @@
-[[meta date="08 Jan 2010 22:52:22 UTC"]]
+[[!meta date="08 Jan 2010 22:52:22 UTC"]]
 
 In [work](http://www.scss.tcd.ie/), we use [Request Tracker
 (RT)](http://bestpractical.com/rt) to manage help requests from users.  When
@@ -31,4 +31,4 @@ require, so I wrote a quick shell script to do it:
 It probably took longer to write this than it would have taken to use the web
 interface, but it was more satisfying, and I learned something new.
 
-[[!tags Request_Tracker sysadmin MySQL]]
+[[!tag Request_Tracker sysadmin MySQL]]
