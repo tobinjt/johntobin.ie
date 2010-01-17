@@ -1,5 +1,4 @@
 * Heating controls: Sunvic SZ2401.
-* Lag pipes in garage.
 
 * Guest en suite toilet.
 
