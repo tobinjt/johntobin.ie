@@ -1,0 +1,95 @@
+[The third Project Euler
+problem:](http://projecteuler.net/index.php?section=problems&id=3)
+
+> The prime factors of 13195 are 5, 7, 13 and 29.
+> 
+> What is the largest prime factor of the number 600851475143 ?
+
+Solution outline:
+
+1. Test every number between 2 and sqrt(600851475143) to see if it's a factor;
+    if *n* is a factor, add *n* and 600851475143/*n* to the list of factors.
+
+2. Test each factor, in descending order, for primeness; the first prime factor
+    is the answer.
+
+Here's my LISP solution:
+
+    (defun primep (an-integer)
+      (dotimes (current-factor (1+ (ceiling (sqrt an-integer))) t)
+        (cond
+          ((<= current-factor 1)
+            t
+          )
+          ((zerop (mod an-integer current-factor))
+            (return nil)
+          )
+        )
+      )
+    )
+    
+    (defun get-factors (an-integer)
+      (do*
+        (
+          (possible-factors (make-sequence-generator 2 (ceiling (sqrt an-integer))))
+          (current-factor (funcall possible-factors))
+          (factors nil)
+        )
+        ((null current-factor) factors)
+        (when (zerop (mod an-integer current-factor))
+          (setf factors (cons current-factor factors))
+          (setf factors (cons (/ an-integer current-factor) factors))
+        )
+        (setf current-factor (funcall possible-factors))
+      )
+    )
+    
+    (defun project-euler-3-1 ()
+      (setf magic-number 600851475143)
+      (setf factors (get-factors magic-number))
+      (setf sorted-factors (sort factors #'>))
+      (setf highest-prime-factor
+        (dolist (current-factor sorted-factors)
+          (when (primep current-factor)
+            (return current-factor)
+          )
+        )
+      )
+    )
+    
+    
+    (defun make-sequence-generator (start end)
+      (let
+        (
+          (last-number start)
+        )
+        (lambda ()
+          (if (> last-number end)
+            nil
+            (let
+              (
+                (result last-number)
+              )
+              (setf last-number (1+ last-number))
+              result
+            )
+          )
+        )
+      )
+    )
+
+In Perl, it's very easy to generate a sequence of numbers:
+
+    2 .. 12345
+
+generates all the numbers from 2 to 12345, inclusive.  In LISP, I needed to
+write a function to do that; my first solution generated a list, whereas the
+function above (make-sequence-generator) returns a closure that returns the next
+number in the sequence each time it's called, or *nil* when the sequence has
+ended.  This change reduces the runtime by 15%, and memory usage by 95%;
+although I don't usually worry much about optimisation, in this case I think it
+was worthwhile.
+
+The answer is: 6857.
+
+[[!tag lisp project_euler programming]]
