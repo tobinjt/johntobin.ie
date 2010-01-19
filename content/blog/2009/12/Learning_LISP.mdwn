@@ -116,4 +116,4 @@ Perl I would use the standard module
 is presented as an example in the documentation.  I don't know yet how hard it
 would be to do this in LISP, but I expect that closures should be easy enough.
 
-[[!tag lisp programming]]
+[[!tag LISP programming]]

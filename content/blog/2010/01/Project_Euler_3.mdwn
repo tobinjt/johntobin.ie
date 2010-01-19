@@ -92,4 +92,4 @@ was worthwhile.
 
 The answer is: 6857.
 
-[[!tag lisp project_euler programming]]
+[[!tag LISP Project_Euler programming]]

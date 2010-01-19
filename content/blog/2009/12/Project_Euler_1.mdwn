@@ -38,4 +38,4 @@ in LISP syntax.  Here's my Perl solution:
     my @numbers = grep { ($_ % 3 == 0) or  ($_ % 5 == 0) } 1 .. 999;
     print sum(@numbers), "\n";
 
-[[!tag lisp project_euler programming]]
+[[!tag LISP Project_Euler programming]]

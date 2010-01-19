@@ -99,4 +99,4 @@ Here's my Perl solution:
 Each program stops executing after it has seen the 35th Fibonacci number,
 5702887.
 
-[[!tag perl lisp project_euler programming]]
+[[!tag Perl LISP Project_Euler programming]]
