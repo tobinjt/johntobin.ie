@@ -1,0 +1,1 @@
+[[!inline pages="tagged(sysadmin)" archive="yes"]]
