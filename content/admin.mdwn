@@ -8,3 +8,7 @@ Broken links;
 
 Tag cloud:
 [[!pagestats pages="tagged/*"]]
+
+[[!testpagespec  pagespec="blog/* and !*/Discussion"
+match="blog/2010/01/Project_Euler_3"]]
+
