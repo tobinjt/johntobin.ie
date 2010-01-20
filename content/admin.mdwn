@@ -1,0 +1,10 @@
+This site has [[!pagecount]] pages.
+
+Orphaned pages:
+[[!orphans pages="* and !blog/*"]]
+
+Broken links;
+[[!brokenlinks]]
+
+Tag cloud:
+[[!pagestats pages="tagged/*"]]
