@@ -1,0 +1,99 @@
+[The fourth Project Euler
+problem:](http://projecteuler.net/index.php?section=problems&id=4)
+
+> 2520 is the smallest number that can be divided by each of the numbers from 1
+> to 10 without any remainder.
+>
+> What is the smallest number that is evenly divisible by all of the numbers
+> from 1 to 20?
+
+The [Fundamental theorem of
+arithmetic](http://en.wikipedia.org/wiki/Fundamental_theorem_of_arithmetic)
+states that:
+
+> any integer greater than 1 can be written as a unique product (up to ordering
+> of the factors) of prime numbers.
+
+For example:
+
+# 4 = 2 * 2
+# 5 = 5
+# 6 = 3 * 2
+# 8 = 2 * 2 * 2
+
+If *n* is a multiple of *m*, then *m*'s  product of prime numbers will be a
+subset of *n*'s product of prime numbers (as seen with 4 and 8 above).  We need
+to find the smallest *n* such that the product of prime numbers of every number
+from 2 to 20 is a subset of the product of prime numbers of *n* - reasonably
+easy to implement, once I figured out the maths.
+
+Here's my LISP solution:
+
+    (defun project-euler-5-1 ()
+      (setf highest-number 20)
+      ; I don't want to be constantly adding or subtracting 1 to indices.
+      (setf array-size (1+ highest-number))
+      ; This breaks the generalisation, but it could easily be replaced if
+      ; necessary.
+      (setf primes '(2 3 5 7 11 13 17 19))
+      (setf factors-array (make-zeroed-array array-size))
+    
+      (do
+        (
+          (current-number 2)
+        )
+        (
+          (> current-number highest-number)
+        )
+    
+        (let
+          (
+            (remainder current-number)
+            (current-factors (make-zeroed-array array-size))
+          )
+          (dolist (current-prime primes)
+            (loop
+              (when (not (zerop (mod remainder current-prime)))
+                (return)
+              )
+              (setf remainder (/ remainder current-prime))
+              (setf (aref current-factors current-prime)
+                      (1+ (aref current-factors current-prime)))
+            )
+          )
+          (do
+            (
+              (i 2)
+            )
+            (
+              (> i highest-number)
+            )
+            (when (>
+                    (aref current-factors i)
+                    (aref factors-array i)
+                  )
+              (setf (aref factors-array i)
+                      (aref current-factors i))
+            )
+            (setf i (1+ i))
+          )
+        )
+        (setf current-number (1+ current-number))
+      )
+      (setf result 1)
+      (dotimes (i highest-number result)
+        (setf result (* result
+                        (expt i (aref factors-array i))))
+      )
+    )
+    
+    (defun make-zeroed-array (array-size)
+      (setf an-array (make-array array-size))
+      (dotimes (i array-size t)
+        (setf (aref an-array i) 0)
+      )
+      an-array
+    )
+
+
+[[!tag LISP Project_Euler programming]]
