@@ -16,10 +16,10 @@ states that:
 
 For example:
 
-# 4 = 2 * 2
-# 5 = 5
-# 6 = 3 * 2
-# 8 = 2 * 2 * 2
+* 4 = 2 * 2
+* 5 = 5
+* 6 = 3 * 2
+* 8 = 2 * 2 * 2
 
 If *n* is a multiple of *m*, then *m*'s  product of prime numbers will be a
 subset of *n*'s product of prime numbers (as seen with 4 and 8 above).  We need
