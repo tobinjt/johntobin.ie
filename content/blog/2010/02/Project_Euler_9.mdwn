@@ -1,0 +1,100 @@
+[The ninth Project Euler
+problem:](http://projecteuler.net/index.php?section=problems&id=9)
+
+> A Pythagorean triplet is a set of three natural numbers, a < b < c, for which,
+> a^(2) + b^(2) = c^(2)
+>
+> For example, 3^(2) + 4^(2) = 9 + 16 = 25 = 5^(2).
+>
+> There exists exactly one Pythagorean triplet for which a + b + c = 1000.
+> Find the product abc.
+
+This is a problem I tackled with intelligent brute force, and later learned that
+an algebraic solution is possible.  The moral of this story is to always look on
+Wikipedia!
+
+If I had read about [Pythagorean
+triples](http://en.wikipedia.org/wiki/Pythagorean_triplet), I would have known
+about Elucid's formula for generating Pythagorean triples: *a = m^2 - n^2; b =
+2mn; c = m^2 + n^2*.  <!-- * -->  This would have allowed me to rewrite the
+equations in the problem in terms of *m* and *n*, <!-- * --> giving me two
+equations in two terms, so I would have been able to solve it algebraically.
+
+I tackled it a different way.  I simplified the equations as far as I could by
+isolating *c* in each equation, allowing me to produce an equation containing
+only *a* and *b*: <!-- * -->
+
+    a + b + c = 1000
+    c = 1000 - a - b
+   
+    a^2 + b^2 = c^2
+    c = sqrt(a^2 + b^2)
+   
+    1000 - a - b = sqrt(a^2 + b^2)
+    1000 = sqrt(a^2 + b^2) + a + b
+
+Knowing that *a < b < c* and that *a + b + c = 1000* lets us put an upper bound
+of 500 on *a* and *b*, <!-- * --> because if either *a* or *b* were greater than
+500, *c* would be less than 500, and *a < b < c* would not be true.  This upper
+bound quarters the search space: *1 <= a <= 500* instead of *1 <= a <= 1000*,
+<!-- * --> and likewise for *b*.  <!-- * -->  After that it's just a matter of
+checking if *1000 = sqrt(a^2 + b^2) + a + b* is true for *1 <= a <= 500* and
+*a <= b <= 500*.  <!-- * -->
+
+Here's my LISP solution:
+
+    (defun project-euler-9-1 ()
+      (do
+        (
+          (a 1)
+          (result nil)
+        )
+        (
+          (or
+            (not (null result))
+            (>= a 500)
+          )
+          result
+        )
+    
+        (do
+          (
+            (b a)
+          )
+          (
+            (or
+              (not (null result))
+              (> b 500)
+            )
+            result
+          )
+    
+          (let
+            (
+              (value
+                (+
+                  (sqrt (+ (expt a 2) (expt b 2)))
+                  a b
+                )
+              )
+            )
+    
+            (when (equal value 1000)
+              (setf result (list a b (- 1000 (+ a b))))
+              (setf result
+                (list
+                  (* a b (first (last result)))
+                  result
+                )
+              )
+            )
+          )
+    
+          (setf b (1+ b))
+        )
+    
+        (setf a (1+ a))
+      )
+    )
+
+[[!tag LISP Project_Euler programming]]
