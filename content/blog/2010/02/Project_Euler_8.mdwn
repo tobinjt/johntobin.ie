@@ -1,4 +1,4 @@
-[The eight Project Euler
+[The eighth Project Euler
 problem:](http://projecteuler.net/index.php?section=problems&id=8)
 
 > Find the greatest product of five consecutive digits in the 1000-digit number.
