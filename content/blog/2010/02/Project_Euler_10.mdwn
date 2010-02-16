@@ -1,0 +1,60 @@
+[The tenth Project Euler
+problem:](http://projecteuler.net/index.php?section=problems&id=10)
+
+> The sum of the primes below 10 is 2 + 3 + 5 + 7 = 17.
+>
+> Find the sum of all the primes below two million.
+
+The [Sieve of Eratosthenes](http://en.wikipedia.org/wiki/Sieve_of_Eratosthenes)
+is perfect for this problem, because we have a limited number space to find
+primes in.
+
+Here's my LISP solution:
+
+    (defun project-euler-10-2 ()
+      (do
+        (
+          (primes (sieve-of-eratosthenes 2000000))
+          (sum-of-primes 0)
+          (i 0)
+        )
+        (
+          (> i 2000000)
+          sum-of-primes
+        )
+    
+        (when (aref primes i)
+          (setf sum-of-primes (+ sum-of-primes i))
+        )
+        (setf i (1+ i))
+      )
+    );
+    
+    (defun sieve-of-eratosthenes (upper-bound)
+      (let*
+        (
+          (array-size (1+ upper-bound))
+          (primes (make-array array-size :initial-element t))
+        )
+        (setf (aref primes 0) nil)
+        (setf (aref primes 1) nil)
+    
+        (dotimes (i (1+ (ceiling (sqrt array-size))) primes)
+          (when (aref primes i)
+            (do
+              (
+                (index-of-multiples (expt i 2))
+              )
+              (
+                (>= index-of-multiples array-size)
+              )
+    
+              (setf (aref primes index-of-multiples) nil)
+              (setf index-of-multiples (+ index-of-multiples i))
+            )
+          )
+        )
+      )
+    )
+
+[[!tag LISP Project_Euler programming]]
