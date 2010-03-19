@@ -50,8 +50,6 @@ Here's my LISP solution:
         (setf num-factors (* num-factors-n num-factors-n-1)))
     )
 
-Discussion:
-
 The obvious solution is trial division: divide by each number less than the
 triangle number<sup><a href="#footnote1">1</a></sup>, and count the number of
 factors you find.  This has two problems: it's slow, and it's uninteresting ;)
@@ -66,18 +64,20 @@ between loop iterations: this iteration's *n* is the same as last iteration's
 the simplest way is to divide *n* by 2 when *n* is even.
 
 What effect does changing the algorithm have on performance?  The first solution
-is O(n(n(n+1)/2))<sup><a href="#footnote2">2</a></sup>, or O(n)<sup><a
-href="#footnote3">3</a></sup> when the constant factors are removed; it can be
-optimised<sup><a href="#footnote1">1</a></sup> to O(n<sup>2</sup>).  The second
-solution is O(n(sqrt(n)))<sup>3</sup>, or O(n<sup>3/2</sup>).  At first glance a
-reduction of O(n<sup>1/2</sup>) mightn't look like much, but appearances can be
-deceiving: *n* is 12375, so the change of algorithm reduces run time by two
-orders of magnitude.
+is O(n(n(n+1)/2))<sup><a href="#footnote2">2</a></sup>, or O(n<sup>3</sup>) when
+the constant factors are removed; it can be optimised<sup><a
+href="#footnote1">1</a></sup> to O(n<sup>2</sup>).  The second solution is
+O(n(sqrt(n)))<sup><a href="#footnote3">3</a></sup>, or O(n<sup>3/2</sup>).  At
+first glance a reduction of O(n<sup>1/2</sup>) mightn't look like much, but
+appearances can be deceiving: *n* is 12375, so the change of algorithm reduces
+run time by two orders of magnitude.
 
 I think this is generally the correct approach to take to optimisation: use good
 algorithms and don't worry about micro-optimisation, because the gains from
 using a good algorithm typically dwarf the gains from micro-optimising sections
 of code.
+
+Footnotes:
 
 1. <a name="footnote1"> Divide by each integer from 1 to *(ceiling (sqrt
 (sum-to-n n)))*  and incrementing the number of factors by 2, instead of
