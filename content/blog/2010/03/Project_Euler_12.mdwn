@@ -77,6 +77,11 @@ algorithms and don't worry about micro-optimisation, because the gains from
 using a good algorithm typically dwarf the gains from micro-optimising sections
 of code.
 
+Update: I should make it clear that I implemented the second algorithm after
+reading the Project Euler notes for problem 12.  They suggest using prime
+factors, which I tried, but found that it was slower than trial division by a
+factor of 10; I haven't figured out why.
+
 Footnotes:
 
 1. <a name="footnote1"> Divide by each integer from 1 to *(ceiling (sqrt
