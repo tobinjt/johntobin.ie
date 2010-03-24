@@ -1,0 +1,71 @@
+[The nineteenth Project Euler
+problem:](http://projecteuler.net/index.php?section=problems&id=19)
+
+> You are given the following information, but you may prefer to do some
+> research for yourself.
+>
+    1 Jan 1900 was a Monday.
+    Thirty days has September,
+    April, June and November.
+    All the rest have thirty-one,
+    Saving February alone,
+    Which has twenty-eight, rain or shine.
+    And on leap years, twenty-nine.
+>
+> A leap year occurs on any year evenly divisible by 4, but not on a century
+> unless it is divisible by 400.
+> How many Sundays fell on the first of the month during the twentieth century
+> (1 Jan 1901 to 31 Dec 2000)?
+
+Here's my LISP solution:
+
+    (defun is-leap-year (year)
+      (or (zerop (mod year 400))
+          (and (not (zerop (mod year 100)))
+               (zerop (mod year 4)))))
+    
+    (defun days-in-year (year)
+      (if (is-leap-year year)
+          366
+          365))
+    
+    (let ((days-in-month (make-array 13 :initial-element 31)))
+      (mapcar #'(lambda (x) (setf (aref days-in-month x) 30))
+              '(4 6 9 11))
+      (setf (aref days-in-month 2) 28)
+      (defun days-in-month (year month)
+        (if (and (= month 2)
+                 (is-leap-year year))
+            29
+            (aref days-in-month month))))
+    
+    (defun days-to-ymd (days)
+      (let ((year 1900)
+            (month 1))
+    
+        (do ()
+            ((< days (days-in-year year)))
+          (decf days (days-in-year year))
+          (incf year))
+    
+        (do ()
+            ((< days (days-in-month year month)))
+          (decf days (days-in-month year month))
+          (incf month))
+    
+        (values year month days)))
+    
+    (defun project-euler-19-1 ()
+      (let ((result 0)
+            ; 1900/01/07 is the first Sunday, and we skip all of 1900
+            (sunday (+ 7 (* 7 52))))
+        (loop
+          (multiple-value-bind (year month day) (days-to-ymd sunday)
+            (declare (ignore month))
+            (when (> year 2000)
+              (return result))
+            (when (= day 1)
+              (incf result))
+            (incf sunday 7)))))
+
+[[!tag LISP Project_Euler programming]]
