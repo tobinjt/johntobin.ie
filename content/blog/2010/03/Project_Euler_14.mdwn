@@ -1,0 +1,65 @@
+[The fourteenth Project Euler
+problem:](http://projecteuler.net/index.php?section=problems&id=14)
+
+> The following iterative sequence is defined for the set of positive integers:
+> 
+> n => n/2 (n is even)
+> n => 3n + 1 (n is odd)
+> 
+> Using the rule above and starting with 13, we generate the following sequence:
+> 
+> 13 => 40 => 20 => 10 => 5 => 16 => 8 => 4 => 2 => 1
+> 
+> It can be seen that this sequence (starting at 13 and finishing at 1) contains
+> 10 terms. Although it has not been proved yet (Collatz Problem), it is thought
+> that all starting numbers finish at 1.
+> 
+> Which starting number, under one million, produces the longest chain?
+> 
+> NOTE: Once the chain starts the terms are allowed to go above one million.
+
+Here's my LISP solution:
+
+    (defun project-euler-14-1 ()
+      (let ((array-size 1000000))
+        (let ((cache (make-array array-size))
+              (chain-end 1)
+              (chain-start 1))
+          (setf (aref cache chain-end) 1)
+          (do ((n 2 (1+ n))
+               (queue '() '()))
+              ((>= n array-size) chain-start)
+    
+            (unless (aref cache n)
+              ; Fill up the queue.
+              (do ((val n))
+                  ((= val chain-end) (push chain-end queue))
+                (push val queue)
+                ; Break out of the loop if we've seen this value before.
+                (if (and (array-in-bounds-p cache val)
+                         (aref cache val))
+                    (return))
+                (if (evenp val)
+                    (setf val (/ val 2))
+                    (setf val (1+ (* val 3)))))
+    
+              ; Empty the queue
+              (let ((chain-length (aref cache (pop queue))))
+                (dolist (val queue)
+                  (incf chain-length)
+                  (when (array-in-bounds-p cache val)
+                    (setf (aref cache val) chain-length))
+                  (when (and (array-in-bounds-p cache val)
+                             (> chain-length (aref cache chain-start)))
+                    (setf chain-start val))))))))
+    )
+
+The only interesting thing here is caching each value processed.  E.g., the
+chain starting at 3 is: 3 => 10 => 5 => 16 => 8 => 4 => 2 => 1; after this chain
+is processed, the cache will also contain entries for 4, 5, 8, 10, and 16, so
+those numbers don't need to be processed again.  Once a chain reaches a number
+that's present in the cache, it doesn't have to be processed any further;
+1000000 numbers are processed, and only 2355035 chain steps need to be followed
+from a total of 132434271, a mere 1.778267%.
+
+[[!tag LISP Project_Euler programming]]

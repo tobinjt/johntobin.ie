@@ -1,0 +1,45 @@
+[Project Euler problem
+21:](http://projecteuler.net/index.php?section=problems&id=21)
+
+>Let d(n) be defined as the sum of proper divisors of n (numbers less than n
+>which divide evenly into n).  If d(a) = b and d(b) = a, where a != b, then a
+>and b are an amicable pair and each of a and b are called amicable numbers.
+>
+>For example, the proper divisors of 220 are 1, 2, 4, 5, 10, 11, 20, 22, 44, 55
+>and 110; therefore d(220) = 284. The proper divisors of 284 are 1, 2, 4, 71 and
+>142; so d(284) = 220.
+>
+>Evaluate the sum of all the amicable numbers under 10000.
+
+Here's my LISP solution:
+
+    (defun project-euler-21-1 ()
+      (let ((sum-of-factors (make-array 10000 :initial-element 0)))
+        ; Calculate the sum of factors for each number.
+        (do ((current-number 1 (1+ current-number))
+             (max-number (array-dimension sum-of-factors 0)))
+            ((= current-number max-number))
+          (do ((current-divisor 1 (1+ current-divisor))
+               (max-divisor (floor (sqrt current-number))))
+              ((> current-divisor max-divisor))
+            (when (zerop (mod current-number current-divisor))
+              (incf (aref sum-of-factors current-number) current-divisor)
+              (let ((other-factor (/ current-number current-divisor)))
+                (when (and (not (= current-divisor other-factor))
+                           (not (= current-number other-factor)))
+                  (incf (aref sum-of-factors current-number) other-factor))))))
+        ; Now look for amicable pairs.
+        (do ((current-number 1 (1+ current-number))
+             (max-number (array-dimension sum-of-factors 0))
+             (sum-of-amicable-pairs 0))
+            ((= current-number max-number) sum-of-amicable-pairs)
+          (let ((sum-for-current-number (aref sum-of-factors current-number)))
+            (when (and (< sum-for-current-number max-number)
+                       ; Only count each pair once, e.g: 220 & 284; the pair will be
+                       ; found when (= current-number 220), so skip when
+                       ; (= current-number 284).
+                       (> sum-for-current-number current-number)
+                       (= current-number (aref sum-of-factors sum-for-current-number)))
+              (incf sum-of-amicable-pairs (+ current-number sum-for-current-number)))))))
+
+[[!tag LISP Project_Euler programming]]

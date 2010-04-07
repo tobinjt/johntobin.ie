@@ -1,0 +1,118 @@
+[The eighteenth Project Euler
+problem:](http://projecteuler.net/index.php?section=problems&id=18)
+
+> By starting at the top of the triangle below and moving to adjacent numbers on
+> the row below, the maximum total from top to bottom is 23.
+>
+    
+       3
+      7 4
+     2 4 6
+    8 5 9 3
+>
+> That is, 3 + 7 + 4 + 9 = 23.
+>
+> Find the maximum total from top to bottom of the triangle below:
+>
+    
+                                75
+                              95  64
+                            17  47  82
+                          18  35  87  10
+                        20  04  82  47  65
+                      19  01  23  75  03  34
+                    88  02  77  73  07  63  67
+                  99  65  04  28  06  16  70  92
+                41  41  26  56  83  40  80  70  33
+              41  48  72  33  47  32  37  16  94  29
+            53  71  44  65  25  43  91  52  97  51  14
+          70  11  33  28  77  73  17  78  39  68  17  57
+        91  71  52  38  17  14  91  43  58  50  27  29  48
+      63  66  04  68  89  53  67  30  73  16  69  87  40  31
+    04  62  98  27  23  09  70  98  73  93  38  53  60  04  23
+    
+> NOTE: As there are only 16384 routes, it is possible to solve this problem by
+> trying every route. However, Problem 67, is the same challenge with a triangle
+> containing one-hundred rows; it cannot be solved by brute force, and requires
+> a clever method! ;o)
+
+Here's my LISP solution:
+
+    (defstruct a-path path total)
+    (defun project-euler-18-1 (); {{{
+      ; First create the data structures
+      (let* ((triangle-list '((75)
+                              (95 64)
+                              (17 47 82)
+                              (18 35 87 10)
+                              (20 04 82 47 65)
+                              (19 01 23 75 03 34)
+                              (88 02 77 73 07 63 67)
+                              (99 65 04 28 06 16 70 92)
+                              (41 41 26 56 83 40 80 70 33)
+                              (41 48 72 33 47 32 37 16 94 29)
+                              (53 71 44 65 25 43 91 52 97 51 14)
+                              (70 11 33 28 77 73 17 78 39 68 17 57)
+                              (91 71 52 38 17 14 91 43 58 50 27 29 48)
+                              (63 66 04 68 89 53 67 30 73 16 69 87 40 31)
+                              (04 62 98 27 23 09 70 98 73 93 38 53 60 04 23)))
+            (triangle-array  (make-array (list (length triangle-list) (length triangle-list))))
+            (triangle-summed (make-array (list (length triangle-list) (length triangle-list)))))
+        (dolist (row-contents triangle-list)
+          (let ((i (1- (length row-contents)))
+                (j 0))
+            (dolist (value row-contents)
+              (setf (aref triangle-array i j) value)
+              (incf j))))
+        (setf (aref triangle-summed 0 0 ) (make-a-path :path '((0 0)) :total (aref triangle-array 0 0)))
+    
+        ; Now solve the problem.
+    
+        ; Don't process the last row: that's where the results will be.
+        ; Don't process the last column: it's nil in every row except the last.
+        ; Those conditions mean we can't exceed the array dimensions, so we don't
+        ; need to bounds-check every array access.
+        ; Each node will create its right child node, choosing either itself or the
+        ; node to its right as the better parent.  The first node in each row is
+        ; also responsible for creating its left child.
+        (dotimes (i (1- (array-dimension triangle-array 0)))
+          (dotimes (j (1- (array-dimension triangle-array 1)))
+            (let* ((i+1 (1+ i))
+                   (j+1 (1+ j))
+                   (current-node (aref triangle-summed i j))
+                   (right-node   (aref triangle-summed i j+1))
+                   (better-node  current-node)
+                   (below-total  (aref triangle-array  i+1 j+1)))
+    
+              (when (= j 0)
+                ; This node is the start of the row, and so must be the parent of
+                ; the left child.
+                (setf (aref triangle-summed i+1 0)
+                      (make-a-path :total (+ (aref triangle-array i+1 0) (a-path-total current-node))
+                                   :path  (cons (list i+1 0) (a-path-path current-node)))))
+    
+              ; Skip the upper right half of the triangle
+              (when current-node
+                (when (and right-node
+                          (> (a-path-total right-node) (a-path-total current-node))
+                  (setf better-node right-node)))
+    
+                (setf (aref triangle-summed i+1 j+1)
+                      (make-a-path :total (+ below-total (a-path-total better-node))
+                                  :path  (cons (list i+1 j+1) (a-path-path better-node))))))))
+    
+        (let ((result (aref triangle-summed 0 0))
+              (i (1- (array-dimension triangle-summed 0))))
+          (dotimes (j (array-dimension triangle-summed 1) result)
+            (when (> (a-path-total (aref triangle-summed i j)) (a-path-total result))
+              (setf result (aref triangle-summed i j)))))
+        ))
+
+The idea behind this is pretty simple: for each child, pick the better parent
+node, based on the route from the top to each parent.  When the last row is
+reached, pick the best route on that row, and that's the solution.  In
+hindsight, I think it would have been clearer to start on the bottom row and
+work upwards, picking the better child for each parent; this would probably be
+clearer, and the route found at the triangle's apex would be the best route.
+
+[[!tag LISP Project_Euler programming]]
