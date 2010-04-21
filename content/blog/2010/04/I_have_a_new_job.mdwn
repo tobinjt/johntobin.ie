@@ -1,0 +1,7 @@
+I haven't written anything for three weeks, for two reasons:
+
+1. I took a break - 10 days without any tech stuff.
+2. I interviewed with Google, and they offered me a job, which I've accepted.
+I'll start at the end of June :)
+
+[[!tag sysadmin job Google]]
