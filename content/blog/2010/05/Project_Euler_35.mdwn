@@ -1,0 +1,49 @@
+[Project Euler
+problem 35:](http://projecteuler.net/index.php?section=problems&id=35)
+
+> The number, 197, is called a circular prime because all rotations of the
+> digits: 197, 971, and 719, are themselves prime.
+>
+> There are thirteen such primes below 100: 2, 3, 5, 7, 11, 13, 17, 31, 37, 71,
+> 73, 79, and 97.
+>
+> How many circular primes are there below one million?
+
+Here's my LISP solution:
+
+    (defun number-to-digits (a-number)
+      "Convert a number to a list of its digits, in order"
+      (let ((digits '()))
+        (loop while (> a-number 0) do
+          (push (mod a-number 10) digits)
+          (setf a-number (floor a-number 10)))
+        digits))
+    
+    (defun digits-to-number (digits)
+      "Convert a list of digits to a number"
+      (let ((a-number 0))
+        (dolist (digit digits a-number)
+          (setf a-number (+ (* a-number 10) digit)))))
+    
+    (defun is-circular-prime (primes a-number)
+      "Check if a-number is a circular prime"
+      (let ((digits (number-to-digits a-number))
+            (rotated-digits '())
+            (is-circular-prime (aref primes a-number)))
+        (loop repeat (1- (length digits))
+              while is-circular-prime do
+          (setf rotated-digits (append rotated-digits (list (pop digits))))
+          (let ((possible-prime (digits-to-number (append digits rotated-digits))))
+            (setf is-circular-prime (aref primes possible-prime))))
+        is-circular-prime))
+    
+    (defun project-euler-35-1 ()
+      (let ((primes (sieve-of-eratosthenes 1000000))
+            (num-circular-primes 0))
+        (loop for i from 2 to (1- (array-dimension primes 0)) do
+          (when (and (aref primes i)
+                     (is-circular-prime primes i))
+            (incf num-circular-primes)))
+        num-circular-primes))
+
+[[!tag LISP Project_Euler programming]]
