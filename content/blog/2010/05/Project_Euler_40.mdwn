@@ -1,0 +1,47 @@
+[Project Euler problem
+40:](http://projecteuler.net/index.php?section=problems&id=40)
+
+> An irrational decimal fraction is created by concatenating the positive
+> integers:
+>
+> 0.12345678910 1 112131415161718192021...
+>
+> It can be seen that the 12th digit of the fractional part is 1.
+>
+> If dn represents the nth digit of the fractional part, find the value of the
+> following expression.
+>
+> d1 * d10 * d100 * d1000 * d10000 * d100000 * d1000000
+
+Here's my LISP solution:
+
+    (defun project-euler-40-1 ()
+      (let ((product 1))
+        (dotimes (index 7 product)
+          (setf product (* product (get-nth-digit (expt 10 index)))))))
+    
+    (defun num-digits-in-n-digit-numbers (n)
+      "In the group of n-digit numbers, there are (n * (10^n - 10^(n-1))) digits."
+      (* n (- (expt 10 n) (expt 10 (1- n)))))
+    
+    (defun get-nth-digit (index)
+      (let ((n 1)
+            ; The indices in the question start at 1, but ours start at zero, so
+            ; decrement the requested index.
+            (index-remaining (1- index)))
+        (do ()
+            ((> (num-digits-in-n-digit-numbers n) index-remaining))
+          (decf index-remaining (num-digits-in-n-digit-numbers n))
+          (incf n))
+        ; We now know that the number under index is the
+        ;   (floor index-remaining n)'th n-digit number
+        (let* ((number-under-index (+ (expt 10 (1- n))
+                                      (floor index-remaining n)))
+               (digit-within-number-under-index (mod index-remaining n))
+               ; Divide number-under-index by divisor to remove the digits following
+               ; the digit we want; mod 10 will then strip the digits preceeding the
+               ; digit we want.
+               (divisor (expt 10 (1- (- n digit-within-number-under-index)))))
+          (mod (floor number-under-index divisor) 10))))
+
+[[!tag LISP Project_Euler programming]]

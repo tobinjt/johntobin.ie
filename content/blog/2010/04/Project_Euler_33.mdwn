@@ -1,0 +1,39 @@
+[Project Euler
+problem 33:](http://projecteuler.net/index.php?section=problems&id=33)
+
+> The fraction 49/98 is a curious fraction, as an inexperienced mathematician in
+> attempting to simplify it may incorrectly believe that 49/98 = 4/8, which is
+> correct, is obtained by cancelling the 9s.
+>
+> We shall consider fractions like, 30/50 = 3/5, to be trivial examples.
+>
+> There are exactly four non-trivial examples of this type of fraction, less
+> than one in value, and containing two digits in the numerator and denominator.
+>
+> If the product of these four fractions is given in its lowest common terms,
+> find the value of the denominator.
+
+Here's my LISP solution:
+
+    (defun project-euler-33-1 ()
+      (let ((fractions '()))
+        (loop for d1 from 1 to 9 do
+          (loop for d2 from 1 to 9 do
+            (loop for n1 from 1 to d1 do
+              (loop for n2 from 1 to 9
+                    ; numerator must be less than denominator
+                    while (or (< n1 d1) (< n2 d2)) do
+                (multiple-value-bind (n d)
+                  (cond
+                    ((= n1 d1) (values n2 d2))
+                    ((= n1 d2) (values n2 d1))
+                    ((= n2 d1) (values n1 d2))
+                    ((= n2 d2) (values n1 d1)))
+                  (when (and n
+                             (= (/ n d)
+                                (/ (+ (* n1 10) n2)
+                                   (+ (* d1 10) d2))))
+                    (push (/ n d) fractions)))))))
+        (reduce #'* fractions)))
+
+[[!tag LISP Project_Euler programming]]
