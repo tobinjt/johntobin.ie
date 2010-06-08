@@ -12,9 +12,8 @@ Dublin](http://www.tcd.ie/).  My responsibilities include:
 * a lab running Linux for students' use
 * most other services running on Linux or Solaris servers
 
-I'm (nearly) a double graduate of Trinity College: I completed a B.A. (Mod) in
-Computer Science in 2002, and I recently finished an M.Sc. in Computer Science
-(I'll graduate in 2010); my thesis and papers are available from
-[[my_publications_page|publications]].  I studied for my M.Sc. in evenings and
-weekends, in addition to my full-time job, and completed it in two years, the
-minimum time period permitted.
+I'm a double graduate of Trinity College: I completed a B.A. (Mod) in Computer
+Science in 2002, and an M.Sc. in Computer Science in 2009; my thesis and papers
+are available from [[my_publications_page|publications]].  I studied for my
+M.Sc. in evenings and weekends, in addition to my full-time job, and completed
+it in two years, the minimum time period permitted.
