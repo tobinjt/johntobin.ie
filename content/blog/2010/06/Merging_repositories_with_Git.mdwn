@@ -26,3 +26,5 @@ Two things struck me about this:
     five years of using Subversion, I have no idea where to begin.
 
 The more I use Git, the happier I am to be using it instead of Subversion.
+
+[[!tag Git Subversion script sysadmin]]
