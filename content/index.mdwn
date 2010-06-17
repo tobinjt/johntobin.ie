@@ -1,6 +1,6 @@
-Hi, I'm John Tobin, a Unix Systems Administrator in the [School of Computer
-Science and Statistics](http://www.scss.tcd.ie/), [Trinity College
-Dublin](http://www.tcd.ie/).  My responsibilities include:
+Hi, I'm John Tobin.  For seven years I was a Unix Systems Administrator in the
+[School of Computer Science and Statistics](http://www.scss.tcd.ie/), [Trinity
+College Dublin](http://www.tcd.ie/).  My responsibilities included:
 
 * mail server: SMTP, anti-spam and anti-virus measures, mailing lists, POP, IMAP, webmail
 * web server
@@ -17,3 +17,6 @@ Science in 2002, and an M.Sc. in Computer Science in 2009; my thesis and papers
 are available from [[my_publications_page|publications]].  I studied for my
 M.Sc. in evenings and weekends, in addition to my full-time job, and completed
 it in two years, the minimum time period permitted.
+
+From July 2010 I will be working as a Site Reliability Engineer for
+[Google](http://www.google.ie/intl/en/about.html).
