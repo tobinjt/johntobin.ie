@@ -25,5 +25,5 @@
 * Frame and hang pictures.
 * Front door light.
 * Peephole in front door.
-* Arrange garage.
+* Cut wood in garage.
 * Trim tree outside gate.
