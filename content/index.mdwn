@@ -1,16 +1,8 @@
-Hi, I'm John Tobin.  For seven years I was a Unix Systems Administrator in the
-[School of Computer Science and Statistics](http://www.scss.tcd.ie/), [Trinity
-College Dublin](http://www.tcd.ie/).  My responsibilities included:
+Hi, I'm John Tobin.
 
-* mail server: SMTP, anti-spam and anti-virus measures, mailing lists, POP, IMAP, webmail
-* web server
-* proxies: HTTP, SOCKS, CVS, NAT
-* backups for Linux and Solaris servers
-* IPv6
-* NTP, DNS, and DHCP
-* support for users
-* a lab running Linux for students' use
-* most other services running on Linux or Solaris servers
+Since July 2010 I've been working as a Site Reliability Engineer for
+[Google](http://www.google.ie/intl/en/about.html), supporting
+[BigTable](http://labs.google.com/papers/bigtable.html).
 
 I'm a double graduate of Trinity College: I completed a B.A. (Mod) in Computer
 Science in 2002, and an M.Sc. in Computer Science in 2009; my thesis and papers
@@ -18,5 +10,6 @@ are available from [[my_publications_page|publications]].  I studied for my
 M.Sc. in evenings and weekends, in addition to my full-time job, and completed
 it in two years, the minimum time period permitted.
 
-From July 2010 I will be working as a Site Reliability Engineer for
-[Google](http://www.google.ie/intl/en/about.html).
+For seven years I was a Unix Systems Administrator in the [School of Computer
+Science and Statistics](http://www.scss.tcd.ie/), [Trinity College
+Dublin](http://www.tcd.ie/).
