@@ -1,0 +1,60 @@
+[Project Euler problem
+47:](http://projecteuler.net/index.php?section=problems&id=47)
+
+> The first two consecutive numbers to have two distinct prime factors are:
+>
+>     14 = 2 * 7
+>     15 = 3 * 5
+>
+> The first three consecutive numbers to have three distinct prime factors are:
+>
+>     644 = 2² * 7 * 23
+>     645 = 3 * 5 * 43
+>     646 = 2 * 17 * 19.
+>
+> Find the first four consecutive integers to have four distinct primes factors.
+> What is the first of these numbers?
+
+Here's my LISP solution:
+
+    ; Returns a list of prime factors of the-number; this list can contain
+    ; duplicates.  sieve should be an array returned by sieve-of-eratosthenes, and
+    ; must contain at least the-number elements to factor primes correctly.
+    (defun prime-factors (sieve the-number)
+      (when (> the-number (1- (array-dimension sieve 0)))
+        (error "prime-factors: sieve too small: ~A > ~A"
+               the-number (1- (array-dimension sieve 0))))
+    
+      (let ((factors '())
+            (remainder the-number))
+        (dotimes (i (array-dimension sieve 0))
+          (when (= remainder 1)
+            (return))
+          (when (aref sieve i)
+            (do ()
+                ((not (zerop (mod remainder i))))
+              (push i factors)
+              (setf remainder (/ remainder i)))))
+        (nreverse factors)))
+    
+    (defun project-euler-47-1 ()
+      (let* ((sieve-size 10000)
+             (sieve (sieve-of-eratosthenes sieve-size))
+             (num-numbers-found 0)
+             (first-number-found))
+        (do* ((i (* 2 3 5 7) (1+ i))
+              (factors (remove-duplicates (prime-factors sieve i))
+                       (remove-duplicates (prime-factors sieve i))))
+             ((= 4 num-numbers-found) first-number-found)
+          (if (= 4 (length factors))
+            (progn
+              (when (= 0 num-numbers-found)
+                (setf first-number-found i))
+              (incf num-numbers-found))
+            (setf num-numbers-found 0))
+          ; Extend the sieve when i is nearly twice its size.
+          (when (> i (- sieve-size 10))
+            (setf sieve-size (* sieve-size 2))
+            (setf sieve (sieve-of-eratosthenes sieve-size))))))
+
+[[!tag LISP Project_Euler programming]]
