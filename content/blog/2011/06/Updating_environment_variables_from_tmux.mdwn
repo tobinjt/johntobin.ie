@@ -1,8 +1,8 @@
 [tmux](http://tmux.sourceforge.net/) is a tty multiplexer similar to
 [screen](http://www.gnu.org/software/screen/), but with some really nice
 features.  One of those features is updating environment variables when you
-reconnect to a session: the current values are sent to the tmux server, and can
-be retrieved with:
+reconnect to a session - the client sends the current values to the tmux server,
+and they can be retrieved with:
 
     $ tmux show-environment
     -DISPLAY
@@ -36,8 +36,9 @@ prompt.  Here's a function and supporting settings to update your environment:
     export -f prompt_command
 
 There are checks to make sure it's running under `tmux` and to avoid unnecessary
-work, but the important part starts at `eval $(`.  It rewrites the output of
-`tmux show-environment`; from the sample output above, it would produce:
+work, but the important part starts at `eval $(`.  The output of `tmux
+show-environment` is rewritten, producing commands that `bash` will evaluate to
+change the environment.  From the sample output above, it would produce:
 
     unset DISPLAY;
     export SSH_AGENT_PID="3912";
@@ -47,10 +48,10 @@ work, but the important part starts at `eval $(`.  It rewrites the output of
     unset WINDOWID;
     unset XAUTHORITY;
 
-This is evaluated by `bash`, changing the environment.
-
 Exporting `PROMPT_COMMAND` and `prompt_command` makes updating work if you run a
 `bash` subshell, i.e.:
 
     $ bash
     $ # Prompt updates will happen in this subshell.
+
+[[!tag tmux shell]]
