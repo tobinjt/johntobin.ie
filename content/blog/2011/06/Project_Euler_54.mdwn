@@ -1,0 +1,390 @@
+[Project Euler problem
+54:](http://projecteuler.net/index.php?section=problems&id=54)
+
+> In the card game poker, a hand consists of five cards and are ranked,
+> from lowest to highest, in the following way:
+>
+> High Card: Highest value card.
+> One Pair: Two cards of the same value.
+> Two Pairs: Two different pairs.
+> Three of a Kind: Three cards of the same value.
+> Straight: All cards are consecutive values.
+> Flush: All cards of the same suit.
+> Full House: Three of a kind and a pair.
+> Four of a Kind: Four cards of the same value.
+> Straight Flush: All cards are consecutive values of same suit.
+> Royal Flush: Ten, Jack, Queen, King, Ace, in same suit.
+> The cards are valued in the order:
+> 2, 3, 4, 5, 6, 7, 8, 9, 10, Jack, Queen, King, Ace.
+>
+> If two players have the same ranked hands then the rank made up of the highest
+> value wins; for example, a pair of eights beats a pair of fives (see example 1
+> below). But if two ranks tie, for example, both players have a pair of queens,
+> then highest cards in each hand are compared (see example 4 below); if the
+> highest cards tie then the next highest cards are compared, and so on.
+>
+> Consider the following five hands dealt to two players:
+> <snipped>
+> The file, poker.txt, contains one-thousand random hands dealt to two players.
+> Each line of the file contains ten cards (separated by a single space): the
+> first five are Player 1's cards and the last five are Player 2's cards. You
+> can assume that all hands are valid (no invalid characters or repeated cards),
+> each player's hand is in no specific order, and in each hand there is a clear
+> winner.
+>
+> How many hands does Player 1 win?
+
+This is a long solution, weighing in at 315 lines of code, but it's hard to see
+where I could trim anything without reducing clarity or making testing more
+difficult.  Conceptually this is a simple problem to solve:
+
+1. Rank both hands (flush, three of a kind, etc.).
+2. If ranks are different, we have a winner.
+3. Otherwise, compare scoring cards (e.g. the three cards forming three of a
+kind).
+4. If we still don't have a winner, compare non-scoring cards.  (This only
+happens a couple of times in the 1000 hands.)
+
+A simple algorithm, but there are lots of little details to get right.
+
+A lot of the code would be the same in any language, but some parts are worth
+commenting on:
+
+* `loop-over-hand` (line 78): this removes the need to write repetitive 'loop over
+the hand' code.  Higher-order functions are necessary for this to work; you
+could do the same thing in C, but you'd have to write named functions rather
+than using `lambda`.
+* Good helper functions made writing the `is-foo` ranking functions easy;
+they're also short and very easy to understand.
+   * `has-n-cards-with-same-value` (line 154) is the basis of 5 ranking
+   functions.
+   * `hand-same-suit` (line 88) and `hand-descending-values` (line 94) were used
+   to write most of the other ranking functions.
+* Line 170: The tests I wrote are basic, but they let me check that I hadn't
+broken anything - definitely worth the effort.  Again, higher-order functions
+made this very easy.
+* `compare-hands` (line 296), `rank-top-cards` (line 282), and
+`rank-top-cards-helper` (line 270) print information about how the hands are
+compared.  Usually I would remove debugging information like this, but in this
+case I thought it made understanding the comparison process easier.  I should
+probably have written a `debug-print` function.
+
+Here's my LISP solution:
+
+      1  (defstruct card
+      2    (value)
+      3    (suit))
+      4
+      5  (defstruct hand
+      6    "All cards attributes are either nil or an array of cards, sorted in
+      7     descending order by value (suit is ignored)."
+      8    (string-form)
+      9    (cards)
+     10    (scoring-cards)
+     11    (non-scoring-cards)
+     12    (rank))
+     13
+     14  (defun parse-card-value (value)
+     15    "Convert face cards to a numeric value; return other values unchanged."
+     16    (case value
+     17      (#\T 10)
+     18      (#\J 11)
+     19      (#\Q 12)
+     20      (#\K 13)
+     21      (#\A 14)
+     22      (otherwise (parse-integer (string value)))))
+     23
+     24  (defun un-parse-card-value (value)
+     25    "Convert a numeric card value to a string."
+     26    (case value
+     27      (10 "T")
+     28      (11 "J")
+     29      (12 "Q")
+     30      (13 "K")
+     31      (14 "A")
+     32      (otherwise (format nil "~A" value))))
+     33
+     34  (defun sort-cards (cards)
+     35    "Sort cards in-place in descending order by value (suit is ignored)."
+     36    (sort cards #'> :key #'card-value))
+     37
+     38  (defun parse-hand (line)
+     39    " Parse '8C TS KC 9H 4S', returning a hand."
+     40    (let ((cards (make-array 5))
+     41          (hand))
+     42      (dofromto (0 4 card-number)
+     43        (let* ((offset (* card-number 3))
+     44               (value (aref line offset))
+     45               (suit (aref line (1+ offset))))
+     46            (setf (aref cards card-number)
+     47                  (make-card :value (parse-card-value value)
+     48                             :suit suit))))
+     49      (sort-cards cards)
+     50      (setf hand (make-hand :cards cards))
+     51      (setf (hand-string-form hand) (make-hand-string-form hand))
+     52      hand))
+     53
+     54  (defun read-hands-file (hands-fh)
+     55    "Read a file (typically poker.txt), returning a list of lists of hands."
+     56    (let ((hands '()))
+     57      (do ((line (read-line hands-fh nil) (read-line hands-fh nil)))
+     58          ((null line) hands)
+     59        (push (list (parse-hand (subseq line 0 14))
+     60                    (parse-hand (subseq line 15)))
+     61              hands))
+     62      (nreverse hands)))
+     63
+     64  (defun make-hand-string-form (hand)
+     65    "Returns a human-readable representation of the hand."
+     66    (let ((components '()))
+     67      (loop-over-hand hand
+     68                      #'(lambda (ignored-card card)
+     69                          (declare (ignore ignored-card))
+     70                          (push (un-parse-card-value (card-value card))
+     71                                components)
+     72                          (push (string (card-suit card)) components)
+     73                          (push " " components)))
+     74      (pop components)
+     75      (nreverse components)
+     76      (format nil "~{~A~}" components)))
+     77
+     78  (defun loop-over-hand (hand func)
+     79    "Iterate over the cards in hand, calling (func first_card current_card) for
+     80     each one.  Returns true if func returns true for all five cards."
+     81    (let* ((result t)
+     82           (cards (hand-cards hand))
+     83           (first-card (aref cards 0)))
+     84      (dofromto (0 4 i result)
+     85        (setf result (and (funcall func first-card (aref cards i))
+     86                          result)))))
+     87
+     88  (defun hand-same-suit (hand)
+     89    "Return true if all cards in the hand have the same suit, false otherwise."
+     90    (loop-over-hand hand #'(lambda (card-1 card-2)
+     91                             (char-equal (card-suit card-1)
+     92                                         (card-suit card-2)))))
+     93
+     94  (defun hand-descending-values (hand)
+     95    "Return true if the cards in the hand are in descending order, false
+     96     otherwise."
+     97    (let ((comparison-value (hand-card-value hand 0)))
+     98      (loop-over-hand hand #'(lambda (card-1 card-2)
+     99                               (declare (ignore card-1))
+    100                               (when (= (card-value card-2)
+    101                                        comparison-value)
+    102                                 (setf comparison-value
+    103                                       (1- comparison-value)))))))
+    104
+    105  (defun hand-card-value (hand i)
+    106    "Return the value of the card at index i of the hand."
+    107    (card-value (aref (hand-cards hand) i)))
+    108
+    109  (defun group-cards-by-value (hand)
+    110    "Return a hash table mapping card-value -> list-of-cards."
+    111    (let ((value-map (make-hash-table)))
+    112      (loop-over-hand hand
+    113                      #'(lambda (ignored-card card)
+    114                          (declare (ignore ignored-card))
+    115                          (let ((value (card-value card)))
+    116                            (setf (gethash value value-map)
+    117                                  (push card (gethash value value-map '()))))))
+    118      value-map))
+    119
+    120  (defun count-items-in-hash (a-hash)
+    121    "Returns a hash containing (key => (length value)) for every
+    122     (key => value) pair in a-hash."
+    123    (let ((result (make-hash-table)))
+    124      (maphash #'(lambda (key value)
+    125                   (setf (gethash key result) (length value)))
+    126               a-hash)
+    127      result))
+    128
+    129  (defun set-scoring-cards-from-hash (hand cards-by-value
+    130                                      num-cards-by-value scoring-count)
+    131    "Set scoring-cards and non-scoring-cards.  When n is 2 and
+    132     there are two pairs in the hand, scoring-cards will contain all 4 cards."
+    133    (let ((scoring-cards '())
+    134          (non-scoring-cards '()))
+    135
+    136      (maphash #'(lambda (key value)
+    137                   ; I feel like I should be able to write this more concisely,
+    138                   ; but my attempts with push, nconc, and append were either
+    139                   ; non-functional or just as long.
+    140                   (if (equal value scoring-count)
+    141                     (setf scoring-cards
+    142                           (concatenate 'list scoring-cards
+    143                                              (gethash key cards-by-value)))
+    144                     (setf non-scoring-cards
+    145                           (concatenate 'list non-scoring-cards
+    146                                              (gethash key cards-by-value)))))
+    147               num-cards-by-value)
+    148
+    149      (setf (hand-scoring-cards hand)
+    150            (sort-cards (coerce scoring-cards 'array)))
+    151      (setf (hand-non-scoring-cards hand)
+    152            (sort-cards (coerce non-scoring-cards 'array)))))
+    153
+    154  (defun has-n-cards-with-same-value (hand n &optional (set-scoring-cards t))
+    155    "Returns true if there are n cards with the same value.  Also modifies cards,
+    156     setting scoring-cards and non-scoring-cards appropriately."
+    157    (let* ((cards-by-value (group-cards-by-value hand))
+    158           (num-cards-by-value (count-items-in-hash cards-by-value))
+    159           (result nil))
+    160      (maphash #'(lambda (key value)
+    161                   (declare (ignore key))
+    162                   (when (= value n)
+    163                     (setf result t)
+    164                     (when set-scoring-cards
+    165                       (set-scoring-cards-from-hash hand cards-by-value
+    166                                                    num-cards-by-value value))))
+    167               num-cards-by-value)
+    168      result))
+    169
+    170  (defun test-one-function (func good-hands bad-hands)
+    171    (format t "Testing ~A" func)
+    172    (let ((result t)
+    173          (tests (list (list func good-hands)
+    174                       (list #'(lambda (hand)
+    175                                 (not (funcall func hand)))
+    176                             bad-hands))))
+    177
+    178      (dolist (test-pair tests)
+    179        (dolist (hand-string (second test-pair))
+    180          (if (funcall (first test-pair) (parse-hand hand-string))
+    181            (format t " t")
+    182            (progn
+    183              (format t " NIL")
+    184              (setf result nil)))))
+    185
+    186      (format t "~%")
+    187      result))
+    188
+    189  (defun test-is-foo-functions ()
+    190    (and
+    191      (test-one-function #'is-royal-flush     '("AS TS KS JS QS" "TC JC QC KC AC")
+    192                                              '("TC JC QC KC AS" "TC JC QC KC 4C"))
+    193      (test-one-function #'is-straight-flush  '("5S 8S 6S 7S 9S" "TC JC QC KC AC")
+    194                                              '("TC JC QC KC AS" "2S 4D TC 6S 8H"))
+    195      (test-one-function #'is-four-of-a-kind  '("2S 2C 2D 4D 2H" "3D TD TC TS TH")
+    196                                              '("2S 2C 3D 4D 2H" "3D TD 6C TS TH"))
+    197      (test-one-function #'is-full-house      '("2S 2C AD AH AS" "7C 6S 6D 7C 7D")
+    198                                              '("2S 2C 4D AH AS" "7C 6S 4D 7C 7D"))
+    199      (test-one-function #'is-flush           '("3D 4D 7D 9D JD" "4H 5H 6H 7H 8H")
+    200                                              '("3D 4D 7D 9S JD" "4H 5H 6H 7H 8D"))
+    201      (test-one-function #'is-straight        '("AS TS KS JS QS" "3D 4H 5S 6C 7H")
+    202                                              '("AS TS KS 3S QS" "3D 4H 5S AC 7H"))
+    203      (test-one-function #'is-three-of-a-kind '("2S 7C AD AH AS" "7C 6S 2D 7C 7D")
+    204                                              '("2S 2C 4D AH AS" "7C 6S 4D 3C 7D"))
+    205      (test-one-function #'is-two-pairs       '("2S 4D 3C 2C 4S" "7S 7D JH JD 6C")
+    206                                              '("2S 4D 2C 2C 4S" "7S 7D JH 3D 6C"))
+    207      (test-one-function #'is-one-pair        '("2S 4D 3C 2C AS" "7S 7D 3H JD 6C")
+    208                                              '("5S 4D 2C KC 7S" "3S 7D JH 5D 6C"))))
+    209
+    210  ; All the is-foo functions modify the hand they're given, setting scoring-cards
+    211  ; and non-scoring-cards appropriately if they return true.
+    212
+    213  (defun is-royal-flush (hand)
+    214    (and (= (parse-card-value #\A)
+    215            (hand-card-value hand 0))
+    216         (is-straight-flush hand)))
+    217
+    218  (defun is-straight-flush (hand)
+    219    (when (and (hand-same-suit hand)
+    220               (hand-descending-values hand))
+    221      (setf (hand-scoring-cards hand) (hand-cards hand))))
+    222
+    223  (defun is-four-of-a-kind (hand)
+    224    (has-n-cards-with-same-value hand 4))
+    225
+    226  (defun is-full-house (hand)
+    227    (when (and (has-n-cards-with-same-value hand 3 nil)
+    228               (has-n-cards-with-same-value hand 2 nil))
+    229      (setf (hand-scoring-cards hand) (hand-cards hand))))
+    230
+    231  (defun is-flush (hand)
+    232    (when (hand-same-suit hand)
+    233      (setf (hand-scoring-cards hand) (hand-cards hand))))
+    234
+    235  (defun is-straight (hand)
+    236    (when (hand-descending-values hand)
+    237      (setf (hand-scoring-cards hand) (hand-cards hand))))
+    238
+    239  (defun is-three-of-a-kind (hand)
+    240    (has-n-cards-with-same-value hand 3))
+    241
+    242  (defun is-two-pairs (hand)
+    243    (when (has-n-cards-with-same-value hand 2)
+    244      (if (= 4 (length (hand-scoring-cards hand)))
+    245        t
+    246        (setf (hand-scoring-cards hand) nil))))
+    247
+    248  (defun is-one-pair (hand)
+    249    (has-n-cards-with-same-value hand 2))
+    250
+    251  (defun is-highest-card (hand)
+    252    "This will always succeed.  I wrote it so that I don't have to handle this
+    253     case specially elsewhere."
+    254    (setf (hand-scoring-cards hand) (hand-cards hand)))
+    255
+    256  (defun rank-hand (hand)
+    257    "Determine the rank for a hand."
+    258    (setf (hand-rank hand)
+    259          (cond ((is-royal-flush hand)     10)
+    260                ((is-straight-flush hand)  9)
+    261                ((is-four-of-a-kind hand)  8)
+    262                ((is-full-house hand)      7)
+    263                ((is-flush hand)           6)
+    264                ((is-straight hand)        5)
+    265                ((is-three-of-a-kind hand) 4)
+    266                ((is-two-pairs hand)       3)
+    267                ((is-one-pair hand)        2)
+    268                ((is-highest-card hand)    1))))
+    269
+    270  (defun rank-top-cards-helper (cards-type cards-1 cards-2)
+    271    "Return t if cards-1 is better than cards-2."
+    272    (block compare
+    273      (dofromto (0 (1- (length cards-1)) i)
+    274        (let ((value-1 (card-value (aref cards-1 i)))
+    275              (value-2 (card-value (aref cards-2 i))))
+    276          (when (not (= value-1 value-2))
+    277            (format t " then ~A card ~A: ~A vs ~A"
+    278                    cards-type i value-1 value-2)
+    279            (return-from compare (> value-1 value-2)))))
+    280      -1))
+    281
+    282  (defun rank-top-cards (hand-1 hand-2)
+    283    "Return t if hand-1 is better than hand-2."
+    284    (let ((result (rank-top-cards-helper "scoring"
+    285                                         (hand-scoring-cards hand-1)
+    286                                         (hand-scoring-cards hand-2))))
+    287      (when (and (numberp result)
+    288                 (= result -1))
+    289        ; Fall back to non-scoring cards.
+    290        (setf result (rank-top-cards-helper "non-scoring"
+    291                                            (hand-non-scoring-cards hand-1)
+    292                                            (hand-non-scoring-cards hand-2))))
+    293      (format t "~%")
+    294      result))
+    295
+    296  (defun compare-hands (hand-1 hand-2)
+    297    "Return t if hand-1 is better than hand-2."
+    298    (rank-hand hand-1)
+    299    (rank-hand hand-2)
+    300    (format t "~A vs ~A: rank ~A vs rank ~A"
+    301            (hand-string-form hand-1) (hand-string-form hand-2)
+    302            (hand-rank hand-1) (hand-rank hand-2))
+    303    (if (= (hand-rank hand-1)
+    304           (hand-rank hand-2))
+    305      (rank-top-cards hand-1 hand-2)
+    306      (progn
+    307        (format t "~%")
+    308        (> (hand-rank hand-1)
+    309            (hand-rank hand-2)))))
+    310
+    311  (defun project-euler-54-1 ()
+    312    (with-open-file (hands-fh #p"poker.txt")
+    313      (count-if #'(lambda (pair)
+    314                    (apply #'compare-hands pair))
+    315                (read-hands-file hands-fh))))
+
+[[!tag LISP Project_Euler programming]]
