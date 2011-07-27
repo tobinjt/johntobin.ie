@@ -1,0 +1,1 @@
+[[!map pages="blog/2009/* and ! blog/2009/*/*"]]
