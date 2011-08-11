@@ -12,7 +12,7 @@ My algorithm:
 
 1. Use a hash table to store permutations, keyed by the sorted digits of the
    permutation.
-2. Write an infinite loop, calculating (cube n).  Split (cube n) into digit and
+2. Write an infinite loop, calculating (cube n).  Split (cube n) into digits and
    sort the digits; push (cube n) on to the list of permutations in the hash
    table.
 3. When the number of digits in (cube n) increases, we've found all cubes of
