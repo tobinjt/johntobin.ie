@@ -1,8 +1,9 @@
 Hi, I'm John Tobin.
 
 Since July 2010 I've been working as a Site Reliability Engineer for
-[Google](http://www.google.ie/intl/en/about.html), supporting
-[BigTable](http://labs.google.com/papers/bigtable.html).
+[Google](http://www.google.ie/intl/en/about.html), running
+[BigTable](http://research.google.com/archive/bigtable.html) and
+[GFS](http://research.google.com/archive/gfs.html).
 
 I'm a double graduate of Trinity College: I completed a B.A. (Mod) in Computer
 Science in 2002, and an M.Sc. in Computer Science in 2009; my thesis and papers
@@ -12,4 +13,8 @@ it in two years, the minimum time period permitted.
 
 For seven years I was a Unix Systems Administrator in the [School of Computer
 Science and Statistics](http://www.scss.tcd.ie/), [Trinity College
+Dublin](http://www.tcd.ie/).
+
+For four years I was a Unix Systems Administrator for the [Internet
+Society](http://www.netsoc.tcd.ie/), [Trinity College
 Dublin](http://www.tcd.ie/).
