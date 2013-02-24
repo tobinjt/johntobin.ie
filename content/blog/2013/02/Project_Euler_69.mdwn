@@ -1,0 +1,66 @@
+[Project Euler problem 69:](http://projecteuler.net/problem=69)
+
+
+> Euler's Totient function, φ(n) [sometimes called the phi function], is used to
+> determine the number of numbers less than n which are relatively prime to n.
+> For example, as 1, 2, 4, 5, 7, and 8, are all less than nine and relatively
+> prime to nine, φ(9)=6.
+>
+> [See table in original description.]
+>
+> It can be seen that n=6 produces a maximum n/φ(n) for n <= 10.
+>
+> Find the value of n <= 1,000,000 for which n/φ(n) is a maximum.
+
+
+> You calculate phi(N) with Euler's Totient function:
+> http://en.wikipedia.org/wiki/Totient_function
+>
+>     - phi(N) = N(product of (1-1/p) where p is a prime divisor of N)
+>     - N/phi(N) = (product of (1-1/p) where p is a prime divisor of N)
+>
+> Note that to get a larger N/phi(N) does not require a larger N, it requires
+> more prime factors, and the best way to get a large number of prime factors is
+> to multiply all the small primes together.  Calculate the prime numbers less
+> than sqrt(1000000), then multiply them together to find the smallest product
+> of primes less than 1000000.
+
+
+Here's my Go solution:
+
+    func SieveOfEratosthenes(size int) []bool {
+    	primes := make([]bool, size+1)
+    	for i := range primes {
+    		primes[i] = true
+    	}
+    	primes[0] = false
+    	primes[1] = false
+    	bound := int(math.Ceil(math.Sqrt(float64(size+1)))) + 1
+    	for i := 0; i < bound; i++ {
+    		if primes[i] {
+    			for multiple := i * 2; multiple <= size; multiple += i {
+    				primes[multiple] = false
+    			}
+    		}
+    	}
+    	return primes
+    }
+
+    func projectEuler69() int64 {
+    	bound := 1000000
+    	primes := SieveOfEratosthenes(int(math.Ceil(math.Sqrt(float64(bound)))))
+    	result := 1
+    	for number, is_prime := range primes {
+    		if !is_prime {
+    			continue
+    		}
+    		if result*number > bound {
+    			break
+    		}
+    		result *= number
+    	}
+    	return int64(result)
+    }
+
+
+[[!tag Golang Project_Euler programming]]
