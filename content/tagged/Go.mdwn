@@ -1,0 +1,4 @@
+[[!meta title="pages tagged Go"]]
+
+[[!inline pages="tagged(Go)" actions="no" archive="yes"
+feedshow=10]]
