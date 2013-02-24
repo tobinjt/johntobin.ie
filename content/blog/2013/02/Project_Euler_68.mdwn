@@ -75,9 +75,9 @@ To get `pgrep` I had to install `proctools`.
 * I used GDB for the first time in &gt;10 years, and learned to use it
 reasonably well.  Getting Go support working on Mac OS X was painful and it
 still doesn't work properly for me.
-* Writing tests can be painful.  Getting `go test` to work took over an hour as
-I fought with `$GOPATH`.  I dislike the style of Go tests because they're
-verbose and repetitive.  E.g. in Python I would write:
+* Getting `go test` to work took over an hour as I fought with `$GOPATH`.
+* I dislike the style of Go tests because they're verbose and repetitive.  E.g.
+in Python I would write:
 
         self.assertEqual([2, 3], SomeFunc())
 
@@ -89,12 +89,12 @@ verbose and repetitive.  E.g. in Python I would write:
           t.Errorf("SomeFunc: %#v != %#v\n", expected, actual)
         }
 
-    I future I might write a test helper package, so I can write:
+    In future I might write a test helper package, so I can write:
 
         assert.Equal("SomeFunc", expected, actual)
 
-* Go formatting is inconsistent, e.g. compare the spacing around *-* in these
-lines (which have been formatted with `gofmt`):
+* Go formatting is inconsistent; compare the spacing around *-* in these lines
+(which have been formatted with `gofmt`):
 
         y := gon.Get(index_to_fill - 1)[2]
         if index_to_fill != len(gon.outers)-1 {
@@ -443,4 +443,4 @@ Here's my Go solution:
     	return sort_me[len(sort_me)-1]
     }
 
-[[!tag Go Project_Euler programming]]
+[[!tag Golang Project_Euler programming]]
