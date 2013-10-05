@@ -15,6 +15,16 @@
 > order of size, find the numerator of the fraction immediately to the left of
 > 3/7.
 
+We have upper (2/5) and lower (3/7) bounds, so we don't need to search the
+entire problem space.  We don't need to generate all the possible fractions
+between the lower and upper bounds: every time we find a fraction that is
+better than our current lower bound, we can tighten the lower bound, and the
+lower bound will eventually be our answer.  We do need to generate all
+denominators from 5 to 1,000,000; but for each denominator, the first
+numerator we use will be the numerator of the current lower bound, and we stop
+incrementing the numerator when the current fraction exceeds the upper bound.
+If any of the fractions we generate are better than the current lower bound,
+we replace the lower bound with that fraction.
 
 Here's my Go solution:
 
