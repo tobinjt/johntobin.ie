@@ -1,0 +1,60 @@
+[Project Euler problem 76:](http://projecteuler.net/problem=76)
+
+> It is possible to write five as a sum in exactly six different ways:
+>
+> * 4 + 1
+> * 3 + 2
+> * 3 + 1 + 1
+> * 2 + 2 + 1
+> * 2 + 1 + 1 + 1
+> * 1 + 1 + 1 + 1 + 1
+>
+> How many different ways can one hundred be written as a sum of at least two
+> positive integers?
+
+Running NumIntegerPartitions(i, i-1) for 2 <= i <= 20 calls
+NumIntegerPartitions(1, 1) 1597 times.  Caching should be effective.
+Testing shows that PE 76 takes 0.5 seconds with caching, 88 seconds without
+caching.
+
+Here's my Go solution:
+
+    type IPArgs struct {
+    	number, max_component int
+    }
+    var IPResults map[IPArgs]int = make(map[IPArgs]int)
+
+    func NumIntegerPartitions(number, max_component int) int {
+    	result, exists := IPResults[IPArgs{number, max_component}]
+    	if exists {
+    		return result
+    	}
+    	if number <= 1 {
+    		return 1
+    	}
+    	sum := 0
+    	if max_component <= number {
+    		sum += NumIntegerPartitions(number-max_component, max_component)
+    	}
+    	if max_component > 1 {
+    		if max_component <= number {
+    			sum += NumIntegerPartitions(number, max_component-1)
+    		} else {
+    			sum += NumIntegerPartitions(number, number)
+    		}
+    	}
+    	IPResults[IPArgs{number, max_component}] = sum
+    	return sum
+    }
+
+    func projectEuler76actual() int64 {
+    	return int64(NumIntegerPartitions(100, 99))
+    }
+    func projectEuler76test() int64 {
+    	return int64(NumIntegerPartitions(20, 19))
+    }
+    func projectEuler76() int64 {
+    	return projectEuler76actual()
+    }
+
+[[!tag Golang Project_Euler programming]]
