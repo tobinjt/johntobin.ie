@@ -11,6 +11,7 @@
 > * OO   OO   O
 > * OO   O   O   O
 > * O   O   O   O   O
+>
 > Find the least value of n for which p(n) is divisible by one million.
 
 Calling `NumIntegerPartitions` from PE 76 in a loop was my initial approach, but
