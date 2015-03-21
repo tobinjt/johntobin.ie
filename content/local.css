@@ -79,3 +79,8 @@ body {
     padding-left: 0px;
     padding-right: 0px;
 }
+
+/* Make text in code blocks wrap to be mobile-friendly. */
+pre {
+  white-space: pre-wrap;
+}
