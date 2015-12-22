@@ -78,11 +78,14 @@ tedious, so I wrapped up the per-machine work in
 [update-dotfiles](https://github.com/tobinjt/bin/blob/master/update-dotfiles),
 which also pushes any local changes and reports any unexpected files.
 
-A relatively rare action is setting up a new machine, but I also made that
-really simple:
+A relatively rare action is setting up a new machine or a new user, but I also
+made that really simple:
 [clone-dotfiles](https://github.com/tobinjt/bin/blob/master/clone-dotfiles).
 Originally `dotfiles` was a shell function rather than a standalone tool, so
 `clone-dotfiles` was more complicated back then.  When I use a new machine I
 clone my `bin` repository, run `clone-dotfiles`, and I'm ready to go.
+
+All of these tools are generic -coded except for `clone-dotfiles` and can be
+reused by anyone.
 
 [!tag Git shell sysadmin]
