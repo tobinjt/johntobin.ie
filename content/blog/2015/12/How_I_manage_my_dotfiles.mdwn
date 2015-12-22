@@ -88,4 +88,4 @@ clone my `bin` repository, run `clone-dotfiles`, and I'm ready to go.
 All of these tools are generic -coded except for `clone-dotfiles` and can be
 reused by anyone.
 
-[!tag Git shell sysadmin]
+[[!tag Git shell sysadmin]]
