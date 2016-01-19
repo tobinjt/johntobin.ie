@@ -73,9 +73,10 @@ written instructions for myself in [my
 but I add the repositories manually because Vundle doesn't support submodules.
 
 When I push a change to Github I later need to sync that changes to every
-machine (normally the next time I use it, or when I notice).  This is simple but
-tedious, so I wrapped up the per-machine work in
-[update-dotfiles](https://github.com/tobinjt/bin/blob/master/update-dotfiles),
+machine (normally the next time I use the machine, or when I notice that
+something is missing).  This is simple but tedious, so I wrapped up the
+per-machine work in
+[update-dotfiles-and-bin](https://github.com/tobinjt/bin/blob/master/update-dotfiles-and-bin),
 which also pushes any local changes and reports any unexpected files.
 
 A relatively rare action is setting up a new machine or a new user, but I also
@@ -85,7 +86,7 @@ Originally `dotfiles` was a shell function rather than a standalone tool, so
 `clone-dotfiles` was more complicated back then.  When I use a new machine I
 clone my `bin` repository, run `clone-dotfiles`, and I'm ready to go.
 
-All of these tools are generic -coded except for `clone-dotfiles` and can be
-reused by anyone.
+All of these tools are generic except for `clone-dotfiles` and can be reused by
+anyone.
 
 [[!tag Git shell sysadmin]]
