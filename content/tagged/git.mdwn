@@ -1,1 +1,0 @@
-[[!inline pages="tagged(git)" archive="yes"]]
