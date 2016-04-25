@@ -1,0 +1,28 @@
+I've been annoyed recently by MacOS not automatically reconnecting to WiFi when
+our router is restarted.  This is slightly annoying when it's my laptop, but
+it's really annoying when it's the Mac Mini, because I have to grab a keyboard
+and manually reconnect.  I decided that I should automate this away, and after
+some searching I found `networksetup`.  I wrapped that with a small tool that
+checks connectivity using `ping` and runs `networksetup` if `ping` fails; I run
+the tool from `cron` every minute, so even if something fails it'll be retried
+in a minute (though if it failed once it's likely to fail again if nothing has
+changed).  You need to figure out the network interface to consider by running
+`networksetup -listnetworkserviceorder` and looking for the WiFi interface.
+
+    #!/bin/bash
+
+    set -e -f -u -o pipefail
+
+    PATH="${PATH}:/usr/sbin:/sbin"
+
+    if ! ping -c 5 -o -q www.google.com >& /dev/null; then
+      echo "Reconnecting wifi"
+      # Figure out which network interface is wifi from the output of
+      # networksetup -listnetworkserviceorder
+      networksetup -setairportnetwork INTERFACE SSID - \
+        < "${HOME}/Documents/ssid-password.txt"
+      sleep 30
+      ping -c 5 www.google.com
+    fi
+
+[[!tag MacOS home_sysadmin sysadmin]]
