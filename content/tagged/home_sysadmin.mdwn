@@ -1,0 +1,4 @@
+[[!meta title="pages tagged home sysadmin"]]
+
+[[!inline pages="tagged(home_sysadmin)" actions="no" archive="yes"
+feedshow=10]]
