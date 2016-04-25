@@ -54,4 +54,4 @@ daemons, but that's easy to do.  If you intend cloning the repository, please
 read the security  advice in */usr/share/doc/etckeeper/README.gz* to avoid any
 nasty surprises.
 
-[[!tag sysadmin git Debian]]
+[[!tag sysadmin Git Debian]]
