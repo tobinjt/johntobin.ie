@@ -3,18 +3,18 @@ advice](http://www.google.com/search?q=seo+multiple+hostnames) is to pick a
 canonical FQDN and redirect the others to it.  You can see that in action on
 this website: clicking on
 <http://johntobin.ie/blog/2010/03/Smarter_HTTP_redirects> will redirect you to
-<http://www.johntobin.ie/blog/2010/03/Smarter_HTTP_redirects/> (and won't
+<https://www.johntobin.ie/blog/2010/03/Smarter_HTTP_redirects/> (and won't
 interrupt you reading this article).  The simplest way to do this in Apache is
 to configure a VirtualHost for johntobin.ie, and use a single
 [RewriteRule](http://httpd.apache.org/docs/2.2/mod/mod_rewrite.html#rewriterule):
 
-    RewriteRule ^(.*)$ http://www.johntobin.ie$1
+    RewriteRule ^(.*)$ https://www.johntobin.ie$1
 
 You can improve this in two easy ways.  Firstly, heed the SEO advice and turn
 that temporary redirect (302) into a permanent redirect (301), which browsers
 and (more importantly) search engines' crawlers are supposed to cache.
 
-    RewriteRule ^(.*)$ http://www.johntobin.ie$1 [L,R=301]
+    RewriteRule ^(.*)$ https://www.johntobin.ie$1 [L,R=301]
 
 See <http://en.wikipedia.org/wiki/HTTP_response_codes> for a list of HTTP
 response codes.
@@ -34,16 +34,17 @@ requests:
     http://www.example.org/directory
     http://www.example.org/directory/
 
-We can eliminate the second request and the second redirection by appending a */* whenever a request is
-missing one.
+We can eliminate the second request and the second redirection by appending a
+*/* whenever a request is missing one.
 
 Here's the Apache config snippet:
 
     # Add a trailing / if a request for a directory is missing one.
     # This avoids an extra redirection: instead of
-    #   http://johntobin.ie/blog -> http://www.johntobin.ie/blog -> http://www.johntobin.ie/blog/
+    #   http://johntobin.ie/blog -> https://www.johntobin.ie/blog ->
+    #   https://www.johntobin.ie/blog/
     # we get
-    #   http://johntobin.ie/blog -> http://www.johntobin.ie/blog/
+    #   http://johntobin.ie/blog -> https://www.johntobin.ie/blog/
     
     # If the request is for a directory . . .
     RewriteCond %{DOCUMENT_ROOT}/%{REQUEST_URI} -d
@@ -52,6 +53,6 @@ Here's the Apache config snippet:
     # append a /, and fall through to the next RewriteRule.
     RewriteRule ^(.*)$ $1/
     # Redirect as before.
-    RewriteRule ^(.*)$ http://www.johntobin.ie$1 [L,R=301]
+    RewriteRule ^(.*)$ https://www.johntobin.ie$1 [L,R=301]
 
 [[!tag sysadmin Apache]]
