@@ -1,17 +1,21 @@
+Note: this was originally a lot longer and more complex, but a later version of
+`tmux show-environment` supports formatting the output as shell commands to
+eval, so this is much easier now.
+
 [tmux](http://tmux.sourceforge.net/) is a tty multiplexer similar to
 [screen](http://www.gnu.org/software/screen/), but with some really nice
 features.  One of those features is updating environment variables when you
 reconnect to a session - the client sends the current values to the tmux server,
 and they can be retrieved with:
 
-    $ tmux show-environment
-    -DISPLAY
-    SSH_AGENT_PID=3912
-    -SSH_ASKPASS
-    SSH_AUTH_SOCK=/tmp/ssh-lXpzMY3205/agent.3205
-    SSH_CONNECTION=192.0.2.1 43512 192.0.2.1 22
-    -WINDOWID
-    -XAUTHORITY
+    $ tmux show-environment -s
+    unset DISPLAY
+    SSH_AGENT_PID=3912; export SSH_AGENT_PID
+    unset SSH_ASKPASS
+    SSH_AUTH_SOCK=/tmp/ssh-lXpzMY3205/agent.3205; export SSH_AUTH_SOCK
+    SSH_CONNECTION=192.0.2.1 43512 192.0.2.1 22; export SSH_CONNECTION
+    unset WINDOWID
+    unset XAUTHORITY
 
 Of course, tmux can't force other processes to update their environment.  `bash`
 has a hook you can use to do it: `PROMPT_COMMAND`.  If this variable is set to
@@ -20,38 +24,9 @@ prompt.  Here's a function and supporting settings to update your environment:
 
     function prompt_command() {
         if [ -n "${TMUX}" ]; then
-            local _tmux_env
-            _tmux_env=$( tmux show-environment )
-            if [ "${_tmux_env}" != "${_expected_tmux_env}" ]; then
-                eval $( echo "${_tmux_env}" | \
-                        sed -e '/^-/!{ s/=/="/; s/$/"/; s/^/export /; }' \
-                            -e 's/^-/unset /' \
-                            -e 's/$/;/' )
-                _expected_tmux_env="${_tmux_env}"
-            fi
+            eval "$(tmux show-environment -s)"
         fi
     }
     PROMPT_COMMAND=prompt_command
-    export PROMPT_COMMAND
-    export -f prompt_command
-
-There are checks to make sure it's running under `tmux` and to avoid unnecessary
-work, but the important part starts at `eval $(`.  The output of `tmux
-show-environment` is rewritten, producing commands that `bash` will evaluate to
-change the environment.  From the sample output above, it would produce:
-
-    unset DISPLAY;
-    export SSH_AGENT_PID="3912";
-    unset SSH_ASKPASS;
-    export SSH_AUTH_SOCK="/tmp/ssh-lXpzMY3205/agent.3205";
-    export SSH_CONNECTION="192.0.2.1 43512 192.0.2.1 22";
-    unset WINDOWID;
-    unset XAUTHORITY;
-
-Exporting `PROMPT_COMMAND` and `prompt_command` makes updating work if you run a
-`bash` subshell, i.e.:
-
-    $ bash
-    $ # Prompt updates will happen in this subshell.
 
 [[!tag tmux shell]]

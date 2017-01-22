@@ -5,25 +5,10 @@ highlighting I've been using for years didn't support.  I wrote some simple
 folding support to create nested folds at headers, and also reconfigured vim to
 recognise bulleted lists so that reformatting with `gq` doesn't destroy lists.
 
-Save this as `~/.vim/plugin/markdown-folding.vim` - it will be automatically
-loaded every time you start vim, but it won't do anything by itself.
-
-    " vim: set filetype=vim :
-    if has("eval")
-      function! MarkdownFolding(lnum)
-        " Define nested folds based on the length of the header.
-        let l:line = getline(a:lnum)
-        let l:matches = matchlist(l:line, '^\(#\+\)')
-        if len(l:matches) == 0
-          return '='
-        endif
-        let l:length = strlen(l:matches[1])
-        if l:length <= 2
-          return '='
-        endif
-        return '>' . (l:length - 2)
-      endfunction
-    endif
+Save
+<https://github.com/tobinjt/dotfiles/blob/master/.vim/plugin/markdown-folding.vim>
+as `~/.vim/plugin/markdown-folding.vim` - it will be automatically loaded every
+time you start vim, but it won't do anything by itself.
 
 Add these lines to `~/.vimrc`:
 
@@ -34,4 +19,5 @@ Add these lines to `~/.vimrc`:
     " Interpret blockquotes as comments.
     autocmd FileType markdown setlocal comments=n:>
     " Configure folding to use the function defined earlier.
-    autocmd FileType markdown setlocal foldmethod=expr foldexpr=MarkdownFolding(v:lnum)
+    autocmd FileType markdown setlocal foldmethod=expr \
+        foldexpr=MarkdownFolding(v:lnum)
