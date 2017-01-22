@@ -1,7 +1,0 @@
-A few weeks ago I took a short course on [Go](http://golang.org/) in work, and I
-liked it.  I decided (after a long hiatus) to start doing [Project
-Euler](http://projecteuler.net/) problems again, and to use Go.  I've solved
-three so far, and I'm happy enough with the solutions to post them.  I'll keep
-practicing with Go, and hopefully I'll get a chance to use it in work soon.
-
-[[!tag Golang Project_Euler programming]]
