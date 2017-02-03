@@ -28,3 +28,21 @@ criteria of efficiency and correctness.  Future work will use the database
 populated by the program to optimise existing anti-spam measures, test and
 evaluate new anti-spam measures, and identify operational and performance
 problems.
+
+### 2016
+
+* [Interrupt Reduction
+  Projects](https://www.usenix.org/publications/login/winter-2016-vol-41-no-4/beyer),
+  co-authored by Betsy Beyer, John Tobin, and Liz Fong-Jones.
+
+  > Interrupts are a fact of life for any team that’s responsible for
+  > maintaining a service or software. However, this type of work doesn’t have
+  > to be a constant drain on your team’s bandwidth or resources. This article
+  > begins by describing the landscape of work faced by Site Reliability
+  > Engineering (SRE) teams at Google: the types of work we undertake, the
+  > logistics of how SRE teams are organized across sites, and the inevitable
+  > toil we incur. Within this discussion, we focus on interrupts: how teams
+  > initially approached tickets, and why and how we implemented a better
+  > strategy. After providing a case study of how the ticket funnel was one such
+  > successful initiative, we offer practical advice about mapping what we
+  > learned to other organizations.
