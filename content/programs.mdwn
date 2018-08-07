@@ -1,5 +1,0 @@
-These programs are copyright &copy; John Tobin, and are licenced under the terms
-of the [GNU GENERAL PUBLIC LICENSE](http://www.gnu.org/licenses/gpl.html); I'm
-happy to accept bug reports and or patches (see [[contact details]]).
-
-[[!toc levels="2"]]

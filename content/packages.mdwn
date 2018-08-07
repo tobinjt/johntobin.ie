@@ -1,2 +1,0 @@
-[Debian Lenny](http://www.debian.org/releases/lenny/) packages I have created
-for my employer are available at <http://www.scss.tcd.ie/~tobinjt/packages/>
