@@ -1,1 +1,0 @@
-[[!map pages="templates/* and ! templates/*/*"]]
