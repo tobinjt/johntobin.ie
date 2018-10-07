@@ -4,8 +4,8 @@ From <http://pool.ntp.org>:
 > reliable easy to use NTP service for millions of clients.
 >
 > The pool is being used by millions or tens of millions of systems around the
-> world. It's the default "time server" for most of the major Linux distributions
-> and many networked appliances (see information for vendors). 
+> world. It's the default "time server" for most of the major Linux
+> distributions and many networked appliances (see information for vendors).
 
 The NTP package in Debian Lenny uses the NTP pool, so when a user installs NTP
 on their home machine, it Just Works.  Unfortunately, the
@@ -46,7 +46,7 @@ The bind zone file is quite short:
                     14D		; Expire - how long slaves
                             ; consider their copies fo our
                             ; zone to be valid for
-                    6H		; Minimum 
+                    6H		; Minimum
                 )
 
                 ; Name server records
@@ -61,7 +61,7 @@ The bind zone file is quite short:
     ; change at any time.
     www		IN CNAME	ntppool-varnish.develooper.com.
     ; pool.ntp.org resolves to ntp.cs.tcd.ie
-    ; We can't use a CNAME, because bind complains that the record has 
+    ; We can't use a CNAME, because bind complains that the record has
     ; "CNAME and other data", and ignores it.
     @		IN A		134.226.32.57
     ; *.pool.ntp.org resolves to ntp.cs.tcd.ie
