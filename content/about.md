@@ -1,3 +1,9 @@
++++
+date = 2018-10-07T22:57:58+01:00
+title = 'About me'
+tags = []
++++
+
 Hi, I'm John Tobin.
 
 Since July 2010 I've been working in Site Reliability Engineering at
@@ -9,7 +15,7 @@ previously I was an SRE running BigTable, Colossus, and
 I'm a double graduate of [Trinity College, Dublin](http://www.tcd.ie/): I
 completed a B.A. (Mod) in Computer Science in 2002, and an M.Sc. in Computer
 Science in 2009; my M.Sc. thesis and papers are available from
-[[my_publications_page|publications]].  I studied for my M.Sc. in evenings and
+[my publications page](/publications/).  I studied for my M.Sc. in evenings and
 weekends, in addition to my full-time job, and completed it in two years, the
 minimum time period permitted.
 
