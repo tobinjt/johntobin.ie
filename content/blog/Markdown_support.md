@@ -1,3 +1,9 @@
++++
+date = 2013-04-06T01:43:39+02:00
+title = 'Markdown support for Vim'
+tags = []
++++
+
 I needed to write a static web page in work recently, so I decided to use
 Markdown, because writing HTML is time-consuming and unproductive.  I was
 writing a reasonably large page, so I wanted folding, which the syntax

@@ -1,3 +1,9 @@
++++
+date = 2010-06-17T17:00:23+01:00
+title = 'Merging repositories with Git'
+tags = ['Git', 'Subversion', 'script', 'sysadmin']
++++
+
 For several years I had a Subversion repository named <tt>cs\_misc</tt>, where I
 accumulated various pieces of code that didn't need a repository of their own.
 A year ago, I decided to switch to Git, and created a repository named
@@ -26,5 +32,3 @@ Two things struck me about this:
    years of using Subversion, I have no idea where to begin.
 
 The more I use Git, the happier I am to be using it instead of Subversion.
-
-[[!tag Git Subversion script sysadmin]]

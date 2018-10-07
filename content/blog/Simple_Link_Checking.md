@@ -1,3 +1,9 @@
++++
+date = 2014-11-17T22:18:15+01:00
+title = 'Simple link checking'
+tags = ['script', 'sysadmin']
++++
+
 I've been working on [my wife's website](http://www.arianetobin.ie/) recently,
 and I wanted to check that all the internal links and resources worked properly.
 I wasn't going to do this by hand, so I wrote [a simple wrapper around
@@ -26,5 +32,3 @@ broken link.
 It's not amazingly advanced, but it has been useful.  I found a couple of 404s,
 and a large number of 301s that I could easily fix to avoid one more round trip
 for people viewing the site.
-
-[[!tag script sysadmin]]

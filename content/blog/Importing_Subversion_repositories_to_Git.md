@@ -1,3 +1,9 @@
++++
+date = 2010-06-16T09:02:03+01:00
+title = 'Importing Subversion repositories to Git'
+tags = ['Git', 'Subversion', 'script', 'sysadmin']
++++
+
 I'm migrating all my source code repositories from Subversion to Git.  I tried
 <tt>git-svnimport</tt>, but it only works if your repository has the recommended
 layout of <tt>trunk</tt>, <tt>tags</tt>, and <tt>branches</tt>; unfortunately, a
@@ -18,5 +24,3 @@ Github's web interface, but it may be possible to script that too.
         git remote add origin git@github.com:tobinjt/"$repo".git
         git push origin master
     done
-
-[[!tag Git Subversion script sysadmin]]

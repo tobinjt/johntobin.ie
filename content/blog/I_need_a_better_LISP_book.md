@@ -1,3 +1,9 @@
++++
+date = 2010-02-17T18:20:31+00:00
+title = 'I need a better LISP book'
+tags = ['LISP', 'Project_Euler', 'programming']
++++
+
 I've been learning LISP from
 [LISP](http://www.amazon.co.uk/LISP-Patrick-Winston/dp/0201083191/), and solving
 problems from [Project Euler](http://projecteuler.net/) in LISP.  Once you solve
@@ -46,5 +52,3 @@ out of steam).  I don't think there's any point in learning from an incomplete
 textbook, because later I'll need to start at the beginning of another textbook
 anyway.  I'm putting Project Euler on hold until I find a better book; I might
 even redo some of the problems I've already solved.
-
-[[!tag LISP Project_Euler programming]]

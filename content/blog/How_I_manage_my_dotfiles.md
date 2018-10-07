@@ -1,3 +1,10 @@
++++
+date = 2015-12-22T07:42:56+00:00
+lastmod = 2018-10-07T14:33:50+01:00
+title = 'How I manage my dotfiles'
+tags = ['Git', 'shell', 'sysadmin']
++++
+
 Your `dotfiles` are the project that you'll work on for longest.
 
 I spend a lot of my time using Vim, Bash, and various CLI tools.  Over the past
@@ -104,5 +111,3 @@ clone my `bin` repository, run `clone-dotfiles`, and I'm ready to go.
 
 Most of these tools are generic and can be reused by anyone, `clone-dotfiles`
 and `update-dotfiles-and-bin-everywhere` are the execptions.
-
-[[!tag Git shell sysadmin]]

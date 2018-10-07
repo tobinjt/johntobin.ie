@@ -1,3 +1,9 @@
++++
+date = 2017-09-16T21:55:16+01:00
+title = 'Python development'
+tags = ['Python', 'programming']
++++
+
 Normally I do Python development in work, where everything is already set up for
 easy development and testing.  Recently I did some Python development at home,
 so I had to figure out how to do it, and here's what I came up with.

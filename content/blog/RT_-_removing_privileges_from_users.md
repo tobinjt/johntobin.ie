@@ -1,4 +1,9 @@
-[[!meta date="08 Jan 2010 22:52:22 UTC"]]
++++
+date = 2010-01-08T22:49:40+01:00
+title = 'Request Tracker - removing privileges from users'
+tags = ['Request_Tracker', 'sysadmin', 'MySQL']
++++
+
 
 In [work](http://www.scss.tcd.ie/), we use [Request Tracker
 (RT)](http://bestpractical.com/rt) to manage help requests from users.  When
@@ -30,5 +35,3 @@ require, so I wrote a quick shell script to do it:
 
 It probably took longer to write this than it would have taken to use the web
 interface, but it was more satisfying, and I learned something new.
-
-[[!tag Request_Tracker sysadmin MySQL]]

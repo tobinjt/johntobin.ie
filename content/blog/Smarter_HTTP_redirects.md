@@ -1,3 +1,9 @@
++++
+date = 2010-03-10T20:31:05+01:00
+title = 'Smarter HTTP redirects'
+tags = ['sysadmin', 'Apache']
++++
+
 If your website is available under more than one FQDN, [standard SEO
 advice](http://www.google.com/search?q=seo+multiple+hostnames) is to pick a
 canonical FQDN and redirect the others to it.  You can see that in action on
@@ -57,5 +63,3 @@ Here's the Apache config snippet:
     RewriteRule ^(.*)$ $1/
     # Redirect as before.
     RewriteRule ^(.*)$ https://www.johntobin.ie$1 [L,R=301]
-
-[[!tag sysadmin Apache]]

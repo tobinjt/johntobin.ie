@@ -1,3 +1,9 @@
++++
+date = 2015-06-15T19:11:02+01:00
+title = 'Updating environment variables from tmux'
+tags = ['tmux', 'shell']
++++
+
 Note: this was originally a lot longer and more complex, but a later version of
 `tmux show-environment` supports formatting the output as shell commands to
 eval, so this is much easier now.
@@ -28,5 +34,3 @@ prompt.  Here's a function and supporting settings to update your environment:
         fi
     }
     PROMPT_COMMAND=prompt_command
-
-[[!tag tmux shell]]

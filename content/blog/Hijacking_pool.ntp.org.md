@@ -1,3 +1,9 @@
++++
+date = 2009-12-14T17:19:20+00:00
+title = 'Hijacking pool.ntp.org'
+tags = ['NTP', 'sysadmin']
++++
+
 From <http://pool.ntp.org>:
 
 > The pool.ntp.org project is a big virtual cluster of timeservers providing
@@ -78,5 +84,3 @@ You can play with it using commands like:
 Our NTP server (ntp.scss.tcd.ie) is part of the NTP pool, and can be used by
 anybody, but you're probably better off [using the
 pool](http://www.pool.ntp.org/en/use.html).
-
-[[!tag NTP sysadmin]]

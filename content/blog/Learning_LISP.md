@@ -1,3 +1,9 @@
++++
+date = 2009-12-14T00:54:32+00:00
+title = 'Learning LISP'
+tags = ['LISP', 'programming']
++++
+
 I first thought about learning LISP when I was still an undergrad, but I was
 stymied by Real Life and a lack of material to learn from.  Shortly before I
 submitted my MSc thesis I picked up two LISP books -
@@ -115,5 +121,3 @@ Perl I would use the standard module
 [Memoize](http://search.cpan.org/~mjd/Memoize-1.01/Memoize.pm), where fibonacci
 is presented as an example in the documentation.  I don't know yet how hard it
 would be to do this in LISP, but I expect that closures should be easy enough.
-
-[[!tag LISP programming]]

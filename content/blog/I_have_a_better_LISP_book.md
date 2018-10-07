@@ -1,3 +1,9 @@
++++
+date = 2010-03-14T13:05:00+00:00
+title = 'I have a better LISP book'
+tags = ['LISP', 'programming']
++++
+
 About a month ago I wrote that [[I need a better LISP
 book|blog/2010/02/I_need_a_better_LISP_book/]].  I gave up on the LISP book I
 had been reading, and started reading [On LISP: Advanced Techniques for Common
@@ -11,5 +17,3 @@ and I've read about one third of it in the last week.  It's **excellent** -
 clear, concise, well structured; I highly recommend it.  I've started solving
 [Project Euler](http://projecteuler.net/) problems again, and I'm much happier
 with my code.
-
-[[!tag LISP programming]]
