@@ -1,1 +1,0 @@
-[[!pagestats pages="tagged/*"]]
