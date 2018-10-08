@@ -17,10 +17,10 @@ The NTP package in Debian Lenny uses the NTP pool, so when a user installs NTP
 on their home machine, it Just Works.  Unfortunately, the
 [SCSS](http://www.scss.tcd.ie/) firewall blocks NTP traffic for all hosts except
 our NTP server, breaking the default configuration for users on our network.
-Rather than reconfiguring every client, I configured bind on our DNS servers to
-hijack the pool.ntp.org domain, answering nearly <a href="#footnote1">\[1]</a>
-all requests for hosts in that domain with the address of our NTP server.  This
-means that a user can just
+Rather than reconfiguring every client, I configured `bind` on our DNS servers
+to hijack the pool.ntp.org domain, answering nearly <a
+href="#footnote1">\[1]</a> all requests for hosts in that domain with the
+address of our NTP server.  This means that a user can just
 
     apt-get install ntp
 
@@ -47,7 +47,7 @@ The bind zone file is quite short:
                     2H		; Refresh - how often slaves
                             ; check for changes.
                     2H		; Retry - how often slaves will
-                            ; retry if cheking for changes
+                            ; retry if checking for changes
                             ; fails
                     14D		; Expire - how long slaves
                             ; consider their copies fo our

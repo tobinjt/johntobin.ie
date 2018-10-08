@@ -88,14 +88,16 @@ each plugin over time.  Because I add and update plugins quite infrequently I've
 written instructions for myself in [my
 .vimrc](https://github.com/tobinjt/dotfiles/blob/master/.vimrc#L24).  I use
 [vim-plug](https://github.com/junegunn/vim-plug) to manage Vim's `runtimepath`,
-but I add the repositories manually because vim-plug doesn't support submodules.
+but I add the repositories manually because `vim-plug` doesn't support
+submodules.
 
 When I push a change to Github I later need to sync that change to every machine
 (normally the next time I use the machine, or when I notice that something is
 missing).  This is simple but tedious, so I wrapped up the per-machine work in
 [update-dotfiles-and-bin](https://github.com/tobinjt/bin/blob/master/update-dotfiles-and-bin).
 That program checks for unexpected diffs, unexpected files, updates every `bin`
-and `dotfiles` repository, pushes any local changes, and deletes any unexpected
+and `dotfiles` repository, updates submodules if a newer version has been
+committed to my repository, pushes any local changes, and deletes any unexpected
 files.
 
 I update all my home machines and users easily using

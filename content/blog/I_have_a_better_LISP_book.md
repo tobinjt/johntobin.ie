@@ -4,9 +4,9 @@ title = 'I have a better LISP book'
 tags = ['LISP', 'programming']
 +++
 
-About a month ago I wrote that [[I need a better LISP
-book|blog/2010/02/I_need_a_better_LISP_book/]].  I gave up on the LISP book I
-had been reading, and started reading [On LISP: Advanced Techniques for Common
+About a month ago I wrote that [I need a better LISP
+book](/blog/i_need_a_better_lisp_book/).  I gave up on the LISP book I had been
+reading, and started reading [On LISP: Advanced Techniques for Common
 LISP](http://www.amazon.co.uk/LISP-Advanced-Techniques-Common/dp/0130305529/) by
 Paul Graham.  I've read about one third of it, and understood most of it - I had
 trouble with some of the more difficult code, but I understood his explanations
