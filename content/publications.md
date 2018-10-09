@@ -23,7 +23,7 @@
 ### 2009
 
 *   My M.Sc. thesis, [Parsing Log Files Produced by the Postfix Mail Transfer
-    Agent](/pubications/msc-thesis.pdf), describes the parser architecture I
+    Agent](/publications/msc-thesis.pdf), describes the parser architecture I
     designed to parse log files produced by [Postfix](http://www.postfix.org/);
     it also describes the program I implemented based on that architecture,
     which parses Postfix log files, extracts as much data as possible,
