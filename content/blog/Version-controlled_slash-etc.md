@@ -19,18 +19,17 @@ time I used [etckeeper](http://kitenet.net/~joey/code/etckeeper/) and
 distributed: if we added a second mail server, I wanted to make synchronising
 `/etc` as simple as possible.  It has proven to be very useful:
 
-* Being able to see the changes I made in previous days, especially during the
-initial setup, when a lot of services needed a lot of configuration.
+*   Being able to see the changes I made in previous days, especially during the
+    initial setup, when a lot of services needed a lot of configuration.
 
-* Finding out when files last changed, so we can assure ourselves and users that
-we haven't changed anything that would cause the problems they're having, or
-find out that someone else made a change unbeknownst to us that could be
-responsible.
+*   Finding out when files last changed, so we can assure ourselves and users
+    that we haven't changed anything that would cause the problems they're
+    having, or find out that someone else made a change unbeknownst to us that
+    could be responsible.
 
-* Avoiding directory listings like this:
+*   Avoiding directory listings like this:
 
-<!-- Separate the list from the indented section. -->
-
+    ```
     dovecot.conf
     dovecot.conf.2008-2009
     dovecot.conf.2009-05-07
@@ -42,17 +41,20 @@ responsible.
     dovecot.conf.worked.yesterday
     dovecot.conf.yesterday
     dovecot.jic.conf.jan
+    ```
 
 Setup is explained in */usr/share/doc/etckeeper/README.gz* but I'll summarise
 here:
 
-    cd /etc
-    etckeeper init
-    git status
-    # review the list of files to be added; files can be removed with
-    #   git rm --cached FILE
-    # files can be ignored by adding them to /etc/.gitignore
-    git commit -m "Initial import of /etc"
+```shell
+cd /etc
+etckeeper init
+git status
+# review the list of files to be added; files can be removed with
+#   git rm --cached FILE
+# files can be ignored by adding them to /etc/.gitignore
+git commit -m "Initial import of /etc"
+```
 
 That's it - you now have a version controlled /etc.  Chances are that you'll
 need to ignore some files because they're generated from others or modified

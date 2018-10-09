@@ -7,13 +7,15 @@ tags = ['sysadmin', 'Apache']
 If your website is available under more than one FQDN, [standard SEO
 advice](http://www.google.com/search?q=seo+multiple+hostnames) is to pick a
 canonical FQDN and redirect the others to it.  You can see that in action on
-this website: clicking on <http://johntobin.ie/blog/Smarter_HTTP_redirects> will
-redirect you to <https://www.johntobin.ie/blog/Smarter_HTTP_redirects/> (and
+this website: clicking on <http://johntobin.ie/blog/smarter_http_redirects> will
+redirect you to <https://www.johntobin.ie/blog/smarter_http_redirects/> (and
 won't interrupt you reading this article).  The simplest way to do this in
 Apache is to configure a VirtualHost for johntobin.ie, and use a single
 [RewriteRule](http://httpd.apache.org/docs/2.2/mod/mod_rewrite.html#rewriterule):
 
-    RewriteRule ^(.*)$ https://www.johntobin.ie$1
+```apache
+RewriteRule ^(.*)$ https://www.johntobin.ie$1
+```
 
 This also works for redirecting all HTTP requests to HTTPS requests.
 
@@ -21,7 +23,9 @@ You can improve this approach in two easy ways.  Firstly, heed the SEO advice
 and turn that temporary redirect (302) into a permanent redirect (301), which
 browsers and (more importantly) search engines' crawlers are supposed to cache.
 
-    RewriteRule ^(.*)$ https://www.johntobin.ie$1 [L,R=301]
+```apache
+RewriteRule ^(.*)$ https://www.johntobin.ie$1 [L,R=301]
+```
 
 See <http://en.wikipedia.org/wiki/HTTP_response_codes> for a list of HTTP
 response codes.
@@ -36,9 +40,11 @@ end with a `/`, the web server will redirect your browser to the same URL with a
 `/` appended.  When you combine that with a redirection from example.org to
 www.example.org, your web browser will have to make three requests:
 
-    http://example.org/directory
-    http://www.example.org/directory
-    http://www.example.org/directory/
+```
+http://example.org/directory
+http://www.example.org/directory
+http://www.example.org/directory/
+```
 
 This is even worse if you subsequently redirect from http://www.example.org/ to
 https://www.example.org/ because that adds a fourth request.
@@ -48,18 +54,20 @@ is missing one and redirecting to HTTPS rather than HTTP.
 
 Here's the Apache config snippet:
 
-    # Add a trailing / if a request for a directory is missing one.
-    # This avoids an extra redirection: instead of
-    #   http://johntobin.ie/blog -> https://www.johntobin.ie/blog ->
-    #   https://www.johntobin.ie/blog/
-    # we get
-    #   http://johntobin.ie/blog -> https://www.johntobin.ie/blog/
-    #
-    # If the request is for a directory . . .
-    RewriteCond %{DOCUMENT_ROOT}/%{REQUEST_URI} -d
-    # . . . and the URL doesn't end with a / . . .
-    RewriteCond %{REQUEST_URI} !/$
-    # append a /, and fall through to the next RewriteRule.
-    RewriteRule ^(.*)$ $1/
-    # Redirect as before.
-    RewriteRule ^(.*)$ https://www.johntobin.ie$1 [L,R=301]
+```apache
+# Add a trailing / if a request for a directory is missing one.
+# This avoids an extra redirection: instead of
+#   http://johntobin.ie/blog -> https://www.johntobin.ie/blog ->
+#   https://www.johntobin.ie/blog/
+# we get
+#   http://johntobin.ie/blog -> https://www.johntobin.ie/blog/
+#
+# If the request is for a directory . . .
+RewriteCond %{DOCUMENT_ROOT}/%{REQUEST_URI} -d
+# . . . and the URL doesn't end with a / . . .
+RewriteCond %{REQUEST_URI} !/$
+# append a /, and fall through to the next RewriteRule.
+RewriteRule ^(.*)$ $1/
+# Redirect as before.
+RewriteRule ^(.*)$ https://www.johntobin.ie$1 [L,R=301]
+```

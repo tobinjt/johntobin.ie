@@ -22,7 +22,9 @@ to hijack the pool.ntp.org domain, answering nearly <a
 href="#footnote1">\[1]</a> all requests for hosts in that domain with the
 address of our NTP server.  This means that a user can just
 
-    apt-get install ntp
+```shell
+apt-get install ntp
+```
 
 and NTP will work properly for them.
 
@@ -34,52 +36,55 @@ so that URL works too.
 
 The bind zone file is quite short:
 
-    ; vim: set filetype=bindzone :
-    ; ----------------------------------------------------------------------
-    ; Zonefile to hijack the pool.ntp.org domain, so NTP clients use our local
-    ; NTP server instead of futilely trying to get through the firewall.
-    ; ----------------------------------------------------------------------
+```bindzone
+; ----------------------------------------------------------------------
+; Zonefile to hijack the pool.ntp.org domain, so NTP clients use our local
+; NTP server instead of futilely trying to get through the firewall.
+; ----------------------------------------------------------------------
 
-    $TTL			1D
+$TTL      1D
 
-    @			IN SOA	ns.cs.tcd.ie. postmaster.cs.tcd.ie. (
-                    2009052001	; Serial
-                    2H		; Refresh - how often slaves
+@      IN SOA  ns.cs.tcd.ie. postmaster.cs.tcd.ie. (
+                2009052001  ; Serial
+                2H          ; Refresh - how often slaves
                             ; check for changes.
-                    2H		; Retry - how often slaves will
+                2H          ; Retry - how often slaves will
                             ; retry if checking for changes
                             ; fails
-                    14D		; Expire - how long slaves
+                14D          ; Expire - how long slaves
                             ; consider their copies fo our
                             ; zone to be valid for
-                    6H		; Minimum
-                )
+                6H          ; Minimum
+            )
 
-                ; Name server records
-                IN NS		ns.cs.tcd.ie.
-                IN NS		ns2.cs.tcd.ie.
-                IN NS		ns3.cs.tcd.ie.
-                IN NS		ns4.cs.tcd.ie.
+            ; Name server records
+            IN NS    ns.cs.tcd.ie.
+            IN NS    ns2.cs.tcd.ie.
+            IN NS    ns3.cs.tcd.ie.
+            IN NS    ns4.cs.tcd.ie.
 
-                ; There are no MX records, because pool.ntp.org doesn't have any.
+            ; There are no MX records, because pool.ntp.org doesn't have any.
 
-    ; This makes www.pool.ntp.org work, but of course the real address could
-    ; change at any time.
-    www		IN CNAME	ntppool-varnish.develooper.com.
-    ; pool.ntp.org resolves to ntp.cs.tcd.ie
-    ; We can't use a CNAME, because bind complains that the record has
-    ; "CNAME and other data", and ignores it.
-    @		IN A		134.226.32.57
-    ; *.pool.ntp.org resolves to ntp.cs.tcd.ie
-    *		IN CNAME	ntp.cs.tcd.ie.
+; This makes www.pool.ntp.org work, but of course the real address could
+; change at any time.
+www		IN CNAME	ntppool-varnish.develooper.com.
+; pool.ntp.org resolves to ntp.cs.tcd.ie
+; We can't use a CNAME, because bind complains that the record has
+; "CNAME and other data", and ignores it.
+@		IN A		134.226.32.57
+; *.pool.ntp.org resolves to ntp.cs.tcd.ie
+*		IN CNAME	ntp.cs.tcd.ie.
+```
 
 
 You can play with it using commands like:
 
-    dig @ns.cs.tcd.ie pool.ntp.org
-    dig @ns.cs.tcd.ie www.pool.ntp.org
-    dig @ns.cs.tcd.ie didgeridoo.pool.ntp.org
-    dig @ns.cs.tcd.ie i.play.with.matches.pool.ntp.org
+```shell
+dig @ns.cs.tcd.ie pool.ntp.org
+dig @ns.cs.tcd.ie www.pool.ntp.org
+dig @ns.cs.tcd.ie didgeridoo.pool.ntp.org
+dig @ns.cs.tcd.ie i.play.with.matches.pool.ntp.org
+```
 
 Our NTP server (ntp.scss.tcd.ie) is part of the NTP pool, and can be used by
 anybody, but you're probably better off [using the

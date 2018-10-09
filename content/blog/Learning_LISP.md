@@ -28,20 +28,22 @@ in a list.  Be sure that KEEP-FIRST-N-CLEVERLY-AUX is tail recursive.
 
 My solution:
 
-    (defun keep-first-n-cleverly (n alist)
-      (keep-first-n-cleverly-aux n alist nil)
+```lisp
+(defun keep-first-n-cleverly (n alist)
+  (keep-first-n-cleverly-aux n alist nil)
+)
+
+(defun keep-first-n-cleverly-aux (n alist newlist)
+  (if (zerop n)
+    newlist
+    (keep-first-n-cleverly-aux
+      (- n 1)
+      (rest alist)
+      (append newlist (list (first alist)))
     )
-    
-    (defun keep-first-n-cleverly-aux (n alist newlist)
-      (if (zerop n)
-        newlist
-        (keep-first-n-cleverly-aux
-          (- n 1)
-          (rest alist)
-          (append newlist (list (first alist)))
-        )
-      )
-    )
+  )
+)
+```
 
 I like tail recursion: lots of problems are simpler to solve recursively, and
 knowing that a tail recursive call will be optimised to a goto satisfies the
@@ -55,25 +57,29 @@ Problem 5-9: Define SQUASH, a procedure that takes an expression as its
 argument and returns a non-nested list of all atoms found in the expression.
 Here is an example:
 
-    * (squash '(a (a (a (a b))) (((a b) b) b) b))
-    (A A A A B A B B B B)
+```lisp
+* (squash '(a (a (a (a b))) (((a b) b) b) b))
+(A A A A B A B B B B)
+```
 
 Essentially, this procedure explores the fringe of the tree represented by the
 list given as its argument, and returns a list of all the leaves.
 
 My solution:
 
-    (defun squash (alist)
-      (cond
-        ((null alist) nil)
-        ((atom alist) (list alist))
-        (t (append
-             (squash (first alist))
-             (squash (rest alist))
-           )
-        )
-      )
+```lisp
+(defun squash (alist)
+  (cond
+    ((null alist) nil)
+    ((atom alist) (list alist))
+    (t (append
+         (squash (first alist))
+         (squash (rest alist))
+       )
     )
+  )
+)
+```
 
 ---
 
@@ -84,36 +90,40 @@ the first month rather than backward from the <em>n</em>th month.
 
 My solution:
 
-    (defun fib (n &optional (count 2) (fibn-2 0) (fibn-1 1))
-      (case n
-        (0 0)
-        (1 1)
-        (otherwise
-          (if
-            (equal n count)
-            (+ fibn-2 fibn-1)
-            (fib n (+ count 1) fibn-1 (+ fibn-2 fibn-1))
-          )
-        )
+```lisp
+(defun fib (n &optional (count 2) (fibn-2 0) (fibn-1 1))
+  (case n
+    (0 0)
+    (1 1)
+    (otherwise
+      (if
+        (equal n count)
+        (+ fibn-2 fibn-1)
+        (fib n (+ count 1) fibn-1 (+ fibn-2 fibn-1))
       )
     )
+  )
+)
+```
 
 The point of this exercise was to use optional parameters; if I was writing
-<code>fib()</code> for real, I would use an auxiliary procedure, like this:
+`fib()` for real, I would use an auxiliary procedure, like this:
 
-    (defun fib (n)
-      (case n
-        (0 0)
-        (1 1)
-        (otherwise (fib-aux n 2 0 1))
-      )
-    )
-    (defun fib-aux (n num-calculated fibn-2 fibn-1)
-      (if (equal n num-calculated)
-        (+ fibn-2 fibn-1)
-        (fib-aux n (+ num-calculated 1) fibn-1 (+ fibn-2 fibn-1))
-      )
-    )
+```lisp
+(defun fib (n)
+  (case n
+    (0 0)
+    (1 1)
+    (otherwise (fib-aux n 2 0 1))
+  )
+)
+(defun fib-aux (n num-calculated fibn-2 fibn-1)
+  (if (equal n num-calculated)
+    (+ fibn-2 fibn-1)
+    (fib-aux n (+ num-calculated 1) fibn-1 (+ fibn-2 fibn-1))
+  )
+)
+```
 
 My first inclination when writing a fibonacci function is to use
 [Memoization](http://en.wikipedia.org/wiki/Memoization); if I was writing it in

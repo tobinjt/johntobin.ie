@@ -20,18 +20,20 @@ privileged status.  The next question was what language to write it in?  I
 wanted a quick solution, and it didn't have to be as robust as I would usually
 require, so I wrote a quick shell script to do it:
 
-    #!/bin/bash
-    
-    set -e
-    
-    mysql_cmd="mysql --skip-column-names rt3"
-    priviliged_groupid=$( echo 'select Groups.id from Groups where Groups.Type = "Privileged";' | $mysql_cmd )
-    echo 'select Users.id, Users.Name from Users, GroupMembers where GroupMembers.GroupId = '"$priviliged_groupid"' and GroupMembers.MemberId = Users.id and Users.EmailAddress = "";' \
-        | $mysql_cmd \
-        | awk '{print "delete from       GroupMembers where       GroupMembers.GroupId = '"$priviliged_groupid"' and       GroupMembers.MemberId = " $1 ";"}
-               {print "delete from CachedGroupMembers where CachedGroupMembers.GroupId = '"$priviliged_groupid"' and CachedGroupMembers.MemberId = " $1 ";"}
-               {print "update Users set Users.EmailAddress = \"" $2 "@tcd.ie\" where Users.id = " $1 ";"}' \
-        | $mysql_cmd
+```shell
+#!/bin/bash
+
+set -e -f -u -o pipefail
+
+mysql_cmd="mysql --skip-column-names rt3"
+priviliged_groupid="$(echo 'select Groups.id from Groups where Groups.Type = "Privileged";' | ${mysql_cmd})"
+echo 'select Users.id, Users.Name from Users, GroupMembers where GroupMembers.GroupId = '"${priviliged_groupid}"' and GroupMembers.MemberId = Users.id and Users.EmailAddress = "";' \
+    | $mysql_cmd \
+    | awk '{print "delete from       GroupMembers where       GroupMembers.GroupId = '"${priviliged_groupid}"' and       GroupMembers.MemberId = " $1 ";"}
+           {print "delete from CachedGroupMembers where CachedGroupMembers.GroupId = '"${priviliged_groupid}"' and CachedGroupMembers.MemberId = " $1 ";"}
+           {print "update Users set Users.EmailAddress = \"" $2 "@tcd.ie\" where Users.id = " $1 ";"}' \
+    | $mysql_cmd
+```
 
 It probably took longer to write this than it would have taken to use the web
 interface, but it was more satisfying, and I learned something new.

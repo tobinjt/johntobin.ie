@@ -18,12 +18,14 @@ time you start vim, but it won't do anything by itself.
 
 Add these lines to `~/.vimrc`:
 
-    " Associate *.mdwn with markdown syntax.
-    autocmd BufRead,BufNewFile *.mdwn setlocal filetype=markdown
-    " Recognise bulleted lists starting with ^\*
-    autocmd FileType markdown setlocal formatoptions+=n formatlistpat=^\\*\\s*
-    " Interpret blockquotes as comments.
-    autocmd FileType markdown setlocal comments=n:>
-    " Configure folding to use the function defined earlier.
-    autocmd FileType markdown setlocal foldmethod=expr \
-        foldexpr=MarkdownFolding(v:lnum)
+```vim
+" Associate *.mdwn with markdown syntax.
+autocmd BufRead,BufNewFile *.mdwn setlocal filetype=markdown
+" Recognise bulleted lists starting with ^\*
+autocmd FileType markdown setlocal formatoptions+=n formatlistpat=^\\*\\s*
+" Interpret blockquotes as comments.
+autocmd FileType markdown setlocal comments=n:>
+" Configure folding to use the function defined earlier.
+autocmd FileType markdown setlocal foldmethod=expr \
+    foldexpr=MarkdownFolding(v:lnum)
+```

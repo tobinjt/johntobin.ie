@@ -11,28 +11,32 @@ a problem, you gain access to the forum thread about that problem.  After I
 solved Project Euler 10, I read someone else's LISP solution; it was quite
 different to mine, and contained some LISP constructs I hadn't seen before, e.g.
 
-    (defun seq-list (min max)
-      (loop for i from min to max collect i)
-    )
+```lisp
+(defun seq-list (min max)
+  (loop for i from min to max collect i)
+)
+```
 
 I'd have written that like so:
 
-    (defun seq-list (lower-bound upper-bound)
-      (let
-        (
-          (current-number lower-bound)
-          (result '())
-        )
-    
-        (loop
-          (when (> current-number upper-bound)
-            (return result)
-          )
-          (setf result (append result (list current-number)))
-          (setf current-number (1+ current-number))
-        )
-      )
+```lisp
+(defun seq-list (lower-bound upper-bound)
+  (let
+    (
+      (current-number lower-bound)
+      (result '())
     )
+
+    (loop
+      (when (> current-number upper-bound)
+        (return result)
+      )
+      (setf result (append result (list current-number)))
+      (setf current-number (1+ current-number))
+    )
+  )
+)
+```
 
 That's 16 lines of code versus 3 lines of code.  OK, I could knock at least 6
 lines off mine by squishing closing parentheses onto earlier lines, but that's
@@ -41,9 +45,9 @@ tangled up in the mechanics of declaring local variables, looping, and updating
 the list.  A programmer who didn't know LISP would probably understand his code,
 but wouldn't have a clue what mine is doing.
 
-I didn't remember seeing syntax like that when reading the section on *(loop)*
+I didn't remember seeing syntax like that when reading the section on `(loop)`
 in my book, so I checked it out: it has nothing like that.  There's also nothing
-about *(collect)* in the index.  I need to learn from a book that covers all of
+about `(collect)` in the index.  I need to learn from a book that covers all of
 LISP, so that I can reasonably expect to understand other people's code.  I know
 that I'm writing baby-LISP (cute and helpless) at the moment, but I want to
 progress on to child-LISP (enthusiastic and energetic), teenage-LISP (angsty and

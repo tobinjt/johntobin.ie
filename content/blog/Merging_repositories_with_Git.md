@@ -4,19 +4,22 @@ title = 'Merging repositories with Git'
 tags = ['Git', 'Subversion', 'script', 'sysadmin']
 +++
 
-For several years I had a Subversion repository named <tt>cs\_misc</tt>, where I
+For several years I had a Subversion repository named `cs_misc`, where I
 accumulated various pieces of code that didn't need a repository of their own.
 A year ago, I decided to switch to Git, and created a repository named
-<tt>cs-misc</tt>.  As described in [[Importing Subversion repositories to Git]],
-I migrated <tt>cs\_misc</tt> from Subversion to Git, and now I wanted to merge
-the two repositories.   Having used <tt>git remote</tt> and <tt>git push</tt>
-with [Github](http://guthub.com/), I figured I'd try a similar approach, and
-this worked:
+`cs-misc`.  As described in [Importing Subversion repositories to
+Git](/blog/importing_subversion_repositories_to_git/), I migrated `cs_misc` from
+Subversion to Git, and now I wanted to merge the two repositories (`cs-misc` and
+`cs_misc`).   Having used `git remote` and `git push` with
+[Github](http://github.com/), I figured I'd try a similar approach, and this
+worked:
 
-    cd ~/src/cs_misc
-    git remote add integrate ~/src/cs-misc
-    git pull integrate master
-    git remote rm integrate
+```shell
+cd ~/src/cs_misc
+git remote add integrate ~/src/cs-misc
+git pull integrate master
+git remote rm integrate
+```
 
 Two things struck me about this:
 
