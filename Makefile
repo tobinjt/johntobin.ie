@@ -7,3 +7,5 @@ copy: all
 		hosting:/var/www/sites/johntobin.ie/
 clean:
 	rm -rf public/
+server:
+	hugo server -D
