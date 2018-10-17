@@ -3,6 +3,7 @@ languageCode = "en-us"
 title = "John Tobin"
 theme = "hugo-coder"
 googleAnalytics = 'UA-18492319-1'
+paginate = 30
 
 [params]
   author = 'John Tobin'
