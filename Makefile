@@ -1,6 +1,9 @@
 all: clean
 	hugo
 copy: all
-	rsync -av public/ hosting:/var/www/sites/johntobin.ie/
+	# Hugo regenerates every file, so compare checksums rather than
+	# timestamps and don't synchronise timestamps.
+	rsync -av --checksum --no-times public/ \
+		hosting:/var/www/sites/johntobin.ie/
 clean:
 	rm -rf public/
