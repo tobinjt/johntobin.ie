@@ -1,4 +1,3 @@
-*   Update Python development entry with type checking.
 *   Checking a git client is clean.
 *   Wordpress install.
 *   Backing up wordpress.
