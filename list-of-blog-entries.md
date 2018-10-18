@@ -1,4 +1,3 @@
-*   Checking a git client is clean.
 *   Wordpress install.
 *   Backing up wordpress.
 *   Restoring dev from www.
