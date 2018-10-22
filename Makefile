@@ -8,4 +8,4 @@ copy: all
 clean:
 	rm -rf public/
 server:
-	hugo server -D
+	hugo server --buildExpired --buildDrafts --buildFuture
