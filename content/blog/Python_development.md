@@ -18,7 +18,9 @@ I use [pytest](https://docs.pytest.org/) for running tests and
 [pytest-cov](https://pypi.python.org/pypi/pytest-cov) to get test coverage so I
 can figure out which parts of my code still need to be tested.
 
-`$ pip install pytest pytest-cov`
+```shell
+$ pip install pytest pytest-cov
+```
 
 To run your tests simply run `pytest` in the directory containing the tests.
 
@@ -56,7 +58,9 @@ This was particularly reassuring when I added deletion to `linkdirs.py` :)
 
 I use [pylint](https://www.pylint.org/) for linting.
 
-`$ pip install pylint`
+```shell
+$ pip install pylint
+```
 
 To configure `pylint`, create `$HOME/.pylintrc` with contents like
 <https://github.com/tobinjt/dotfiles/blob/master/.pylintrc>.
@@ -70,7 +74,9 @@ type annotations, which gives me more confidence and helps document my code,
 particularly when I use type aliases to give meaningful names to parameter
 types.
 
-`$ pip install mypy`
+```shell
+$ pip install mypy
+```
 
 To configure `mypy`, create `$HOME/.pylintrc` with contents like
 <https://github.com/tobinjt/dotfiles/blob/master/.mypy.ini>.
@@ -85,7 +91,9 @@ By default, Python will write compiled bytecode for `foo.py` to `foo.pyc`, which
 I found annoying.  Disable that by setting the environment variable
 `PYTHONDONTWRITEBYTECODE`, e.g.:
 
-`$ export PYTHONDONTWRITEBYTECODE="No .pyc files please"`
+```shell
+$ export PYTHONDONTWRITEBYTECODE="No .pyc files please"
+```
 
 ### Upgrading packages installed with `pip` is troublesome
 
