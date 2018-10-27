@@ -1,7 +1,7 @@
 +++
 date = 2013-04-06T01:43:39+02:00
 title = 'Markdown support for Vim'
-tags = []
+tags = ['vim', 'markdown']
 +++
 
 I needed to write a static web page in work recently, so I decided to use

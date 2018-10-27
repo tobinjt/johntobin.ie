@@ -1,7 +1,7 @@
 +++
 date = 2010-06-16T09:02:03+01:00
 title = 'Importing Subversion repositories to Git'
-tags = ['Git', 'Subversion', 'script', 'sysadmin']
+tags = ['Git', 'Subversion', 'automation']
 +++
 
 I'm migrating all my source code repositories from Subversion to Git.  I tried

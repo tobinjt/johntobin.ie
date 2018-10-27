@@ -2,7 +2,7 @@
 date = 2015-12-22T07:42:56+00:00
 lastmod = 2018-10-07T14:33:50+01:00
 title = 'How I manage my dotfiles'
-tags = ['Git', 'shell', 'sysadmin']
+tags = ['Git', 'automation', 'shell', 'sysadmin']
 +++
 
 Your `dotfiles` are the project that you'll work on for longest.

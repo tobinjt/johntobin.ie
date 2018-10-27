@@ -1,7 +1,7 @@
 +++
 date = 2018-10-23T21:29:26+01:00
 title = 'Installing and upgrading Wordpress core, plugins, and themes'
-tags = ['script', 'sysadmin', 'Wordpress']
+tags = ['automation', 'sysadmin', 'Wordpress']
 +++
 
 My wife's [website](https://www.arianetobin.ie/) is built on

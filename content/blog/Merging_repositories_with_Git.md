@@ -1,7 +1,7 @@
 +++
 date = 2010-06-17T17:00:23+01:00
 title = 'Merging repositories with Git'
-tags = ['Git', 'Subversion', 'script', 'sysadmin']
+tags = ['Git', 'Subversion']
 +++
 
 For several years I had a Subversion repository named `cs_misc`, where I

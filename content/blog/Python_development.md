@@ -1,7 +1,7 @@
 +++
 date = 2018-10-16T22:58:16-04:00
 title = 'Python development'
-tags = ['Python', 'programming']
+tags = ['Python', 'programming', 'testing']
 +++
 
 Normally I do Python development in work, where everything is already set up for

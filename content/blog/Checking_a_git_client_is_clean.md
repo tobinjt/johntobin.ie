@@ -1,7 +1,7 @@
 +++ 
 date = 2018-10-17T20:10:19-04:00
 title = "Checking a git client is clean"
-tags = ['Git', 'programming', 'shell']
+tags = ['Git', 'automation', 'programming', 'shell']
 +++
 
 I use Git for many things, and I have written several utilities that wrap git
