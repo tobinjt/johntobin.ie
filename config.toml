@@ -6,6 +6,7 @@ googleAnalytics = 'UA-18492319-1'
 paginate = 30
 pygmentsCodefences = true
 pygmentsStyle = "solarized-dark"
+newContentEditor = "vim"
 
 [params]
   author = 'John Tobin'
