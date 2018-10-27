@@ -1,6 +1,9 @@
 all: server
+SERVER_OPTS =
 server:
-	hugo server --buildExpired --buildDrafts --buildFuture
+	hugo server --buildExpired --buildDrafts --buildFuture $(SERVER_OPTS)
+debug_server: SERVER_OPTS = --debug --verbose
+debug_server: server
 
 RSYNC_OPTS =
 generate: clean
