@@ -1,5 +1,3 @@
-*   Wordpress install.
-*   Backing up wordpress.
 *   Restoring dev from www.
 *   Repairing a time machine backup volume.
 *   Backing up to rsync.net.
