@@ -1,4 +1,0 @@
-
-[submodule "themes/hugo-coder"]
-	path = themes/hugo-coder
-	url = git@github.com:tobinjt/hugo-coder.git
