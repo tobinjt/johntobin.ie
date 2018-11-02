@@ -16,5 +16,9 @@ copy: generate
 diff: RSYNC_OPTS = --dry-run
 diff: copy
 
+diff_content: generate
+	rsync -av --delete hosting:/var/www/sites/johntobin.ie/ hosting/
+	diff -aur hosting/ public/
+
 clean:
 	rm -rf public/
