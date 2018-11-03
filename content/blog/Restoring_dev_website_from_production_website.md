@@ -1,6 +1,6 @@
 +++
 date = 2018-11-03T14:07:02+01:00
-title = "Restoring dev from www"
+title = "Restoring dev website from production website"
 tags = ['automation', 'backups', 'MySQL', 'sysadmin', 'Wordpress']
 draft = true
 +++
