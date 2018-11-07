@@ -1,7 +1,8 @@
 all: server
 SERVER_OPTS =
 server:
-	hugo server --buildExpired --buildDrafts --buildFuture $(SERVER_OPTS)
+	hugo server --buildExpired --buildDrafts --buildFuture \
+		--forceSyncStatic $(SERVER_OPTS)
 debug_server: SERVER_OPTS = --debug --verbose
 debug_server: server
 
