@@ -10,6 +10,7 @@ RSYNC_OPTS =
 generate: clean
 	hugo
 copy: generate
+	git check-local-copy-is-clean
 	# Hugo regenerates every file, so compare checksums rather than
 	# timestamps and don't synchronise timestamps.
 	rsync -av --delete --checksum --no-times $(RSYNC_OPTS) \
