@@ -8,7 +8,7 @@ debug_server: server
 
 RSYNC_OPTS =
 generate: clean
-	hugo
+	hugo --minify
 copy: generate
 	git check-local-copy-is-clean
 	# Hugo regenerates every file, so compare checksums rather than
