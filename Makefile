@@ -7,8 +7,11 @@ debug_server: SERVER_OPTS = --debug --verbose
 debug_server: server
 
 RSYNC_OPTS =
-generate: clean
-	hugo --minify
+HUGO_OPTS =
+generate: HUGO_OPTS = --minify
+generate: generate_base
+generate_base: clean
+	hugo $(HUGO_OPTS)
 copy: generate
 	git check-local-copy-is-clean
 	# Hugo regenerates every file, so compare checksums rather than
@@ -24,3 +27,8 @@ diff_content: generate
 
 clean:
 	rm -rf public/
+
+generate_no_minify: HUGO_OPTS =
+generate_no_minify: generate_base
+list_fontawesome_classes: generate_no_minify
+	grep -h -r fa- public | sort | uniq -c | sort -n
