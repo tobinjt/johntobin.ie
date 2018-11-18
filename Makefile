@@ -12,6 +12,7 @@ generate: HUGO_OPTS = --minify
 generate: generate_base
 generate_base: clean
 	hugo $(HUGO_OPTS)
+push: copy
 copy: generate
 	git check-local-copy-is-clean
 	# Hugo regenerates every file, so compare checksums rather than
