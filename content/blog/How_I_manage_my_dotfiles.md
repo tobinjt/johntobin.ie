@@ -46,9 +46,9 @@ the first version was better than the ugly Perl code from 2002 it replaced.
 `linkdirs` is generic: it ignores various files associated with VCS systems, and
 Vim swap files, but you can use it for linking directories for other reasons.
 It links from multiple source directories, creates destination directories as
-necessary, ignores files specific files if you want, and hard links files from
-source to destination.  If a destination file exists but isn't a hard link to
-the source file, it will check if the contents are the same; if they are it will
+necessary, ignores specific files if you want, and hard links files from source
+to destination.  If a destination file exists but isn't a hard link to the
+source file, it will check if the contents are the same; if they are it will
 delete the destination and create the hard link, otherwise it will display the
 diffs.  If anything fails or there are diffs it will exit unsuccessfully.
 
