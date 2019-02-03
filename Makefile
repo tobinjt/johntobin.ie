@@ -8,7 +8,7 @@ debug_server: server
 
 RSYNC_OPTS =
 HUGO_OPTS =
-generate: HUGO_OPTS = --minify
+generate: HUGO_OPTS =
 generate: generate_base
 generate_base: clean
 	hugo $(HUGO_OPTS)
