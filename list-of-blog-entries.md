@@ -1,3 +1,4 @@
+*   Book recommendations.
 *   Backing up to rsync.net.
 *   Overall backup strategy.
 *   Probes: check-dns-for-hosting check-redirects-for-hosting
