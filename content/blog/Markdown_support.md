@@ -1,31 +1,26 @@
 +++
-date = 2013-04-06T01:43:39+02:00
+date = 2019-03-26T21:43:39+02:00
 title = 'Markdown support for Vim'
 tags = ['vim', 'markdown']
 +++
 
-I needed to write a static web page in work recently, so I decided to use
-Markdown, because writing HTML is time-consuming and unproductive.  I was
-writing a reasonably large page, so I wanted folding, which the syntax
-highlighting I've been using for years didn't support.  I wrote some simple
-folding support to create nested folds at headers, and also reconfigured vim to
-recognise bulleted lists so that reformatting with `gq` doesn't destroy lists.
+I write a lot of Markdown in work, so it's worth configuring vim to support it
+well.
 
-Save
-<https://github.com/tobinjt/dotfiles/blob/master/.vim/plugin/markdown-folding.vim>
-as `~/.vim/plugin/markdown-folding.vim` - it will be automatically loaded every
-time you start vim, but it won't do anything by itself.
+*   Install https://github.com/plasticboy/vim-markdown to get syntax
+    highlighting, folding, and more.
+*   Add these lines to `~/.vimrc`:
 
-Add these lines to `~/.vimrc`:
-
-```vim
-" Associate *.mdwn with markdown syntax.
-autocmd BufRead,BufNewFile *.mdwn setlocal filetype=markdown
-" Recognise bulleted lists starting with ^\*
-autocmd FileType markdown setlocal formatoptions+=n formatlistpat=^\\*\\s*
-" Interpret blockquotes as comments.
-autocmd FileType markdown setlocal comments=n:>
-" Configure folding to use the function defined earlier.
-autocmd FileType markdown setlocal foldmethod=expr \
-    foldexpr=MarkdownFolding(v:lnum)
-```
+    ```vim
+    " Recognise bulleted lists starting with ^\*, so that line wrapping doesn't
+    " destroy bulleted lists.
+    autocmd FileType markdown setlocal formatoptions+=n
+      \ formatlistpat=^\\s*\\(\\*\\\|[0-9]\\.\\)\\s\\+
+    " Automatically wrap text at textwidth.
+    autocmd FileType markdown setlocal formatoptions+=t formatoptions-=l
+    " Interpret blockquotes (lines starting with '>') as comments, so that line
+    " wrapping doesn't mangle the blockquote markers.
+    autocmd FileType markdown setlocal comments=n:>
+    " Turn on spell checking.
+    autocmd FileType markdown setlocal spell
+    ```
