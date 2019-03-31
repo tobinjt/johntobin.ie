@@ -1,7 +1,7 @@
 +++
 date = 2014-11-17T22:18:15+01:00
 title = 'Simple link checking'
-tags = ['automation', 'sysadmin']
+tags = ['automation', 'sysadmin', 'website']
 +++
 
 I've been working on [my wife's website](http://www.arianetobin.ie/) recently,
