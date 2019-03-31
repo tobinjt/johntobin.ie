@@ -1,8 +1,6 @@
 *   Book recommendations.
 *   Backing up to rsync.net.
 *   Overall backup strategy.
-*   Probes: check-dns-for-hosting check-redirects-for-hosting
-    probe-arianetobin.ie 
 *   Restart app automatically.
 *   Anything in my .bash*/.shell* stuff?  Updating ssh socket?
 *   Look through repos on Github.
