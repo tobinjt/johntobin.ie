@@ -1,5 +1,5 @@
 # Build everything so I can easily preview it.
-SERVER_OPTS = --buildExpired --buildDrafts --buildFuture 
+SERVER_OPTS = --buildExpired --buildDrafts --buildFuture
 # Copy all files when static files change, otherwise they won't be served.
 SERVER_OPTS += --forceSyncStatic
 # Hugo regenerates every file, so compare checksums rather than
