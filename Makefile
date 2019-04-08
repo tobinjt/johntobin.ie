@@ -1,38 +1,36 @@
+# Build everything so I can easily preview it.
+SERVER_OPTS = --buildExpired --buildDrafts --buildFuture 
+# Copy all files when static files change, otherwise they won't be served.
+SERVER_OPTS += --forceSyncStatic
+# Hugo regenerates every file, so compare checksums rather than
+# timestamps and don't synchronise timestamps.
+RSYNC_OPTS = -av --delete --checksum --no-times
+DESTINATION = www.johntobin.ie:/var/www/sites/johntobin.ie/
+OUTPUT_DIR = public/
+
 all: server
-SERVER_OPTS =
 server:
-	hugo server --buildExpired --buildDrafts --buildFuture \
-		--forceSyncStatic $(SERVER_OPTS)
-debug_server: SERVER_OPTS = --debug --verbose
+	hugo server $(SERVER_OPTS)
+debug_server: SERVER_OPTS += --debug --verbose
 debug_server: server
 
-RSYNC_OPTS =
-HUGO_OPTS =
-generate: HUGO_OPTS =
-generate: generate_base
-generate_base: clean
-	hugo $(HUGO_OPTS)
+generate: clean
+	hugo
 push: copy
 copy: generate
 	git check-local-copy-is-clean
-	# Hugo regenerates every file, so compare checksums rather than
-	# timestamps and don't synchronise timestamps.
-	rsync -av --delete --checksum --no-times $(RSYNC_OPTS) \
-		public/ hosting:/var/www/sites/johntobin.ie/
-diff: RSYNC_OPTS = --dry-run
+	rsync $(RSYNC_OPTS) $(OUTPUT_DIR) $(DESTINATION)
+diff: RSYNC_OPTS += --dry-run
 diff: copy
 
 diff_content: generate
-	rsync -av --delete hosting:/var/www/sites/johntobin.ie/ hosting/
-	diff -aur hosting/ public/
+	rsync $(RSYNC_OPTS) $(DESTINATION) hosting/
+	diff -aur hosting/ $(OUTPUT_DIR)
 
 clean:
-	rm -rf public/
+	rm -rf $(OUTPUT_DIR)
 
-generate_no_minify: HUGO_OPTS =
-generate_no_minify: generate_base
-list_fontawesome_classes: generate_no_minify
-	grep -h -r fa- public | sort | uniq -c | sort -n
-
+list_fontawesome_classes: generate
+	grep -h -r fa- $(OUTPUT_DIR) | sort | uniq -c | sort -n
 tags_list: generate
-	ls public/tags/
+	ls $(OUTPUT_DIR)tags/
