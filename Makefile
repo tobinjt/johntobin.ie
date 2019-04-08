@@ -33,3 +33,6 @@ generate_no_minify: HUGO_OPTS =
 generate_no_minify: generate_base
 list_fontawesome_classes: generate_no_minify
 	grep -h -r fa- public | sort | uniq -c | sort -n
+
+tags_list: generate
+	ls public/tags/
