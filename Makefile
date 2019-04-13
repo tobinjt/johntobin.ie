@@ -18,6 +18,7 @@ generate: clean
 	hugo
 push: copy
 copy: generate
+	git push
 	git check-local-copy-is-clean
 	rsync $(RSYNC_OPTS) $(OUTPUT_DIR) $(DESTINATION)
 diff: RSYNC_OPTS += --dry-run
