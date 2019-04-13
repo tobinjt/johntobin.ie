@@ -1,7 +1,6 @@
 #!/bin/bash
 
 set -e -u -o pipefail
-set -x
 
 status=0
 for file in $(git diff --cached --name-only --diff-filter=ACM \
