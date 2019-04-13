@@ -5,7 +5,7 @@ set -e -u -o pipefail
 status=0
 for file in $(git diff --cached --name-only --diff-filter=ACM \
                 | grep content/blog); do
-  if grep --color=auto '^draft.*=.*true' "${file}"; then
+  if grep -H --color=auto '^draft.*=.*true' "${file}"; then
     status=1
   fi
 done
