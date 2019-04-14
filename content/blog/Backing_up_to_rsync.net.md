@@ -1,7 +1,7 @@
 +++
 date = 2019-04-13T22:42:09+01:00
 title = "Backing up to rsync.net"
-tags = ['automation', 'backups', 'shell', 'sre', 'sysadmin']
+tags = ['automation', 'backups', 'shell', 'SRE', 'sysadmin']
 +++
 
 I use [rsync.net](https://www.rsync.net/) for offsite backups with history.  The

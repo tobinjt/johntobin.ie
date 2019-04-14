@@ -1,7 +1,7 @@
 +++
 date = 2018-11-14T21:03:54Z
 title = "Suppressing unnecessary cookie law CSS and JavaScript"
-tags = ['SEO', 'Website', 'Wordpress']
+tags = ['SEO', 'website', 'Wordpress']
 +++
 
 The [EU Cookie Law](https://www.wired.co.uk/article/cookies-made-simple)
