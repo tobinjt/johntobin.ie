@@ -14,14 +14,33 @@ check_for_drafts() {
       drafts_found=1
     fi
   done
+  if [[ "${drafts_found}" -eq 1 ]]; then
+    printf "draft entries found\\n" >&2
+  fi
   return "${drafts_found}"
+}
+
+check_for_inconsistent_tags() {
+  local bad_tags
+  bad_tags="$(make --quiet tags_list \
+                | awk '{print tolower($2)}' \
+                | sort \
+                | uniq -d)"
+  if [[ -z "${bad_tags}" ]]; then
+    return 0
+  fi
+  printf "Inconsistent tag capitalisation found: %s\\n" "${bad_tags}"
+  return 1
 }
 
 main() {
   local exit_status=0
 
   if ! check_for_drafts; then
-    printf "draft entries found\\n" >&2
+    exit_status=1
+  fi
+
+  if ! check_for_inconsistent_tags; then
     exit_status=1
   fi
 
