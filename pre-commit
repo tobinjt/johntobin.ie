@@ -2,14 +2,32 @@
 
 set -e -u -o pipefail
 
-status=0
-for file in $(git diff --cached --name-only --diff-filter=ACM \
-                | grep content/blog); do
-  if grep -H --color=auto '^draft.*=.*true' "${file}"; then
-    status=1
+markdown_files_being_committed() {
+  git diff --cached --name-only --diff-filter=ACM \
+    | (grep ^content/blog || true)
+}
+
+check_for_drafts() {
+  local drafts_found=0 file
+  for file in "$@"; do
+    if grep -H --color=auto '^draft.*=.*true' "${file}"; then
+      drafts_found=1
+    fi
+  done
+  return "${drafts_found}"
+}
+
+main() {
+  local exit_status=0
+  local -a markdown_files
+  markdown_files="$(markdown_files_being_committed)"
+
+  if ! check_for_drafts "${markdown_files[@]}"; then
+    printf "draft entries found\\n" >&2
+    exit_status=1
   fi
-done
-if [[ "${status}" == 1 ]]; then
-  printf "draft entries found\\n" >&2
-fi
-exit "${status}"
+
+  exit "${exit_status}"
+}
+
+main
