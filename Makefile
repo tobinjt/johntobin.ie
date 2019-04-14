@@ -33,5 +33,12 @@ clean:
 
 list_fontawesome_classes: generate
 	grep -h -r fa- $(OUTPUT_DIR) | sort | uniq -c | sort -n
-tags_list: generate
-	ls $(OUTPUT_DIR)tags/
+tags_list:
+	# Lines look like: tags = ['advice', 'general computer stuff']
+	grep -h '^tags =' content/blog/* \
+		| sed -e "s/tags = \\['//" \
+			-e "s/']//" \
+			-e "s/', '/ /g" \
+		| fmt -1 \
+		| sort -f \
+		| uniq -c
