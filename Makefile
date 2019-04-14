@@ -38,7 +38,9 @@ tags_list:
 	grep -h '^tags =' content/blog/* \
 		| sed -e "s/tags = \\['//" \
 			-e "s/']//" \
-			-e "s/', '/ /g" \
+			-e "s/', '/,/g" \
+			-e "s/ /_/g" \
+			-e "s/,/ /g" \
 		| fmt -1 \
 		| sort -f \
 		| uniq -c
