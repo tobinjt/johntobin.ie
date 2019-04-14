@@ -7,6 +7,7 @@ markdown_files_being_committed() {
     | (grep ^content/blog || true)
 }
 
+# Hugo doesn't publish drafts, so prevent checking in draft content.
 check_for_drafts() {
   local drafts_found=0 file
   for file in $(markdown_files_being_committed); do
@@ -20,6 +21,8 @@ check_for_drafts() {
   return "${drafts_found}"
 }
 
+# When tags are inconsistently capitalised Hugo will use a random tag, causing
+# unnecessary changes in output.  Prevent checking in inconsistent tags.
 check_for_inconsistent_tags() {
   local bad_tags
   bad_tags="$(make --quiet tags_list \
