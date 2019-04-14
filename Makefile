@@ -16,17 +16,17 @@ debug_server: server
 
 generate: clean
 	hugo
-push: copy
-copy: generate
+push: generate
 	git push
 	git check-local-copy-is-clean
 	rsync $(RSYNC_OPTS) $(OUTPUT_DIR) $(DESTINATION)
 diff: RSYNC_OPTS += --dry-run
-diff: copy
+diff: generate
+	rsync $(RSYNC_OPTS) $(OUTPUT_DIR) $(DESTINATION)
 
 diff_content: generate
 	rsync $(RSYNC_OPTS) $(DESTINATION) hosting/
-	diff -aur hosting/ $(OUTPUT_DIR)
+	diff -Naur hosting/ $(OUTPUT_DIR)
 
 clean:
 	rm -rf $(OUTPUT_DIR)
