@@ -35,6 +35,8 @@ list_fontawesome_classes: generate
 	grep -h -r fa- $(OUTPUT_DIR) | sort | uniq -c | sort -n
 tags_list:
 	# Lines look like: tags = ['advice', 'general computer stuff']
+	# Turn tags with spaces into tags_with_spaces.  Put each tag on a single
+	# line with the number of times it is used.
 	grep -h '^tags =' content/blog/* \
 		| sed -e "s/tags = \\['//" \
 			-e "s/']//" \
