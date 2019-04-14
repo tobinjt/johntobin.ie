@@ -9,7 +9,7 @@ markdown_files_being_committed() {
 
 check_for_drafts() {
   local drafts_found=0 file
-  for file in "$@"; do
+  for file in $(markdown_files_being_committed); do
     if grep -H --color=auto '^draft.*=.*true' "${file}"; then
       drafts_found=1
     fi
@@ -19,10 +19,8 @@ check_for_drafts() {
 
 main() {
   local exit_status=0
-  local -a markdown_files
-  markdown_files="$(markdown_files_being_committed)"
 
-  if ! check_for_drafts "${markdown_files[@]}"; then
+  if ! check_for_drafts; then
     printf "draft entries found\\n" >&2
     exit_status=1
   fi
