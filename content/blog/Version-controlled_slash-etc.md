@@ -14,7 +14,7 @@ thankful you did.  I first set up a version controlled `/etc` almost 10 years
 ago when I was [Netsoc's](http://www.netsoc.tcd.ie/) sysadmin, but back then I
 was using CVS, and it was complicated by Solaris putting binaries and named
 pipes in `/etc` for backwards (and I really mean backwards) compatibility.  This
-time I used [etckeeper](http://kitenet.net/~joey/code/etckeeper/) and
+time I used [etckeeper](http://etckeeper.branchable.com/) and
 [git](http://git-scm.com/).  One of the reasons for using git is that it's
 distributed: if we added a second mail server, I wanted to make synchronising
 `/etc` as simple as possible.  It has proven to be very useful:
