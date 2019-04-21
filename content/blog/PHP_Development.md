@@ -7,7 +7,7 @@ tags = ['PHP', 'programming', 'website', 'Wordpress']
 I wrote and maintain [the theme](https://github.com/tobinjt/ariane-theme) for
 [my wife's website](https://www.arianetobin.ie/).  When working on it in the
 past I've been under time pressure because the [Craft
-Fair](http://www.giftedfair.ie/) was close, so I haven't kept the code to my
+Fair](https://www.giftedfair.ie/) was close, so I haven't kept the code to my
 usual standards.  Over the past year I've been improving my processes, e.g.
 [Populating dev website from production
 website](/blog/populating_dev_website_from_production_website/), and more
@@ -51,7 +51,7 @@ Breaking up `functions.php` into separate files has had multiple benefits:
     than it would have been working on everything at once.  The code grew in
     size by approximately 200 lines or a factor of 1.158.
 
-I tried [PHPLint](http://www.icosaedro.it/phplint/) because I'm a big fan of
+I tried [PHPLint](https://www.icosaedro.it/phplint/) because I'm a big fan of
 linters and style guides, but ironically it crashes on startup with an exception
 :(  It appears to have broken with PHP 7.3 maybe?
 

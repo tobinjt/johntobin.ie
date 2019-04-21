@@ -17,7 +17,7 @@ them in sync between machines.
 Configuration files aren't much different to code, so the obvious way to
 maintain them is a Version Control System.  I originally used
 [CVS](https://en.wikipedia.org/wiki/Concurrent_Versions_System) back in 2002 or
-so, then migrated to [Subversion](http://subversion.apache.org/) around 2007 (I
+so, then migrated to [Subversion](https://subversion.apache.org/) around 2007 (I
 think), and I've been using [Git](https://git-scm.com/) since 2010.  The big
 difference between dotfiles and code is that dotfiles need to be in your home
 directory, not a subdirectory somewhere.  One approach is to make your home

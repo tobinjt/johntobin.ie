@@ -9,7 +9,7 @@ Note: this was originally a lot longer and more complex, but a later version of
 eval, so this is much easier now.
 
 [tmux](https://github.com/tmux/tmux) is a tty multiplexer similar to
-[screen](http://www.gnu.org/software/screen/), but with some really nice
+[screen](https://www.gnu.org/software/screen/), but with some really nice
 features.  One of those features is updating environment variables when you
 reconnect to a session - the client sends the current values to the tmux server,
 and they can be retrieved with:

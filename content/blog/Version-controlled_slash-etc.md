@@ -5,17 +5,17 @@ tags = ['sysadmin', 'Git', 'Debian']
 +++
 
 In 2009 I migrated the [School of Computer Science and
-Statistics](http://www.scss.tcd.ie/) mail server from Solaris to Debian Linux.
+Statistics](https://www.scss.tcd.ie/) mail server from Solaris to Debian Linux.
 I made a lot of changes and improvements during the migration; one of the
 simplest was to keep `/etc` under version control.  I assume most people are
 familiar with version control from writing code - if you're not, please spend a
 couple of hours reading and experimenting with any modern VCS, you'll be
 thankful you did.  I first set up a version controlled `/etc` almost 10 years
-ago when I was [Netsoc's](http://www.netsoc.tcd.ie/) sysadmin, but back then I
+ago when I was [Netsoc's](https://www.netsoc.tcd.ie/) sysadmin, but back then I
 was using CVS, and it was complicated by Solaris putting binaries and named
 pipes in `/etc` for backwards (and I really mean backwards) compatibility.  This
-time I used [etckeeper](http://etckeeper.branchable.com/) and
-[git](http://git-scm.com/).  One of the reasons for using git is that it's
+time I used [etckeeper](https://etckeeper.branchable.com/) and
+[git](https://git-scm.com/).  One of the reasons for using git is that it's
 distributed: if we added a second mail server, I wanted to make synchronising
 `/etc` as simple as possible.  It has proven to be very useful:
 

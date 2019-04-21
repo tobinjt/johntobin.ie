@@ -11,7 +11,7 @@ A year ago, I decided to switch to Git, and created a repository named
 Git](/blog/importing_subversion_repositories_to_git/), I migrated `cs_misc` from
 Subversion to Git, and now I wanted to merge the two repositories (`cs-misc` and
 `cs_misc`).   Having used `git remote` and `git push` with
-[Github](http://github.com/), I figured I'd try a similar approach, and this
+[Github](https://github.com/), I figured I'd try a similar approach, and this
 worked:
 
 ```shell

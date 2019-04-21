@@ -5,13 +5,13 @@ tags = ['sysadmin', 'Apache']
 +++
 
 If your website is available under more than one FQDN, [standard SEO
-advice](http://www.google.com/search?q=seo+multiple+hostnames) is to pick a
+advice](https://www.google.com/search?q=seo+multiple+hostnames) is to pick a
 canonical FQDN and redirect the others to it.  You can see that in action on
 this website: clicking on <http://johntobin.ie/blog/smarter_http_redirects> will
 redirect you to <https://www.johntobin.ie/blog/smarter_http_redirects/> (and
 won't interrupt you reading this article).  The simplest way to do this in
 Apache is to configure a VirtualHost for johntobin.ie, and use a single
-[RewriteRule](http://httpd.apache.org/docs/2.2/mod/mod_rewrite.html#rewriterule):
+[RewriteRule](https://httpd.apache.org/docs/2.2/mod/mod_rewrite.html#rewriterule):
 
 ```apache
 RewriteRule ^(.*)$ https://www.johntobin.ie$1
@@ -27,14 +27,14 @@ browsers and (more importantly) search engines' crawlers are supposed to cache.
 RewriteRule ^(.*)$ https://www.johntobin.ie$1 [L,R=301]
 ```
 
-See <http://en.wikipedia.org/wiki/HTTP_response_codes> for a list of HTTP
+See <https://en.wikipedia.org/wiki/HTTP_response_codes> for a list of HTTP
 response codes.
 
 The second change will reduce the load on your web server slightly, and more
 importantly will also slightly speed up your readers' browsing experience (and
 should therefore have some SEO benefits).  You may have noticed that when you
-click on a URL like http://www.example.org/directory, your browser will display
-http://www.example.org/directory/ (note the trailing `/` on the second URL).
+click on a URL like https://www.example.org/directory, your browser will display
+https://www.example.org/directory/ (note the trailing `/` on the second URL).
 When your browser makes a HTTP request for a directory, but the request doesn't
 end with a `/`, the web server will redirect your browser to the same URL with a
 `/` appended.  When you combine that with a redirection from example.org to

@@ -4,7 +4,7 @@ title = 'Simple link checking'
 tags = ['automation', 'sysadmin', 'website']
 +++
 
-I've been working on [my wife's website](http://www.arianetobin.ie/) recently,
+I've been working on [my wife's website](https://www.arianetobin.ie/) recently,
 and I wanted to check that all the internal links and resources worked properly.
 I wasn't going to do this by hand, so I wrote [a simple wrapper around
 wget](https://github.com/tobinjt/bin/blob/master/check-links).  It deliberately
@@ -13,15 +13,15 @@ easier.  Any request that wasn't answered with HTTP status 200 is displayed,
 e.g.:
 
 ```
---2014-11-17 22:07:14--  http://example.com/bar/
+--2014-11-17 22:07:14--  https://example.com/bar/
 Reusing existing connection to example.com:80.
 HTTP request sent, awaiting response... 404 Not Found
 --
---2014-11-17 22:07:16--  http://example.com/baz/
+--2014-11-17 22:07:16--  https://example.com/baz/
 Reusing existing connection to example.com:80.
 HTTP request sent, awaiting response... 404 Not Found
 --
---2014-11-17 22:07:18--  http://example.com/qwerty/
+--2014-11-17 22:07:18--  https://example.com/qwerty/
 Reusing existing connection to example.com:80.
 HTTP request sent, awaiting response... 404 Not Found
 See /tmp/check-links-R4ZxQqw1Ak/wget.log and the contents of /tmp/check-links-R4ZxQqw1Ak for further investigation

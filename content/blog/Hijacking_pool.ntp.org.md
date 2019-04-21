@@ -4,7 +4,7 @@ title = 'Hijacking pool.ntp.org'
 tags = ['NTP', 'sysadmin']
 +++
 
-From <http://pool.ntp.org>:
+From <https://pool.ntp.org>:
 
 > The pool.ntp.org project is a big virtual cluster of timeservers providing
 > reliable easy to use NTP service for millions of clients.
@@ -15,10 +15,10 @@ From <http://pool.ntp.org>:
 
 The NTP package in Debian Lenny uses the NTP pool, so when a user installs NTP
 on their home machine, it Just Works.  Unfortunately, the
-[SCSS](http://www.scss.tcd.ie/) firewall blocks NTP traffic for all hosts except
-our NTP server, breaking the default configuration for users on our network.
-Rather than reconfiguring every client, I configured `bind` on our DNS servers
-to hijack the pool.ntp.org domain, answering nearly <a
+[SCSS](https://www.scss.tcd.ie/) firewall blocks NTP traffic for all hosts
+except our NTP server, breaking the default configuration for users on our
+network.  Rather than reconfiguring every client, I configured `bind` on our DNS
+servers to hijack the pool.ntp.org domain, answering nearly <a
 href="#footnote1">\[1]</a> all requests for hosts in that domain with the
 address of our NTP server.  This means that a user can just
 
@@ -29,10 +29,10 @@ apt-get install ntp
 and NTP will work properly for them.
 
 <a name="footnote1"></a>\[1] The sole exception is www.pool.ntp.org: I want the
-URL <http://www.pool.ntp.org> to work in a user's browser.  Although
+URL <https://www.pool.ntp.org> to work in a user's browser.  Although
 pool.ntp.org *does* resolve to our NTP server, the web server running on that
-host redirects requests for <http://pool.ntp.org> to <http://www.pool.ntp.org>,
-so that URL works too.
+host redirects requests for <https://pool.ntp.org> to
+<https://www.pool.ntp.org>, so that URL works too.
 
 The bind zone file is quite short:
 
@@ -88,4 +88,4 @@ dig @ns.cs.tcd.ie i.play.with.matches.pool.ntp.org
 
 Our NTP server (ntp.scss.tcd.ie) is part of the NTP pool, and can be used by
 anybody, but you're probably better off [using the
-pool](http://www.pool.ntp.org/en/use.html).
+pool](https://www.pool.ntp.org/en/use.html).

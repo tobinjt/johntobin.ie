@@ -5,11 +5,12 @@ tags = ['LISP', 'programming']
 +++
 
 I've been learning LISP from
-[LISP](http://www.amazon.co.uk/LISP-Patrick-Winston/dp/0201083191/), and solving
-problems from [Project Euler](http://projecteuler.net/) in LISP.  Once you solve
-a problem, you gain access to the forum thread about that problem.  After I
-solved Project Euler 10, I read someone else's LISP solution; it was quite
-different to mine, and contained some LISP constructs I hadn't seen before, e.g.
+[LISP](https://www.amazon.co.uk/LISP-Patrick-Winston/dp/0201083191/), and
+solving problems from [Project Euler](https://projecteuler.net/) in LISP.  Once
+you solve a problem, you gain access to the forum thread about that problem.
+After I solved Project Euler 10, I read someone else's LISP solution; it was
+quite different to mine, and contained some LISP constructs I hadn't seen
+before, e.g.
 
 ```lisp
 (defun seq-list (min max)
