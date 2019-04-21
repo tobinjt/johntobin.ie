@@ -17,21 +17,20 @@ worked:
 ```shell
 cd ~/src/cs_misc
 git remote add integrate ~/src/cs-misc
-git pull integrate master
+git pull --allow-unrelated-histories integrate master
 git remote rm integrate
 ```
 
 Two things struck me about this:
 
 1. It was so easy and intuitive.  OK, it wouldn't have been intuitive if I
-   hadn't used <tt>git remote</tt> before, but that's a fairly basic Git
-   operation.
+   hadn't used `git remote` before, but that's a fairly basic Git operation.
 
-2. This didn't just import the current version of each file from
-   <tt>cs-misc</tt>, it imported the entire history.  I have no idea how to do
-   that in Subversion, except for the obvious: check out each revision from
-   repository A, and commit it to repository B.  I'm not saying it can't be done
-   with Subversion, and it may actually be easy; I'm saying that, after five
-   years of using Subversion, I have no idea where to begin.
+2. This didn't just import the current version of each file from `cs-misc`, it
+   imported the entire history.  I have no idea how to do that in Subversion,
+   except for the obvious: check out each revision from repository A, and commit
+   it to repository B.  I'm not saying it can't be done with Subversion, and it
+   may actually be easy; I'm saying that, after five years of using Subversion,
+   I have no idea where to begin.
 
 The more I use Git, the happier I am to be using it instead of Subversion.
