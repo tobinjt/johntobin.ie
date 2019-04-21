@@ -13,10 +13,10 @@ LISP](https://www.amazon.co.uk/LISP-Advanced-Techniques-Common/dp/0130305529/) -
 but my MSc was taking up all my time, so I put them on a shelf and forgot about
 them.  About a month ago, I read [Recursive Functions of Symbolic Expressions
 and their Computation by Machine (Part
-I)](https://www-formal.stanford.edu/jmc/recursive.html), the original paper
-about LISP.  It's very clearly written, and explains the design of LISP so well
-(in only 34 pages) that someone could make a reasonable attempt at implementing
-LISP based solely on reading it.  Inspired by the paper, I dug out my books and
+I)](http://jmc.stanford.edu/articles/recursive.html), the original paper about
+LISP.  It's very clearly written, and explains the design of LISP so well (in
+only 34 pages) that someone could make a reasonable attempt at implementing LISP
+based solely on reading it.  Inspired by the paper, I dug out my books and
 started learning LISP; I've now reached a point where the solutions to some
 exercises are interesting enough to post.
 
