@@ -6,13 +6,13 @@ title = 'My Publications'
 
 *   [A User-Extensible and Adaptable Parser
     Architecture](/publications/sgai-2008.pdf), published in the [SGAI 2008
-    Conference](https://www.bcs-sgai.org/ai2008/), and selected as one of the
+    Conference](http://www.bcs-sgai.org/ai2008/), and selected as one of the
     best papers from the conference.  I was subsequently asked to join the
-    [Technical Stream Program Committee](https://www.bcs-sgai.org/tpc/?x=491),
+    [Technical Stream Program Committee](http://www.bcs-sgai.org/tpc/?x=491),
     and I accepted the invitation.
 
-*   The [best papers](https://www.bcs-sgai.org/sgai/kbsj_ai2008.htm) from the
-    [SGAI 2008 Conference](https://www.bcs-sgai.org/ai2008/) were reprinted in a
+*   The [best papers](http://www.bcs-sgai.org/sgai/kbsj_ai2008.htm) from the
+    [SGAI 2008 Conference](http://www.bcs-sgai.org/ai2008/) were reprinted in a
     [special
     edition](https://www.sciencedirect.com/science?_ob=PublicationURL&_tockey=%23TOC%235652%232009%23999779992%231492106%23FLA%23&_cdi=5652&_pubType=J&_auth=y&_acct=C000050221&_version=1&_urlVersion=0&_userid=10&md5=c8b5b4f07319ac01a00136db989ce839)
     of the [Knowledge-Based Systems
@@ -28,7 +28,7 @@ title = 'My Publications'
 
 *   My M.Sc. thesis, [Parsing Log Files Produced by the Postfix Mail Transfer
     Agent](/publications/msc-thesis.pdf), describes the parser architecture I
-    designed to parse log files produced by [Postfix](https://www.postfix.org/);
+    designed to parse log files produced by [Postfix](http://www.postfix.org/);
     it also describes the program I implemented based on that architecture,
     which parses Postfix log files, extracts as much data as possible,
     normalises it, and stores it in a database for subsequent analysis; it

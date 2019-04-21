@@ -7,7 +7,7 @@ tags = ['PHP', 'programming', 'website', 'Wordpress']
 I wrote and maintain [the theme](https://github.com/tobinjt/ariane-theme) for
 [my wife's website](https://www.arianetobin.ie/).  When working on it in the
 past I've been under time pressure because the [Craft
-Fair](https://www.giftedfair.ie/) was close, so I haven't kept the code to my
+Fair](http://www.giftedfair.ie/) was close, so I haven't kept the code to my
 usual standards.  Over the past year I've been improving my processes, e.g.
 [Populating dev website from production
 website](/blog/populating_dev_website_from_production_website/), and more
