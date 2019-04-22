@@ -26,7 +26,10 @@ diff: generate
 
 diff_content: generate
 	rsync $(RSYNC_OPTS) $(DESTINATION) hosting/
-	diff -Naur hosting/ $(OUTPUT_DIR)
+	# The generator line changes every time Hugo is upgraded, so ignore
+	# changes there.
+	diff -Naur -I '.*<meta name="generator" content="Hugo .*" />' \
+		hosting/ $(OUTPUT_DIR)
 
 clean:
 	rm -rf $(OUTPUT_DIR)
