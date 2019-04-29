@@ -1,10 +1,10 @@
 +++
-date = 2018-11-05T15:07:02Z
+date = 2019-04-28T15:07:02Z
 title = "Hugo tips"
 tags = ['Hugo', 'automation', 'website']
 +++
 
-A few weeks ago I migrated my website from [Ikiwiki](https://ikiwiki.info/) with
+I migrated my website from [Ikiwiki](https://ikiwiki.info/) to
 [Hugo](https://gohugo.io/).  I had been using Ikiwiki since 2009 but a few
 things annoyed me about it:
 
@@ -31,9 +31,9 @@ tips to save other people from discovering them the hard way.
 
 The Hugo docs tell you to add a theme like so: `git submodule add
 https://github.com/luizdepra/hugo-coder themes/hugo-coder`.  Don't do it this
-way unless you're
-absolutely certain that you will never make a change to the theme; instead fork
-the theme, create a branch for your changes, and use that branch as the theme.
+way unless you're absolutely certain that you will never make a change to the
+theme; instead fork the theme, create a branch for your changes, and use that
+branch as the theme.
 
 *   Go to the theme you plan to use on Github and fork it.
 *   Check out your fork somewhere *outside* the Hugo directory.
@@ -67,10 +67,9 @@ newContentEditor = "vim"
 
 ## hugo vs rsync
 
-Hugo regenerates every output file every time you run it, and because the
-timestamps have changed `rsync` by default will update all the files on the
-remote side rather than just transferring the new or updated files unless you
-pass the right arguments:
+Hugo regenerates every output file every time you run it, and changed timestamps
+cause `rsync` to replace all the files on the remote side rather than just
+transferring the new or updated files unless you pass the right arguments:
 
 *   `--checksum`: force checksumming of every file rather than using timestamp
     and size comparison so that identical files are detected and skipped rather
@@ -111,7 +110,7 @@ filename.
 The default RSS feed that Hugo only provides contains partial content, which I
 really dislike - I want to be able to read the full content in my RSS reader
 instead of loading the page separately.  There isn't an option to control
-whether partial of full content is used, though there is a [long-standing
+whether partial or full content is used, though there is a [long-standing
 request to support it](https://github.com/gohugoio/hugo/issues/4071) and [an
 offer to implement it](https://github.com/gohugoio/hugo/issues/5002).  Currently
 the only solution is to save the [default RSS
@@ -120,6 +119,13 @@ compiled into Hugo as `your-theme/layouts/_default/rss.xml` and change
 `.Summary` to `.Content`; here is [the resulting
 file](https://github.com/tobinjt/hugo-coder/blob/my-changes/layouts/_default/rss.xml)
 if you would prefer to just copy it.
+
+## Inconsistently capitalised tags cause churn
+
+When tags are inconsistently capitalised Hugo will use a random tag, causing
+unnecessary changes in output from run to run and breaking external links.  I
+use a git pre-commit check to detect inconsistently capitalised tags and block
+the commit, see [Git pre-commits](/blog/git-pre-commits/) for more information.
 
 ## Automating common operations
 
@@ -132,5 +138,5 @@ operations that I actually use more often:
 *   Running `rsync` with `--dry-run` to see which files would be transferred and
     thus which files have been updated or newly added.
 *   Transferring the published content from my hosting to my laptop with `rsync`
-    then running `diff -aur` on the published and generated content to see
+    then running `diff -Naur` on the published and generated content to see
     detailed changes.
