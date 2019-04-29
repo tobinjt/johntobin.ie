@@ -37,8 +37,8 @@ branch as the theme.
 
 *   Go to the theme you plan to use on Github and fork it.
 *   Check out your fork somewhere *outside* the Hugo directory.
-*   Create a new branch: `git branch my-changes` and push to Github so that
-    the branch is available there.
+*   Create a new branch: `git branch my-changes` and push to Github so that the
+    branch is available there.
 *   Now add the theme in the Hugo directory: `git submodule add -b my-changes
     git@github.com:tobinjt/hugo-coder.git themes/hugo-coder`.
 
@@ -49,6 +49,11 @@ and make a pull request (like
 [mine](https://github.com/luizdepra/hugo-coder/pull/112)).  Make sure the new
 branch is based on `master` rather than `my-changes` so that it only includes
 the changes you want to push upstream!
+
+Dealing with multiple Git branches and checkouts is painful, so I wrote
+[update-hugo-coder](https://github.com/tobinjt/bin/blob/master/update-hugo-coder)
+to automate the process away.  It'll probably need a couple of more tweaks as I
+run into edge conditions but it's working pretty well already.
 
 ## Suggested config.toml changes
 
@@ -67,13 +72,15 @@ newContentEditor = "vim"
 
 ## hugo vs rsync
 
-Hugo regenerates every output file every time you run it, and changed timestamps
-cause `rsync` to replace all the files on the remote side rather than just
-transferring the new or updated files unless you pass the right arguments:
+Hugo regenerates every output file every time you run it, and the changed
+timestamps cause `rsync` to replace all the files on the remote side rather than
+just transferring the new or updated files unless you pass the right arguments:
 
 *   `--checksum`: force checksumming of every file rather than using timestamp
     and size comparison so that identical files are detected and skipped rather
-    than being transferred.
+    than being transferred.  This saves some bandwidth at the cost of CPU, but
+    more importantly if you're using `-v` the output will show the files with
+    meaningful differences rather than all files.
 *   `--no-times`: don't update timestamps on the remote side, which would
     otherwise happen because the timestamp of every file has been changed on the
     source side.  Updating the timestamps on the remote side breaks browser
@@ -124,8 +131,10 @@ if you would prefer to just copy it.
 
 When tags are inconsistently capitalised Hugo will use a random tag, causing
 unnecessary changes in output from run to run and breaking external links.  I
-use a git pre-commit check to detect inconsistently capitalised tags and block
-the commit, see [Git pre-commits](/blog/git-pre-commits/) for more information.
+use a [git pre-commit
+check](https://github.com/tobinjt/johntobin.ie/blob/master/git-pre-commit-hook)
+to detect inconsistently capitalised tags and block the commit, see [Git
+pre-commits](/blog/git-pre-commits/) for more information.
 
 ## Automating common operations
 
