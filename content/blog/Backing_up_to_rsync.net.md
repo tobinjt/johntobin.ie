@@ -4,12 +4,13 @@ title = "Backing up to rsync.net"
 tags = ['automation', 'backups', 'shell', 'SRE', 'sysadmin']
 +++
 
-I use [rsync.net](https://www.rsync.net/) for offsite backups with history.  The
-simple way to use it would be to have a single ssh key without a passphrase that
-all machines backing up use, and run rsync once for each directory being
-backed up.  I didn't take that approach because that single ssh key would give
-access to all our backups if one of our laptops was stolen; instead I figured
-out my requirements and wrote tooling wrapping rsync.
+I use [rsync.net](https://www.rsync.net/) for offsite backups with history
+(extended to 21 days of snapshots).  The simple way to use it would be to have a
+single ssh key without a passphrase that all machines backing up use, and run
+rsync once for each directory being backed up.  I didn't take that approach
+because that single ssh key would give access to all our backups if one of our
+laptops was stolen; instead I figured out my requirements and wrote tooling
+wrapping rsync.
 
 I had several requirements:
 
@@ -122,7 +123,6 @@ can be run from `cron`.
       max allowed delay: 172800/1970-01-03 00:00;
       sleeping until: 1541204831/2018-11-03 00:27
     ```
-
 
     The same ssh key is used for all sentinel uploads regardless of source
     machine or type, because a fixed hostname of `update` is used and the
