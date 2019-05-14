@@ -53,18 +53,21 @@ can be run from `cron`.
     across networks.  The backup will be placed in
     `hostname/destination-directory/` on rsync.net; there is no protection
     against hostname clashes between source machines or clashes between
-    destination directories for a single source machine.  If the per-source ssh
-    key doesn't exist instructions are printed for creating the key and adding
-    it to `authorized_keys` on rsync.net; example output is shown below (you'll
+    destination directories for a single source machine.
+*   To make setup easier, the `--make-keys-only` flag skips backing up and
+    creates any missing keys using `ssh-keygen` and prints the necessary lines
+    for `authorized_keys` on rsync.net; example output is shown below (you'll
     need to scroll right, sorry).
 
     ```
-    Missing SSH key :(
-    Create a key with:
-    $ ssh-keygen -t rsa -b 4096 -o -f /Users/johntobin/.ssh/rsync-net/johntobin-laptop_DestinationDirectory -C rsync-net_johntobin-laptop_DestinationDirectory
-    Add the key to authorized_keys:
+    Missing SSH key :( SourceDirectory
     command="rsync --server -vlogDtpre.iLsfxC --delete --partial-dir=.rsync-partial . johntobin-laptop/DestinationDirectory",no-pty,no-agent-forwarding,no-port-forwarding PUB_KEY
     ```
+
+    The exception to this is the key for updating the sentinel files tracking
+    successful backups (described [below](#tracking-successful-backups)) is not
+    created because it's shared across all machines, so it needs to be copied
+    into place manually.
 
 *   The command specified in `authorized_keys` on rsync.net sets rsync up to
     receive files rather than send files, so attackers can't retrieve files
@@ -90,7 +93,8 @@ can be run from `cron`.
         exclude Photos Library.photoslibrary
         ```
 
-*   Tracking successful backups is accomplished by using
+*   <a name="tracking-successful-backups"></a> Tracking successful backups is
+    accomplished by using
     [backup-update-rsync-net-sentinel](https://github.com/tobinjt/bin/blob/master/backup-update-rsync-net-sentinel)
     to save the current timestamp in a sentinel file in a specific directory on
     rsync.net; it's run by the per-machine backup programs if all directories
@@ -129,8 +133,10 @@ can be run from `cron`.
     destination directory is the same.  However a different ssh key must be used
     for sentinel downloads, because `authorized_keys` specifies the command to
     run including whether files are being uploaded or downloaded.  This is
-    difficult because the ssh key filename is based on the hostname and
-    destination directory, so I need to change either the hostname or directory
-    when downloading.  To do this I use a symlink on rsync.net: `update` is the
-    directory sentinels are uploaded to; `retrieve` is a symlink pointing to
-    `update` and is where sentinels are downloaded from.
+    difficult because in the code I wrote the ssh key filename is based on the
+    hostname and destination directory, so I need to change either the hostname
+    or directory when downloading.  To do this I use a symlink on rsync.net:
+    `update` is the directory sentinels are uploaded to; `retrieve` is a symlink
+    pointing to `update` and is where sentinels are downloaded from.  The code
+    generates a different key filename, and the corresponding line in
+    `authorized_keys` is set up for files to be retrieved rather than pushed.
