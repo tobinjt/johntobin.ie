@@ -1,5 +1,5 @@
 +++
-date = 2019-04-13T22:42:09+01:00
+date = 2019-05-16T21:42:09+01:00
 title = "Backing up to rsync.net"
 tags = ['automation', 'backups', 'shell', 'SRE', 'sysadmin']
 +++
@@ -11,6 +11,8 @@ rsync once for each directory being backed up.  I didn't take that approach
 because that single ssh key would give access to all our backups if one of our
 laptops was stolen; instead I figured out my requirements and wrote tooling
 wrapping rsync.
+
+## Requirements
 
 I had several requirements:
 
@@ -33,6 +35,8 @@ I had several requirements:
 1.  Easy setup because I have N*M (machine, directory) pairs to setup.
 1.  Per-directory exclusions because there will be files that don't need to be
     backed up.
+
+## Implementation of backups
 
 Most requirements are implemented in the
 [backup-to-rsync-net-lib](https://github.com/tobinjt/bin/blob/master/backup-to-rsync-net-lib)
@@ -93,6 +97,8 @@ can be run from `cron`.
         exclude Photos Library.photoslibrary
         ```
 
+## Implementation of reporting
+
 *   <a name="tracking-successful-backups"></a> Tracking successful backups is
     accomplished by using
     [backup-update-rsync-net-sentinel](https://github.com/tobinjt/bin/blob/master/backup-update-rsync-net-sentinel)
@@ -140,3 +146,43 @@ can be run from `cron`.
     pointing to `update` and is where sentinels are downloaded from.  The code
     generates a different key filename, and the corresponding line in
     `authorized_keys` is set up for files to be retrieved rather than pushed.
+
+## Setting up a new machine
+
+*   On MacOS you need to install some necessary tools:
+    `brew install coreutils lockrun rsync`.
+    *   `coreutils` provides `gtimeout`, so that stuck backups will be killed
+        eventually.
+    *   `lockrun` ensures that only one backup runs at a time.
+    *   I use `rsync` features that aren't supported by the version shipped by
+        Apple.
+*   Add a config stanza to `~/.ssh/config` for rsync-net like:
+
+```sshconfig
+Host rsync-net
+    HostName HOSTNAME.rsync.net
+    User USERNAME
+    ForwardAgent no
+    ForwardX11 no
+    ControlMaster no
+    ControlPath none
+```
+
+*   `mkdir -p ~/tmp/locks ~/.ssh/rsync-net`
+*   Copy the ssh key for updating sentinels (`~/.ssh/rsync-net/update_sentinel`)
+    from another machine.
+*   `cp backup-johntobin-laptop-to-rsync-net backup-NEW-MACHINE-to-rsync-net`,
+    edit the new file changing the hostname and the directories to backup.
+*   `./backup-NEW-MACHINE-to-rsync-net --make-keys-only`, copy the lines it
+    outputs to `authorized_keys` on rsync.net.
+*   `./backup-NEW-MACHINE-to-rsync-net`; it will fail because the destination
+    directory on rsync.net doesn't exist, so create the directory manually: `ssh
+    rsync-net mkdir -p DIRECTORY`
+*   `./backup-NEW-MACHINE-to-rsync-net`; it should work this time.
+*   Run from cron hourly:
+    *   MacOS: `@hourly /usr/local/bin/lockrun
+        --lockfile="${HOME}/tmp/locks/rsync-net" --quiet --
+        /usr/local/bin/gtimeout --kill-after=60 6h
+        "${HOME}/bin/backup-NEW-MACHINE-to-rsync-net"`
+    *   Linux : `@hourly flock "${HOME}/tmp/locks/rsync-net" timeout 6h
+        "${HOME}/bin/backup-NEW-MACHINE-to-rsync-net"`
