@@ -22,13 +22,14 @@ will not recurse on any URL that doesn't match `://DOMAIN-BEING-CHECKED/`.
 I ran linkchecker like this for a month or so, but after the initial cleanup
 where I fixed some broken links it was too noisy - there are temporary failures
 frequently enough that the signal-to-noise ratio was very low.  Some sites
-consistently fail, e.g. Wikipedia and Amazon , and consistent failures can
-easily be excluded with `--ignore-url=//en.wikipedia.org`, but most failures are
+consistently fail, e.g. Wikipedia and Amazon, and consistent failures can easily
+be excluded with `--ignore-url=//en.wikipedia.org`, but most failures are
 transient.  (Wikipedia and Amazon block the default linkchecker `User-Agent`,
-setting the `User-Agent` to match Chrome fixes them.)  linkchecker supports a
-simple output format of `failure_count URL` that is updated on each run, but the
-counters are never reset and it doesn't track *when* the failures occurred so
-the signal-to-noise ratio for alerts from that would decline over time.
+setting the `User-Agent` to match Chrome's `Usr-Agent` fixes them.)  linkchecker
+supports a simple output format of `failure_count URL` that is updated on each
+run, but the counters are never reset and it doesn't track *when* the failures
+occurred so the signal-to-noise ratio for alerts from that would decline over
+time.
 
 I decided to write a wrapper to post-process the results and only warn about
 URLs that fail multiple times in a short period.  Happily linkchecker supports
@@ -37,7 +38,7 @@ SQL output, so I can import the failures into an
 schema that linkchecker uses is fine except it doesn't have a timestamp, but
 that was easy to solve with SQLite: when creating the database I add an extra
 column defined as `timestamp DATETIME DEFAULT CURRENT_TIMESTAMP` that will
-automatically be populated when records without it are inserted.  I arbitrarily
+automatically be populated when rows without it are inserted.  I arbitrarily
 picked 3 failures in 2 days as the thresholds for warning about a URL, and the
 output looks like this:
 
