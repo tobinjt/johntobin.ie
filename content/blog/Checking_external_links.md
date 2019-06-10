@@ -39,24 +39,26 @@ schema that linkchecker uses is fine except it doesn't have a timestamp, but
 that was easy to solve with SQLite: when creating the database I add an extra
 column defined as `timestamp DATETIME DEFAULT CURRENT_TIMESTAMP` that will
 automatically be populated when rows without it are inserted.  I arbitrarily
-picked 3 failures in 2 days as the thresholds for warning about a URL, and the
-output looks like this:
+picked 3 failures in 2 days as the thresholds for warning about a URL, but I
+increased it to 12 failures in 2 days (1 failure every 4 hours) after too many
+false positives.  I only count each URL as failing once per hour, regardless of
+how many times it failed within that hour, to avoid alerting when a URL that is
+linked many times has a temporary failure.  The output looks like this:
 
 ```
-Bad URLs for https://www.johntobin.ie/ since 2019-05-31
-3 https://dev.mysql.com/doc/refman/8.0/en/mysqlcheck.html
-3 https://dev.mysql.com/doc/refman/8.0/en/mysqldump.html
-3 https://www.mysql.com
-Output in /tmp/linkchecker-cron.PZ8nr8xjfy
+Bad URLs for https://www.johntobin.ie/ since 2019-06-08
+ https://www.example.org/directory
+ https://www.example.org/directory/
+Output in /tmp/linkchecker-cron.t8EB6fzK2F
 ```
 
 To investigate further I can use an SQL query like `SELECT * FROM linksdb WHERE
-urlname LIKE '%mysqldump%';`.  The output files are also available for debugging
-when linkchecker fails, otherwise they are cleaned up.  Both the output files
-and the database contain the referring URL for failures, so it's easy to go edit
-the page and fix the link if there is a genuine failure, e.g. several links in
-my blog needed to be updated because the destinations had been moved over the
-years.
+urlname LIKE '%//www.example.org/%';`.  The output files are also available for
+debugging when linkchecker fails, otherwise they are cleaned up.  Both the
+output files and the database contain the referring URL for failures, so it's
+easy to go edit the page and fix the link if there is a genuine failure, e.g.
+several links in my blog needed to be updated because the destinations had been
+moved over the years.
 
 The wrapper program is
 [linkchecker-cron](https://github.com/tobinjt/bin/blob/master/linkchecker-cron)
