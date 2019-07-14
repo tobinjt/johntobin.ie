@@ -83,7 +83,7 @@ My solution:
 
 ---
 
-Problem 5-12: The version of FIBONACCI we have already exhibited is inefficient
+Problem 5-12: The version of Fibonacci we have already exhibited is inefficient
 beyond comparison.  Many computations are repeated.  Write a version with
 optional parameters that does not have this flaw.  Think of working forward from
 the first month rather than backward from the <em>n</em>th month.
@@ -125,9 +125,10 @@ The point of this exercise was to use optional parameters; if I was writing
 )
 ```
 
-My first inclination when writing a fibonacci function is to use
+My first inclination when writing a Fibonacci function is to use
 [Memoization](https://en.wikipedia.org/wiki/Memoization); if I was writing it in
 Perl I would use the standard module
-[Memoize](https://search.cpan.org/~mjd/Memoize-1.01/Memoize.pm), where fibonacci
-is presented as an example in the documentation.  I don't know yet how hard it
-would be to do this in LISP, but I expect that closures should be easy enough.
+[Memoize](https://metacpan.org/pod/release/MJD/Memoize-1.01/Memoize.pm), where
+Fibonacci is presented as an example in the documentation.  I don't know yet how
+hard it would be to do this in LISP, but I expect that closures should be easy
+enough.
