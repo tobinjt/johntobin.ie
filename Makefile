@@ -11,7 +11,8 @@ OUTPUT_DIR = public/
 all: server
 server:
 	hugo server $(SERVER_OPTS)
-debug_server: SERVER_OPTS += --debug --verbose
+debug_server: SERVER_OPTS += --debug --verbose --ignoreCache --path-warnings
+debug_server: SERVER_OPTS += --log --logFile debug_server.log --verboseLog
 debug_server: server
 
 generate: clean
