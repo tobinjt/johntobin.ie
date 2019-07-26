@@ -27,9 +27,12 @@ diff: generate
 
 diff_content: generate
 	rsync $(RSYNC_OPTS) $(DESTINATION) hosting/
-	# The generator line changes every time Hugo is upgraded, so ignore
-	# changes there.
-	diff -Naur -I '.*<meta name="generator" content="Hugo .*" />' \
+	# Ignore meaningless changes.
+	diff -Naur \
+		-I '.*<meta name="generator" content="Hugo .*" />' \
+		-I '.*<meta property="article:modified_time" content=.*/>' \
+		-I '.*<meta property="article:published_time" content=.*/>' \
+		-I '.*<meta property="og:updated_time" content=.*/>' \
 		hosting/ $(OUTPUT_DIR)
 
 clean:
