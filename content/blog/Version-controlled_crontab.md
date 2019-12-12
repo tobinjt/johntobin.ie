@@ -5,8 +5,8 @@ tags = ['sysadmin', 'Git', 'MacOS']
 +++
 
 For many years I've used [Version-controlled
-/etc](version-controlled_slash-etc/) on Linux to track changes.  On MacOS there
-isn't a location in `/etc` to put a `crontab`, and my user `crontab` is in
+/etc](/blog/version-controlled_slash-etc/) on Linux to track changes.  On MacOS
+there isn't a location in `/etc` to put a `crontab`, and my user `crontab` is in
 `/var/at/tabs/`, so how can I keep it version-controlled?
 
 I solved this problem by writing a wrapper program:
