@@ -49,7 +49,7 @@ needs extra permissions, but thankfully a dialog appears making it easy to grant
 the permissions:
 
 ![Extra permissions
-dialog](/static/images/restart-app-automatically-wrapper_extra-permissions-dialog.png)
+dialog](/images/restart-app-automatically-wrapper_extra-permissions-dialog.png)
 
 It's unclear what happens if you press `Deny` though - will you ever get a
 chance to approve it again?

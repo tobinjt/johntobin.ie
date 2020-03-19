@@ -11,7 +11,7 @@ the network is slightly flaky, the machine backing up goes asleep, or something
 else.  After a backup fails Time Machine will try to validate the backup volume,
 but there's a high chance that it is corrupt, and when that happens Time Machine
 will offer two crappy choices: ![Time Machine crappy
-choices](/static/images/time-machine-error.png)
+choices](/images/time-machine-error.png)
 
 Either I lose my history by starting a new backup, or I stop taking backups.
 Sad face :(  Happily there's a third option: repair the corrupted volume.  There
