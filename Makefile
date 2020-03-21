@@ -35,6 +35,9 @@ diff_content: generate
 		-I '.*<meta property="og:updated_time" content=.*/>' \
 		hosting/ $(OUTPUT_DIR)
 
+check-links:
+	check-links https://www.johntobin.ie/
+
 clean:
 	rm -rf $(OUTPUT_DIR)
 
