@@ -15,15 +15,19 @@ personal machines.
     Sync](https://www.google.com/drive/download/backup-and-sync/) to back up all
     data including photos, for offsite backups without history.
 *   My iMac uses [Time Machine](https://support.apple.com/en-ie/HT201250) to
-    back up to a locally attached hard disk, and each Mac laptop uses Time
-    Machine to back up through the iMac, giving us onsite backups with history.
-    Backups from laptops fail a lot, and so I [repair the backup volumes
-    nightly](/blog/repairing_a_time_machine_backup_volume/), but occasionally
-    they are corrupted badly enough that they cannot be repaired or Time Machine
-    just refuses to back up to them until they have been reinitialised (with the
-    resulting loss of history).  I haven't needed to restore from them for real,
-    but a test restore has worked in the past; I don't have any confidence in
-    these backups, but they're almost free so I might as well have them.
+    back up to a locally attached hard disk
+*   With Mac OS Mojave remote Time Machine backups became so unreliable that I
+    gave up on them; below is what I used to do.
+    *   Each Mac laptop uses Time Machine to back up through the iMac, giving us
+        onsite backups with history.  Backups from laptops fail a lot, and so I
+        [repair the backup volumes
+        nightly](/blog/repairing_a_time_machine_backup_volume/), but
+        occasionally they are corrupted badly enough that they cannot be
+        repaired or Time Machine just refuses to back up to them until they have
+        been reinitialised (with the resulting loss of history).  I haven't
+        needed to restore from them for real, but a test restore has worked in
+        the past; I don't have any confidence in these backups, but they're
+        almost free so I might as well have them.
 *   On my hosting, the databases used for Wordpress are [backed up
     locally](/blog/backing_up_a_wordpress_database/) every hour, and my iMac
     rsyncs those backups down every hour.  The database dumps are included in
