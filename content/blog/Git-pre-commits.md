@@ -26,7 +26,7 @@ Some useful information about git pre-commit hooks:
     code but still requires manual action every time the repository is checked
     out to create the symlink.
 
-I've used git's `pre-commit` hook in three different repositories:
+I've used git's `pre-commit` hook in four different repositories:
 
 *   Ariane's website theme uses [a very simple
     hook](https://github.com/tobinjt/ariane-theme/blob/master/git-pre-commit-hook)
@@ -51,3 +51,6 @@ I've used git's `pre-commit` hook in three different repositories:
         causing unnecessary changes in output from run to run and breaking
         external links.  Inconsistently capitalised tags are detected and block
         the commit.
+*   For my [bin](https://github.com/tobinjt/bin) repository I wrote a
+    [hook](https://github.com/tobinjt/bin/blob/master/bin-git-precommit-hook)
+    that runs tests and checks lint.
