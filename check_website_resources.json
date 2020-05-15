@@ -4,5 +4,17 @@
     "resources": [
       "https://www.johntobin.ie/css/coder.min.a4f332213a21ce8eb521670c614470c58923aaaf385e2a73982c31dd7642decb.css"
     ]
+  },
+  {
+    "url": "https://www.johntobin.ie/blog/",
+    "resources": [
+      "https://www.johntobin.ie/css/coder.min.a4f332213a21ce8eb521670c614470c58923aaaf385e2a73982c31dd7642decb.css"
+    ]
+  },
+  {
+    "url": "https://www.johntobin.ie/blog/version-controlled_crontab/",
+    "resources": [
+      "https://www.johntobin.ie/css/coder.min.a4f332213a21ce8eb521670c614470c58923aaaf385e2a73982c31dd7642decb.css"
+    ]
   }
 ]
