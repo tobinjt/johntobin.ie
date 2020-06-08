@@ -8,7 +8,7 @@ Normally I do Python development in work, where everything is already set up for
 easy development and testing.  Recently I did some Python development at home,
 so I had to figure out how to do it, and here's what I came up with.
 
-Note: I'm using `pip` to install packages because I'm running on Mac OS, but if
+Note: I'm using `pip3` to install packages because I'm running on Mac OS, but if
 you're running on Linux I'd recommend using packages provided by your
 distribution.
 
@@ -19,7 +19,7 @@ I use [pytest](https://docs.pytest.org/) for running tests and
 can figure out which parts of my code still need to be tested.
 
 ```shell
-$ pip install pytest pytest-cov
+pip3 install pytest pytest-cov
 ```
 
 To run your tests simply run `pytest` in the directory containing the tests.
@@ -31,7 +31,7 @@ tests, with contents like
 <https://github.com/tobinjt/bin/blob/master/python/pytest.ini>.  Every time you
 run successfully run tests coverage will be generated.
 
-I found that test coverage needed quite a bit of configuration; create
+I found that test coverage needed quite a bit of configuration: create
 `.coveragerc` in the directory containing your tests, with contents like
 <https://github.com/tobinjt/bin/blob/master/python/.coveragerc>.  In particular,
 you can configure testing to fail if there is insufficient coverage, something I
@@ -39,13 +39,14 @@ highly recommend.
 
 ### Integration tests.
 
-Unit tests are useful, but I'm a much bigger fan of integration tests, where
-instead of testing individual functions you test large swathes of code at a
-time.  I take the approach of picking a piece of functionality that should be
-supported, then writing a test to exercise that functionality.
+I'm a fan of integration tests, where instead of testing individual functions
+you test large swathes of code at a time.  I take the approach of picking a
+piece of functionality that should be supported, then writing a test to exercise
+that functionality end to end.
+
 <https://github.com/tobinjt/bin/blob/master/python/linkdirs_test.py#L38> is a
-good example of this: I test progressively more complex use cases and scenarios,
-by:
+good example of this, where I test progressively more complex use cases and
+scenarios by:
 
 1. Populating a fake filesystem (`pyfakefs` is great for this) with the scenario
    to deal with.
@@ -59,13 +60,12 @@ This was particularly reassuring when I added deletion to `linkdirs.py` :)
 I use [pylint](https://www.pylint.org/) for linting.
 
 ```shell
-$ pip install pylint
+pip3 install pylint
+pylint *.py
 ```
 
 To configure `pylint`, create `$HOME/.pylintrc` with contents like
 <https://github.com/tobinjt/dotfiles/blob/master/.pylintrc>.
-
-To check files run `pylint *.py`.
 
 ## Type checking
 
@@ -75,39 +75,58 @@ particularly when I use type aliases to give meaningful names to parameter
 types.
 
 ```shell
-$ pip install mypy
+pip3 install mypy
+mypy *.py
 ```
 
 To configure `mypy`, create `$HOME/.pylintrc` with contents like
 <https://github.com/tobinjt/dotfiles/blob/master/.mypy.ini>.
 
-To check files run `mypy *.py`.
+### Debugging
+
+I've started using [pudb](https://documen.tician.de/pudb/index.html) for
+debugging because it presents so much more information at once.  I recently
+debugged a failing test where displaying all the local variables made the
+problem obvious, but without that display (e.g. using `pdb` or printing debug
+information on each run) it would have been far slower.
 
 ## Misc
 
 ### Stop generating `.pyc` files
 
 By default, Python will write compiled bytecode for `foo.py` to `foo.pyc`, which
-I found annoying.  Disable that by setting the environment variable
-`PYTHONDONTWRITEBYTECODE`, e.g.:
+I found annoying because it clutters up your source directory.  I disable that
+by setting the environment variable `PYTHONDONTWRITEBYTECODE`, e.g.:
 
 ```shell
-$ export PYTHONDONTWRITEBYTECODE="No .pyc files please"
+export PYTHONDONTWRITEBYTECODE="No .pyc files please"
 ```
 
-### Upgrading packages installed with `pip` is troublesome
+Note that you'll probably want to unset this when installing Python modules; I
+use this wrapper function:
 
-`pip` doesn't track manually installed packages vs auto-installed packages, and
+```shell
+pip3() {
+  (unset PYTHONDONTWRITEBYTECODE; command pip3 "$@")
+}
+```
+
+### Upgrading packages installed with `pip3` is troublesome
+
+`pip3` doesn't track manually installed packages vs auto-installed packages, and
 doesn't have a way to upgrade all packages.  Upgrading all packages can be done
 with a shell one-liner, except that it doesn't take dependencies into account,
 so you might upgrade a dependency to a version that breaks a package you care
 about :(
 
-The only way I've found to upgrade packages with `pip` is to keep track of the
-ones you've installed, then upgrade them with `pip install --upgrade pkg1 pkg2
+The only way I've found to upgrade packages with `pip3` is to keep track of the
+ones you've installed, then upgrade them with `pip3 install --upgrade pkg1 pkg2
 ...`.  Keeping track of which packages I need also lets me use the *nuke it from
 orbit* approach: remove the `site-packages` directory, reinstall Python, and
-reinstall the packages I need.  Thankfully I don't need to do this often.
+reinstall the packages I need.  I do this once a month because frequent updates
+make it far easier to figure out breakages, so I've written
+<https://github.com/tobinjt/bin/blob/master/update-python-modules> to make it a
+single command.
 
 ### Vim configuration
 
