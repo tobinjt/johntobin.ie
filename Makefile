@@ -20,6 +20,7 @@ generate: clean
 push: generate
 	git push
 	rsync $(RSYNC_OPTS) $(OUTPUT_DIR) $(DESTINATION)
+	check_website_resources check_website_resources.json
 	git check-local-copy-is-clean
 diff: RSYNC_OPTS += --dry-run
 diff: generate
