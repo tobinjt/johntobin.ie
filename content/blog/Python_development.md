@@ -68,6 +68,166 @@ scenarios by:
 
 This was particularly reassuring when I added deletion to `linkdirs.py` :)
 
+### Automatically running tests
+
+I like having tests run every time I save the source or test file because it
+saves me from doing it manually.  This is quite easy to do with
+[fswatch](https://github.com/emcrisostomo/fswatch):
+
+```shell
+ipytest () {
+  if [[ "$#" -eq 0 ]]; then
+    echo "ipytest: expecting at least one filename." >&2
+    return 1
+  fi
+  fswatch -o "$@" | xargs -n2 -I{} pytest "$@"
+}
+
+# Run 'pytest foo.py foo_test.py' whenever either file changes.
+ipytest foo.py foo_test.py
+```
+
+### Mutation testing
+
+Mutation testing is where minor changes are made to source code (e.g.
+initialising a variable to `True` instead of `False`) and then the tests are run
+with the changed source.  If the tests still pass despite the change it *might*
+indicate a gap in testing, or it might indicate that the default value is simply
+a placeholder that is always overwritten, or the change might not be meaningful
+(e.g. `.rstrip('\n')` changing to `.rstrip('XX\nXX')`), or other reasons.  There
+isn't a one-size-fits-all approach that you can take to addressing mutations
+that don't cause test failures - sometimes you will add tests, sometimes you
+will change the source, and sometimes you will mark the line so it's not mutated
+in future.
+
+I use [mutmut](https://mutmut.readthedocs.io/en/latest/) for mutation testing.
+I have [made some changes to my
+code](https://github.com/tobinjt/bin/tree/master/python) in response to `mutmut`
+warnings, and thus far I think the most significant change was to add tests for
+the output from `--help` to ensure that I don't accidentally make it confusing
+(e.g. changing the description so it no longer matches the options).
+
+The first run of `mutmut` for any file will be slow, but for subsequent runs
+`mutmut` will only check mutations that previously failed, so it speeds up as
+you make fixes.  Sadly there have been a couple of occasions where it stayed
+reporting problems despite me fixing them, and the only way to mitigate that
+situation was `rm .mutmut-cache` and rerun from scratch :(  `mutmut` runs your
+tests once without mutations to get a timing baseline so it can detect mutations
+that cause tests to run for too long, but this means that you cannot switch to
+doing anything else while testing mutations, because if the extra system load
+from doing something else slows down the testing enough you will have false
+positives.
+
+I found running `mutmut` was awkward - it doesn't understand that tests for
+`foo.py` are in `foo_test.py`, so I wrote a [wrapper for mutmut
+run](https://github.com/tobinjt/bin/blob/master/mutmut_run) that passes the
+correct arguments and fixes permissions afterwards (because `mutmut` replaces
+the source files it operates on).
+
+Use `mutmut` like this:
+
+1.  Run mutation testing:
+
+    ```text
+    $ mutmut_run colx.py
+
+    - Mutation testing starting -
+
+    These are the steps:
+    1. A full test suite run will be made to make sure we
+       can run the tests successfully and we know how long
+       it takes (to detect infinite loops for example)
+    2. Mutants will be generated and checked
+
+    Results are stored in .mutmut-cache.
+    Print found mutants with `mutmut results`.
+
+    Legend for output:
+    🎉 Killed mutants.   The goal is for everything to end up in this bucket.
+    ⏰ Timeout.          Test suite took 10 times as long as the baseline so were killed.
+    🤔 Suspicious.       Tests took a long time, but not long enough to be fatal.
+    🙁 Survived.         This means your tests needs to be expanded.
+    🔇 Skipped.          Skipped.
+
+    1. Using cached time for baseline tests, to run baseline again delete the cache file
+
+    2. Checking mutants
+    ⠋ 88/88  🎉 62  ⏰ 1  🤔 0  🙁 25  🔇 0
+
+    real    4m38.098s
+    user    4m17.888s
+    sys     0m17.081s
+    ```
+
+1.  Show results:
+
+    ```text
+    $ mutmut show colx.py
+
+    To apply a mutant on disk:
+        mutmut apply <id>
+
+    To show a mutant:
+        mutmut show <id>
+
+
+    Timed out ⏰ (1)
+
+    ---- colx.py (1) ----
+
+    # mutant 229
+    --- colx.py
+    +++ colx.py
+    @@ -121,7 +121,7 @@
+         # Strip leading and trailing empty fields.
+         first_index = 0
+         while len(split_columns) > first_index and not split_columns[first_index]:
+    -      first_index += 1
+    +      first_index = 1
+         last_index = len(split_columns) - 1
+         while last_index > first_index and not split_columns[last_index]:
+           last_index -= 1
+
+
+    Survived 🙁 (25)
+
+    ---- colx.py (25) ----
+
+    # mutant 161
+    --- colx.py
+    +++ colx.py
+    @@ -39,7 +39,7 @@
+       Returns:
+         argparse.Namespace, with attributes set based on the arguments.
+       """
+    -  description = '\n'.join(__doc__.split('\n')[1:])
+    +  description = 'XX\nXX'.join(__doc__.split('\n')[1:])
+       usage = __doc__.split('\n')[0]
+
+       argv_parser = argparse.ArgumentParser(
+    ```
+
+1.  Investigate and fix some of the reported mutants.
+
+    *   False positives (e.g. changing a constant used consistently throughout
+        the codebase) can be disabled with `# pragma: no mutate`.
+    *   Tests can be added or expanded, e.g. changing regexes to be anchored, or
+        adding edge cases so that boundary conditions are tested more tightly.
+    *   Source changes may be appropriate, but I haven't encountered any good
+        examples yet.
+
+1.  `GOTO 1`.
+
+I've found I can fix a lot of the mutations pretty quickly, then my progress
+slows down as I pick off more and more of the low hanging fruit.  My aim is to
+reach 0 mutations that pass tests, and sometimes the pragmatic way to deal with
+the last few is to just disable them.  I aim for 0 so that future runs give me a
+better signal, and I'm not left wondering *"is that something I decided to
+ignore in the past?"* because I know I didn't decide to ignore anything.  I've
+also found that I'm getting faster with each subsequent file, because I'm
+learning patterns and I can reuse tests and fixes from earlier files, which
+encourages me to continue.
+
 ## Linting
 
 I use [pylint](https://www.pylint.org/) for linting.  I have [configured
