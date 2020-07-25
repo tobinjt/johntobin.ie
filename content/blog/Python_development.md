@@ -16,7 +16,7 @@ you're running on Linux I'd recommend using packages provided by your
 distribution.
 
 ```shell
-pip3 install lxml mock mutmut mypy pudb pyfakefs pylint pytest pytest-cov
+pip3 install lxml mutmut mypy pudb pyfakefs pylint pytest pytest-cov
 ```
 
 See [Upgrading packages installed with pip3 is troublesome]({{< relref
@@ -37,8 +37,8 @@ pytest
 
 ### Test coverage
 
-To enable test coverage, create `pytest.ini` in the directory containing your
-tests, with contents like
+To enable test coverage with `pytest`, create `pytest.ini` in the directory
+containing your tests, with contents like
 <https://github.com/tobinjt/bin/blob/master/python/pytest.ini>.  Every time your
 tests are run successfully coverage will be generated and a message will be
 printed showing the coverage percentage.
@@ -48,7 +48,8 @@ I found that test coverage needed quite a bit of configuration through the file
 <https://github.com/tobinjt/bin/blob/master/python/.coveragerc>.  I highly
 recommend configuring testing to fail if there is insufficient coverage.  You
 can also configure a HTML output directory so that you can easily see which
-lines of code you haven't tested.
+lines of code you haven't tested; configuring a portable output directory might
+be difficult, I haven't needed to do so yet.
 
 ### Integration tests.
 
@@ -122,7 +123,7 @@ I found running `mutmut` was awkward - it doesn't understand that tests for
 `foo.py` are in `foo_test.py`, so I wrote a [wrapper for mutmut
 run](https://github.com/tobinjt/bin/blob/master/mutmut_run) that passes the
 correct arguments and fixes permissions afterwards (because `mutmut` replaces
-the source files it operates on).
+the source files it operates on and doesn't set permissions correctly).
 
 Use `mutmut` like this:
 
@@ -218,15 +219,15 @@ Use `mutmut` like this:
 
 1.  `GOTO 1`.
 
-I've found I can fix a lot of the mutations pretty quickly, then my progress
-slows down as I pick off more and more of the low hanging fruit.  My aim is to
-reach 0 mutations that pass tests, and sometimes the pragmatic way to deal with
-the last few is to just disable them.  I aim for 0 so that future runs give me a
-better signal, and I'm not left wondering *"is that something I decided to
-ignore in the past?"* because I know I didn't decide to ignore anything.  I've
-also found that I'm getting faster with each subsequent file, because I'm
-learning patterns and I can reuse tests and fixes from earlier files, which
-encourages me to continue.
+I've found that I can fix a lot of the mutations pretty quickly, then my
+progress slows down as I pick off more and more of the low hanging fruit.  My
+aim is to reach 0 mutations that pass tests, and sometimes the pragmatic way to
+deal with the last few is to just disable them.  I aim for 0 so that future runs
+give me a better signal, and I'm not left wondering *"is that something I
+decided to ignore in the past?"* because I know I didn't decide to ignore
+anything.  I've also found that I'm getting faster with each subsequent file,
+because I'm learning patterns and I can reuse tests and fixes from earlier
+files, which encourages me to continue.
 
 ## Linting
 
@@ -243,9 +244,9 @@ pylint *.py
 
 ## Type checking
 
-I use [`mypy`](https://mypy.readthedocs.io/en/latest/index.html) for checking
-type annotations, which gives me more confidence that I'm passing the right type
-of data to functions, and helps document my code - particularly when I use type
+I use [mypy](https://mypy.readthedocs.io/en/latest/index.html) for checking
+type annotations, which gives me more confidence that I'm passing the right
+types to functions, and helps document my code - particularly when I use type
 aliases to give meaningful names to parameter types.  I have [configured
 Syntastic and Vim]({{< relref "#vim-configuration" >}}) to run `mypy`
 automatically on saving.
@@ -295,10 +296,10 @@ pip3() {
 ## Upgrading packages installed with `pip3` is troublesome
 
 `pip3` doesn't track manually installed packages vs auto-installed packages, and
-doesn't have a way to upgrade all packages.  Upgrading all packages *can* be
-done with a shell one-liner, except that it doesn't take dependencies into
-account, so you might upgrade a dependency to a version that breaks a package
-you care about :(
+doesn't have a way to upgrade all packages.  Upgrading all packages (manually
+installed and auto-installed) *can* be done with a shell one-liner, except that
+it doesn't take dependencies into account, so you might upgrade a dependency to
+a version that breaks a package you manually installed :(
 
 If you keep track of the packages you've installed, you can upgrade them with
 `pip3 install --upgrade pkg1 pkg2 ...`.  Keeping track of which packages I need
@@ -326,3 +327,7 @@ I don't have much configuration for Python:
     ```vim
     let g:syntastic_python_checkers = ['python', 'mypy', 'pylint']
     ```
+
+    I chose the order `python`, `mypy`, `pylint` to fail fast and surface errors
+    from most severe to least severe - syntax errors will be caught by `python`,
+    type errors by `mypy`, and lint errors by `pylint`.
