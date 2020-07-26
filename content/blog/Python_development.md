@@ -119,13 +119,20 @@ doing anything else while testing mutations, because if the extra system load
 from doing something else slows down the testing enough you will have false
 positives.
 
+Beware: `mutmut` only runs your tests with unmodified source the *first* time
+you run it.  If you break your tests while addressing `mutmut` warnings, on the
+next run it will make all the mutations, run the tests, and declare that you
+have no problems to fix because the tests fail - but not because of the
+mutations :(
+
 I found running `mutmut` was awkward - it doesn't understand that tests for
 `foo.py` are in `foo_test.py`, so I wrote a [wrapper for mutmut
-run](https://github.com/tobinjt/bin/blob/master/mutmut_run) that passes the
-correct arguments and fixes permissions afterwards (because `mutmut` replaces
-the source files it operates on and doesn't set permissions correctly).
+run](https://github.com/tobinjt/bin/blob/master/mutmut_run) that first runs
+tests with unmodified sources, then runs `mutmut` with the correct arguments,
+and fixes permissions afterwards (because `mutmut` replaces the source files it
+operates on and doesn't set permissions correctly).
 
-Use `mutmut` like this:
+I use `mutmut` like this:
 
 1.  Run mutation testing:
 
