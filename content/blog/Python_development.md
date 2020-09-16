@@ -16,7 +16,7 @@ you're running on Linux I'd recommend using packages provided by your
 distribution.
 
 ```shell
-pip3 install lxml mutmut mypy pudb pyfakefs pylint pytest pytest-cov
+pip3 install lxml mutmut mypy pudb pyfakefs pylint pytest pytest-cov yapf
 ```
 
 See [Upgrading packages installed with pip3 is troublesome]({{< relref
@@ -248,6 +248,21 @@ pylint *.py
 
 <https://github.com/tobinjt/dotfiles/blob/master/.pylintrc> is my
 `$HOME/.pylintrc`.
+
+## Automatic formatting
+
+I use [yapf](https://github.com/google/yapf) for autoformatting my code.  I run
+this manually but will probably make it automatic the next time I write some
+Python.  I tried [pyformat](https://pypi.org/project/pyformat/) but there
+doesn't appear to be a way to set indentation to 2 spaces so I gave up on it.
+
+```shell
+yapf -i *.py
+```
+
+<https://github.com/tobinjt/dotfiles/blob/master/.config/yapf/style> is my
+`$HOME/.config/yapf/style`.  You can run `yapf --style-help` to generate a
+config with all settings documented and set to their current setting.
 
 ## Type checking
 
