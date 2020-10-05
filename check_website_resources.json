@@ -3,18 +3,27 @@
     "url": "https://www.johntobin.ie/",
     "resources": [
       "https://www.johntobin.ie/css/coder.min.fce3d3684e836ce340cdd591dad1749c310472d5ed4049fab99845c9aec4d4bf.css"
+    ],
+    "optional_resources": [
+      "https://www.johntobin.ie/js/dark-mode.min.0213e1773e6d1c5a644f847c67a6f8abac49a3776e2976f6008038af8c5b76a1.js"
     ]
   },
   {
     "url": "https://www.johntobin.ie/blog/",
     "resources": [
       "https://www.johntobin.ie/css/coder.min.fce3d3684e836ce340cdd591dad1749c310472d5ed4049fab99845c9aec4d4bf.css"
+    ],
+    "optional_resources": [
+      "https://www.johntobin.ie/js/dark-mode.min.0213e1773e6d1c5a644f847c67a6f8abac49a3776e2976f6008038af8c5b76a1.js"
     ]
   },
   {
     "url": "https://www.johntobin.ie/blog/version-controlled_crontab/",
     "resources": [
       "https://www.johntobin.ie/css/coder.min.fce3d3684e836ce340cdd591dad1749c310472d5ed4049fab99845c9aec4d4bf.css"
+    ],
+    "optional_resources": [
+      "https://www.johntobin.ie/js/dark-mode.min.0213e1773e6d1c5a644f847c67a6f8abac49a3776e2976f6008038af8c5b76a1.js"
     ]
   }
 ]
