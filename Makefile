@@ -31,6 +31,9 @@ diff_content: generate
 	rsync $(RSYNC_OPTS) $(DESTINATION) hosting/
 	# Ignore meaningless changes.
 	diff -Naur \
+		--ignore-tab-expansion \
+		--ignore-space-change \
+		--ignore-blank-lines \
 		-I '.*<meta name="generator" content="Hugo .*" />' \
 		-I '.*<meta property="article:modified_time" content=.*/>' \
 		-I '.*<meta property="article:published_time" content=.*/>' \
