@@ -33,10 +33,12 @@ I've used git's `pre-commit` hook in four different repositories:
     that runs `phpunit --no-coverage` to check that all the tests pass.  I don't
     generate coverage information because that requires installing [PHP
     Xdebug](https://xdebug.org/) which is fine on my laptop but not in the
-    production web server, where I sometimes make changes.
-*   For my Project Euler repository, I wrote a
-    [hook](https://github.com/tobinjt/project-euler/blob/master/git-pre-commit-hook)
-    that performs several checks:
+    production web server, where I sometimes make changes.  More recently I've
+    had to disable tests entirely on the production web server because PHPUnit
+    has made backwards incompatible changes between versions so I can't run the
+    same set of tests on the old and new versions.
+*   For my Project Euler repository (which is private, so I'm not linking to
+    it), I wrote a hook that performs several checks:
     *   Are all the test functions named correctly?  It's easy to write test
         functions that are never executed because they are named incorrectly.
     *   Check for badly formatted files; very unlikely to happen because files
