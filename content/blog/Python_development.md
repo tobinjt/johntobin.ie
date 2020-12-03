@@ -11,9 +11,7 @@ document it for myself and others :)
 
 ## Install all the packages
 
-Note: I'm using `pip3` to install packages because I'm running on Mac OS, but if
-you're running on Linux I'd recommend using packages provided by your
-distribution.
+### Mac OS
 
 ```shell
 pip3 install lxml mutmut mypy pudb pyfakefs pylint pytest pytest-cov yapf
@@ -22,6 +20,17 @@ pip3 install lxml mutmut mypy pudb pyfakefs pylint pytest pytest-cov yapf
 See [Upgrading packages installed with pip3 is troublesome]({{< relref
 "#upgrading-packages-installed-with-pip3-is-troublesome" >}}) for
 how I upgrade packages.
+
+### Linux
+
+These package names are correct for Debian.
+
+```shell
+sudo apt install pylint3 python3-coverage python3-mypy python3-pudb \
+  python3-pyfakefs python3-pytest yapf3
+```
+
+`mutmut` isn't packaged for Debian, so you might want to install it with Pip.
 
 ## Testing
 
