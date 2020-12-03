@@ -26,8 +26,8 @@ how I upgrade packages.
 These package names are correct for Debian.
 
 ```shell
-sudo apt install pylint3 python3-coverage python3-mypy python3-pudb \
-  python3-pyfakefs python3-pytest yapf3
+sudo apt install pylint3 python3-mypy python3-pudb python3-pyfakefs \
+  python3-pytest python3-pytest-cov yapf3
 ```
 
 `mutmut` isn't packaged for Debian, so you might want to install it with Pip.
