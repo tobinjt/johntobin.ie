@@ -2,7 +2,13 @@
   {
     "url": "https://www.johntobin.ie/",
     "resources": [
-      "https://www.johntobin.ie/css/coder.min.f01c647a0d25b40da992a37c3376291185eed8a50ced8c26cc2c0bcfe38c97df.css"
+      "https://www.johntobin.ie/fonts/forkawesome-webfont.eot?",
+      "https://www.johntobin.ie/fonts/forkawesome-webfont.eot?v=1.1.7",
+      "https://www.johntobin.ie/fonts/forkawesome-webfont.svg?v=1.1.7",
+      "https://www.johntobin.ie/fonts/forkawesome-webfont.ttf?v=1.1.7",
+      "https://www.johntobin.ie/fonts/forkawesome-webfont.woff2?v=1.1.7",
+      "https://www.johntobin.ie/fonts/forkawesome-webfont.woff?v=1.1.7",
+      "https://www.johntobin.ie/css/coder.min.6d489c9de70b01718344ed2ac642db21c4bb3c62941cb95963c2b67c66c07fdc.css"
     ],
     "optional_resources": [
       "https://www.johntobin.ie/js/dark-mode.min.0213e1773e6d1c5a644f847c67a6f8abac49a3776e2976f6008038af8c5b76a1.js"
@@ -11,7 +17,13 @@
   {
     "url": "https://www.johntobin.ie/blog/",
     "resources": [
-      "https://www.johntobin.ie/css/coder.min.f01c647a0d25b40da992a37c3376291185eed8a50ced8c26cc2c0bcfe38c97df.css"
+      "https://www.johntobin.ie/fonts/forkawesome-webfont.eot?",
+      "https://www.johntobin.ie/fonts/forkawesome-webfont.eot?v=1.1.7",
+      "https://www.johntobin.ie/fonts/forkawesome-webfont.svg?v=1.1.7",
+      "https://www.johntobin.ie/fonts/forkawesome-webfont.ttf?v=1.1.7",
+      "https://www.johntobin.ie/fonts/forkawesome-webfont.woff2?v=1.1.7",
+      "https://www.johntobin.ie/fonts/forkawesome-webfont.woff?v=1.1.7",
+      "https://www.johntobin.ie/css/coder.min.6d489c9de70b01718344ed2ac642db21c4bb3c62941cb95963c2b67c66c07fdc.css"
     ],
     "optional_resources": [
       "https://www.johntobin.ie/js/dark-mode.min.0213e1773e6d1c5a644f847c67a6f8abac49a3776e2976f6008038af8c5b76a1.js"
@@ -20,7 +32,13 @@
   {
     "url": "https://www.johntobin.ie/blog/version-controlled_crontab/",
     "resources": [
-      "https://www.johntobin.ie/css/coder.min.f01c647a0d25b40da992a37c3376291185eed8a50ced8c26cc2c0bcfe38c97df.css"
+      "https://www.johntobin.ie/fonts/forkawesome-webfont.eot?",
+      "https://www.johntobin.ie/fonts/forkawesome-webfont.eot?v=1.1.7",
+      "https://www.johntobin.ie/fonts/forkawesome-webfont.svg?v=1.1.7",
+      "https://www.johntobin.ie/fonts/forkawesome-webfont.ttf?v=1.1.7",
+      "https://www.johntobin.ie/fonts/forkawesome-webfont.woff2?v=1.1.7",
+      "https://www.johntobin.ie/fonts/forkawesome-webfont.woff?v=1.1.7",
+      "https://www.johntobin.ie/css/coder.min.6d489c9de70b01718344ed2ac642db21c4bb3c62941cb95963c2b67c66c07fdc.css"
     ],
     "optional_resources": [
       "https://www.johntobin.ie/js/dark-mode.min.0213e1773e6d1c5a644f847c67a6f8abac49a3776e2976f6008038af8c5b76a1.js"
