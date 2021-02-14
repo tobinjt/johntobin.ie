@@ -60,12 +60,15 @@ can be run from `cron`.
     destination directories for a single source machine.
 *   To make setup easier, the `--make-keys-only` flag skips backing up and
     creates any missing keys using `ssh-keygen` and prints the necessary lines
-    for `authorized_keys` on rsync.net; example output is shown below (you'll
-    need to scroll right, sorry).
+    for `authorized_keys` on rsync.net; example output is shown below (note that
+    it's wrapped here so you can easily read it).
 
     ```
     Missing SSH key :( SourceDirectory
-    command="rsync --server -vlogDtpre.iLsfxC --delete --partial-dir=.rsync-partial . johntobin-laptop/DestinationDirectory",no-pty,no-agent-forwarding,no-port-forwarding PUB_KEY
+    command="rsync --server -vlogDtpre.iLsfxC \
+      --delete --partial-dir=.rsync-partial \
+      . johntobin-laptop/DestinationDirectory",\
+      no-pty,no-agent-forwarding,no-port-forwarding PUB_KEY
     ```
 
     The exception to this is the key for updating the sentinel files tracking
@@ -179,10 +182,17 @@ Host rsync-net
     directory on rsync.net doesn't exist, so create the directory manually: `ssh
     rsync-net mkdir -p DIRECTORY`
 *   `./backup-NEW-MACHINE-to-rsync-net`; it should work this time.
-*   Run from cron hourly:
-    *   MacOS: `@hourly /usr/local/bin/lockrun
-        --lockfile="${HOME}/tmp/locks/rsync-net" --quiet --
-        /usr/local/bin/gtimeout --kill-after=60 6h
-        "${HOME}/bin/backup-NEW-MACHINE-to-rsync-net"`
-    *   Linux : `@hourly flock "${HOME}/tmp/locks/rsync-net" timeout 6h
-        "${HOME}/bin/backup-NEW-MACHINE-to-rsync-net"`
+*   Run from cron hourly (wrapped for easier reading):
+    *   MacOS:
+        ```
+        @hourly /usr/local/bin/lockrun --quiet \
+          --lockfile="${HOME}/tmp/locks/rsync-net" -- \
+            /usr/local/bin/gtimeout --kill-after=60 6h \
+              "${HOME}/bin/backup-NEW-MACHINE-to-rsync-net"`
+        ```
+    *   Linux:
+        ```
+        @hourly flock "${HOME}/tmp/locks/rsync-net" \
+          timeout 6h \
+            "${HOME}/bin/backup-NEW-MACHINE-to-rsync-net"
+        ```
