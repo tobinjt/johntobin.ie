@@ -1,47 +1,44 @@
 [
   {
     "url": "https://www.johntobin.ie/",
-    "resources": [
-      "https://www.johntobin.ie/fonts/forkawesome-webfont.eot?",
-      "https://www.johntobin.ie/fonts/forkawesome-webfont.eot?v=1.1.7",
-      "https://www.johntobin.ie/fonts/forkawesome-webfont.svg?v=1.1.7",
-      "https://www.johntobin.ie/fonts/forkawesome-webfont.ttf?v=1.1.7",
-      "https://www.johntobin.ie/fonts/forkawesome-webfont.woff2?v=1.1.7",
-      "https://www.johntobin.ie/fonts/forkawesome-webfont.woff?v=1.1.7",
-      "https://www.johntobin.ie/css/coder.min.abe8b6775d85a01169c10329309df501aa8a008ab354002f7858f077cae76020.css"
+    "optional_resource_regexes": [
+      "https://www.johntobin.ie/css/coder.min.[a-z0-9]{64}.css",
+      "https://www.johntobin.ie/fonts/forkawesome-webfont.eot.*",
+      "https://www.johntobin.ie/fonts/forkawesome-webfont.eot.*",
+      "https://www.johntobin.ie/fonts/forkawesome-webfont.svg.*",
+      "https://www.johntobin.ie/fonts/forkawesome-webfont.ttf.*",
+      "https://www.johntobin.ie/fonts/forkawesome-webfont.woff.*",
+      "https://www.johntobin.ie/fonts/forkawesome-webfont.woff2.*",
+      "https://www.johntobin.ie/js/dark-mode.min.[a-z0-9]{64}.js"
     ],
-    "optional_resources": [
-      "https://www.johntobin.ie/js/dark-mode.min.0213e1773e6d1c5a644f847c67a6f8abac49a3776e2976f6008038af8c5b76a1.js"
-    ]
+    "resources": []
   },
   {
     "url": "https://www.johntobin.ie/blog/",
-    "resources": [
-      "https://www.johntobin.ie/fonts/forkawesome-webfont.eot?",
-      "https://www.johntobin.ie/fonts/forkawesome-webfont.eot?v=1.1.7",
-      "https://www.johntobin.ie/fonts/forkawesome-webfont.svg?v=1.1.7",
-      "https://www.johntobin.ie/fonts/forkawesome-webfont.ttf?v=1.1.7",
-      "https://www.johntobin.ie/fonts/forkawesome-webfont.woff2?v=1.1.7",
-      "https://www.johntobin.ie/fonts/forkawesome-webfont.woff?v=1.1.7",
-      "https://www.johntobin.ie/css/coder.min.abe8b6775d85a01169c10329309df501aa8a008ab354002f7858f077cae76020.css"
+    "optional_resource_regexes": [
+      "https://www.johntobin.ie/css/coder.min.[a-z0-9]{64}.css",
+      "https://www.johntobin.ie/fonts/forkawesome-webfont.eot.*",
+      "https://www.johntobin.ie/fonts/forkawesome-webfont.eot.*",
+      "https://www.johntobin.ie/fonts/forkawesome-webfont.svg.*",
+      "https://www.johntobin.ie/fonts/forkawesome-webfont.ttf.*",
+      "https://www.johntobin.ie/fonts/forkawesome-webfont.woff.*",
+      "https://www.johntobin.ie/fonts/forkawesome-webfont.woff2.*",
+      "https://www.johntobin.ie/js/dark-mode.min.[a-z0-9]{64}.js"
     ],
-    "optional_resources": [
-      "https://www.johntobin.ie/js/dark-mode.min.0213e1773e6d1c5a644f847c67a6f8abac49a3776e2976f6008038af8c5b76a1.js"
-    ]
+    "resources": []
   },
   {
     "url": "https://www.johntobin.ie/blog/version-controlled_crontab/",
-    "resources": [
-      "https://www.johntobin.ie/fonts/forkawesome-webfont.eot?",
-      "https://www.johntobin.ie/fonts/forkawesome-webfont.eot?v=1.1.7",
-      "https://www.johntobin.ie/fonts/forkawesome-webfont.svg?v=1.1.7",
-      "https://www.johntobin.ie/fonts/forkawesome-webfont.ttf?v=1.1.7",
-      "https://www.johntobin.ie/fonts/forkawesome-webfont.woff2?v=1.1.7",
-      "https://www.johntobin.ie/fonts/forkawesome-webfont.woff?v=1.1.7",
-      "https://www.johntobin.ie/css/coder.min.abe8b6775d85a01169c10329309df501aa8a008ab354002f7858f077cae76020.css"
+    "optional_resource_regexes": [
+      "https://www.johntobin.ie/css/coder.min.[a-z0-9]{64}.css",
+      "https://www.johntobin.ie/fonts/forkawesome-webfont.eot.*",
+      "https://www.johntobin.ie/fonts/forkawesome-webfont.eot.*",
+      "https://www.johntobin.ie/fonts/forkawesome-webfont.svg.*",
+      "https://www.johntobin.ie/fonts/forkawesome-webfont.ttf.*",
+      "https://www.johntobin.ie/fonts/forkawesome-webfont.woff.*",
+      "https://www.johntobin.ie/fonts/forkawesome-webfont.woff2.*",
+      "https://www.johntobin.ie/js/dark-mode.min.[a-z0-9]{64}.js"
     ],
-    "optional_resources": [
-      "https://www.johntobin.ie/js/dark-mode.min.0213e1773e6d1c5a644f847c67a6f8abac49a3776e2976f6008038af8c5b76a1.js"
-    ]
+    "resources": []
   }
 ]
