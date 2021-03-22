@@ -52,8 +52,44 @@ Breaking up `functions.php` into separate files has had multiple benefits:
     size by approximately 200 lines or a factor of 1.158.
 
 I tried [PHPLint](https://www.icosaedro.it/phplint/) because I'm a big fan of
-linters and style guides, but ironically it crashes on startup with an exception
-:(  It appears to have broken with PHP 7.3 maybe?
+linters and style guides.  I found it very, very restrictive - there is no way
+to suppress a warning, and the type annotations are intrusive.  The biggest
+benefit I got from it is that I defined proper classes for holding data; for
+years I had followed the Wordpress approach of stuffing everything into an
+array, but the many complaints from PHPLint convinced me to define properly
+structured classes instead.  Sadly I got there the long way and made lots of
+intermediate changes :(  Several problems still stand out with PHPLint:
+
+1.  There is no way to suppress warnings, see
+    https://www.icosaedro.it/phplint/FAQ.html#H14_Can_I_turn_off_some_boring_error_PHPLint_signals?
+1.  You need to add metadata to every file declaring which libraries are used by
+    that file.  I understand that for external libraries or optional libraries,
+    but it's silly to have to write `/*. require_module 'core'; .*/` to tell
+    PHPLint that core PHP functions will be used in this file.  You can include
+    a bigger set of modules, but then PHPLint will complain that you included
+    unnecessary modules.
+1.  PHPLint doesn't support multiple module directory paths, so you either need
+    to copy definitions for external libraries into the system path, or
+    copy/symlink necessary files from the system path into a local directory and
+    use `--modules-path` with the local directory; I chose option 2, and I wrote
+    [a wrapper
+    program](https://github.com/tobinjt/ariane-theme/blob/master/src/phplint-wrapper)
+    and a
+    [Makefile](https://github.com/tobinjt/ariane-theme/blob/master/src/Makefile)
+    to make usage easier.
+1.  The module declaration files use a slightly modified version of PHP function
+    declarations, so I needed to generate some of the module definitions.
+1.  PHPLint interprets `cast(type, variable)` to cast a variable to a different
+    type.  I didn't want to include the PHPLint libraries so I wrote [a fake
+    version](https://github.com/tobinjt/ariane-theme/blob/master/src/Cast.php).
+1.  PHPLint has been broken far more often than it has been working, though it's
+    definitely possible that this is a problem with Homebrew packaging rather
+    than PHPLint.
+
+Overall I think PHPLint is too difficult and intrusive to be worthwhile, though
+I might feel differently if I had jumped directly to defining my own data
+structures.  I got maybe 20% of the benefit I needed to justify the effort I put
+into it.
 
 I used [PHP Coding Standards Fixer](http://cs.symfony.com/) to automatically fix
 some things that a linter would complain about.  When I enabled the large sets
@@ -74,6 +110,5 @@ I installed everything I needed on my laptop with these commands:
 
 ```shell
 brew install phplint phpunit php-cs-fixer
-# Earlier versions won't build with PHP 7.3
-pecl install xdebug-2.7.0beta1
+pecl install xdebug
 ```
