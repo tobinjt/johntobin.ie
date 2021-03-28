@@ -4,12 +4,7 @@
     "optional_resource_regexes": [
       "https://www.johntobin.ie/css/coder.min.[a-z0-9]{64}.css",
       "https://www.johntobin.ie/css/coder.min.[a-z0-9]{64}.js",
-      "https://www.johntobin.ie/fonts/forkawesome-webfont.eot.*",
-      "https://www.johntobin.ie/fonts/forkawesome-webfont.eot.*",
-      "https://www.johntobin.ie/fonts/forkawesome-webfont.svg.*",
-      "https://www.johntobin.ie/fonts/forkawesome-webfont.ttf.*",
-      "https://www.johntobin.ie/fonts/forkawesome-webfont.woff.*",
-      "https://www.johntobin.ie/fonts/forkawesome-webfont.woff2.*",
+      "https://www.johntobin.ie/fonts/forkawesome-webfont.(eot|svg|ttf|woff|woff2).*",
       "https://www.johntobin.ie/js/dark-mode.min.[a-z0-9]{64}.js"
     ],
     "resources": []
@@ -19,12 +14,7 @@
     "optional_resource_regexes": [
       "https://www.johntobin.ie/css/coder.min.[a-z0-9]{64}.css",
       "https://www.johntobin.ie/css/coder.min.[a-z0-9]{64}.js",
-      "https://www.johntobin.ie/fonts/forkawesome-webfont.eot.*",
-      "https://www.johntobin.ie/fonts/forkawesome-webfont.eot.*",
-      "https://www.johntobin.ie/fonts/forkawesome-webfont.svg.*",
-      "https://www.johntobin.ie/fonts/forkawesome-webfont.ttf.*",
-      "https://www.johntobin.ie/fonts/forkawesome-webfont.woff.*",
-      "https://www.johntobin.ie/fonts/forkawesome-webfont.woff2.*",
+      "https://www.johntobin.ie/fonts/forkawesome-webfont.(eot|svg|ttf|woff|woff2).*",
       "https://www.johntobin.ie/js/dark-mode.min.[a-z0-9]{64}.js"
     ],
     "resources": []
@@ -34,12 +24,7 @@
     "optional_resource_regexes": [
       "https://www.johntobin.ie/css/coder.min.[a-z0-9]{64}.css",
       "https://www.johntobin.ie/css/coder.min.[a-z0-9]{64}.js",
-      "https://www.johntobin.ie/fonts/forkawesome-webfont.eot.*",
-      "https://www.johntobin.ie/fonts/forkawesome-webfont.eot.*",
-      "https://www.johntobin.ie/fonts/forkawesome-webfont.svg.*",
-      "https://www.johntobin.ie/fonts/forkawesome-webfont.ttf.*",
-      "https://www.johntobin.ie/fonts/forkawesome-webfont.woff.*",
-      "https://www.johntobin.ie/fonts/forkawesome-webfont.woff2.*",
+      "https://www.johntobin.ie/fonts/forkawesome-webfont.(eot|svg|ttf|woff|woff2).*",
       "https://www.johntobin.ie/js/dark-mode.min.[a-z0-9]{64}.js"
     ],
     "resources": []
