@@ -3,6 +3,7 @@
     "url": "https://www.johntobin.ie/",
     "optional_resource_regexes": [
       "https://www.johntobin.ie/css/coder.min.[a-z0-9]{64}.css",
+      "https://www.johntobin.ie/css/coder.min.[a-z0-9]{64}.js",
       "https://www.johntobin.ie/fonts/forkawesome-webfont.eot.*",
       "https://www.johntobin.ie/fonts/forkawesome-webfont.eot.*",
       "https://www.johntobin.ie/fonts/forkawesome-webfont.svg.*",
@@ -17,6 +18,7 @@
     "url": "https://www.johntobin.ie/blog/",
     "optional_resource_regexes": [
       "https://www.johntobin.ie/css/coder.min.[a-z0-9]{64}.css",
+      "https://www.johntobin.ie/css/coder.min.[a-z0-9]{64}.js",
       "https://www.johntobin.ie/fonts/forkawesome-webfont.eot.*",
       "https://www.johntobin.ie/fonts/forkawesome-webfont.eot.*",
       "https://www.johntobin.ie/fonts/forkawesome-webfont.svg.*",
@@ -31,6 +33,7 @@
     "url": "https://www.johntobin.ie/blog/version-controlled_crontab/",
     "optional_resource_regexes": [
       "https://www.johntobin.ie/css/coder.min.[a-z0-9]{64}.css",
+      "https://www.johntobin.ie/css/coder.min.[a-z0-9]{64}.js",
       "https://www.johntobin.ie/fonts/forkawesome-webfont.eot.*",
       "https://www.johntobin.ie/fonts/forkawesome-webfont.eot.*",
       "https://www.johntobin.ie/fonts/forkawesome-webfont.svg.*",
