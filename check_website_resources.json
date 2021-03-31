@@ -3,8 +3,8 @@
     "url": "https://www.johntobin.ie/",
     "optional_resource_regexes": [
       "https://www.johntobin.ie/css/coder.min.[a-z0-9]{64}.css",
-      "https://www.johntobin.ie/css/coder.min.[a-z0-9]{64}.js",
       "https://www.johntobin.ie/fonts/forkawesome-webfont.(eot|svg|ttf|woff|woff2).*",
+      "https://www.johntobin.ie/js/coder.min.[a-z0-9]{64}.js",
       "https://www.johntobin.ie/js/dark-mode.min.[a-z0-9]{64}.js"
     ],
     "resources": []
@@ -13,8 +13,8 @@
     "url": "https://www.johntobin.ie/blog/",
     "optional_resource_regexes": [
       "https://www.johntobin.ie/css/coder.min.[a-z0-9]{64}.css",
-      "https://www.johntobin.ie/css/coder.min.[a-z0-9]{64}.js",
       "https://www.johntobin.ie/fonts/forkawesome-webfont.(eot|svg|ttf|woff|woff2).*",
+      "https://www.johntobin.ie/js/coder.min.[a-z0-9]{64}.js",
       "https://www.johntobin.ie/js/dark-mode.min.[a-z0-9]{64}.js"
     ],
     "resources": []
@@ -23,8 +23,8 @@
     "url": "https://www.johntobin.ie/blog/version-controlled_crontab/",
     "optional_resource_regexes": [
       "https://www.johntobin.ie/css/coder.min.[a-z0-9]{64}.css",
-      "https://www.johntobin.ie/css/coder.min.[a-z0-9]{64}.js",
       "https://www.johntobin.ie/fonts/forkawesome-webfont.(eot|svg|ttf|woff|woff2).*",
+      "https://www.johntobin.ie/js/coder.min.[a-z0-9]{64}.js",
       "https://www.johntobin.ie/js/dark-mode.min.[a-z0-9]{64}.js"
     ],
     "resources": []
