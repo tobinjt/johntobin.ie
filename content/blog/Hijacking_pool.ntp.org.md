@@ -14,25 +14,23 @@ From <https://pool.ntp.org>:
 > distributions and many networked appliances (see information for vendors).
 
 The NTP package in Debian Lenny uses the NTP pool, so when a user installs NTP
-on their home machine, it Just Works.  Unfortunately, the
+on their home machine, it Just Works. Unfortunately, the
 [SCSS](https://www.scss.tcd.ie/) firewall blocks NTP traffic for all hosts
 except our NTP server, breaking the default configuration for users on our
-network.  Rather than reconfiguring every client, I configured `bind` on our DNS
-servers to hijack the pool.ntp.org domain, answering nearly <a
-href="#footnote1">\[1]</a> all requests for hosts in that domain with the
-address of our NTP server.  This means that a user can just
+network. Rather than reconfiguring every client, I configured `bind` on our DNS
+servers to hijack the pool.ntp.org domain, answering nearly all requests for
+hosts in that domain with the address of our NTP server. This means that a user
+can get a working NTP installation with just:
 
 ```shell
 apt-get install ntp
 ```
 
-and NTP will work properly for them.
-
-<a name="footnote1"></a>\[1] The sole exception is www.pool.ntp.org: I want the
-URL <https://www.pool.ntp.org> to work in a user's browser.  Although
-pool.ntp.org *does* resolve to our NTP server, the web server running on that
-host redirects requests for <https://pool.ntp.org> to
-<https://www.pool.ntp.org>, so that URL works too.
+The sole exception is www.pool.ntp.org: I want the URL
+<https://www.pool.ntp.org> to work in a user's browser. Although pool.ntp.org
+_does_ resolve to our NTP server, the web server running on that host redirects
+requests for <https://pool.ntp.org> to <https://www.pool.ntp.org>, so that URL
+works too.
 
 The bind zone file is quite short:
 
@@ -75,7 +73,6 @@ www		IN CNAME	ntppool-varnish.develooper.com.
 ; *.pool.ntp.org resolves to ntp.cs.tcd.ie
 *		IN CNAME	ntp.cs.tcd.ie.
 ```
-
 
 You can play with it using commands like:
 

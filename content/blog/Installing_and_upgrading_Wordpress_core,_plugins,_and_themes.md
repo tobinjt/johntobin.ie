@@ -5,21 +5,21 @@ tags = ['automation', 'sysadmin', 'Wordpress']
 +++
 
 My wife's [website](https://www.arianetobin.ie/) is built on
-[Wordpress](https://wordpress.org/).  It uses a small number of plugins, and
-I've tested many plugins over the years; all those plugins need to be installed,
-and of course Wordpress core, plugins, and themes need to be upgraded when new
-versions are released.  This isn't difficult (download core/plugin/theme,
-extract zip file in the correct directory) but it's tedious so it's ideal for
-automating.  I wrote
+[Wordpress](https://wordpress.org/). It uses a small number of plugins, and I've
+tested many plugins over the years; all those plugins need to be installed, and
+of course Wordpress core, plugins, and themes need to be upgraded when new
+versions are released. This isn't difficult (download core/plugin/theme, extract
+zip file in the correct directory) but it's tedious so it's ideal for
+automating. I wrote
 [wordpress-install](https://github.com/tobinjt/bin/blob/master/wordpress-install)
 to do this; it's not the most elegant code because it has to deal with paths and
-URLs being different for each supported type, but it works.  It requires the
+URLs being different for each supported type, but it works. It requires the
 Wordpress install to be inside a `git` repository so that changes can be
 reverted if necessary, though I've rarely needed to revert an upgrade so the
-tool doesn't support reverting - you need to use `git revert`.  You can
+tool doesn't support reverting - you need to use `git revert`. You can
 optionally choose a specific version of the core/plugin/theme to install, so you
 could use that as a mechanism to downgrade; by default the latest version is
-installed.  It uses the tool described in [Checking a git client is
+installed. It uses the tool described in [Checking a git client is
 clean](/blog/checking_a_git_client_is_clean/) to check that there aren't any
 uncommitted changes in the client before performing the upgrade, and commits all
 changes after the upgrade.

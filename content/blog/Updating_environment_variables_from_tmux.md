@@ -10,7 +10,7 @@ eval, so this is much easier now.
 
 [tmux](https://github.com/tmux/tmux) is a tty multiplexer similar to
 [screen](https://www.gnu.org/software/screen/), but with some really nice
-features.  One of those features is updating environment variables when you
+features. One of those features is updating environment variables when you
 reconnect to a session - the client sends the current values to the tmux server,
 and they can be retrieved with:
 
@@ -25,16 +25,16 @@ unset WINDOWID
 unset XAUTHORITY
 ```
 
-Of course, tmux can't force other processes to update their environment.  `bash`
-has a hook you can use to do it: `PROMPT_COMMAND`.  If this variable is set to
+Of course, tmux can't force other processes to update their environment. `bash`
+has a hook you can use to do it: `PROMPT_COMMAND`. If this variable is set to
 the name of a function, `bash` will run that function before displaying your
-prompt.  Here's a function and supporting settings to update your environment:
+prompt. Here's a function and supporting settings to update your environment:
 
 ```shell
 function prompt_command() {
-    if [ -n "${TMUX}" ]; then
-        eval "$(tmux show-environment -s)"
-    fi
+  if [ -n "${TMUX}" ]; then
+    eval "$(tmux show-environment -s)"
+  fi
 }
 PROMPT_COMMAND=prompt_command
 ```
