@@ -5,7 +5,7 @@ tags = ['Python', 'programming', 'testing']
 +++
 
 Normally I do Python development in work, where everything is already set up for
-easy development and testing.  It took considerable research and setup to get a
+easy development and testing. It took considerable research and setup to get a
 similarly good environment for Python development at home, so I decided to
 document it for myself and others :)
 
@@ -43,29 +43,28 @@ cd test-directory
 pytest
 ```
 
-
 ### Test coverage
 
 To enable test coverage with `pytest`, create `pytest.ini` in the directory
 containing your tests, with contents like
-<https://github.com/tobinjt/bin/blob/master/python/pytest.ini>.  Every time your
+<https://github.com/tobinjt/bin/blob/master/python/pytest.ini>. Every time your
 tests are run successfully coverage will be generated and a message will be
 printed showing the coverage percentage.
 
 I found that test coverage needed quite a bit of configuration through the file
 `.coveragerc` in the directory containing your tests; my final contents are
-<https://github.com/tobinjt/bin/blob/master/python/.coveragerc>.  I highly
-recommend configuring testing to fail if there is insufficient coverage.  You
-can also configure a HTML output directory so that you can easily see which
-lines of code you haven't tested; configuring a portable output directory might
-be difficult, I haven't needed to do so yet.
+<https://github.com/tobinjt/bin/blob/master/python/.coveragerc>. I highly
+recommend configuring testing to fail if there is insufficient coverage. You can
+also configure a HTML output directory so that you can easily see which lines of
+code you haven't tested; configuring a portable output directory might be
+difficult, I haven't needed to do so yet.
 
 ### Integration tests.
 
 I'm a fan of integration tests, where instead of testing individual functions
-you test large swathes of code at a time.  I take the approach of picking a
-piece of functionality that should be supported, then writing a test to exercise
-that functionality end to end.
+you test large swathes of code at a time. I take the approach of picking a piece
+of functionality that should be supported, then writing a test to exercise that
+functionality end to end.
 
 <https://github.com/tobinjt/bin/blob/master/python/linkdirs_test.py#L38> is a
 good example of this, where I test progressively more complex use cases and
@@ -81,7 +80,7 @@ This was particularly reassuring when I added deletion to `linkdirs.py` :)
 ### Automatically running tests
 
 I like having tests run every time I save the source or test file because it
-saves me from doing it manually.  This is quite easy to do with
+saves me from doing it manually. This is quite easy to do with
 [fswatch](https://github.com/emcrisostomo/fswatch):
 
 ```shell
@@ -101,10 +100,10 @@ ipytest foo.py foo_test.py
 
 Mutation testing is where minor changes are made to source code (e.g.
 initialising a variable to `True` instead of `False`) and then the tests are run
-with the changed source.  If the tests still pass despite the change it *might*
+with the changed source. If the tests still pass despite the change it _might_
 indicate a gap in testing, or it might indicate that the default value is simply
 a placeholder that is always overwritten, or the change might not be meaningful
-(e.g. `.rstrip('\n')` changing to `.rstrip('XX\nXX')`), or other reasons.  There
+(e.g. `.rstrip('\n')` changing to `.rstrip('XX\nXX')`), or other reasons. There
 isn't a one-size-fits-all approach that you can take to addressing mutations
 that don't cause test failures - sometimes you will add tests, sometimes you
 will change the source, and sometimes you will mark the line so it's not mutated
@@ -119,17 +118,17 @@ the output from `--help` to ensure that I don't accidentally make it confusing
 
 The first run of `mutmut` for any file will be slow, but for subsequent runs
 `mutmut` will only check mutations that previously failed, so it speeds up as
-you make fixes.  Sadly there have been a couple of occasions where it stayed
+you make fixes. Sadly there have been a couple of occasions where it stayed
 reporting problems despite me fixing them, and the only way to mitigate that
-situation was `rm .mutmut-cache` and rerun from scratch :(  `mutmut` runs your
+situation was `rm .mutmut-cache` and rerun from scratch :( `mutmut` runs your
 tests once without mutations to get a timing baseline so it can detect mutations
 that cause tests to run for too long, but this means that you cannot switch to
 doing anything else while testing mutations, because if the extra system load
 from doing something else slows down the testing enough you will have false
 positives.
 
-Beware: `mutmut` only runs your tests with unmodified source the *first* time
-you run it.  If you break your tests while addressing `mutmut` warnings, on the
+Beware: `mutmut` only runs your tests with unmodified source the _first_ time
+you run it. If you break your tests while addressing `mutmut` warnings, on the
 next run it will make all the mutations, run the tests, and declare that you
 have no problems to fix because the tests fail - but not because of the
 mutations :(
@@ -226,28 +225,28 @@ I use `mutmut` like this:
 
 1.  Investigate and fix some of the reported mutants.
 
-    *   False positives (e.g. changing a constant used consistently throughout
-        the codebase) can be disabled with `# pragma: no mutate`.
-    *   Tests can be added or expanded, e.g. changing regexes to be anchored, or
-        adding edge cases so that boundary conditions are tested more tightly.
-    *   Source changes may be appropriate, but I haven't encountered any good
-        examples yet.
+    - False positives (e.g. changing a constant used consistently throughout
+      the codebase) can be disabled with `# pragma: no mutate`.
+    - Tests can be added or expanded, e.g. changing regexes to be anchored, or
+      adding edge cases so that boundary conditions are tested more tightly.
+    - Source changes may be appropriate, but I haven't encountered any good
+      examples yet.
 
 1.  `GOTO 1`.
 
 I've found that I can fix a lot of the mutations pretty quickly, then my
-progress slows down as I pick off more and more of the low hanging fruit.  My
-aim is to reach 0 mutations that pass tests, and sometimes the pragmatic way to
-deal with the last few is to just disable them.  I aim for 0 so that future runs
-give me a better signal, and I'm not left wondering *"is that something I
-decided to ignore in the past?"* because I know I didn't decide to ignore
-anything.  I've also found that I'm getting faster with each subsequent file,
-because I'm learning patterns and I can reuse tests and fixes from earlier
-files, which encourages me to continue.
+progress slows down as I pick off more and more of the low hanging fruit. My aim
+is to reach 0 mutations that pass tests, and sometimes the pragmatic way to deal
+with the last few is to just disable them. I aim for 0 so that future runs give
+me a better signal, and I'm not left wondering _"is that something I decided to
+ignore in the past?"_ because I know I didn't decide to ignore anything. I've
+also found that I'm getting faster with each subsequent file, because I'm
+learning patterns and I can reuse tests and fixes from earlier files, which
+encourages me to continue.
 
 ## Linting
 
-I use [pylint](https://www.pylint.org/) for linting.  I have [configured
+I use [pylint](https://www.pylint.org/) for linting. I have [configured
 Syntastic and Vim]({{< relref "#vim-configuration" >}}) to run `pylint`
 automatically on saving.
 
@@ -260,27 +259,26 @@ pylint *.py
 
 ## Automatic formatting
 
-I use [yapf](https://github.com/google/yapf) for autoformatting my code.  I run
+I use [yapf](https://github.com/google/yapf) for autoformatting my code. I run
 this manually but will probably make it automatic the next time I write some
-Python.  I tried [pyformat](https://pypi.org/project/pyformat/) but there
-doesn't appear to be a way to set indentation to 2 spaces so I gave up on it.
+Python. I tried [pyformat](https://pypi.org/project/pyformat/) but there doesn't
+appear to be a way to set indentation to 2 spaces so I gave up on it.
 
 ```shell
 yapf -i *.py
 ```
 
 <https://github.com/tobinjt/dotfiles/blob/master/.config/yapf/style> is my
-`$HOME/.config/yapf/style`.  You can run `yapf --style-help` to generate a
-config with all settings documented and set to their current setting.
+`$HOME/.config/yapf/style`. You can run `yapf --style-help` to generate a config
+with all settings documented and set to their current setting.
 
 ## Type checking
 
-I use [mypy](https://mypy.readthedocs.io/en/latest/index.html) for checking
-type annotations, which gives me more confidence that I'm passing the right
-types to functions, and helps document my code - particularly when I use type
-aliases to give meaningful names to parameter types.  I have [configured
-Syntastic and Vim]({{< relref "#vim-configuration" >}}) to run `mypy`
-automatically on saving.
+I use [mypy](https://mypy.readthedocs.io/en/latest/index.html) for checking type
+annotations, which gives me more confidence that I'm passing the right types to
+functions, and helps document my code - particularly when I use type aliases to
+give meaningful names to parameter types. I have [configured Syntastic and
+Vim]({{< relref "#vim-configuration" >}}) to run `mypy` automatically on saving.
 
 ```shell
 mypy *.py
@@ -292,7 +290,7 @@ mypy *.py
 ## Debugging
 
 I've started using [pudb](https://documen.tician.de/pudb/index.html) for
-debugging because it presents so much more information at once.  I recently
+debugging because it presents so much more information at once. I recently
 debugged a failing test where displaying all the local variables made the
 problem obvious, but without that display (e.g. using `pdb` or printing debug
 information on each run) the debugging process would have been far slower.
@@ -307,7 +305,7 @@ pudb.set_trace()
 ## Stop generating `.pyc` files
 
 By default Python will write compiled bytecode for `foo.py` to `foo.pyc`, which
-I found annoying because it clutters up your source directory.  I disabled that
+I found annoying because it clutters up your source directory. I disabled that
 by setting the environment variable `PYTHONDONTWRITEBYTECODE`, e.g.:
 
 ```shell
@@ -327,38 +325,38 @@ pip3() {
 ## Upgrading packages installed with `pip3` is troublesome
 
 `pip3` doesn't track manually installed packages vs auto-installed packages, and
-doesn't have a way to upgrade all packages.  Upgrading all packages (manually
-installed and auto-installed) *can* be done with a shell one-liner, except that
+doesn't have a way to upgrade all packages. Upgrading all packages (manually
+installed and auto-installed) _can_ be done with a shell one-liner, except that
 it doesn't take dependencies into account, so you might upgrade a dependency to
 a version that breaks a package you manually installed :(
 
 If you keep track of the packages you've installed, you can upgrade them with
-`pip3 install --upgrade pkg1 pkg2 ...`.  Keeping track of which packages I need
-also lets me use the *nuke it from orbit* approach: remove the `site-packages`
-directory, reinstall Python, and reinstall the packages I need.  I do this once
-a month because frequent updates make it far easier to figure out breakages, so
+`pip3 install --upgrade pkg1 pkg2 ...`. Keeping track of which packages I need
+also lets me use the _nuke it from orbit_ approach: remove the `site-packages`
+directory, reinstall Python, and reinstall the packages I need. I do this once a
+month because frequent updates make it far easier to figure out breakages, so
 I've written <https://github.com/tobinjt/bin/blob/master/update-python-modules>
-to make it a single command.  This approach is probably overkill, but I'd prefer
+to make it a single command. This approach is probably overkill, but I'd prefer
 overkill than debugging a failed upgrade.
 
 ## Vim configuration
 
 I don't have much configuration for Python:
 
-*   Make sure that [syntastic](https://github.com/vim-syntastic/syntastic) uses
-    Python 3 so type annotations can be parsed:
+- Make sure that [syntastic](https://github.com/vim-syntastic/syntastic) uses
+  Python 3 so type annotations can be parsed:
 
-    ```vim
-    let g:syntastic_python_python_exec = 'python3'
-    ```
+  ```vim
+  let g:syntastic_python_python_exec = 'python3'
+  ```
 
-*   Configure [syntastic](https://github.com/vim-syntastic/syntastic) to use
-    `mypy` too:
+- Configure [syntastic](https://github.com/vim-syntastic/syntastic) to use
+  `mypy` too:
 
-    ```vim
-    let g:syntastic_python_checkers = ['python', 'mypy', 'pylint']
-    ```
+  ```vim
+  let g:syntastic_python_checkers = ['python', 'mypy', 'pylint']
+  ```
 
-    I chose the order `python`, `mypy`, `pylint` to fail fast and surface errors
-    from most severe to least severe - syntax errors will be caught by `python`,
-    type errors by `mypy`, and lint errors by `pylint`.
+  I chose the order `python`, `mypy`, `pylint` to fail fast and surface errors
+  from most severe to least severe - syntax errors will be caught by `python`,
+  type errors by `mypy`, and lint errors by `pylint`.
