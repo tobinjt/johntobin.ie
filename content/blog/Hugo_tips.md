@@ -4,6 +4,8 @@ title = "Hugo tips"
 tags = ['Hugo', 'automation', 'website']
 +++
 
+## Ikiwiki to Hugo
+
 I migrated my website from [Ikiwiki](https://ikiwiki.info/) to
 [Hugo](https://gohugo.io/). I had been using Ikiwiki since 2009 but a few things
 annoyed me about it:

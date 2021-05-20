@@ -78,9 +78,9 @@ runs `linkdirs` with the right arguments, and does some more things:
     UpdateSpellFiles](https://github.com/tobinjt/dotfiles/blob/master/.vim/plugin/JT_functions.vim#L46))
     and they're both run every time by `dotfiles`.
 
-Both `linkdirs` and `dotfiles` support reporting unexpected files in the
-destination directory, making it relatively easy to find leftover files that
-I've deleted from the repository.
+Both `linkdirs` and `dotfiles` support reporting and deleting unexpected files
+in the destination directory, making it relatively easy to find or cleanup
+leftover files that I've deleted from the repository.
 
 I use about 20 Vim plugins, and I manage each plugin as a [git
 submodule](https://git-scm.com/docs/git-submodule), allowing me to easily update

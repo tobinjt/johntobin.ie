@@ -15,6 +15,6 @@ pretty soon (though if it failed once it's likely to fail again if nothing has
 changed). You need to figure out the network interface to consider by running
 `networksetup -listnetworkserviceorder` and looking for the WiFi interface.
 
-The code has grown more complex as I work around temporary blips in network
+The complexity has grown as I work around temporary blips in network
 connectivity, see the full code at
 <https://github.com/tobinjt/bin/blob/master/reconnect-wifi>

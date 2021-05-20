@@ -29,11 +29,10 @@ and similar tools produces results closer to the typical user experience.
 Removing the cookie law resources was the last step (so far) in my quest to
 speed up Ariane's website. There are several standard Wordpress resources
 unconditionally removed by the various incantations in
-[functions.php](https://github.com/tobinjt/ariane-theme/blob/master/functions.php)
-
-- search for `Remove unnecessary resources that Wordpress or plugins include` to
-  find them - e.g. not loading emoji support that isn't used anywhere in the
-  website:
+[functions.php](https://github.com/tobinjt/ariane-theme/blob/master/functions.php).
+Search for `Remove unnecessary resources that Wordpress or plugins include` to
+find them - e.g. not loading emoji support that isn't used anywhere in the
+website:
 
 ```php
 // Stop loading emoji stuff.

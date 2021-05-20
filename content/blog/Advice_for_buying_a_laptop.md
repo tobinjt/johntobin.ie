@@ -6,10 +6,9 @@ tags = ['advice', 'general computer stuff']
 
 Because I work in the tech industry, family and friends will sometimes ask me to
 recommend a laptop for them to buy. In the past I've done the research myself,
-but recently I've been empowering people by sending them instructions to follow
-
-- it also saves me time ;) I decided to publish the instructions because they
-  might be useful to others.
+but recently I've been empowering people by sending them instructions to follow,
+which also saves me time ;) I decided to publish the instructions because they
+might be useful to others.
 
 - Figure out your budget, that's the biggest constraint.
 - Figure out what you need your laptop for. Browsing the web? Email? Playing
