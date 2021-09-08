@@ -36,8 +36,39 @@ check_for_inconsistent_tags() {
   return 1
 }
 
+check_for_unstaged_changes() {
+  # The output of `git status --porcelain` looks like:
+  # ```
+  # M  content/blog/Python_development.md
+  #  M git-pre-commit-hook
+  # ```
+  # Files with all changes staged for commit will have a space as the second
+  # character, so filter those out; anything remaining is an unstaged change and
+  # an error, because the other tests aren't accurate.  If I want to make
+  # multiple commits I need to stash the changes with `git stash push
+  # --keep-index` so they don't show up.
+  local output
+  output="$(git status --porcelain | grep -v '^. ')"
+  if [[ -z "${output}" ]]; then
+    return 0
+  fi
+  # Use human readable git status because it's more familiar.
+  printf "Uncommitted changes\\n" >&2
+  # I don't want process substitution, I want the command in backtics.
+  # shellcheck disable=SC2016
+  printf 'Either stage for commit with `git add` or stash temporarily with'
+  # shellcheck disable=SC2016
+  printf ' `git stash push --keep-index`\n\n'
+  git status >&2
+  return 1
+}
+
 main() {
   local exit_status=0
+
+  if ! check_for_unstaged_changes; then
+    exit_status=1
+  fi
 
   if ! check_for_drafts; then
     exit_status=1
