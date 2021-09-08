@@ -80,21 +80,9 @@ This was particularly reassuring when I added deletion to `linkdirs.py` :)
 ### Automatically running tests
 
 I like having tests run every time I save the source or test file because it
-saves me from doing it manually. This is quite easy to do with
-[fswatch](https://github.com/emcrisostomo/fswatch):
-
-```shell
-ipytest () {
-  if [[ "$#" -eq 0 ]]; then
-    echo "ipytest: expecting at least one filename." >&2
-    return 1
-  fi
-  fswatch -o "$@" | xargs -n2 -I{} pytest "$@"
-}
-
-# Run 'pytest foo.py foo_test.py' whenever either file changes.
-ipytest foo.py foo_test.py
-```
+saves me from doing it manually. See [Automatically running tests, linters, or
+anything](https://www.johntobin.ie/blog/automatically_running_tests_linters_or_anything/)
+for an easy way to do this.
 
 ### Mutation testing
 
@@ -248,7 +236,9 @@ encourages me to continue.
 
 I use [pylint](https://www.pylint.org/) for linting. I have [configured
 Syntastic and Vim]({{< relref "#vim-configuration" >}}) to run `pylint`
-automatically on saving.
+automatically on saving, or see [Automatically running tests, linters, or
+anything](https://www.johntobin.ie/blog/automatically_running_tests_linters_or_anything/)
+for an easy way to run `pylint` every time you save a file.
 
 ```shell
 pylint *.py
@@ -278,7 +268,10 @@ I use [mypy](https://mypy.readthedocs.io/en/latest/index.html) for checking type
 annotations, which gives me more confidence that I'm passing the right types to
 functions, and helps document my code - particularly when I use type aliases to
 give meaningful names to parameter types. I have [configured Syntastic and
-Vim]({{< relref "#vim-configuration" >}}) to run `mypy` automatically on saving.
+Vim]({{< relref "#vim-configuration" >}}) to run `mypy` automatically on saving,
+or see [Automatically running tests, linters, or
+anything](https://www.johntobin.ie/blog/automatically_running_tests_linters_or_anything/)
+for an easy way to run `mypy` every time you save a file.
 
 ```shell
 mypy *.py
