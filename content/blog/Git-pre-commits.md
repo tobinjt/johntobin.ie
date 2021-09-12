@@ -1,5 +1,4 @@
 +++
-lastmod = 2019-04-15T09:37:08+01:00
 title = "Git pre-commits"
 tags = ['automation', 'Git', 'development']
 +++
@@ -24,6 +23,17 @@ Some useful information about git pre-commit hooks:
   `.git/hooks/` directory; this gives me version control for the hook code but
   still requires manual action every time the repository is checked out to
   create the symlink.
+
+A warning about git pre-commit hooks: they run with whatever contents are in
+your local directory, so if you're partially committing they might pass
+incorrectly. E.g. if you modify `foo.go` and `foo_test.go`, but you're only
+committing `foo_test.go`, `go test` will pass in a pre-commit but won't pass on
+the committed code because your changes to `foo.go` won't have been committed.
+This caused problems for me with my website's pre-commit, so there I added an
+explicit check for content not being committed: see
+[check_for_unstaged_changes](https://github.com/tobinjt/johntobin.ie/blob/master/git-pre-commit-hook#L39).
+This makes partial commits more painful but prevents breakages. I haven't added
+it to other repos yet but probably will in future.
 
 I've used git's `pre-commit` hook in four different repositories:
 
