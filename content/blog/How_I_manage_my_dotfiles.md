@@ -1,6 +1,4 @@
 +++
-date = 2015-12-22T07:42:56+00:00
-lastmod = 2018-10-07T14:33:50+01:00
 title = 'How I manage my dotfiles'
 tags = ['Git', 'automation', 'shell', 'sysadmin']
 +++
@@ -29,7 +27,7 @@ somewhere else and link all the files into your home directory - this is what
 I'm doing.
 
 Start by creating a Git repository on a hosting service somewhere; I use
-<https://github.com>, but others have recommended <https://bitbucket.org>. Why
+<https://github.com/>, but others have recommended <https://bitbucket.org/>. Why
 use a hosted service? Because you want the repository to be easily available and
 you want someone else taking care of backups for you. I was very imaginative and
 named mine `dotfiles` :) Check out a copy of it somewhere; the tools I wrote
@@ -74,8 +72,9 @@ runs `linkdirs` with the right arguments, and does some more things:
 
 1.  `vim` help tags from different plugins (see below) need to be updated, and
     spell files need to be compiled. I wrote a simple `vim` function for each
-    update ([UpdateBundleHelptags and
-    UpdateSpellFiles](https://github.com/tobinjt/dotfiles/blob/master/.vim/plugin/JT_functions.vim#L46))
+    ([UpdateBundleHelptags](https://github.com/tobinjt/dotfiles/blob/master/.vim/plugin/JT_functions.vim#L48)
+    and
+    [UpdateSpellFiles](https://github.com/tobinjt/dotfiles/blob/master/.vim/plugin/JT_functions.vim#L53)),
     and they're both run every time by `dotfiles`.
 
 Both `linkdirs` and `dotfiles` support reporting and deleting unexpected files
@@ -86,10 +85,19 @@ I use about 20 Vim plugins, and I manage each plugin as a [git
 submodule](https://git-scm.com/docs/git-submodule), allowing me to easily update
 each plugin over time. Because I add and update plugins quite infrequently I've
 written instructions for myself in [my
-.vimrc](https://github.com/tobinjt/dotfiles/blob/master/.vimrc#L24). I use
+.vimrc](https://github.com/tobinjt/dotfiles/blob/master/.vimrc#L85). I use
 [vim-plug](https://github.com/junegunn/vim-plug) to manage Vim's `runtimepath`,
 but I add the repositories manually because `vim-plug` doesn't support
-submodules.
+submodules. I wrote
+[update-dotfiles-and-bin-plugins](https://github.com/tobinjt/bin/blob/master/update-dotfiles-and-bin-plugins)
+to automate updating plugins, and I run it every 4 weeks to stay current so that
+I don't need to deal with large diffs when I need a bug fix. It also runs
+[install-extra-tools-for-vim](https://github.com/tobinjt/bin/blob/master/install-extra-tools-for-vim)
+to install extra tools needed by Vim plugins, mainly for Golang and Rust (tools
+for Python are installed differently, see [Upgrading packages installed with
+pip3 is
+troublesome](https://www.johntobin.ie/blog/python_development/#upgrading-packages-installed-with-pip3-is-troublesome)
+for details.
 
 When I push a change to Github I later need to sync that change to every machine
 (normally the next time I use the machine, or when I notice that something is
@@ -112,4 +120,4 @@ Originally `dotfiles` was a shell function rather than a standalone tool, so
 clone my `bin` repository, run `clone-dotfiles`, and I'm ready to go.
 
 Most of these tools are generic and can be reused by anyone, `clone-dotfiles`
-and `update-dotfiles-and-bin-everywhere` are the execptions.
+and `update-dotfiles-and-bin-everywhere` are the exceptions.
