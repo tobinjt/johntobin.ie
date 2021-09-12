@@ -1,5 +1,5 @@
 +++
-date = 2019-05-16T21:42:09+01:00
+lastmod = 2019-05-16T21:42:09+01:00
 title = "Backing up to rsync.net"
 tags = ['automation', 'backups', 'shell', 'SRE', 'sysadmin']
 +++

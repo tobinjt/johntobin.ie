@@ -1,5 +1,5 @@
 +++
-date = 2020-07-24T10:58:16-04:00
+lastmod = 2020-07-24T10:58:16-04:00
 title = 'Python development'
 tags = ['Python', 'programming', 'testing']
 +++

@@ -1,5 +1,5 @@
 +++
-date = 2019-12-10T21:46:45Z
+lastmod = 2019-12-10T21:46:45Z
 title = "Version-controlled crontab"
 tags = ['sysadmin', 'Git', 'MacOS']
 +++

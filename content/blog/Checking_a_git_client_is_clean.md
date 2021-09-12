@@ -1,5 +1,5 @@
 +++
-date = 2018-10-17T20:10:19-04:00
+lastmod = 2018-10-17T20:10:19-04:00
 title = "Checking a git client is clean"
 tags = ['Git', 'automation', 'programming', 'shell']
 +++

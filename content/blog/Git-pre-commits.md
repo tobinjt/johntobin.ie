@@ -1,5 +1,5 @@
 +++
-date = 2019-04-15T09:37:08+01:00
+lastmod = 2019-04-15T09:37:08+01:00
 title = "Git pre-commits"
 tags = ['automation', 'Git', 'development']
 +++

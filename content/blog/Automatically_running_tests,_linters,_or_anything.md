@@ -1,5 +1,5 @@
 +++
-date = 2021-09-08T22:20:53+01:00
+lastmod = 2021-09-08T22:20:53+01:00
 title = "Automatically running tests, linters, or anything"
 tags = ['development', 'programming', 'shell', 'testing']
 +++

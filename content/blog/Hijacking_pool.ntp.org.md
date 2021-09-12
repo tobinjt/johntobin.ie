@@ -1,5 +1,5 @@
 +++
-date = 2009-12-14T17:19:20+00:00
+lastmod = 2009-12-14T17:19:20+00:00
 title = 'Hijacking pool.ntp.org'
 tags = ['NTP', 'sysadmin']
 +++

@@ -3,10 +3,11 @@ languageCode = "en-us"
 title = "John Tobin"
 theme = "hugo-coder"
 googleAnalytics = 'UA-18492319-1'
-paginate = 30
+paginate = 50
 pygmentsCodefences = true
 pygmentsStyle = "solarized-dark"
 newContentEditor = "vim"
+enableGitInfo = true
 
 [params]
   author = 'John Tobin'
@@ -15,6 +16,12 @@ newContentEditor = "vim"
   keywords = 'blog,personal,SRE,sysadmin,developer,manager'
   hidecredits = true
   hidecopyright = true
+
+[frontmatter]
+  # Automatically work out the date to use from git; allow it to be overridden
+  # with `lastmod` in the file, and fall back to `date` in the file (probably
+  # only necessary when writing a post).
+  date = ['lastmod', ':git', 'date', 'publishDate']
 
 [[menu.main]]
   name = 'About me'

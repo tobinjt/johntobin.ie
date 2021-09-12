@@ -1,5 +1,5 @@
 +++
-date = 2014-11-17T22:18:15+01:00
+lastmod = 2014-11-17T22:18:15+01:00
 title = 'Simple link checking'
 tags = ['automation', 'sysadmin', 'website']
 +++

@@ -1,5 +1,5 @@
 +++
-date = 2010-02-17T18:20:31+00:00
+lastmod = 2010-02-17T18:20:31+00:00
 title = 'I need a better LISP book'
 tags = ['LISP', 'programming']
 +++

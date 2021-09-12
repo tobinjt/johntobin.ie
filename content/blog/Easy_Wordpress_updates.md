@@ -1,5 +1,5 @@
 +++
-date = 2019-04-02T21:22:35+01:00
+lastmod = 2019-04-02T21:22:35+01:00
 title = "Easy Wordpress updates"
 tags = ['automation', 'sysadmin', 'website', 'Wordpress']
 +++

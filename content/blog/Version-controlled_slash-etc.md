@@ -1,5 +1,5 @@
 +++
-date = 2010-02-11T17:36:22+00:00
+lastmod = 2010-02-11T17:36:22+00:00
 title = 'Version-controlled /etc'
 tags = ['sysadmin', 'Git', 'Debian']
 +++

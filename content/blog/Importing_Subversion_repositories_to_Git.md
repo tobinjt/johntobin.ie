@@ -1,5 +1,5 @@
 +++
-date = 2010-06-16T09:02:03+01:00
+lastmod = 2010-06-16T09:02:03+01:00
 title = 'Importing Subversion repositories to Git'
 tags = ['Git', 'Subversion', 'automation']
 +++

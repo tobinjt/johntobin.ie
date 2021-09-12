@@ -1,5 +1,5 @@
 +++
-date = 2019-04-28T15:07:02Z
+lastmod = 2019-04-28T15:07:02Z
 title = "Hugo tips"
 tags = ['Hugo', 'automation', 'website']
 +++

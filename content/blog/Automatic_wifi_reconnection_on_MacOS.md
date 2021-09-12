@@ -1,5 +1,5 @@
 +++
-date = 2016-04-25T22:23:53+01:00
+lastmod = 2016-04-25T22:23:53+01:00
 title = 'Automatic WiFi reconnection on Mac OS'
 tags = ['MacOS', 'automation', 'sysadmin']
 +++

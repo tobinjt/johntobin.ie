@@ -1,5 +1,5 @@
 +++
-date = 2019-02-26T21:25:13Z
+lastmod = 2019-02-26T21:25:13Z
 title = "Advice for buying a laptop"
 tags = ['advice', 'general computer stuff']
 +++

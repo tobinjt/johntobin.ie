@@ -1,5 +1,5 @@
 +++
-date = 2018-11-14T21:03:54Z
+lastmod = 2018-11-14T21:03:54Z
 title = "Suppressing unnecessary cookie law CSS and JavaScript"
 tags = ['SEO', 'website', 'Wordpress']
 +++
