@@ -7,10 +7,11 @@
       "https://www.johntobin.ie/js/coder.min.[a-z0-9]{64}.js",
       "https://www.johntobin.ie/js/dark-mode.min.[a-z0-9]{64}.js"
     ],
-    "resources": [
+    "optional_resources": [
       "https://www.johntobin.ie/images/favicon-16x16.png",
       "https://www.johntobin.ie/images/favicon-32x32.png"
-    ]
+    ],
+    "resources": []
   },
   {
     "url": "https://www.johntobin.ie/blog/",
@@ -20,10 +21,11 @@
       "https://www.johntobin.ie/js/coder.min.[a-z0-9]{64}.js",
       "https://www.johntobin.ie/js/dark-mode.min.[a-z0-9]{64}.js"
     ],
-    "resources": [
+    "optional_resources": [
       "https://www.johntobin.ie/images/favicon-16x16.png",
       "https://www.johntobin.ie/images/favicon-32x32.png"
-    ]
+    ],
+    "resources": []
   },
   {
     "url": "https://www.johntobin.ie/blog/version-controlled_crontab/",
@@ -33,9 +35,10 @@
       "https://www.johntobin.ie/js/coder.min.[a-z0-9]{64}.js",
       "https://www.johntobin.ie/js/dark-mode.min.[a-z0-9]{64}.js"
     ],
-    "resources": [
+    "optional_resources": [
       "https://www.johntobin.ie/images/favicon-16x16.png",
       "https://www.johntobin.ie/images/favicon-32x32.png"
-    ]
+    ],
+    "resources": []
   }
 ]
