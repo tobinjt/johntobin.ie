@@ -40,10 +40,9 @@ exits to give upgrades a chance, and when the wrapper is executed again by
 previous run finished then runs the app.
 
 Per-app wrapper programs
-: They aren't strictly necessary, but for ease of use
-and consistency I have a small wrapper program for each app, e.g. for Google
-Backup and Sync I have
-[restart-backup-and-sync-automatically](https://github.com/tobinjt/bin/blob/master/restart-backup-and-sync-automatically).
+: They aren't strictly necessary, but for ease of use and consistency I have a
+small wrapper program for each app, e.g. for Google Drive I have
+[restart-google-drive-automatically](https://github.com/tobinjt/bin/blob/master/restart-google-drive-automatically).
 
 Mac OS Mojave introduced a small problem: `restart-app-automatically-wrapper`
 needs extra permissions, but thankfully a dialog appears making it easy to grant
