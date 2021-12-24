@@ -1,5 +1,4 @@
 +++
-lastmod = 2020-07-24T10:58:16-04:00
 title = 'Python development'
 tags = ['Python', 'programming', 'testing']
 +++
@@ -13,13 +12,16 @@ document it for myself and others :)
 
 ### Mac OS
 
-```shell
-pip3 install lxml mutmut mypy pudb pyfakefs pylint pytest pytest-cov yapf
+The list of Python modules you need is:
+
+```
+lxml mutmut mypy pudb pyfakefs pylint pytest pytest-cov yapf
 ```
 
 See [Upgrading packages installed with pip3 is troublesome]({{< relref
 "#upgrading-packages-installed-with-pip3-is-troublesome" >}}) for
-how I upgrade packages.
+how I install and upgrade packages; I recommend using
+`virtualenv` as described there rather than installing globally.
 
 ### Linux
 
@@ -324,13 +326,41 @@ it doesn't take dependencies into account, so you might upgrade a dependency to
 a version that breaks a package you manually installed :(
 
 If you keep track of the packages you've installed, you can upgrade them with
-`pip3 install --upgrade pkg1 pkg2 ...`. Keeping track of which packages I need
-also lets me use the _nuke it from orbit_ approach: remove the `site-packages`
-directory, reinstall Python, and reinstall the packages I need. I do this once a
-month because frequent updates make it far easier to figure out breakages, so
-I've written <https://github.com/tobinjt/bin/blob/master/update-python-modules>
-to make it a single command. This approach is probably overkill, but I'd prefer
-overkill than debugging a failed upgrade.
+`pip3 install --upgrade pkg1 pkg2 ...`i, but I found that wasn't reliable -
+sometimes dependencies weren't updated properly. For a long time I used a _nuke
+it from orbit_ approach: remove the `site-packages` directory, reinstall Python,
+and reinstall the packages I need. This approach was probably overkill, but
+after debugged a failed upgrade a couple of times I found this was easier. I
+used this approach for a couple of years until Homebrew started packaging Python
+modules (specifically `pre-commit` depends on `six`); this complicated the
+restoration process enough that I figured sooner or later I'd break a package,
+so I changed approach.
+
+My current approach is to use
+[virtualenv](https://virtualenv.pypa.io/en/latest/) to install all the modules
+in a separate directory, which I can then delete when I want to update them.  I
+add this directory to the end of my PATH (so that the python binary in it
+isn't used in preference to the system python binary) and everything Just Works.
+A simplified version would be:
+
+```shell
+install_dir="${HOME}/tmp/virtualenv"
+mkdir -p "${install_dir}"
+# Run virtualenv from the destination directory just in case.
+cd "${install_dir}"
+virtualenv --no-periodic-update "${install_dir}"
+# virtualenv sometimes deletes the destination directory so cd there again.
+cd "${install_dir}"
+source bin/activate
+pip3 install lxml mypy pudb pyfakefs pylint pytest pytest-cov \
+  pytest-flakefinder pyyaml yapf
+```
+
+I do this once a month because frequent updates make it far easier to figure out
+breakages, so I've written
+<https://github.com/tobinjt/bin/blob/master/update-python-modules> to make it a
+single command.
+
 
 ## Vim configuration
 
