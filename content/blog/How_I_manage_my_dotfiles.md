@@ -72,9 +72,9 @@ runs `linkdirs` with the right arguments, and does some more things:
 
 1.  `vim` help tags from different plugins (see below) need to be updated, and
     spell files need to be compiled. I wrote a simple `vim` function for each
-    ([UpdateBundleHelptags](https://github.com/tobinjt/dotfiles/blob/master/.vim/plugin/JT_functions.vim#L48)
+    ([UpdateBundleHelptags](https://github.com/tobinjt/dotfiles/blob/2d9387a8a23c136fabb1043479d2ad64276dc2f9/.vim/plugin/JT_functions.vim#L48)
     and
-    [UpdateSpellFiles](https://github.com/tobinjt/dotfiles/blob/master/.vim/plugin/JT_functions.vim#L53)),
+    [UpdateSpellFiles](https://github.com/tobinjt/dotfiles/blob/2d9387a8a23c136fabb1043479d2ad64276dc2f9/.vim/plugin/JT_functions.vim#L53)),
     and they're both run every time by `dotfiles`.
 
 Both `linkdirs` and `dotfiles` support reporting and deleting unexpected files
@@ -85,10 +85,10 @@ I use about 20 Vim plugins, and I manage each plugin as a [git
 submodule](https://git-scm.com/docs/git-submodule), allowing me to easily update
 each plugin over time. Because I add and update plugins quite infrequently I've
 written instructions for myself in [my
-.vimrc](https://github.com/tobinjt/dotfiles/blob/master/.vimrc#L85). I use
-[vim-plug](https://github.com/junegunn/vim-plug) to manage Vim's `runtimepath`,
-but I add the repositories manually because `vim-plug` doesn't support
-submodules. I wrote
+.vimrc](https://github.com/tobinjt/dotfiles/blob/2d9387a8a23c136fabb1043479d2ad64276dc2f9/.vimrc#L85).
+I use [vim-plug](https://github.com/junegunn/vim-plug) to manage Vim's
+`runtimepath`, but I add the repositories manually because `vim-plug` doesn't
+support submodules. I wrote
 [update-dotfiles-and-bin-plugins](https://github.com/tobinjt/bin/blob/master/update-dotfiles-and-bin-plugins)
 to automate updating plugins, and I run it every 4 weeks to stay current so that
 I don't need to deal with large diffs when I need a bug fix. It also runs

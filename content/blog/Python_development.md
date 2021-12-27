@@ -68,7 +68,7 @@ you test large swathes of code at a time. I take the approach of picking a piece
 of functionality that should be supported, then writing a test to exercise that
 functionality end to end.
 
-<https://github.com/tobinjt/bin/blob/master/python/linkdirs_test.py#L38> is a
+<https://github.com/tobinjt/bin/blob/ad5b57afa03d650ac657249c886300d581a8c60f/python/linkdirs_test.py#L39> is a
 good example of this, where I test progressively more complex use cases and
 scenarios by:
 
