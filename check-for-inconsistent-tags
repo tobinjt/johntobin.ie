@@ -1,15 +1,10 @@
 #!/bin/bash
-
-set -e -u -o pipefail
-
-markdown_files_being_committed() {
-  git diff --cached --name-only --diff-filter=ACM \
-    | (grep ^content/blog || true)
-}
-
 # When tags are inconsistently capitalised Hugo will use a random tag, causing
 # unnecessary changes in output.  Prevent checking in inconsistent tags.
-check_for_inconsistent_tags() {
+
+set -e -f -u -o pipefail
+
+main() {
   local bad_tags
   bad_tags="$(make --quiet tags_list \
                 | awk '{print tolower($2)}' \
@@ -22,14 +17,4 @@ check_for_inconsistent_tags() {
   return 1
 }
 
-main() {
-  local exit_status=0
-
-  if ! check_for_inconsistent_tags; then
-    exit_status=1
-  fi
-
-  exit "${exit_status}"
-}
-
-main
+main "$@"

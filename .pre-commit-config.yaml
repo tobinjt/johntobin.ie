@@ -18,3 +18,13 @@ repos:
     language: pygrep
     types: [markdown]
     entry: ^draft.*=.*true
+  - id: no-inconsistent-tags
+    name: Check for inconsistent tag capitalisation
+    description: >-
+      When tags are inconsistently capitalised Hugo will use a random tag,
+      causing unnecessary changes in output.  Prevent checking in inconsistent
+      tags.
+    language: script
+    types: [markdown]
+    pass_filenames: false
+    entry: check-for-inconsistent-tags
