@@ -7,20 +7,6 @@ markdown_files_being_committed() {
     | (grep ^content/blog || true)
 }
 
-# Hugo doesn't publish drafts, so prevent checking in draft content.
-check_for_drafts() {
-  local drafts_found=0 file
-  for file in $(markdown_files_being_committed); do
-    if grep -H --color=auto '^draft.*=.*true' "${file}"; then
-      drafts_found=1
-    fi
-  done
-  if [[ "${drafts_found}" -eq 1 ]]; then
-    printf "draft entries found\\n" >&2
-  fi
-  return "${drafts_found}"
-}
-
 # When tags are inconsistently capitalised Hugo will use a random tag, causing
 # unnecessary changes in output.  Prevent checking in inconsistent tags.
 check_for_inconsistent_tags() {
@@ -38,10 +24,6 @@ check_for_inconsistent_tags() {
 
 main() {
   local exit_status=0
-
-  if ! check_for_drafts; then
-    exit_status=1
-  fi
 
   if ! check_for_inconsistent_tags; then
     exit_status=1

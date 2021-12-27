@@ -9,3 +9,12 @@ repos:
   - id: check-vcs-permalinks
   - id: end-of-file-fixer
   - id: trailing-whitespace
+- repo: local
+  hooks:
+  - id: no-draft-posts
+    name: Check for `draft = true`
+    description: >-
+      Hugo does not publish draft posts, prevent draft posts being committed
+    language: pygrep
+    types: [markdown]
+    entry: ^draft.*=.*true
