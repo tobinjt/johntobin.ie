@@ -133,7 +133,7 @@ if you would prefer to just copy it.
 When tags are inconsistently capitalised Hugo will use a random tag, causing
 unnecessary changes in output from run to run and breaking external links. I use
 a [git pre-commit
-check](https://github.com/tobinjt/johntobin.ie/blob/master/git-pre-commit-hook)
+check](https://github.com/tobinjt/johntobin.ie/blob/8cfc4b00a52c0429707963a7a13f1d987f90772a/check-for-inconsistent-tags)
 to detect inconsistently capitalised tags and block the commit, see [Git
 pre-commits](/blog/git-pre-commits/) for more information.
 
