@@ -1,5 +1,4 @@
 +++
-lastmod = 2019-01-14T20:29:52Z
 title = "PHP development"
 tags = ['PHP', 'programming', 'website', 'Wordpress']
 +++
@@ -14,19 +13,29 @@ website](/blog/populating_dev_website_from_production_website/), and more
 recently I've been improving the code by breaking the monolithic `functions.php`
 into [separate files](https://github.com/tobinjt/ariane-theme/tree/master/src)
 and writing [tests](https://github.com/tobinjt/ariane-theme/tree/master/tests).
-`functions.php` still exists, but it's now [149 lines
+`functions.php` still exists, but it's now [148 lines
 long](https://github.com/tobinjt/ariane-theme/blob/b7f481a3d4d988f055493fb73b15830e4b6fb025/functions.php)
-rather than [1227 lines
+rather than [1226 lines
 long](https://github.com/tobinjt/ariane-theme/blob/4ad3e162332f156241a0190bf5f360e1c75692b6/functions.php)!
 
+I installed everything I used on my laptop with these commands:
+
+```shell
+brew install php php-code-sniffer php-cs-fixer phplint phpmd phpstan phpunit
+pecl install xdebug
+```
+
+### Testing
+
 For testing I'm using [PHPUnit](https://phpunit.de/) with
-[CodeCoverage](https://github.com/sebastianbergmann/php-code-coverage) enabled;
-I've been able to achieve 100% test coverage (excluding `functions.php` which is
-now mostly configuration rather than code), and along the way I've improved and
-cleaned up the code significantly. The other PHP files in the theme are used
-automatically by Wordpress to display content of different types and have very
-little logic in them, so I don't feel they are worth testing and testing would
-require faking lots of Wordpress functions. I created a [phpunit.xml config
+[CodeCoverage](https://github.com/sebastianbergmann/php-code-coverage) enabled
+(code coverage also requires [Xdebug](https://xdebug.org/)); I've been able to
+achieve near 100% test coverage (excluding `functions.php` which is now mostly
+configuration rather than code), and along the way I've improved and cleaned up
+the code significantly. The other PHP files in the theme are used automatically
+by Wordpress to display content of different types and have very little logic in
+them, so I don't feel they are worth testing and testing would require faking
+lots of Wordpress functions. I created a [phpunit.xml config
 file](https://github.com/tobinjt/ariane-theme/blob/master/phpunit.xml) using
 `phpunit --generate-configuration` plus editing so that I don't have to keep
 supplying command line flags. I wrote some test helpers and fakes (e.g.
@@ -51,17 +60,24 @@ Breaking up `functions.php` into separate files has had multiple benefits:
   have been working on everything at once. The code grew in size by
   approximately 200 lines or a factor of 1.158.
 
+### Linting and similar checks
+
+Beware: there are many different style guides for PHP that seldom agree, so
+different tools might disagree over how your code should be formatted.
+
+### PHPLint
+
 I tried [PHPLint](https://www.icosaedro.it/phplint/) because I'm a big fan of
 linters and style guides. I found it very, very restrictive - there is no way to
-suppress a warning, and the type annotations are intrusive. The biggest benefit
-I got from it is that I defined proper classes for holding data; for years I had
-followed the Wordpress approach of stuffing everything into an array, but the
-many complaints from PHPLint convinced me to define properly structured classes
-instead. Sadly I got there the long way and made lots of intermediate changes :(
-Several problems still stand out with PHPLint:
+suppress a warning, and it's custom type annotations are intrusive. The biggest
+benefit I got from it is that I defined proper classes for holding data; for
+years I had followed the Wordpress approach of stuffing everything into an
+array, but the many complaints from PHPLint convinced me to define properly
+structured classes instead. Sadly I got there the long way and made lots of
+intermediate changes :( Several problems still stand out with PHPLint:
 
 1.  There is no way to suppress warnings, see
-    https://www.icosaedro.it/phplint/FAQ.html#H14_Can_I_turn_off_some_boring_error_PHPLint_signals?
+    <https://www.icosaedro.it/phplint/FAQ.html#H14_Can_I_turn_off_some_boring_error_PHPLint_signals?>
 1.  You need to add metadata to every file declaring which libraries are used by
     that file. I understand that for external libraries or optional libraries,
     but it's silly to have to write `/*. require_module 'core'; .*/` to tell
@@ -91,6 +107,14 @@ I might feel differently if I had jumped directly to defining my own data
 structures. I got maybe 20% of the benefit I needed to justify the effort I put
 into it.
 
+#### Other checkers
+
+I used [PHPStan](https://phpstan.org/), and it mostly identified missing type
+annotations, which were easy to fix so it was a quick return on investment. I
+fairly easily reached level 8, but level 9 looked like a lot more work so I
+haven't tried to reach that yet. I would recommend PHPStan over all the other
+linting and checking tools I've used for PHP.
+
 I used [PHP Coding Standards Fixer](http://cs.symfony.com/) to automatically fix
 some things that a linter would complain about. When I enabled the large sets of
 rules like `@PhpCsFixer` I was unhappy with the output, e.g. multi-line arrays
@@ -100,15 +124,16 @@ agreed with, put them in a [.php_cs.dist config
 file](https://github.com/tobinjt/ariane-theme/blob/master/.php_cs.dist), and
 enabled them one at a time to make small related changes I could easily review
 rather than one giant commit. Having tests made me confident that the tool
-hadn't broken my code with the changes - yay for the tests! I'll probably test
-out more of the rules in future, but an evening's work has already gotten me
-good benefits so I'm happy with the investment of time. There are many different
-style guides for PHP that seldom agree, so this is an area for future
-investigation.
+hadn't broken my code with the changes - yay for the tests! I had initially
+thought about testing out more of the rules in future, but an evening's work has
+already gotten me good benefits, and further work looks like it will have very
+diminishing returns, so I'm happy with the investment of time I've made and
+probably won't be investing any more.
 
-I installed everything I needed on my laptop with these commands:
+I tried [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer) but it
+produced a huge number of warnings and the documentation about configuring it is
+hard to follow, so I quickly gave up on that.
 
-```shell
-brew install phplint phpunit php-cs-fixer
-pecl install xdebug
-```
+I tried [PHP Mess Detector](https://phpmd.org/) but PHP itself output ~1000
+lines of deprecation warnings for the PHP Mess Detector code so I quickly gave
+up on that too.
