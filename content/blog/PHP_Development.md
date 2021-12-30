@@ -97,7 +97,10 @@ intermediate changes :( Several problems still stand out with PHPLint:
     declarations, so I needed to generate some of the module definitions.
 1.  PHPLint interprets `cast(type, variable)` to cast a variable to a different
     type. I didn't want to include the PHPLint libraries so I wrote [a fake
-    version](https://github.com/tobinjt/ariane-theme/blob/master/src/Cast.php).
+    version](https://github.com/tobinjt/ariane-theme/blob/cb16b610f821900edc01cc1e1e74ac4ef4fff56e/src/Cast.php).
+    This did not work when I added type annotations everywhere, because it works
+    on many different types, so I deleted it because by that point I was using
+    PHPStan (see below) rather than PHPLint.
 1.  PHPLint has been broken far more often than it has been working, though it's
     definitely possible that this is a problem with Homebrew packaging rather
     than PHPLint.
