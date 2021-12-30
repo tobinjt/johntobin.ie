@@ -34,6 +34,8 @@ works too.
 
 The bind zone file is quite short:
 
+<!-- markdownlint-disable MD010 -->
+
 ```bindzone
 ; ----------------------------------------------------------------------
 ; Zonefile to hijack the pool.ntp.org domain, so NTP clients use our local
@@ -73,6 +75,8 @@ www		IN CNAME	ntppool-varnish.develooper.com.
 ; *.pool.ntp.org resolves to ntp.cs.tcd.ie
 *		IN CNAME	ntp.cs.tcd.ie.
 ```
+
+<!-- markdownlint-restore -->
 
 You can play with it using commands like:
 

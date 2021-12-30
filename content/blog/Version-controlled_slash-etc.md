@@ -29,7 +29,7 @@ distributed: if we added a second mail server, I wanted to make synchronising
 
 - Avoiding directory listings like this:
 
-  ```
+  ```text
   dovecot.conf
   dovecot.conf.2008-2009
   dovecot.conf.2009-05-07

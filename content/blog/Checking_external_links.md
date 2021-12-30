@@ -45,7 +45,7 @@ false positives. I only count each URL as failing once per hour, regardless of
 how many times it failed within that hour, to avoid alerting when a URL that is
 linked many times has a temporary failure. The output looks like this:
 
-```
+```text
 Bad URLs for https://www.johntobin.ie/ since 2019-06-08
  https://www.example.org/directory
  https://www.example.org/directory/

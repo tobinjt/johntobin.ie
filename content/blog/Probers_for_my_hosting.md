@@ -26,7 +26,7 @@ to ensure that the VM, DNS, Apache, and websites are working properly:
   unnecessary redirects (`301`, `302`) that I can change to remove the redirect.
 
 - Check that a magic string is present in the response from
-  https://www.arianetobin.ie/ to detect failures:
+  <https://www.arianetobin.ie/> to detect failures:
   [probe-arianetobin.ie](https://github.com/tobinjt/bin/blob/master/probe-arianetobin.ie).
 - Check that `A`, `AAAA`, and `MX` records are correct for every domain:
   [check-dns-for-hosting](https://github.com/tobinjt/bin/blob/master/check-dns-for-hosting).

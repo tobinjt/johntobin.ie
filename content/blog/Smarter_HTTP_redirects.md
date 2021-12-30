@@ -33,21 +33,22 @@ response codes.
 The second change will reduce the load on your web server slightly, and more
 importantly will also slightly speed up your readers' browsing experience (and
 should therefore have some SEO benefits). You may have noticed that when you
-click on a URL like https://www.example.org/directory, your browser will display
-https://www.example.org/directory/ (note the trailing `/` on the second URL).
-When your browser makes a HTTP request for a directory, but the request doesn't
-end with a `/`, the web server will redirect your browser to the same URL with a
-`/` appended. When you combine that with a redirection from example.org to
-www.example.org, your web browser will have to make three requests:
+click on a URL like <https://www.example.org/directory>, your browser will
+display <https://www.example.org/directory/> (note the trailing `/` on the
+second URL). When your browser makes a HTTP request for a directory, but the
+request doesn't end with a `/`, the web server will redirect your browser to the
+same URL with a `/` appended. When you combine that with a redirection from
+example.org to www.example.org, your web browser will have to make three
+requests:
 
-```
+```text
 http://example.org/directory
 http://www.example.org/directory
 http://www.example.org/directory/
 ```
 
-This is even worse if you subsequently redirect from http://www.example.org/ to
-https://www.example.org/ because that adds a fourth request.
+This is even worse if you subsequently redirect from <http://www.example.org/>
+to <https://www.example.org/> because that adds a fourth request.
 
 We can reduce the sequence to two requests by appending a `/` whenever a request
 is missing one and redirecting to HTTPS rather than HTTP.

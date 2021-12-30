@@ -12,7 +12,7 @@ downloads everything and saves it to make finding the location of broken links
 easier. Any request that wasn't answered with HTTP status 200 is displayed,
 e.g.:
 
-```
+```text
 --2014-11-17 22:07:14--  https://example.com/bar/
 Reusing existing connection to example.com:80.
 HTTP request sent, awaiting response... 404 Not Found

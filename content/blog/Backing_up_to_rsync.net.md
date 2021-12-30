@@ -63,7 +63,7 @@ can be run from `cron`.
   `authorized_keys` on rsync.net; example output is shown below (note that it's
   wrapped here so you can easily read it).
 
-  ```
+  ```text
   Missing SSH key :( SourceDirectory
   command="rsync --server -vlogDtpre.iLsfxC \
     --delete --partial-dir=.rsync-partial \
@@ -92,7 +92,7 @@ can be run from `cron`.
   - `--filter=dir-merge rsync-net_filters`: read filter specifications from
     files named `rsync-net_filters` if any are found. Example filter contents:
 
-    ```
+    ```conf
     # Exclude files that can be regenerated.
     exclude *Previews.lrdata
     # Exclude files broken by Mojave full disk access.
@@ -128,7 +128,7 @@ can be run from `cron`.
   from cron on two different machines every night. The output is fairly simple,
   e.g. (wrapped for easier reading):
 
-  ```
+  ```text
   Backup for "johntobin-laptop" too old:
     current time 1553385602/2019-03-24 00:00;
     last backup 1552953713/2019-03-19 00:01;
@@ -180,15 +180,19 @@ Host rsync-net
   directory on rsync.net doesn't exist, so create the directory manually: `ssh rsync-net mkdir -p DIRECTORY`
 - `./backup-NEW-MACHINE-to-rsync-net`; it should work this time.
 - Run from cron hourly (wrapped for easier reading):
+
   - MacOS:
-    ```
+
+    ```crontab
     @hourly /usr/local/bin/lockrun --quiet \
       --lockfile="${HOME}/tmp/locks/rsync-net" -- \
         /usr/local/bin/gtimeout --kill-after=60 6h \
           "${HOME}/bin/backup-NEW-MACHINE-to-rsync-net"`
     ```
+
   - Linux:
-    ```
+
+    ```crontab
     @hourly flock "${HOME}/tmp/locks/rsync-net" \
       timeout 6h \
         "${HOME}/bin/backup-NEW-MACHINE-to-rsync-net"

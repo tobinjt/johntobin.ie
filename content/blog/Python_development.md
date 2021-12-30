@@ -1,4 +1,5 @@
 +++
+lastmod = 2021-12-27T22:20:53+01:00
 title = 'Python development'
 tags = ['Python', 'programming', 'testing']
 +++
@@ -14,7 +15,7 @@ document it for myself and others :)
 
 The list of Python modules you need is:
 
-```
+```text
 lxml mutmut mypy pudb pyfakefs pylint pytest pytest-cov yapf
 ```
 
@@ -61,7 +62,7 @@ also configure a HTML output directory so that you can easily see which lines of
 code you haven't tested; configuring a portable output directory might be
 difficult, I haven't needed to do so yet.
 
-### Integration tests.
+### Integration tests
 
 I'm a fan of integration tests, where instead of testing individual functions
 you test large swathes of code at a time. I take the approach of picking a piece
@@ -72,10 +73,10 @@ functionality end to end.
 good example of this, where I test progressively more complex use cases and
 scenarios by:
 
-1. Populating a fake filesystem (`pyfakefs` is great for this) with the scenario
-   to deal with.
-1. Calling `main()` with the right arguments.
-1. Checking that the resulting filesystem is correct.
+1.  Populating a fake filesystem (`pyfakefs` is great for this) with the
+    scenario to deal with.
+1.  Calling `main()` with the right arguments.
+1.  Checking that the resulting filesystem is correct.
 
 This was particularly reassuring when I added deletion to `linkdirs.py` :)
 
@@ -360,7 +361,6 @@ I do this once a month because frequent updates make it far easier to figure out
 breakages, so I've written
 <https://github.com/tobinjt/bin/blob/master/update-python-modules> to make it a
 single command.
-
 
 ## Vim configuration
 

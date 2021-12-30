@@ -11,7 +11,7 @@ I decided to implement that for use when I'm coding in my own time:
 
 Usage is straightforward:
 
-```
+```text
 Watch the specified files and run the binary when they change.
 Usage: inotify_wrapper file1 [file2 ...] -- binary [args ...]
 Files will not be passed to the binary, the caller needs to do that if
