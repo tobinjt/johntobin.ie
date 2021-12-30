@@ -11,6 +11,11 @@ repos:
   - id: trailing-whitespace
 - repo: local
   hooks:
+  - id: markdownlint
+    name: Run `markdownlint`
+    language: system
+    types: [markdown]
+    entry: markdownlint
   - id: no-draft-posts
     name: Check for `draft = true`
     description: >-
