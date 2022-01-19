@@ -4,7 +4,7 @@ title = "Probers for my hosting"
 tags = ['automation', 'shell', 'SRE', 'sysadmin', 'website']
 +++
 
-I have a VM from [Hetzner](https://www.hetzner.de/) for [my wife's
+I have a VM from [Hetzner](https://www.hetzner.com/) for [my wife's
 website](https://www.arianetobin.ie/) and my own. I run several probers hourly
 from `cron` on the VM and on a machine in my house (so they aren't singly homed)
 to ensure that the VM, DNS, Apache, and websites are working properly:
