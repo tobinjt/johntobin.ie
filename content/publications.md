@@ -15,7 +15,7 @@ title = 'My Publications'
   2008 Conference](http://www.bcs-sgai.org/ai2008/) were reprinted in a [special
   edition](https://www.sciencedirect.com/science?_ob=PublicationURL&_tockey=%23TOC%235652%232009%23999779992%231492106%23FLA%23&_cdi=5652&_pubType=J&_auth=y&_acct=C000050221&_version=1&_urlVersion=0&_userid=10&md5=c8b5b4f07319ac01a00136db989ce839)
   of the [Knowledge-Based Systems
-  Journal](https://www.elsevier.com/wps/find/journaldescription.cws_home/525448/description),
+  Journal](https://www.journals.elsevier.com/knowledge-based-systems),
   including [a slightly modified version of A User-Extensible and Adaptable
   Parser
   Architecture](https://www.sciencedirect.com/science?_ob=ArticleURL&_udi=B6V0P-4VDH8TX-2&_user=10&_coverDate=10%2F31%2F2009&_rdoc=7&_fmt=high&_orig=browse&_srch=doc-info%28%23toc%235652%232009%23999779992%231492106%23FLA%23display%23Volume%29&_cdi=5652&_sort=d&_docanchor=&_ct=13&_acct=C000050221&_version=1&_urlVersion=0&_userid=10&md5=5c31a86b511324c294ed5ef10d775f85)
