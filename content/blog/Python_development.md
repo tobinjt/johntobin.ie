@@ -237,7 +237,7 @@ encourages me to continue.
 
 ## Linting
 
-I use [pylint](https://www.pylint.org/) for linting. I have [configured
+I use [pylint](https://pypi.org/project/pylint/) for linting. I have [configured
 Syntastic and Vim]({{< relref "#vim-configuration" >}}) to run `pylint`
 automatically on saving, or see [Automatically running tests, linters, or
 anything](https://www.johntobin.ie/blog/automatically_running_tests_linters_or_anything/)
