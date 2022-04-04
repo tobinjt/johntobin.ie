@@ -37,3 +37,7 @@ enableGitInfo = true
   name = 'Publications'
   weight = 3
   url = '/publications/'
+
+[security]
+  [security.exec]
+    allow = ['^vim$', '^dart-sass-embedded$', '^go$', '^npx$', '^postcss$']
