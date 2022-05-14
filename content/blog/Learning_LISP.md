@@ -86,7 +86,7 @@ My solution:
 Problem 5-12: The version of Fibonacci we have already exhibited is inefficient
 beyond comparison. Many computations are repeated. Write a version with optional
 parameters that does not have this flaw. Think of working forward from the first
-month rather than backward from the *n*th month.
+month rather than backward from the nth month.
 
 My solution:
 
