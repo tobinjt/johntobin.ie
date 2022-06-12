@@ -16,6 +16,9 @@ enableGitInfo = true
   keywords = 'blog,personal,SRE,sysadmin,developer,manager'
   hidecredits = true
   hidecopyright = true
+  # /site.webmanifest doesn't exist; point this towards something that exists
+  # so that probers don't encounter errors.
+  manifest = '/index.html'
 
 [frontmatter]
   # Automatically work out the date to use from git; allow it to be overridden
