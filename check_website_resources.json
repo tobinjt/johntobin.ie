@@ -9,7 +9,8 @@
     ],
     "optional_resources": [
       "https://www.johntobin.ie/images/favicon-16x16.png",
-      "https://www.johntobin.ie/images/favicon-32x32.png"
+      "https://www.johntobin.ie/images/favicon-32x32.png",
+      "https://www.johntobin.ie/index.html"
     ],
     "resources": []
   },
@@ -23,7 +24,8 @@
     ],
     "optional_resources": [
       "https://www.johntobin.ie/images/favicon-16x16.png",
-      "https://www.johntobin.ie/images/favicon-32x32.png"
+      "https://www.johntobin.ie/images/favicon-32x32.png",
+      "https://www.johntobin.ie/index.html"
     ],
     "resources": []
   },
@@ -37,7 +39,8 @@
     ],
     "optional_resources": [
       "https://www.johntobin.ie/images/favicon-16x16.png",
-      "https://www.johntobin.ie/images/favicon-32x32.png"
+      "https://www.johntobin.ie/images/favicon-32x32.png",
+      "https://www.johntobin.ie/index.html"
     ],
     "resources": []
   }
