@@ -19,6 +19,8 @@ enableGitInfo = true
   # /site.webmanifest doesn't exist; point this towards something that exists
   # so that probers don't encounter errors.
   manifest = '/index.html'
+  # Similarly /images/safari-pinned-tab.svg doesn't exist.
+  mask_icon = '/index.html'
 
 [frontmatter]
   # Automatically work out the date to use from git; allow it to be overridden
