@@ -16,7 +16,7 @@ document it for myself and others :)
 The list of Python modules you need is:
 
 ```text
-lxml mutmut mypy pudb pyfakefs pylint pytest pytest-cov yapf
+black lxml mutmut mypy pudb pyfakefs pylint pytest pytest-cov
 ```
 
 See [Upgrading packages installed with pip3 is troublesome]({{< relref
@@ -29,8 +29,8 @@ how I install and upgrade packages; I recommend using
 These package names are correct for Debian.
 
 ```shell
-sudo apt install pylint3 python3-mypy python3-pudb python3-pyfakefs \
-  python3-pytest python3-pytest-cov yapf3
+sudo apt install black pylint3 python3-mypy python3-pudb python3-pyfakefs \
+  python3-pytest python3-pytest-cov
 ```
 
 `mutmut` isn't packaged for Debian, so you might want to install it with Pip.
@@ -252,18 +252,14 @@ pylint *.py
 
 ## Automatic formatting
 
-I use [yapf](https://github.com/google/yapf) for autoformatting my code. I run
-this manually but will probably make it automatic the next time I write some
-Python. I tried [pyformat](https://pypi.org/project/pyformat/) but there doesn't
-appear to be a way to set indentation to 2 spaces so I gave up on it.
+I use [Black](https://black.readthedocs.io/en/stable/) for autoformatting my
+code. I run this manually and as a pre-commit hook but will probably make it
+automatic the next time I write some Python. I used to use YAPF but Google is
+moving away from it so I switched to Black.
 
 ```shell
-yapf -i *.py
+black *.py
 ```
-
-<https://github.com/tobinjt/dotfiles/blob/master/.config/yapf/style> is my
-`$HOME/.config/yapf/style`. You can run `yapf --style-help` to generate a config
-with all settings documented and set to their current setting.
 
 ## Type checking
 
@@ -353,8 +349,8 @@ virtualenv --no-periodic-update "${install_dir}"
 # virtualenv sometimes deletes the destination directory so cd there again.
 cd "${install_dir}"
 source bin/activate
-pip3 install lxml mypy pudb pyfakefs pylint pytest pytest-cov \
-  pytest-flakefinder pyyaml yapf
+pip3 install black lxml mypy pudb pyfakefs pylint pytest pytest-cov \
+  pytest-flakefinder pyyaml
 ```
 
 I do this once a month because frequent updates make it far easier to figure out
