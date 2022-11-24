@@ -254,8 +254,10 @@ pylint *.py
 
 I use [Black](https://black.readthedocs.io/en/stable/) for autoformatting my
 code. I run this manually and as a pre-commit hook but will probably make it
-automatic the next time I write some Python. I used to use YAPF but Google is
-moving away from it so I switched to Black.
+automatic the next time I write some Python. I used to use
+[YAPF](https://github.com/google/yapf) but Google is now developing a fork of
+[Black](https://github.com/psf/black) named
+[Pyink](https://github.com/google/pyink), so I switched to Black.
 
 ```shell
 black *.py
