@@ -5,13 +5,11 @@ tags = ['automation', 'MacOS', 'shell', 'sysadmin']
 +++
 
 There are several apps I run in the background on my laptop that occasionally
-crash, e.g. [Google Backup and
-Sync](https://www.google.com/drive/download/backup-and-sync/) and
-[Pauses](https://itunes.apple.com/ie/app/pauses/id481375590?mt=12). After
-several crashes that I didn't notice for a few days each, I'd had enough and
-decided I needed tooling to automatically restart certain apps. I searched for
-existing tools but only found some blog posts about the problem, so I wrote my
-own. The implementation is relatively simple on MacOS X:
+crash, e.g. [Google Drive for Desktop](https://www.google.com/drive/download/).
+After several crashes that I didn't notice for a few days each, I'd had enough
+and decided I needed tooling to automatically restart certain apps. I searched
+for existing tools but only found some blog posts about the problem, so I wrote
+my own. The implementation is relatively simple on MacOS X:
 [launchd](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/BPSystemStartup/Chapters/CreatingLaunchdJobs.html)
 exists to run daemons and apps and restart them as necessary, so mostly I just
 needed to generate configuration files - but that didn't allow updating apps, so
