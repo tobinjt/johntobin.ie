@@ -1,36 +1,36 @@
 # See https://pre-commit.com for more information
 # See https://pre-commit.com/hooks.html for more hooks
 repos:
-- repo: https://github.com/pre-commit/pre-commit-hooks
-  rev: v4.3.0
-  hooks:
-  - id: check-json
-  - id: check-merge-conflict
-  - id: check-symlinks
-  - id: check-vcs-permalinks
-  - id: end-of-file-fixer
-  - id: trailing-whitespace
-- repo: local
-  hooks:
-  - id: markdownlint
-    name: Run `markdownlint`
-    language: system
-    types: [markdown]
-    entry: markdownlint
-  - id: no-draft-posts
-    name: Check for `draft = true`
-    description: >-
-      Hugo does not publish draft posts, prevent draft posts being committed
-    language: pygrep
-    types: [markdown]
-    entry: ^draft.*=.*true
-  - id: no-inconsistent-tags
-    name: Check for inconsistent tag capitalisation
-    description: >-
-      When tags are inconsistently capitalised Hugo will use a random tag,
-      causing unnecessary changes in output.  Prevent checking in inconsistent
-      tags.
-    language: script
-    types: [markdown]
-    pass_filenames: false
-    entry: check-for-inconsistent-tags
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.3.0
+    hooks:
+      - id: check-json
+      - id: check-merge-conflict
+      - id: check-symlinks
+      - id: check-vcs-permalinks
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+  - repo: local
+    hooks:
+      - id: markdownlint
+        name: Run `markdownlint`
+        language: system
+        types: [markdown]
+        entry: markdownlint
+      - id: no-draft-posts
+        name: Check for `draft = true`
+        description: >-
+          Hugo does not publish draft posts, prevent draft posts being committed
+        language: pygrep
+        types: [markdown]
+        entry: ^draft.*=.*true
+      - id: no-inconsistent-tags
+        name: Check for inconsistent tag capitalisation
+        description: >-
+          When tags are inconsistently capitalised Hugo will use a random tag,
+          causing unnecessary changes in output.  Prevent checking in inconsistent
+          tags.
+        language: script
+        types: [markdown]
+        pass_filenames: false
+        entry: check-for-inconsistent-tags
