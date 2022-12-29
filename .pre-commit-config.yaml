@@ -34,3 +34,7 @@ repos:
         types: [markdown]
         pass_filenames: false
         entry: check-for-inconsistent-tags
+  - repo: meta
+    hooks:
+      - id: check-hooks-apply
+      - id: check-useless-excludes
