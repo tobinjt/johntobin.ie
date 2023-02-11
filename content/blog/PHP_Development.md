@@ -36,7 +36,7 @@ the code significantly. The other PHP files in the theme are used automatically
 by Wordpress to display content of different types and have very little logic in
 them, so I don't feel they are worth testing and testing would require faking
 lots of Wordpress functions. I created a [phpunit.xml config
-file](https://github.com/tobinjt/ariane-theme/blob/master/phpunit.xml) using
+file](https://github.com/tobinjt/ariane-theme/blob/master/phpunit-10.xml) using
 `phpunit --generate-configuration` plus editing so that I don't have to keep
 supplying command line flags. I wrote some test helpers and fakes (e.g.
 [FakeWordpress.php](https://github.com/tobinjt/ariane-theme/blob/master/src/FakeWordpress.php));
