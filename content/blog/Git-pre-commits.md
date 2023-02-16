@@ -6,13 +6,11 @@ tags = ['automation', 'Git', 'development']
 
 Humans make mistakes - that's why we write tests for our code. Automatically
 running tests or other checks when committing code is a useful way to catch
-mistakes and prevent committing bad code. Git provides many different hooks that
-can be used to automatically run such checks: there's a good introduction at
-<https://githooks.com/> with links to many different tools for configuring and
-managing Git hooks. Originally I decided not to use them because the hooks they
-provide weren't useful to me, but recently I checked out
-<https://pre-commit.com/> again and there are many more hooks available so I
-have migrated to that.
+mistakes and prevent committing bad code, and Git provides many different hooks
+that can be used to automatically run such checks. Initially I wrote hooks as
+shell scripts, but recently I checked out <https://pre-commit.com/> and it both
+makes overall management easy and provides many hooks, so I have migrated to
+that.
 
 There are many packaged hooks available; I've used those for complex checks, but
 for simpler checks I've found it easier to just write a hook config, e.g.
