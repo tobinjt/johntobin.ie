@@ -46,3 +46,8 @@ enableGitInfo = true
 [security]
   [security.exec]
     allow = ['^vim$', '^dart-sass-embedded$', '^go$', '^npx$', '^postcss$']
+    # By default most environment variables are removed before starting the
+    # editor, causing vim to not read ~/.vimrc, $PATH is bad, and probably more.
+    # Keep all environment variables because I run vim with those environment
+    # variables set all the time.
+    osEnv = ['.*']
