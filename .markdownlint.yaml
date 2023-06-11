@@ -19,3 +19,4 @@ MD030:
 MD033:
   allowed_elements:
     - a
+    - img
