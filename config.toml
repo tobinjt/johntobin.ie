@@ -51,3 +51,9 @@ enableGitInfo = true
     # Keep all environment variables because I run vim with those environment
     # variables set all the time.
     osEnv = ['.*']
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      # Include inline HTML rather than stripping it.
+      unsafe = true
