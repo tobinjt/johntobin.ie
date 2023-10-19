@@ -26,7 +26,7 @@ can get a working NTP installation with just:
 apt-get install ntp
 ```
 
-The sole exception is www.pool.ntp.org: I want the URL
+The sole exception is `www.pool.ntp.org`: I want the URL
 <https://www.pool.ntp.org> to work in a user's browser. Although pool.ntp.org
 _does_ resolve to our NTP server, the web server running on that host redirects
 requests for <https://pool.ntp.org> to <https://www.pool.ntp.org>, so that URL

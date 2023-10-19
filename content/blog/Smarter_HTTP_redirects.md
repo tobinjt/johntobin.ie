@@ -38,7 +38,7 @@ display <https://www.example.org/directory/> (note the trailing `/` on the
 second URL). When your browser makes a HTTP request for a directory, but the
 request doesn't end with a `/`, the web server will redirect your browser to the
 same URL with a `/` appended. When you combine that with a redirection from
-example.org to www.example.org, your web browser will have to make three
+`example.org` to `www.example.org`, your web browser will have to make three
 requests:
 
 ```text
