@@ -91,22 +91,20 @@ I mounted the subassemblies like this:
   Bases](https://www.games-workshop.com/en-GB/Citadel-32mm-Round-Bases)) using
   superglue; mounting on spare bases allows you to use your [painting
   handle](https://www.games-workshop.com/en-GB/Citadel-Colour-Painting-Handle-2020).
-- Straighten out a paperclip and cut it into 3cm or 4cm sections - you need
-  the subassembly to be far enough away from the painting handle that you can
-  get the brush in at the underside.
+- Straighten out a paperclip and cut it into 3cm or 4cm sections - you need the
+  subassembly to be far enough away from the painting handle that you can get
+  the brush in at the underside.
 - Drill one or preferably two holes in each piece somewhere they won't be seen
-  when the model is assembled, e.g. the middle of the backpack, or the posts
-  on the arms that plug into the body. Two holes means the subassembly won't
-  rotate when you're painting it - this is very annoying when it happens :(
-  The hole needs to be slightly bigger than the paperclip so that you can
-  wiggle the paperclip around when taking the subassembly apart later. The
-  Citadel drill ([Games Workshop Citadel – Drill – Gamers World
-  limited](https://gamersworld.ie/product/games-workshop-citadel-drill/)) is
+  when the model is assembled, e.g. the middle of the backpack, or the posts on
+  the arms that plug into the body. Two holes means the subassembly won't rotate
+  when you're painting it - this is very annoying when it happens :( The hole
+  needs to be slightly bigger than the paperclip so that you can wiggle the
+  paperclip around when taking the subassembly apart later. The Citadel drill is
   the right size if you can get hold of one.
 - Put some superglue in **one** of the holes you drilled, push in a piece of
-  paperclip, hold until set. I tried plastic glue and it didn't work at all -
-  I needed to use superglue. Repeat with another paperclip piece and the
-  second hole on that subassembly.
+  paperclip, hold until set. I tried plastic glue and it didn't work at all - I
+  needed to use superglue. Repeat with another paperclip piece and the second
+  hole on that subassembly.
 - Push the other end of the two paperclip sections into the cork on the spare
   base.
 - Repeat until all the subassemblies are mounted.
