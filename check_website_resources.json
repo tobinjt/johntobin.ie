@@ -4,6 +4,7 @@
     "optional_resource_regexes": [
       "https://www.johntobin.ie/css/coder.min.[a-z0-9]{64}.css",
       "https://www.johntobin.ie/fonts/forkawesome-webfont.(eot|svg|ttf|woff|woff2).*",
+      "https://www.johntobin.ie/fonts/fa-(brands|regular|solid)-[0-9]00.(ttf|woff2)",
       "https://www.johntobin.ie/js/coder.min.[a-z0-9]{64}.js",
       "https://www.johntobin.ie/js/dark-mode.min.[a-z0-9]{64}.js"
     ],
@@ -20,6 +21,7 @@
     "optional_resource_regexes": [
       "https://www.johntobin.ie/css/coder.min.[a-z0-9]{64}.css",
       "https://www.johntobin.ie/fonts/forkawesome-webfont.(eot|svg|ttf|woff|woff2).*",
+      "https://www.johntobin.ie/fonts/fa-(brands|regular|solid)-[0-9]00.(ttf|woff2)",
       "https://www.johntobin.ie/js/coder.min.[a-z0-9]{64}.js",
       "https://www.johntobin.ie/js/dark-mode.min.[a-z0-9]{64}.js"
     ],
@@ -36,6 +38,7 @@
     "optional_resource_regexes": [
       "https://www.johntobin.ie/css/coder.min.[a-z0-9]{64}.css",
       "https://www.johntobin.ie/fonts/forkawesome-webfont.(eot|svg|ttf|woff|woff2).*",
+      "https://www.johntobin.ie/fonts/fa-(brands|regular|solid)-[0-9]00.(ttf|woff2)",
       "https://www.johntobin.ie/js/coder.min.[a-z0-9]{64}.js",
       "https://www.johntobin.ie/js/dark-mode.min.[a-z0-9]{64}.js"
     ],
