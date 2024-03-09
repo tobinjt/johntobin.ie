@@ -16,10 +16,8 @@ would I need anything else? I wrote
 to wrap some extra functionality around `mysqldump`:
 
 - Extract the username, password, and database name from the Wordpress
-  [wp-config.php](https://codex.wordpress.org/Editing_wp-config.php), so that
-  you can just run `backup-wordpress /path/to/wordpress-base` rather than
-  passing username, password, and database name as arguments to `mysqldump`,
-  e.g. in `crontab(5)`.
+  `wp-config.php` and pass them as arguments to `mysqldump`, so you can just run
+  `backup-wordpress /path/to/wordpress-base`, e.g. in `cron(8)`.
 - Run [mysqlcheck](https://dev.mysql.com/doc/refman/8.0/en/mysqlcheck.html) to
   repair and optimise the database.
 - Run `mysqldump` with the right arguments and compress the output.
