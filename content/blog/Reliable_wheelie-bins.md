@@ -9,6 +9,7 @@ tags = ['automation', 'programming', 'SRE']
 {{< rawhtml >}}
 <img style="float: right; margin-left: 1em" title="Babestress, CC BY-SA 3.0 https://creativecommons.org/licenses/by-sa/3.0"
 src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Irish_Panda_wheelie_bin.jpg/256px-Irish_Panda_wheelie_bin.jpg"
+alt="Wheelie bin picture"
 />
 {{< /rawhtml >}}
 
