@@ -5,7 +5,7 @@ SERVER_OPTS += --forceSyncStatic
 # Hugo regenerates every file, so compare checksums rather than
 # timestamps and don't synchronise timestamps.
 RSYNC_OPTS = -av --delete --checksum --no-times
-DESTINATION = www.johntobin.ie:/var/www/sites/johntobin.ie/
+DESTINATION = hosting.johntobin.ie:/var/www/sites/johntobin.ie/
 OUTPUT_DIR = public/
 
 all: server
