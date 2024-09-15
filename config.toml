@@ -3,7 +3,6 @@ languageCode = "en-us"
 title = "John Tobin"
 theme = "hugo-coder"
 googleAnalytics = 'G-MYL6PFZFFX'
-paginate = 50
 pygmentsCodefences = true
 pygmentsStyle = "solarized-dark"
 newContentEditor = "vim"
@@ -21,6 +20,9 @@ enableGitInfo = true
   manifest = '/index.html'
   # Similarly /images/safari-pinned-tab.svg doesn't exist.
   mask_icon = '/index.html'
+
+[pagination]
+  pagerSize = 50
 
 [frontmatter]
   # Automatically work out the date to use from git; allow it to be overridden
