@@ -39,7 +39,7 @@ title = 'My Publications'
 ### 2016
 
 - [Interrupt Reduction
-  Projects](https://www.usenix.org/publications/login/winter-2016-vol-41-no-4/beyer),
+  Projects](https://www.usenix.org/publications/login/winter2016/beyer),
   co-authored by Betsy Beyer, John Tobin, and Liz Fong-Jones.
 
   > Interrupts are a fact of life for any team that’s responsible for

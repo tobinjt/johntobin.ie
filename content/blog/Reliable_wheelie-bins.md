@@ -24,11 +24,11 @@ calendar reminders on Friday nights before public holidays, but _only_ before
 public holidays so they aren't spammy. There's a [Google calendar of Irish
 public
 holidays](https://calendar.google.com/calendar/embed?src=en.irish%23holiday%40group.v.calendar.google.com&ctz=Europe%2FDublin),
-so I wrote some [Google Apps Script](https://www.google.com/script/start/) to
-find upcoming public holidays on Mondays and create reminder events on Fridays.
-The code wasn't too hard to write, even though it was my first time writing
-Typescript or Google Apps Script. It has worked for the past two public holidays
-so I'm happy to share it for anyone who might benefit from it:
+so I wrote some [Google Apps Script](https://developers.google.com/apps-script/)
+to find upcoming public holidays on Mondays and create reminder events on
+Fridays. The code wasn't too hard to write, even though it was my first time
+writing Typescript or Google Apps Script. It has worked for the past two public
+holidays so I'm happy to share it for anyone who might benefit from it:
 <https://github.com/tobinjt/wheelie-bin-holiday-warning>
 
 Some implementation notes:

@@ -5,7 +5,7 @@ tags = ['development', 'programming', 'Rust', 'vim']
 +++
 
 I'm slowly learning [Rust](https://www.rust-lang.org/), and as usual I'm using
-[Vim](http://vim.org) to write my code. I'm using
+[Vim](http://www.vim.org) to write my code. I'm using
 [rust.vim](https://github.com/rust-lang/rust.vim) for syntax highlighting, and
 [vim-lsp](https://github.com/prabirshrestha/vim-lsp) and
 [rust-analyzer](https://rust-analyzer.github.io/) for [Language Server

@@ -5,7 +5,7 @@ tags = ['automation', 'MacOS', 'shell', 'sysadmin']
 +++
 
 There are several apps I run in the background on my laptop that occasionally
-crash, e.g. [Google Drive for Desktop](https://www.google.com/drive/download/).
+crash, e.g. [Google Drive for Desktop](https://workspace.google.com/products/drive/#download).
 After several crashes that I didn't notice for a few days each, I'd had enough
 and decided I needed tooling to automatically restart certain apps. I searched
 for existing tools but only found some blog posts about the problem, so I wrote

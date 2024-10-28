@@ -57,7 +57,7 @@ Here are the actions taken by the tool:
   table instead.
 
   I generate the SQL `UPDATE` statements because the updates are simple and
-  repetitive, and I'm using [Template Toolkit](http://www.template-toolkit.org/)
+  repetitive, and I'm using [Template Toolkit](https://www.template-toolkit.org/)
   for that rather than trying to get all the quoting and expansion right using
   shell. Generating an intermediate file also makes debugging a bit easier
   because I can read the SQL statements, copy and paste individual statements

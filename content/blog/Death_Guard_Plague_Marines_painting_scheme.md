@@ -20,24 +20,25 @@ arm](https://lh3.googleusercontent.com/OOUDRPI1LaSz162myRp-OkcDep7hoOfVRP1zi_1l4
 
 ## Resources
 
-- [How to Paint: Lord of
-  Contagion](https://www.youtube.com/watch?v=29Yg2ukwpTo)
+- [How to Paint: Lord of Contagion](https://www.youtube.com/watch?v=29Yg2ukwpTo)
 - [Example Death
   Guard](https://www.games-workshop.com/en-GB/Death-Guard-Deathshroud-Bodyguard-2020)
-  on GW
+on GW
 - [HOW TO PAINT: Plague Marine
   Reinforcements](https://www.games-workshop.com/en-GB/Plague-Marine-Reinforcements-2018)
 - [How to Paint: A Pallid Hand Plague
-  Marine](https://youtu.be/ImGHTaS3wNw?t=908) - completely different colours
-  for the armour, but the Nurgle tentacle parts might be useful.
-- [How to Paint Death Guard: Nurglings](https://youtu.be/mpz9FJlRfQ8)
+  Marine](https://www.youtube.com/watch?v=ImGHTaS3wNw?&t=) - completely
+different colours for the armour, but the Nurgle tentacle parts might be useful.
+- [How to Paint Death Guard:
+  Nurglings](https://www.youtube.com/watch?v=mpz9FJlRfQ8)
   - Casandora Yellow looks like a good substitute for Iyanden Yellow
   - Screamer Pink probably works instead of Volupus Pink.
 - [How to Paint Death Guard: Foetid Bloat-drone
-  Flesh](https://youtu.be/LhXlKz5IrYY)
-- [How to Paint Battle Ready Death Guard](https://youtu.be/7AR3K6pfJ60)
+  Flesh](https://www.youtube.com/watch?v=LhXlKz5IrYY)
+- [How to Paint Battle Ready Death
+  Guard](https://www.youtube.com/watch?v=7AR3K6pfJ60)
 - [How to Paint Death Guard: Speed Painting
-  Poxwalkers](https://youtu.be/YyV5EIt8n6I)
+  Poxwalkers](https://www.youtube.com/watch?v=YyV5EIt8n6I)
 
 ## Paints used
 
@@ -177,32 +178,32 @@ spots will be harder to see, so it's less of a problem.
 
 - Armour:
   - Dry brush with Elysian Green
-  - Do this immediately after shading because it's messy and will splatter
-    other parts of the miniature
-  - Try your best not to hit other colours, but you'll be highlighting most
-    of the areas you damage anyway, so it's not too bad
+  - Do this immediately after shading because it's messy and will splatter other
+    parts of the miniature
+  - Try your best not to hit other colours, but you'll be highlighting most of
+    the areas you damage anyway, so it's not too bad
 - Cloaks and loincloths:
   - Screamer Pink everywhere except the recesses; see [How to Paint: Lord of
-    Contagion](https://youtu.be/29Yg2ukwpTo?t=512) (timestamped)
+    Contagion](https://www.youtube.com/watch?t=512&v=29Yg2ukwpTo) (timestamped)
 - Brass: Sycorax Bronze
 - Leadbelcher: Ironbreaker, because it's not as bright as Stormhost Silver
 - Black: Dark Reaper on the raised parts
 - Tentacles/Screamer Pink: Screamer Pink; this will be very organic and the
   shape of the tentacle will influence it
 - Bone, skulls, big Nurgle teeth, and horns: Ushabti Bone
-  - I found the horns were hard to get right and were a very organic
-    process; I ended up covering a **lot** of the horns, I left the recesses
-    and the lower part of the horn shaded and layered most of the rest
+  - I found the horns were hard to get right and were a very organic process; I
+    ended up covering a **lot** of the horns, I left the recesses and the lower
+  part of the horn shaded and layered most of the rest
   - Edge highlight: eye sockets, teeth, edges and tips of horns
 - Boils:
   - Averland Sunset over most of the boil, keep it out of the recesses
   - Try not to make it clearly defined - aim for more natural and uneven
-  - Apply two or three (depending on the size of the boil) successively
-    smaller coats so it builds in intensity in the centre
+  - Apply two or three (depending on the size of the boil) successively smaller
+    coats so it builds in intensity in the centre
 - Slime:
   - Castellan Green
-  - Several coats of Nurgle's Rot, with more on the areas where slime would
-    be collecting e.g. the bottom of a ball of slime
+  - Several coats of Nurgle's Rot, with more on the areas where slime would be
+    collecting e.g. the bottom of a ball of slime
 - Mournfang Brown: layer with Mournfang Brown
 - Brown-ish flesh: layer with Kislev Flesh
 - Worms: Yriel Yellow or Averland Sunset; I found it was hard to only hit the

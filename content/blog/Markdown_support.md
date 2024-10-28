@@ -7,7 +7,7 @@ tags = ['vim', 'markdown']
 I write a lot of Markdown in work, so it's worth configuring vim to support it
 well.
 
-- Install <https://github.com/plasticboy/vim-markdown> to get syntax
+- Install <https://github.com/preservim/vim-markdown> to get syntax
   highlighting. I disable that plugin's folding in favour of my own because I
   find mine is simpler and works better.
 - Install <https://github.com/google/vim-codefmt> and <https://prettier.io/> to

@@ -16,7 +16,7 @@ pecl install xdebug
 
 ## Testing
 
-For testing I'm using [PHPUnit](https://phpunit.de/) with
+For testing I'm using [PHPUnit](https://phpunit.de/index.html) with
 [CodeCoverage](https://github.com/sebastianbergmann/php-code-coverage) enabled
 (code coverage also requires [Xdebug](https://xdebug.org/)); I've been able to
 achieve near 100% test coverage (excluding `functions.php` which is now mostly
@@ -109,7 +109,7 @@ linting and checking tools I've used for PHP. I needed to use
 to resolve the PHPUnit imports in my tests; `composer require --dev
 phpunit/phpunit ^9` was all it took.
 
-I used [PHP Coding Standards Fixer](http://cs.symfony.com/) to automatically fix
+I used [PHP Coding Standards Fixer](https://cs.symfony.com/) to automatically fix
 some things that a linter would complain about. When I enabled the large sets of
 rules like `@PhpCsFixer` I was unhappy with the output, e.g. multi-line arrays
 and function calls had their indentation removed, which I strongly dislike. I
