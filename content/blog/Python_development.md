@@ -37,8 +37,8 @@ sudo apt install black pylint3 python3-mypy python3-pudb python3-pyfakefs \
 
 ## Testing
 
-I use [pytest](https://docs.pytest.org/) for running tests and
-[pytest-cov](https://pypi.python.org/pypi/pytest-cov) to get test coverage so I
+I use [pytest](https://docs.pytest.org/en/stable/) for running tests and
+[pytest-cov](https://pypi.org/project/pytest-cov/) to get test coverage so I
 can figure out which parts of my code still need to be tested.
 
 ```shell

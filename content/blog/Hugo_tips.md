@@ -19,7 +19,7 @@ annoyed me about it:
   `ikiwiki --setup ~/.ikiwiki/johntobin.ie --render "${file}" | w3m -T text/html`
 
 - Ikiwiki's Markdown flavour doesn't support [fenced code
-  blocks](https://help.github.com/articles/creating-and-highlighting-code-blocks/)
+  blocks](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/creating-and-highlighting-code-blocks)
   (three backticks) or syntax highlighting, both of which I use extensively in
   work.
 

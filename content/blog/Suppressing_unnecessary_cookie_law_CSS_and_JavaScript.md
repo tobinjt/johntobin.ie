@@ -4,8 +4,8 @@ title = "Suppressing unnecessary cookie law CSS and JavaScript"
 tags = ['SEO', 'website', 'Wordpress']
 +++
 
-The [EU Cookie Law](https://www.wired.co.uk/article/cookies-made-simple)
-requires a notice about cookies on every website. My wife's
+The [EU Cookie Law](https://www.wired.com/story/cookies-made-simple/) requires a
+notice about cookies on every website. My wife's
 [website](https://www.arianetobin.ie/) is built on
 [Wordpress](https://wordpress.org/), so to display the cookie notice I use the
 [GDPR Cookie Consent](https://wordpress.org/plugins/cookie-law-info/) plugin.
@@ -23,8 +23,8 @@ this is in the functions `ShouldRemoveCookieLawInfo`,
 This is the second implementation of removing these resources when they are
 unnecessary - the first implementation was broken by changes to the plugin. The
 resources are also removed for certain Google user-agents, so that testing with
-[PageSpeed Insights](https://developers.google.com/speed/pagespeed/insights/)
-and similar tools produces results closer to the typical user experience.
+[PageSpeed Insights](https://pagespeed.web.dev/) and similar tools produces
+results closer to the typical user experience.
 
 Removing the cookie law resources was the last step (so far) in my quest to
 speed up Ariane's website. There are several standard Wordpress resources
@@ -42,9 +42,8 @@ remove_action('wp_print_styles', 'print_emoji_styles');
 
 To suppress these resources I repeated this process:
 
-- Used [PageSpeed
-  Insights](https://developers.google.com/speed/pagespeed/insights/) to test the
-  speed of various pages.
+- Used [PageSpeed Insights](https://pagespeed.web.dev/) to test the speed of
+  various pages.
 - Looked at the results where it complained about unused resources.
 - Searched online for the resource filename until I found a description of how
   somebody else suppressed that resource.

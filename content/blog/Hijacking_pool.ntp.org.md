@@ -4,7 +4,7 @@ title = 'Hijacking pool.ntp.org'
 tags = ['NTP', 'sysadmin']
 +++
 
-From <https://pool.ntp.org>:
+From <https://www.ntppool.org/en/>:
 
 > The pool.ntp.org project is a big virtual cluster of timeservers providing
 > reliable easy to use NTP service for millions of clients.
@@ -15,7 +15,7 @@ From <https://pool.ntp.org>:
 
 The NTP package in Debian Lenny uses the NTP pool, so when a user installs NTP
 on their home machine, it Just Works. Unfortunately, the
-[SCSS](https://www.scss.tcd.ie/) firewall blocks NTP traffic for all hosts
+[SCSS](https://www.tcd.ie/scss/) firewall blocks NTP traffic for all hosts
 except our NTP server, breaking the default configuration for users on our
 network. Rather than reconfiguring every client, I configured `bind` on our DNS
 servers to hijack the pool.ntp.org domain, answering nearly all requests for
@@ -26,11 +26,11 @@ can get a working NTP installation with just:
 apt-get install ntp
 ```
 
-The sole exception is `www.pool.ntp.org`: I want the URL
-<https://www.pool.ntp.org> to work in a user's browser. Although pool.ntp.org
-_does_ resolve to our NTP server, the web server running on that host redirects
-requests for <https://pool.ntp.org> to <https://www.pool.ntp.org>, so that URL
-works too.
+ The sole exception to hijacking all `pool.ntp.org` addresses is that I want
+ `www.pool.ntp.org` to work in a user's browser, so it is configured as a
+ `CNAME` to the host serving the real website. Although `pool.ntp.org` _does_
+ resolve to our NTP server, the web server running on that host redirects
+ requests for `pool.ntp.org` to `www.pool.ntp.org`, so that URL works too.
 
 The bind zone file is quite short:
 
@@ -89,4 +89,4 @@ dig @ns.cs.tcd.ie i.play.with.matches.pool.ntp.org
 
 Our NTP server (ntp.scss.tcd.ie) is part of the NTP pool, and can be used by
 anybody, but you're probably better off [using the
-pool](https://www.pool.ntp.org/en/use.html).
+pool](https://www.ntppool.org/en/use.html).

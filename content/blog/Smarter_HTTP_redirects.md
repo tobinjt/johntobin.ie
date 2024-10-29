@@ -7,10 +7,9 @@ tags = ['sysadmin', 'Apache']
 If your website is available under more than one FQDN, [standard SEO
 advice](https://www.google.com/search?q=seo+multiple+hostnames) is to pick a
 canonical FQDN and redirect the others to it. You can see that in action on this
-website: clicking on <http://johntobin.ie/blog/smarter_http_redirects> will
-redirect you to <https://www.johntobin.ie/blog/smarter_http_redirects/> (and
-won't interrupt you reading this article). The simplest way to do this in Apache
-is to configure a VirtualHost for johntobin.ie, and use a single
+website: johntobin.ie/blog/smarter_http_redirects will redirect you to
+<https://www.johntobin.ie/blog/smarter_http_redirects/>. The simplest way to do
+this in Apache is to configure a VirtualHost for johntobin.ie, and use a single
 [RewriteRule](https://httpd.apache.org/docs/2.2/mod/mod_rewrite.html#rewriterule):
 
 ```apache

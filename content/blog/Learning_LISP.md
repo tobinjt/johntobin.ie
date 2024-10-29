@@ -128,7 +128,7 @@ The point of this exercise was to use optional parameters; if I was writing
 My first inclination when writing a Fibonacci function is to use
 [Memoization](https://en.wikipedia.org/wiki/Memoization); if I was writing it in
 Perl I would use the standard module
-[Memoize](https://metacpan.org/pod/release/MJD/Memoize-1.01/Memoize.pm), where
+[Memoize](https://metacpan.org/release/MJD/Memoize-1.01/view/Memoize.pm), where
 Fibonacci is presented as an example in the documentation. I don't know yet how
 hard it would be to do this in LISP, but I expect that closures should be easy
 enough.

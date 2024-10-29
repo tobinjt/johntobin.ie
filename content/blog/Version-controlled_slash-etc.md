@@ -5,7 +5,7 @@ tags = ['sysadmin', 'Git', 'Debian']
 +++
 
 In 2009 I migrated the [School of Computer Science and
-Statistics](https://www.scss.tcd.ie/) mail server from Solaris to Debian Linux.
+Statistics](https://www.tcd.ie/scss/) mail server from Solaris to Debian Linux.
 I made a lot of changes and improvements during the migration; one of the
 simplest was to keep `/etc` under version control. I assume most people are
 familiar with version control from writing code - if you're not, please spend a
