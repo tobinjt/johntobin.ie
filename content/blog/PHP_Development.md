@@ -109,12 +109,12 @@ linting and checking tools I've used for PHP. I needed to use
 to resolve the PHPUnit imports in my tests; `composer require --dev
 phpunit/phpunit ^9` was all it took.
 
-I used [PHP Coding Standards Fixer](https://cs.symfony.com/) to automatically fix
-some things that a linter would complain about. When I enabled the large sets of
-rules like `@PhpCsFixer` I was unhappy with the output, e.g. multi-line arrays
-and function calls had their indentation removed, which I strongly dislike. I
-read through the [docs](http://cs.symfony.com/#usage) and picked out the rules I
-agreed with, put them in a [.php_cs.dist config
+I used [PHP Coding Standards Fixer](https://cs.symfony.com/) to automatically
+fix some things that a linter would complain about. When I enabled the large
+sets of rules like `@PhpCsFixer` I was unhappy with the output, e.g. multi-line
+arrays and function calls had their indentation removed, which I strongly
+dislike. I read through the [docs](https://cs.symfony.com/#usage) and picked out
+the rules I agreed with, put them in a [.php_cs.dist config
 file](https://github.com/tobinjt/ariane-theme/blob/master/.php_cs.dist), and
 enabled them one at a time to make small related changes I could easily review
 rather than one giant commit. Having tests made me confident that the tool

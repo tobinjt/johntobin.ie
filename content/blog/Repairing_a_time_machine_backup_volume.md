@@ -4,7 +4,7 @@ title = "Repairing a time machine backup volume"
 tags = ['automation', 'backups', 'MacOS', 'sysadmin']
 +++
 
-I use Apple's [Time Machine](https://support.apple.com/en-ie/HT201250) to make
+I use Apple's [Time Machine](https://support.apple.com/en-ie/104984) to make
 local backups of our home computers. It works really well with a locally
 attached disk, but it fails often when backing up over the network, e.g. because
 the network is slightly flaky, the machine backing up goes asleep, or something
@@ -17,7 +17,7 @@ Either I lose my history by starting a new backup, or I stop taking backups.
 Sad face :( Happily there's a third option: repair the corrupted volume. There
 are many articles on the internet about doing this manually, but I'm not going
 to keep cutting and pasting commands so I wrote a shell script:
-[repair-time-machine-volume](https://github.com/tobinjt/bin/blob/master/repair-time-machine-volume).
+[repair-time-machine-volume](https://github.com/tobinjt/bin/blob/6d01e87c90d558feed9771087bdc404a198961df/repair-time-machine-volume).
 
 Actions it takes:
 

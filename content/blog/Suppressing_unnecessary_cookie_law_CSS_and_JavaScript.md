@@ -42,9 +42,8 @@ remove_action('wp_print_styles', 'print_emoji_styles');
 
 To suppress these resources I repeated this process:
 
-- Used [PageSpeed
-  Insights](https://developers.google.com/speed/pagespeed/insights/) to test the
-  speed of various pages.
+- Used [PageSpeed Insights](https://pagespeed.web.dev/) to test the speed of
+  various pages.
 - Looked at the results where it complained about unused resources.
 - Searched online for the resource filename until I found a description of how
   somebody else suppressed that resource.
