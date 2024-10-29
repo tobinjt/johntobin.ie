@@ -26,11 +26,11 @@ can get a working NTP installation with just:
 apt-get install ntp
 ```
 
-<!-- markdownlint-disable MD034 --> The sole exception is that I want the URL
-`www.pool.ntp.org` to work in a user's browser. Although pool.ntp.org _does_
-resolve to our NTP server, the web server running on that host redirects
-requests for pool.ntp.org to www.pool.ntp.org, so that URL works too. <!--
-markdownlint-enable MD034 -->
+ The sole exception to hijacking all `pool.ntp.org` addresses is that I want
+ `www.pool.ntp.org` to work in a user's browser, so it is configured as a
+ `CNAME` to the host serving the real website. Although `pool.ntp.org` _does_
+ resolve to our NTP server, the web server running on that host redirects
+ requests for `pool.ntp.org` to `www.pool.ntp.org`, so that URL works too.
 
 The bind zone file is quite short:
 
