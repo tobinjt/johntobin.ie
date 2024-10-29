@@ -4,7 +4,7 @@ title = 'Hijacking pool.ntp.org'
 tags = ['NTP', 'sysadmin']
 +++
 
-From <https://pool.ntp.org>:
+From <https://www.ntppool.org/en/>:
 
 > The pool.ntp.org project is a big virtual cluster of timeservers providing
 > reliable easy to use NTP service for millions of clients.
@@ -26,9 +26,9 @@ can get a working NTP installation with just:
 apt-get install ntp
 ```
 
-<!-- markdownlint-disable MD034 --> The sole exception is `www.pool.ntp.org`: I
-want the URL www.pool.ntp.org to work in a user's browser. Although pool.ntp.org
-_does_ resolve to our NTP server, the web server running on that host redirects
+<!-- markdownlint-disable MD034 --> The sole exception is that I want the URL
+`www.pool.ntp.org` to work in a user's browser. Although pool.ntp.org _does_
+resolve to our NTP server, the web server running on that host redirects
 requests for pool.ntp.org to www.pool.ntp.org, so that URL works too. <!--
 markdownlint-enable MD034 -->
 
