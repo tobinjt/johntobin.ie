@@ -1,5 +1,6 @@
 +++
 date = 2022-05-01T23:23:31+01:00
+lastmod = 2022-05-01T23:23:31+01:00
 title = "Upgrading homebrew vim and tmux without breaking them"
 tags = ['homebrew', 'MacOS', 'shell', 'tmux', 'vim']
 +++
