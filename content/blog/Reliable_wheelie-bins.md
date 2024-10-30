@@ -1,5 +1,6 @@
 +++
 date = 2023-06-11T07:12:14+01:00
+lastmod = 2023-06-11T07:12:14+01:00
 title = "Reliable wheelie bins"
 tags = ['automation', 'programming', 'SRE']
 +++

@@ -1,5 +1,6 @@
 +++
 date = 2024-06-04T10:50:50+01:00
+lastmod = 2024-06-04T10:50:50+01:00
 title = "Faster rust autoformatting in vim"
 tags = ['development', 'programming', 'Rust', 'vim']
 +++

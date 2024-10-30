@@ -1,5 +1,6 @@
 +++
 title = 'How I manage my dotfiles'
+lastmod = 2021-09-21T10:50:50+01:00
 tags = ['Git', 'automation', 'shell', 'sysadmin']
 +++
 
