@@ -1,5 +1,6 @@
 +++
 date = 2024-10-30T22:08:37Z
+lastmod = 2024-10-30T22:08:37Z
 title = "Debugging in Neovim with nvim-dap"
 tags = ['Neovim', 'Debugging', 'programming']
 +++
@@ -13,10 +14,10 @@ missed in Vim compared to an IDE was debugging: sure, I could fire up `dlv` or
 variables, and likely other helpful info I didn't even know I was missing. Sadly
 I had never heard of <https://github.com/puremourning/vimspector> which does
 provide this for Vim.  When I was setting up Neovim I frequently looked at
-<https://lazyvim.github.io/> and <https://astronvim.com/> for help and
-inspiration, and there I saw `nvim-dap` and decided to give it a try.  Getting
-it working took me a good few evenings of experimentation and testing, so I
-decided to document it as a reference for myself and as a resource for others.
+<http://www.lazyvim.org/> and <https://astronvim.com/> for help and inspiration,
+and there I saw `nvim-dap` and decided to give it a try.  Getting it working
+took me a good few evenings of experimentation and testing, so I decided to
+document it as a reference for myself and as a resource for others.
 
 Note: I use <https://github.com/folke/lazy.nvim> to manage my plugins, so the
 example configs also use lazy.nvim.  As a newcomer to Neovim I am completely
