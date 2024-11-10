@@ -93,7 +93,7 @@ support submodules. I wrote
 [update-dotfiles-and-bin-plugins](https://github.com/tobinjt/bin/blob/master/update-dotfiles-and-bin-plugins)
 to automate updating plugins, and I run it every 4 weeks to stay current so that
 I don't need to deal with large diffs when I need a bug fix. It also runs
-[install-extra-tools-for-vim](https://github.com/tobinjt/bin/blob/master/install-extra-tools-for-vim)
+[install-extra-development-tools](https://github.com/tobinjt/bin/blob/master/install-extra-development-tools)
 to install extra tools needed by Vim plugins, mainly for Golang and Rust (tools
 for Python are installed differently, see [Upgrading packages installed with
 pip3 is
