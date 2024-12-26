@@ -26,7 +26,7 @@ I also wrote several wrappers for even easier use:
   coverage
 - [igotest](https://github.com/tobinjt/bin/blob/master/igotest): Golang tests
 - [iphpunit](https://github.com/tobinjt/bin/blob/master/iphpunit): PHP tests
-- [ipylint](https://github.com/tobinjt/bin/blob/master/ipylint): Python lint
+- [ipylint](https://github.com/tobinjt/bin/blob/5c531dfd66fe3fdbc67cb9e16c804e90f05c6736/ipylint): Python lint
 - [ipytest](https://github.com/tobinjt/bin/blob/master/ipytest): Python coverage
 
 The tooling is very simple - watch files, run binary - so you can wrap anything,
