@@ -50,6 +50,12 @@ different tools might disagree over how your code should be formatted.
 
 ### PHPLint
 
+Note: development of PHPLint seems to have stopped in 2020, and it refers to
+supporting PHP 5 and PHP 7, which is not encouraging.  I would not recommend
+PHPLint now, I suggest trying [PHPStan](https://phpstan.org/) or [PHP
+Insights](https://github.com/nunomaduro/phpinsights), both briefly described
+below.
+
 I tried [PHPLint](https://www.icosaedro.it/phplint/) because I'm a big fan of
 linters and style guides. I found it very, very restrictive - there is no way to
 suppress a warning, and its custom type annotations are intrusive. The biggest
@@ -74,15 +80,15 @@ intermediate changes :( Several problems still stand out with PHPLint:
     copy/symlink necessary files from the system path into a local directory and
     use `--modules-path` with the local directory; I chose option 2, and I wrote
     [a wrapper
-    program](https://github.com/tobinjt/ariane-theme/blob/master/src/phplint-wrapper)
+    program](https://github.com/tobinjt/ariane-theme/blob/1c9a08d25a79fd299a1049d3f5497fd7b8ababc8/src/phplint-wrapper)
     and a
-    [Makefile](https://github.com/tobinjt/ariane-theme/blob/master/src/Makefile)
+    [Makefile](https://github.com/tobinjt/ariane-theme/blob/1c9a08d25a79fd299a1049d3f5497fd7b8ababc8/src/Makefile)
     to make usage easier.
 
 1.  The module declaration files use a slightly modified version of PHP function
     declarations, so I needed to generate some of the module definitions (see
     the [wrapper
-    program](https://github.com/tobinjt/ariane-theme/blob/master/src/phplint-wrapper)).
+    program](https://github.com/tobinjt/ariane-theme/blob/1c9a08d25a79fd299a1049d3f5497fd7b8ababc8/src/phplint-wrapper)).
 
 1.  PHPLint interprets `cast(type, variable)` to cast a variable to a different
     type. I didn't want to include the PHPLint libraries so I wrote [a fake
