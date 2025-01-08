@@ -56,50 +56,8 @@ PHPLint now, I suggest trying [PHPStan](https://phpstan.org/) or [PHP
 Insights](https://github.com/nunomaduro/phpinsights), both briefly described
 below.
 
-I tried [PHPLint](https://www.icosaedro.it/phplint/) because I'm a big fan of
-linters and style guides. I found it very, very restrictive - there is no way to
-suppress a warning, and its custom type annotations are intrusive. The biggest
-benefit I got from it is that I defined proper classes for holding data; for
-years I had followed the Wordpress approach of stuffing everything into an
-array, but the many complaints from PHPLint convinced me to define properly
-structured classes instead. Sadly I got there the long way and made lots of
-intermediate changes :( Several problems still stand out with PHPLint:
-
-1.  There is no way to suppress warnings, see
-    <https://www.icosaedro.it/phplint/FAQ.html#H14_Can_I_turn_off_some_boring_error_PHPLint_signals?>
-
-1.  You need to add metadata to every file declaring which libraries are used by
-    that file. I understand that for external libraries or optional libraries,
-    but it's silly to have to write `/*. require_module 'core'; .*/` to tell
-    PHPLint that core PHP functions will be used in this file. You can include a
-    bigger set of modules, but then PHPLint will complain that you included
-    unnecessary modules.
-
-1.  PHPLint doesn't support multiple module directory paths, so you either need
-    to copy definitions for external libraries into the system path, or
-    copy/symlink necessary files from the system path into a local directory and
-    use `--modules-path` with the local directory; I chose option 2, and I wrote
-    [a wrapper
-    program](https://github.com/tobinjt/ariane-theme/blob/1c9a08d25a79fd299a1049d3f5497fd7b8ababc8/src/phplint-wrapper)
-    and a
-    [Makefile](https://github.com/tobinjt/ariane-theme/blob/1c9a08d25a79fd299a1049d3f5497fd7b8ababc8/src/Makefile)
-    to make usage easier.
-
-1.  The module declaration files use a slightly modified version of PHP function
-    declarations, so I needed to generate some of the module definitions (see
-    the [wrapper
-    program](https://github.com/tobinjt/ariane-theme/blob/1c9a08d25a79fd299a1049d3f5497fd7b8ababc8/src/phplint-wrapper)).
-
-1.  PHPLint interprets `cast(type, variable)` to cast a variable to a different
-    type. I didn't want to include the PHPLint libraries so I wrote [a fake
-    version](https://github.com/tobinjt/ariane-theme/blob/cb16b610f821900edc01cc1e1e74ac4ef4fff56e/src/Cast.php).
-    This did not work when I added type annotations everywhere, because it works
-    on many different types, so I deleted it because by that point I was using
-    PHPStan (see below) rather than PHPLint.
-
-1.  PHPLint has been broken far more often than it has been working, though it's
-    definitely possible that this is a problem with Homebrew packaging rather
-    than PHPLint.
+Note: I removed the content about PHPLint because I wouldn't recommend it and
+development seems to have stopped.
 
 Overall I think PHPLint is too difficult and intrusive to be worthwhile, though
 I might feel differently if I had jumped directly to defining my own data
