@@ -64,7 +64,7 @@ I might feel differently if I had jumped directly to defining my own data
 structures. I got maybe 20% of the benefit I needed to justify the effort I put
 into it.
 
-### Other checkers
+### PHPStan
 
 I used [PHPStan](https://phpstan.org/), and it mostly identified missing type
 annotations, which were easy to fix so it was a quick return on investment. I
@@ -73,6 +73,8 @@ haven't tried to reach that yet. I would recommend PHPStan for sure. I needed to
 use [Composer](https://getcomposer.org/) to add PHPUnit as a dependency for
 PHPStan to resolve the PHPUnit imports in my tests; `composer require --dev
 phpunit/phpunit ^9` was all it took.
+
+### PHP Coding Standards Fixer
 
 I used [PHP Coding Standards Fixer](https://cs.symfony.com/) to automatically
 fix some things that a linter would complain about. When I enabled the large
@@ -89,6 +91,8 @@ already gotten me good benefits, and further work looks like it will have very
 diminishing returns, so I'm happy with the investment of time I've made and
 probably won't be investing any more.
 
+### PHP Insights
+
 I used [PHP Insights](https://github.com/nunomaduro/phpinsights), first to
 automatically reformat my code and fix lint warnings, and secondly to provide a
 list of warnings that I manually fixed.  I recommend running the fixer multiple
@@ -97,9 +101,13 @@ some of the lint checks useful, and some I ignored because the return on
 investment for them didn't seem to justify the work required.  I can see myself
 using this again in the future.
 
+### PHP_CodeSniffer
+
 I tried [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer) but it
 produced a huge number of warnings and the documentation about configuring it is
 hard to follow, so I quickly gave up on that.
+
+### PHP Mess Detector
 
 I tried [PHP Mess Detector](https://phpmd.org/) but PHP itself output ~1000
 lines of deprecation warnings for the PHP Mess Detector code so I quickly gave
