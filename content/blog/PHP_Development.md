@@ -1,6 +1,6 @@
 +++
 title = "PHP development"
-lastmod = 2023-02-12T10:50:50+01:00
+lastmod = 2025-01-08T22:05:50+01:00
 tags = ['PHP', 'programming', 'website', 'Wordpress']
 +++
 
@@ -12,6 +12,7 @@ I installed everything I used on my laptop with these commands:
 ```shell
 brew install composer php php-code-sniffer php-cs-fixer phplint phpmd phpstan \
     phpunit
+composer require nunomaduro/phpinsights --dev
 pecl install xdebug
 ```
 
@@ -104,10 +105,9 @@ into it.
 I used [PHPStan](https://phpstan.org/), and it mostly identified missing type
 annotations, which were easy to fix so it was a quick return on investment. I
 fairly easily reached level 8, but level 9 looked like a lot more work so I
-haven't tried to reach that yet. I would recommend PHPStan over all the other
-linting and checking tools I've used for PHP. I needed to use
-[Composer](https://getcomposer.org/) to add PHPUnit as a dependency for PHPStan
-to resolve the PHPUnit imports in my tests; `composer require --dev
+haven't tried to reach that yet. I would recommend PHPStan for sure. I needed to
+use [Composer](https://getcomposer.org/) to add PHPUnit as a dependency for
+PHPStan to resolve the PHPUnit imports in my tests; `composer require --dev
 phpunit/phpunit ^9` was all it took.
 
 I used [PHP Coding Standards Fixer](https://cs.symfony.com/) to automatically
@@ -124,6 +124,14 @@ thought about testing out more of the rules in future, but an evening's work has
 already gotten me good benefits, and further work looks like it will have very
 diminishing returns, so I'm happy with the investment of time I've made and
 probably won't be investing any more.
+
+I used [PHP Insights](https://github.com/nunomaduro/phpinsights), first to
+automatically reformat my code and fix lint warnings, and secondly to provide a
+list of warnings that I manually fixed.  I recommend running the fixer multiple
+times: some of the changes it made will trigger its own lint checks :(  I found
+some of the lint checks useful, and some I ignored because the return on
+investment for them didn't seem to justify the work required.  I can see myself
+using this again in the future.
 
 I tried [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer) but it
 produced a huge number of warnings and the documentation about configuring it is
