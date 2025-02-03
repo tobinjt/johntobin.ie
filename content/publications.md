@@ -5,14 +5,14 @@ title = 'My Publications'
 ### 2008
 
 - [A User-Extensible and Adaptable Parser Architecture](/publications/sgai-2008.pdf),
-  published in the [SGAI 2008 Conference](http://www.bcs-sgai.org/ai2008/), and
+  published in the [SGAI 2008 Conference](https://www.bcs-sgai.org/ai2008/), and
   selected as one of the best papers from the conference. I was subsequently
   asked to join the
-  [Technical Stream Program Committee](http://www.bcs-sgai.org/tpc/?x=491), and
+  [Technical Stream Program Committee](https://www.bcs-sgai.org/tpc/?x=491), and
   I accepted the invitation.
 
-- The [best papers](http://www.bcs-sgai.org/sgai/kbsj_ai2008.htm) from the
-  [SGAI 2008 Conference](http://www.bcs-sgai.org/ai2008/) were reprinted in a
+- The [best papers](https://www.bcs-sgai.org/sgai/kbsj_ai2008.htm) from the
+  [SGAI 2008 Conference](https://www.bcs-sgai.org/ai2008/) were reprinted in a
   [special edition](https://www.sciencedirect.com/journal/knowledge-based-systems/vol/22/issue/7)
   of the
   [Knowledge-Based Systems Journal](https://www.sciencedirect.com/journal/knowledge-based-systems),
