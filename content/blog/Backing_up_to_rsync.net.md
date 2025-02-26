@@ -44,7 +44,7 @@ library, which is used by
 [backup-single-directory-to-rsync-net](https://github.com/tobinjt/bin/blob/master/backup-single-directory-to-rsync-net)
 to backup a single directory, and that in turn is called once per directory to
 be backed by per-machine backup programs like
-[backup-johntobin-laptop-to-rsync-net](https://github.com/tobinjt/bin/blob/master/backup-johntobin-laptop-to-rsync-net).
+[backup-johntobin-laptop-to-rsync-net](https://github.com/tobinjt/bin/blob/45943312a58057182fece88b7d64730f138e5a3d/backup-johntobin-laptop-to-rsync-net).
 When run interactively they output progress information, but when run
 non-interactively they are silent unless an interesting error occurs, so they
 can be run from `cron`.
@@ -84,7 +84,7 @@ can be run from `cron`.
   awkward.
 - Filtering error messages is accomplished by piping rsync's stderr to grep with
   a long list of patterns to exclude; for details search for `Suppress certain error messages` in
-  [backup-johntobin-laptop-to-rsync-net](https://github.com/tobinjt/bin/blob/master/backup-johntobin-laptop-to-rsync-net).
+  [backup-johntobin-laptop-to-rsync-net](https://github.com/tobinjt/bin/blob/45943312a58057182fece88b7d64730f138e5a3d/backup-johntobin-laptop-to-rsync-net).
 - rsync supports filters for excluding or including files, and the library uses
   it twice:
 
@@ -172,12 +172,13 @@ Host rsync-net
 - `mkdir -p ~/tmp/locks ~/.ssh/rsync-net`
 - Copy the ssh key for updating sentinels (`~/.ssh/rsync-net/update_sentinel`)
   from another machine.
-- `cp backup-johntobin-laptop-to-rsync-net backup-NEW-MACHINE-to-rsync-net`,
+- `cp https://github.com/tobinjt/bin/blob/45943312a58057182fece88b7d64730f138e5a3d/backup-johntobin-laptop-to-rsync-net backup-NEW-MACHINE-to-rsync-net`,
   edit the new file changing the hostname and the directories to backup.
 - `./backup-NEW-MACHINE-to-rsync-net --make-keys-only`, copy the lines it
   outputs to `authorized_keys` on rsync.net.
 - `./backup-NEW-MACHINE-to-rsync-net`; it will fail because the destination
-  directory on rsync.net doesn't exist, so create the directory manually: `ssh rsync-net mkdir -p DIRECTORY`
+  directory on rsync.net doesn't exist, so create the directory manually:
+  `ssh rsync-net mkdir -p DIRECTORY`
 - `./backup-NEW-MACHINE-to-rsync-net`; it should work this time.
 - Run from cron hourly (wrapped for easier reading):
 
