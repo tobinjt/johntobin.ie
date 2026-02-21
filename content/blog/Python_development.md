@@ -1,7 +1,7 @@
 +++
 lastmod = 2021-12-27T22:20:53+01:00
-title = 'Python development'
-tags = ['Python', 'programming', 'testing']
+title = "Python development"
+tags = [ "Python", "programming", "testing"]
 +++
 
 Normally I do Python development in work, where everything is already set up for
@@ -19,10 +19,10 @@ The list of Python modules you need is:
 black lxml mutmut mypy pudb pyfakefs pylint pytest pytest-cov
 ```
 
-See [Upgrading packages installed with pip3 is troublesome]({{< relref
-"#upgrading-packages-installed-with-pip3-is-troublesome" >}}) for
-how I install and upgrade packages; I recommend using
-`virtualenv` as described there rather than installing globally.
+See \[Upgrading packages installed with pip3 is troublesome\]({{< relref
+"#upgrading-packages-installed-with-pip3-is-troublesome" >}}) for how I install
+and upgrade packages; I recommend using `virtualenv` as described there rather
+than installing globally.
 
 ### Linux
 
@@ -38,8 +38,8 @@ sudo apt install black pylint3 python3-mypy python3-pudb python3-pyfakefs \
 ## Testing
 
 I use [pytest](https://docs.pytest.org/en/stable/) for running tests and
-[pytest-cov](https://pypi.org/project/pytest-cov/) to get test coverage so I
-can figure out which parts of my code still need to be tested.
+[pytest-cov](https://pypi.org/project/pytest-cov/) to get test coverage so I can
+figure out which parts of my code still need to be tested.
 
 ```shell
 cd test-directory
@@ -69,22 +69,22 @@ you test large swathes of code at a time. I take the approach of picking a piece
 of functionality that should be supported, then writing a test to exercise that
 functionality end to end.
 
-<https://github.com/tobinjt/bin/blob/ad5b57afa03d650ac657249c886300d581a8c60f/python/linkdirs_test.py#L39> is a
-good example of this, where I test progressively more complex use cases and
+<https://github.com/tobinjt/bin/blob/ad5b57afa03d650ac657249c886300d581a8c60f/python/linkdirs_test.py#L39>
+is a good example of this, where I test progressively more complex use cases and
 scenarios by:
 
-1.  Populating a fake filesystem (`pyfakefs` is great for this) with the
-    scenario to deal with.
-1.  Calling `main()` with the right arguments.
-1.  Checking that the resulting filesystem is correct.
+1. Populating a fake filesystem (`pyfakefs` is great for this) with the scenario
+   to deal with.
+1. Calling `main()` with the right arguments.
+1. Checking that the resulting filesystem is correct.
 
 This was particularly reassuring when I added deletion to `linkdirs.py` :)
 
 ### Automatically running tests
 
 I like having tests run every time I save the source or test file because it
-saves me from doing it manually. See [Automatically running tests, linters, or
-anything](https://www.johntobin.ie/blog/automatically_running_tests_linters_or_anything/)
+saves me from doing it manually. See
+[Automatically running tests, linters, or anything](https://www.johntobin.ie/blog/automatically_running_tests_linters_or_anything/)
 for an easy way to do this.
 
 ### Mutation testing
@@ -100,12 +100,13 @@ that don't cause test failures - sometimes you will add tests, sometimes you
 will change the source, and sometimes you will mark the line so it's not mutated
 in future.
 
-I use [mutmut](https://mutmut.readthedocs.io/en/latest/) for mutation testing.
-I have [made some changes to my
-code](https://github.com/tobinjt/bin/tree/master/python) in response to `mutmut`
-warnings, and thus far I think the most significant change was to add tests for
-the output from `--help` to ensure that I don't accidentally make it confusing
-(e.g. changing the description so it no longer matches the options).
+I use [mutmut](https://mutmut.readthedocs.io/en/latest/) for mutation testing. I
+have
+[made some changes to my code](https://github.com/tobinjt/bin/tree/master/python)
+in response to `mutmut` warnings, and thus far I think the most significant
+change was to add tests for the output from `--help` to ensure that I don't
+accidentally make it confusing (e.g. changing the description so it no longer
+matches the options).
 
 The first run of `mutmut` for any file will be slow, but for subsequent runs
 `mutmut` will only check mutations that previously failed, so it speeds up as
@@ -125,105 +126,105 @@ have no problems to fix because the tests fail - but not because of the
 mutations :(
 
 I found running `mutmut` was awkward - it doesn't understand that tests for
-`foo.py` are in `foo_test.py`, so I wrote a [wrapper for mutmut
-run](https://github.com/tobinjt/bin/blob/master/mutmut_run) that first runs
-tests with unmodified sources, then runs `mutmut` with the correct arguments,
-and fixes permissions afterwards (because `mutmut` replaces the source files it
-operates on and doesn't set permissions correctly).
+`foo.py` are in `foo_test.py`, so I wrote a
+[wrapper for mutmut run](https://github.com/tobinjt/bin/blob/master/mutmut_run)
+that first runs tests with unmodified sources, then runs `mutmut` with the
+correct arguments, and fixes permissions afterwards (because `mutmut` replaces
+the source files it operates on and doesn't set permissions correctly).
 
 I use `mutmut` like this:
 
-1.  Run mutation testing:
+1. Run mutation testing:
 
-    ```text
-    $ mutmut_run colx.py
+   ```text
+   $ mutmut_run colx.py
 
-    - Mutation testing starting -
+   - Mutation testing starting -
 
-    These are the steps:
-    1. A full test suite run will be made to make sure we
-       can run the tests successfully and we know how long
-       it takes (to detect infinite loops for example)
-    2. Mutants will be generated and checked
+   These are the steps:
+   1. A full test suite run will be made to make sure we
+      can run the tests successfully and we know how long
+      it takes (to detect infinite loops for example)
+   2. Mutants will be generated and checked
 
-    Results are stored in .mutmut-cache.
-    Print found mutants with `mutmut results`.
+   Results are stored in .mutmut-cache.
+   Print found mutants with `mutmut results`.
 
-    Legend for output:
-    🎉 Killed mutants.   The goal is for everything to end up in this bucket.
-    ⏰ Timeout.          Test suite took 10 times as long as the baseline so were killed.
-    🤔 Suspicious.       Tests took a long time, but not long enough to be fatal.
-    🙁 Survived.         This means your tests needs to be expanded.
-    🔇 Skipped.          Skipped.
+   Legend for output:
+   🎉 Killed mutants.   The goal is for everything to end up in this bucket.
+   ⏰ Timeout.          Test suite took 10 times as long as the baseline so were killed.
+   🤔 Suspicious.       Tests took a long time, but not long enough to be fatal.
+   🙁 Survived.         This means your tests needs to be expanded.
+   🔇 Skipped.          Skipped.
 
-    1. Using cached time for baseline tests, to run baseline again delete the cache file
+   1. Using cached time for baseline tests, to run baseline again delete the cache file
 
-    2. Checking mutants
-    ⠋ 88/88  🎉 62  ⏰ 1  🤔 0  🙁 25  🔇 0
+   2. Checking mutants
+   ⠋ 88/88  🎉 62  ⏰ 1  🤔 0  🙁 25  🔇 0
 
-    real    4m38.098s
-    user    4m17.888s
-    sys     0m17.081s
-    ```
+   real    4m38.098s
+   user    4m17.888s
+   sys     0m17.081s
+   ```
 
-1.  Show results:
+1. Show results:
 
-    ```text
-    $ mutmut show colx.py
+   ```text
+   $ mutmut show colx.py
 
-    To apply a mutant on disk:
-        mutmut apply <id>
+   To apply a mutant on disk:
+       mutmut apply <id>
 
-    To show a mutant:
-        mutmut show <id>
-
-
-    Timed out ⏰ (1)
-
-    ---- colx.py (1) ----
-
-    # mutant 229
-    --- colx.py
-    +++ colx.py
-    @@ -121,7 +121,7 @@
-         # Strip leading and trailing empty fields.
-         first_index = 0
-         while len(split_columns) > first_index and not split_columns[first_index]:
-    -      first_index += 1
-    +      first_index = 1
-         last_index = len(split_columns) - 1
-         while last_index > first_index and not split_columns[last_index]:
-           last_index -= 1
+   To show a mutant:
+       mutmut show <id>
 
 
-    Survived 🙁 (25)
+   Timed out ⏰ (1)
 
-    ---- colx.py (25) ----
+   ---- colx.py (1) ----
 
-    # mutant 161
-    --- colx.py
-    +++ colx.py
-    @@ -39,7 +39,7 @@
-       Returns:
-         argparse.Namespace, with attributes set based on the arguments.
-       """
-    -  description = '\n'.join(__doc__.split('\n')[1:])
-    +  description = 'XX\nXX'.join(__doc__.split('\n')[1:])
-       usage = __doc__.split('\n')[0]
+   # mutant 229
+   --- colx.py
+   +++ colx.py
+   @@ -121,7 +121,7 @@
+        # Strip leading and trailing empty fields.
+        first_index = 0
+        while len(split_columns) > first_index and not split_columns[first_index]:
+   -      first_index += 1
+   +      first_index = 1
+        last_index = len(split_columns) - 1
+        while last_index > first_index and not split_columns[last_index]:
+          last_index -= 1
 
-       argv_parser = argparse.ArgumentParser(
-    ```
 
-1.  Investigate and fix some of the reported mutants.
+   Survived 🙁 (25)
 
-    - False positives (e.g. changing a constant used consistently throughout
-      the codebase) can be disabled with `# pragma: no mutate`.
-    - Tests can be added or expanded, e.g. changing regexes to be anchored, or
-      adding edge cases so that boundary conditions are tested more tightly.
-    - Source changes may be appropriate, but I haven't encountered any good
-      examples yet.
+   ---- colx.py (25) ----
 
-1.  `GOTO 1`.
+   # mutant 161
+   --- colx.py
+   +++ colx.py
+   @@ -39,7 +39,7 @@
+      Returns:
+        argparse.Namespace, with attributes set based on the arguments.
+      """
+   -  description = '\n'.join(__doc__.split('\n')[1:])
+   +  description = 'XX\nXX'.join(__doc__.split('\n')[1:])
+      usage = __doc__.split('\n')[0]
+
+      argv_parser = argparse.ArgumentParser(
+   ```
+
+1. Investigate and fix some of the reported mutants.
+
+   - False positives (e.g. changing a constant used consistently throughout the
+     codebase) can be disabled with `# pragma: no mutate`.
+   - Tests can be added or expanded, e.g. changing regexes to be anchored, or
+     adding edge cases so that boundary conditions are tested more tightly.
+   - Source changes may be appropriate, but I haven't encountered any good
+     examples yet.
+
+1. `GOTO 1`.
 
 I've found that I can fix a lot of the mutations pretty quickly, then my
 progress slows down as I pick off more and more of the low hanging fruit. My aim
@@ -237,10 +238,10 @@ encourages me to continue.
 
 ## Linting
 
-I use [pylint](https://pypi.org/project/pylint/) for linting. I have [configured
-Syntastic and Vim]({{< relref "#vim-configuration" >}}) to run `pylint`
-automatically on saving, or see [Automatically running tests, linters, or
-anything](https://www.johntobin.ie/blog/automatically_running_tests_linters_or_anything/)
+I use [pylint](https://pypi.org/project/pylint/) for linting. I have
+\[configured Syntastic and Vim\]({{< relref "#vim-configuration" >}}) to run
+`pylint` automatically on saving, or see
+[Automatically running tests, linters, or anything](https://www.johntobin.ie/blog/automatically_running_tests_linters_or_anything/)
 for an easy way to run `pylint` every time you save a file.
 
 ```shell
@@ -268,10 +269,10 @@ black *.py
 I use [mypy](https://mypy.readthedocs.io/en/latest/index.html) for checking type
 annotations, which gives me more confidence that I'm passing the right types to
 functions, and helps document my code - particularly when I use type aliases to
-give meaningful names to parameter types. I have [configured Syntastic and
-Vim]({{< relref "#vim-configuration" >}}) to run `mypy` automatically on saving,
-or see [Automatically running tests, linters, or
-anything](https://www.johntobin.ie/blog/automatically_running_tests_linters_or_anything/)
+give meaningful names to parameter types. I have \[configured Syntastic and
+Vim\]({{< relref "#vim-configuration" >}}) to run `mypy` automatically on
+saving, or see
+[Automatically running tests, linters, or anything](https://www.johntobin.ie/blog/automatically_running_tests_linters_or_anything/)
 for an easy way to run `mypy` every time you save a file.
 
 ```shell
@@ -337,10 +338,10 @@ so I changed approach.
 
 My current approach is to use
 [virtualenv](https://virtualenv.pypa.io/en/latest/) to install all the modules
-in a separate directory, which I can then delete when I want to update them.  I
-add this directory to the end of my PATH (so that the python binary in it
-isn't used in preference to the system python binary) and everything Just Works.
-A simplified version would be:
+in a separate directory, which I can then delete when I want to update them. I
+add this directory to the end of my PATH (so that the python binary in it isn't
+used in preference to the system python binary) and everything Just Works. A
+simplified version would be:
 
 ```shell
 install_dir="${HOME}/tmp/virtualenv"

@@ -1,7 +1,7 @@
 +++
-title = 'How I manage my dotfiles'
+title = "How I manage my dotfiles"
 lastmod = 2021-09-21T10:50:50+01:00
-tags = ['Git', 'automation', 'shell', 'sysadmin']
+tags = [ "Git", "automation", "shell", "sysadmin"]
 +++
 
 Your `dotfiles` are the project that you'll work on for longest.
@@ -43,8 +43,8 @@ one of the first pieces of Python I wrote and it wasn't very good to start with,
 so a couple of years ago I wrote tests and improved it significantly - but even
 the first version was better than the ugly Perl code from 2002 it replaced.
 `linkdirs` is generic: it ignores various files associated with VCS systems, and
-Vim swap files, but you can use it for linking directories for other reasons.
-It links from multiple source directories, creates destination directories as
+Vim swap files, but you can use it for linking directories for other reasons. It
+links from multiple source directories, creates destination directories as
 necessary, ignores specific files if you want, and hard links files from source
 to destination. If a destination file exists but isn't a hard link to the source
 file, it will check if the contents are the same; if they are it will delete the
@@ -57,36 +57,36 @@ directories matching `*dotfiles*` directly under `~/src` (so I can have a
 standard repository on every computer plus a work repository on work computers),
 runs `linkdirs` with the right arguments, and does some more things:
 
-1.  `cat "${HOME}"/.ssh/config-??-* > "${HOME}/.ssh/config"`
+1. `cat "${HOME}"/.ssh/config-??-* > "${HOME}/.ssh/config"`
 
-    `ssh` doesn't support multiple config files or includes, but I have standard
-    configs and work configs in different repositories, so I keep the config
-    snippets in separate files and combine them. This is done every time
-    dotfiles runs - there's nothing clever to check if an update is necessary.
+   `ssh` doesn't support multiple config files or includes, but I have standard
+   configs and work configs in different repositories, so I keep the config
+   snippets in separate files and combine them. This is done every time dotfiles
+   runs - there's nothing clever to check if an update is necessary.
 
-1.  Add missing `known_hosts` entries to `"${HOME}/.ssh/known_hosts"`.
+1. Add missing `known_hosts` entries to `"${HOME}/.ssh/known_hosts"`.
 
-    Again, ssh doesn't support multiple `known_hosts` files, so multiple files
-    need to be combined. Originally I just replaced `known_hosts` entirely, but
-    that turned out to be a maintenance nightmare, e.g. machines getting
-    different IP or IPv6 addresses.
+   Again, ssh doesn't support multiple `known_hosts` files, so multiple files
+   need to be combined. Originally I just replaced `known_hosts` entirely, but
+   that turned out to be a maintenance nightmare, e.g. machines getting
+   different IP or IPv6 addresses.
 
-1.  `vim` help tags from different plugins (see below) need to be updated, and
-    spell files need to be compiled. I wrote a simple `vim` function for each
-    ([UpdateBundleHelptags](https://github.com/tobinjt/dotfiles/blob/2d9387a8a23c136fabb1043479d2ad64276dc2f9/.vim/plugin/JT_functions.vim#L48)
-    and
-    [UpdateSpellFiles](https://github.com/tobinjt/dotfiles/blob/2d9387a8a23c136fabb1043479d2ad64276dc2f9/.vim/plugin/JT_functions.vim#L53)),
-    and they're both run every time by `dotfiles`.
+1. `vim` help tags from different plugins (see below) need to be updated, and
+   spell files need to be compiled. I wrote a simple `vim` function for each
+   ([UpdateBundleHelptags](https://github.com/tobinjt/dotfiles/blob/2d9387a8a23c136fabb1043479d2ad64276dc2f9/.vim/plugin/JT_functions.vim#L48)
+   and
+   [UpdateSpellFiles](https://github.com/tobinjt/dotfiles/blob/2d9387a8a23c136fabb1043479d2ad64276dc2f9/.vim/plugin/JT_functions.vim#L53)),
+   and they're both run every time by `dotfiles`.
 
 Both `linkdirs` and `dotfiles` support reporting and deleting unexpected files
 in the destination directory, making it relatively easy to find or cleanup
 leftover files that I've deleted from the repository.
 
-I use about 20 Vim plugins, and I manage each plugin as a [git
-submodule](https://git-scm.com/docs/git-submodule), allowing me to easily update
-each plugin over time. Because I add and update plugins quite infrequently I've
-written instructions for myself in [my
-.vimrc](https://github.com/tobinjt/dotfiles/blob/2d9387a8a23c136fabb1043479d2ad64276dc2f9/.vimrc#L85).
+I use about 20 Vim plugins, and I manage each plugin as a
+[git submodule](https://git-scm.com/docs/git-submodule), allowing me to easily
+update each plugin over time. Because I add and update plugins quite
+infrequently I've written instructions for myself in
+[my .vimrc](https://github.com/tobinjt/dotfiles/blob/2d9387a8a23c136fabb1043479d2ad64276dc2f9/.vimrc#L85).
 I use [vim-plug](https://github.com/junegunn/vim-plug) to manage Vim's
 `runtimepath`, but I add the repositories manually because `vim-plug` doesn't
 support submodules. I wrote
@@ -95,9 +95,8 @@ to automate updating plugins, and I run it every 4 weeks to stay current so that
 I don't need to deal with large diffs when I need a bug fix. It also runs
 [install-extra-development-tools](https://github.com/tobinjt/bin/blob/master/install-extra-development-tools)
 to install extra tools needed by Vim plugins, mainly for Golang and Rust (tools
-for Python are installed differently, see [Upgrading packages installed with
-pip3 is
-troublesome](https://www.johntobin.ie/blog/python_development/#upgrading-packages-installed-with-pip3-is-troublesome)
+for Python are installed differently, see
+[Upgrading packages installed with pip3 is troublesome](https://www.johntobin.ie/blog/python_development/#upgrading-packages-installed-with-pip3-is-troublesome)
 for details.
 
 When I push a change to Github I later need to sync that change to every machine
