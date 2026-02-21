@@ -1,8 +1,8 @@
 +++
-title = 'My Publications'
+title = "My Publications"
 +++
 
-### 2008
+## 2008
 
 - [A User-Extensible and Adaptable Parser Architecture](/publications/sgai-2008.pdf),
   published in the [SGAI 2008 Conference](https://www.bcs-sgai.org/ai2008/), and
@@ -22,7 +22,7 @@ title = 'My Publications'
   requirements; the contents are unchanged from
   [the original paper](/publications/sgai-2008.pdf)).
 
-### 2009
+## 2009
 
 - My M.Sc. thesis,
   [Parsing Log Files Produced by the Postfix Mail Transfer Agent](/publications/msc-thesis.pdf),
@@ -36,7 +36,7 @@ title = 'My Publications'
   evaluate new anti-spam measures, and identify operational and performance
   problems.
 
-### 2016
+## 2016
 
 - [Interrupt Reduction Projects](https://www.usenix.org/publications/login/winter2016/beyer),
   co-authored by Betsy Beyer, John Tobin, and Liz Fong-Jones.

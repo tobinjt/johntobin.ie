@@ -1,7 +1,7 @@
 +++
 lastmod = 2021-12-27T22:20:53+01:00
 title = "Git pre-commits"
-tags = ['automation', 'Git', 'development']
+tags = [ "automation", "Git", "development"]
 +++
 
 Humans make mistakes - that's why we write tests for our code. Automatically
@@ -14,13 +14,13 @@ that.
 
 There are many packaged hooks available; I've used those for complex checks, but
 for simpler checks I've found it easier to just write a hook config, e.g.
-running [shellcheck](https://www.shellcheck.net/) requires [just 5 lines of
-config](https://github.com/tobinjt/bin/blob/ad5b57afa03d650ac657249c886300d581a8c60f/.pre-commit-config.yaml#L45-L49).
-My [bin directory](https://github.com/tobinjt/bin/) has [the most
-checks](https://github.com/tobinjt/bin/blob/master/.pre-commit-config.yaml)
+running [shellcheck](https://www.shellcheck.net/) requires
+[just 5 lines of config](https://github.com/tobinjt/bin/blob/ad5b57afa03d650ac657249c886300d581a8c60f/.pre-commit-config.yaml#L45-L49).
+My [bin directory](https://github.com/tobinjt/bin/) has
+[the most checks](https://github.com/tobinjt/bin/blob/master/.pre-commit-config.yaml)
 because it has the biggest mix of code.
 
-### If you're interested in writing your own hooks
+## If you're interested in writing your own hooks
 
 - You can get the files being committed using `git diff --cached --name-only`,
   and you can further filter the list down using `--diff-filter=ACM` to only
