@@ -1,7 +1,7 @@
 +++
 lastmod = 2021-03-27T15:54:44Z
 title = "Garden SRE"
-tags = ['Gardening', 'SRE']
+tags = [ "Gardening", "SRE"]
 +++
 
 There's a saying that _if all you have is a hammer, everything looks like a

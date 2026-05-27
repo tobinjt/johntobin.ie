@@ -1,7 +1,7 @@
 +++
 lastmod = 2018-11-03T14:07:02+01:00
 title = "Populating dev website from production website"
-tags = ['automation', 'backups', 'MySQL', 'sysadmin', 'Wordpress']
+tags = [ "automation", "backups", "MySQL", "sysadmin", "Wordpress"]
 +++
 
 I wrote and maintain [the theme](https://github.com/tobinjt/ariane-theme) for

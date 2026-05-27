@@ -1,7 +1,7 @@
 +++
-lastmod = 2009-12-14T17:19:20+00:00
-title = 'Hijacking pool.ntp.org'
-tags = ['NTP', 'sysadmin']
+lastmod = 2009-12-14T17:19:20Z
+title = "Hijacking pool.ntp.org"
+tags = [ "NTP", "sysadmin"]
 +++
 
 From <https://www.ntppool.org/en/>:
@@ -26,11 +26,11 @@ can get a working NTP installation with just:
 apt-get install ntp
 ```
 
- The sole exception to hijacking all `pool.ntp.org` addresses is that I want
- `www.pool.ntp.org` to work in a user's browser, so it is configured as a
- `CNAME` to the host serving the real website. Although `pool.ntp.org` _does_
- resolve to our NTP server, the web server running on that host redirects
- requests for `pool.ntp.org` to `www.pool.ntp.org`, so that URL works too.
+The sole exception to hijacking all `pool.ntp.org` addresses is that I want
+`www.pool.ntp.org` to work in a user's browser, so it is configured as a
+`CNAME` to the host serving the real website. Although `pool.ntp.org` _does_
+resolve to our NTP server, the web server running on that host redirects
+requests for `pool.ntp.org` to `www.pool.ntp.org`, so that URL works too.
 
 The bind zone file is quite short:
 

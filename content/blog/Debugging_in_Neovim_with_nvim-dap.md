@@ -2,25 +2,25 @@
 date = 2024-10-30T22:08:37Z
 lastmod = 2024-10-30T22:08:37Z
 title = "Debugging in Neovim with nvim-dap"
-tags = ['Neovim', 'Debugging', 'programming']
+tags = [ "Neovim", "Debugging", "programming"]
 +++
 
 ## Motivation
 
-I recently switched to Neovim after over 20 years of using Vim.  (At some point
-I might write about why I switched, but not today.)  One of the few features I
+I recently switched to Neovim after over 20 years of using Vim. (At some point
+I might write about why I switched, but not today.) One of the few features I
 missed in Vim compared to an IDE was debugging: sure, I could fire up `dlv` or
 `gdb`, but I didn't have syntax highlighted code, automatic display of local
 variables, and likely other helpful info I didn't even know I was missing. Sadly
 I had never heard of <https://github.com/puremourning/vimspector> which does
-provide this for Vim.  When I was setting up Neovim I frequently looked at
+provide this for Vim. When I was setting up Neovim I frequently looked at
 <http://www.lazyvim.org/> and <https://astronvim.com/> for help and inspiration,
-and there I saw `nvim-dap` and decided to give it a try.  Getting it working
+and there I saw `nvim-dap` and decided to give it a try. Getting it working
 took me a good few evenings of experimentation and testing, so I decided to
 document it as a reference for myself and as a resource for others.
 
 Note: I use <https://github.com/folke/lazy.nvim> to manage my plugins, so the
-example configs also use lazy.nvim.  As a newcomer to Neovim I am completely
+example configs also use lazy.nvim. As a newcomer to Neovim I am completely
 unfamiliar with other plugin managers so I haven't tried to translate the
 example configs to other plugin managers.
 
@@ -38,7 +38,7 @@ example configs to other plugin managers.
 Surprisingly:
 
 - It does not automatically configure DAP servers for different filetypes, you
-  need to do that yourself (we will later).  You will see a helpful error
+  need to do that yourself (we will later). You will see a helpful error
   message when you set a breakpoint without configuring a DAP server:
 
   ```text
@@ -57,7 +57,7 @@ Configuration:
 
 - I copied keybindings from LazyVim, reformatted them, and eventually removed
   many of them when I used the UI (described later).
-- All of the debugging plugins are lazy loaded.  IMHO lazy-loading is overdone,
+- All of the debugging plugins are lazy loaded. IMHO lazy-loading is overdone,
   but because I rarely use a debugger I feel it's worth lazy-loading these.
 
 ```lua{
@@ -96,12 +96,12 @@ Configuration:
 
 ## Configuring DAP servers
 
-We need to configure a DAP server for each filetype we want to debug.  Happily
+We need to configure a DAP server for each filetype we want to debug. Happily
 we can use plugins to do this for many filetypes rather than writing the config
 ourselves.
 
 <https://github.com/jay-babu/mason-nvim-dap.nvim> configures the majority of DAP
-servers for us.  Getting this to work was an exercise in frustration, because
+servers for us. Getting this to work was an exercise in frustration, because
 one piece of the config (`handlers = {}`) _looks_ optional but is actually
 required (see comment in the config snippet).
 
@@ -140,15 +140,15 @@ See the next section for language-specific plugins for DAP server configuration.
 ## Language-specific plugins
 
 I use three language-specific plugins to give me a better DAP server
-configuration for the languages I write in most: Go, Python, and Rust.  There
+configuration for the languages I write in most: Go, Python, and Rust. There
 are other language-specific plugins available, see
 <https://github.com/mfussenegger/nvim-dap/wiki/Extensions#language-specific-extensions>
 
 ### Go
 
 <https://github.com/leoluz/nvim-dap-go> provides options for debugging
-individual tests.  You need to install <https://github.com/go-delve/delve> and
-have it in your `$PATH`.  I added a keymapping to debug an individual test, but
+individual tests. You need to install <https://github.com/go-delve/delve> and
+have it in your `$PATH`. I added a keymapping to debug an individual test, but
 I haven't had an opportunity to try it yet.
 
 ```lua
@@ -171,9 +171,9 @@ I haven't had an opportunity to try it yet.
 ### Python
 
 <https://github.com/mfussenegger/nvim-dap-python> provides config for debugging
-individual tests.  You need to install <https://github.com/microsoft/debugpy>
+individual tests. You need to install <https://github.com/microsoft/debugpy>
 and configure `nvim-dap-python` with the path to a Python binary that can
-import `debugpy`.  <https://github.com/williamboman/mason.nvim> will install
+import `debugpy`. <https://github.com/williamboman/mason.nvim> will install
 `debugpy` in a `virtualenv`, and the correct path for that installation is
 `~/.local/share/nvim/mason/packages/debugpy/venv/bin/python` - this ensures that
 Python can find the `debugpy` package.
@@ -181,10 +181,10 @@ Python can find the `debugpy` package.
 I haven't tested this, but if your Python project already uses a virtualenv I
 suggest installing `debugpy` there so that all the modules you require are
 available in one bundle rather than messing with multiple virtualenv
-directories.  Before starting Neovim activate the virtualenv so that `python`
-from the virtualenv is first in `$PATH`.  Configure `nvim-dap-python` to use
+directories. Before starting Neovim activate the virtualenv so that `python`
+from the virtualenv is first in `$PATH`. Configure `nvim-dap-python` to use
 `python` (literally `python`, not `/path/to/python`) so it picks up `python`
-from the virtualenv and hopefully everything will Just Work.  This should work
+from the virtualenv and hopefully everything will Just Work. This should work
 across multiple projects and multiple virtualenvs without reconfiguration.
 `nvim-dap-python`
 
@@ -195,7 +195,7 @@ To test the `python` path you configure `nvim-dap-python` with, run:
 ```
 
 Unusually (in my limited experience) `nvim-dap-python`'s `setup()` doesn't take
-an options table as a parameter.  Instead it takes an optional path to the
+an options table as a parameter. Instead it takes an optional path to the
 `python3` binary, and an optional options table.
 
 ```lua
@@ -217,14 +217,14 @@ an options table as a parameter.  Instead it takes an optional path to the
 ### Rust
 
 <https://github.com/mrcjkb/rustaceanvim> has lot of features, almost all of
-which I haven't explored.  Notably it configures LSP differently (I haven't
+which I haven't explored. Notably it configures LSP differently (I haven't
 noticed the difference though), so if you're using
 <https://github.com/neovim/nvim-lspconfig> to configure LSP servers, make sure
 you remove `rust` from that list. The resulting DAP configuration allows you to
 debug an individual test, which I found very useful.
 
 All of the other plugins described in this post are lazy-loaded when a
-keymapping activates the UI.  Because `rustaceanvim` reconfigures LSP I have it
+keymapping activates the UI. Because `rustaceanvim` reconfigures LSP I have it
 configured to load whenever I edit Rust, and it depends on `nvim-dap` so that's
 loaded too, but there's no real downside to that.
 
@@ -246,11 +246,11 @@ return {
 ## Setting up a UI
 
 The configuration thus far gives you the ability to run a debugger, but it's
-very awkward to see the debugging information or interact with the debugger.  To
+very awkward to see the debugging information or interact with the debugger. To
 address this need I'm using two plugins:
 
 - <https://github.com/theHamsta/nvim-dap-virtual-text> uses virtual text to
-  display the value of each local variable beside its declaration.  There are
+  display the value of each local variable beside its declaration. There are
   screenshots on Github showing how it works and the various options you can
   configure.
 
@@ -265,9 +265,9 @@ address this need I'm using two plugins:
   ```
 
 - <https://github.com/rcarriga/nvim-dap-ui> provides a full UI, similar to an
-  IDE.  I've configured a keymapping to display the UI, and because the UI
+  IDE. I've configured a keymapping to display the UI, and because the UI
   depends on all the other plugins (except `rustaceanvim`) they will all be
-  loaded.  Again, there are screenshots and docs on Github to look at.
+  loaded. Again, there are screenshots and docs on Github to look at.
 
   ```lua
   {
@@ -305,7 +305,7 @@ contains the `rustaceanvim` config.
 ## Debugging the debugger
 
 In my limited experience the biggest problem getting `nvim-dap` working is not
-configuring it properly for the current filetype.  Here are some things to check
+configuring it properly for the current filetype. Here are some things to check
 when debugging (assuming you're using the config I've described):
 
 ```vim

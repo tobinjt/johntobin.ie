@@ -1,7 +1,7 @@
 +++
 lastmod = 2018-10-26T20:36:56+01:00
 title = "Backing up a Wordpress database"
-tags = ['backups', 'MySQL', 'sysadmin', 'Wordpress']
+tags = [ "backups", "MySQL", "sysadmin", "Wordpress"]
 +++
 
 My wife's [website](https://www.arianetobin.ie/) is built on

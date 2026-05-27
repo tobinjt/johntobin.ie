@@ -1,7 +1,7 @@
 +++
-lastmod = 2010-02-11T17:36:22+00:00
-title = 'Version-controlled /etc'
-tags = ['sysadmin', 'Git', 'Debian']
+lastmod = 2010-02-11T17:36:22Z
+title = "Version-controlled /etc"
+tags = [ "sysadmin", "Git", "Debian"]
 +++
 
 In 2009 I migrated the [School of Computer Science and

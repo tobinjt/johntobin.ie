@@ -1,7 +1,7 @@
 +++
 lastmod = 2018-11-14T21:03:54Z
 title = "Suppressing unnecessary cookie law CSS and JavaScript"
-tags = ['SEO', 'website', 'Wordpress']
+tags = [ "SEO", "website", "Wordpress"]
 +++
 
 The [EU Cookie Law](https://www.wired.com/story/cookies-made-simple/) requires a

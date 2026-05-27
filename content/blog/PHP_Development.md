@@ -1,7 +1,7 @@
 +++
 title = "PHP development"
 lastmod = 2025-01-08T22:05:50+01:00
-tags = ['PHP', 'programming', 'website', 'Wordpress']
+tags = [ "PHP", "programming", "website", "Wordpress"]
 +++
 
 I wrote and maintain [the theme](https://github.com/tobinjt/ariane-theme) for
@@ -51,7 +51,7 @@ different tools might disagree over how your code should be formatted.
 ### PHPLint
 
 Note: development of PHPLint seems to have stopped in 2020, and it refers to
-supporting PHP 5 and PHP 7, which is not encouraging.  I would not recommend
+supporting PHP 5 and PHP 7, which is not encouraging. I would not recommend
 PHPLint now, I suggest trying [PHPStan](https://phpstan.org/) or [PHP
 Insights](https://github.com/nunomaduro/phpinsights), both briefly described
 below.
@@ -71,8 +71,7 @@ annotations, which were easy to fix so it was a quick return on investment. I
 fairly easily reached level 8, but level 9 looked like a lot more work so I
 haven't tried to reach that yet. I would recommend PHPStan for sure. I needed to
 use [Composer](https://getcomposer.org/) to add PHPUnit as a dependency for
-PHPStan to resolve the PHPUnit imports in my tests; `composer require --dev
-phpunit/phpunit ^9` was all it took.
+PHPStan to resolve the PHPUnit imports in my tests; `composer require --dev phpunit/phpunit ^9` was all it took.
 
 ### PHP Coding Standards Fixer
 
@@ -95,10 +94,10 @@ probably won't be investing any more.
 
 I used [PHP Insights](https://github.com/nunomaduro/phpinsights), first to
 automatically reformat my code and fix lint warnings, and secondly to provide a
-list of warnings that I manually fixed.  I recommend running the fixer multiple
-times: some of the changes it made will trigger its own lint checks :(  I found
+list of warnings that I manually fixed. I recommend running the fixer multiple
+times: some of the changes it made will trigger its own lint checks :( I found
 some of the lint checks useful, and some I ignored because the return on
-investment for them didn't seem to justify the work required.  I can see myself
+investment for them didn't seem to justify the work required. I can see myself
 using this again in the future.
 
 ### PHP_CodeSniffer

@@ -2,7 +2,7 @@
 date = 2024-06-04T10:50:50+01:00
 lastmod = 2024-06-04T10:50:50+01:00
 title = "Faster rust autoformatting in vim"
-tags = ['development', 'programming', 'Rust', 'vim']
+tags = [ "development", "programming", "Rust", "vim"]
 +++
 
 I'm slowly learning [Rust](https://www.rust-lang.org/), and as usual I'm using
@@ -40,8 +40,7 @@ Total time:  11.539883000
 Total time:  11.540752000
 ```
 
-Clearly one function is a real problem. I searched for `Total time:
-11.540752000`, which brought me to a trace where the only long running call was:
+Clearly one function is a real problem. I searched for `Total time: 11.540752000`, which brought me to a trace where the only long running call was:
 
 ```text
     1  11.540633000   0.000257000     call s:RunRustfmt(s:RustfmtCommand(), '', v:true)

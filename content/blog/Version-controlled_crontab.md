@@ -1,7 +1,7 @@
 +++
 lastmod = 2019-12-10T21:46:45Z
 title = "Version-controlled crontab"
-tags = ['sysadmin', 'Git', 'MacOS']
+tags = [ "sysadmin", "Git", "MacOS"]
 +++
 
 For many years I've used [Version-controlled

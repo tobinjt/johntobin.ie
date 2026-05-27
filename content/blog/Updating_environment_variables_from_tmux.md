@@ -1,7 +1,7 @@
 +++
 lastmod = 2015-06-15T19:11:02+01:00
-title = 'Updating environment variables from tmux'
-tags = ['tmux', 'shell']
+title = "Updating environment variables from tmux"
+tags = [ "tmux", "shell"]
 +++
 
 Note: this was originally a lot longer and more complex, but a later version of

@@ -2,7 +2,7 @@
 date = 2022-05-01T23:23:31+01:00
 lastmod = 2022-05-01T23:23:31+01:00
 title = "Upgrading homebrew vim and tmux without breaking them"
-tags = ['homebrew', 'MacOS', 'shell', 'tmux', 'vim']
+tags = [ "homebrew", "MacOS", "shell", "tmux", "vim"]
 +++
 
 By default, when [Homebrew](https://brew.sh) upgrades a package, it removes the

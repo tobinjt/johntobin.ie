@@ -1,7 +1,7 @@
 +++
-lastmod = 2010-03-14T13:05:00+00:00
-title = 'I have a better LISP book'
-tags = ['LISP', 'programming']
+lastmod = 2010-03-14T13:05:00Z
+title = "I have a better LISP book"
+tags = [ "LISP", "programming"]
 +++
 
 About a month ago I wrote that [I need a better LISP

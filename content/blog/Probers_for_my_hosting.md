@@ -1,7 +1,7 @@
 +++
 lastmod = 2019-06-03T12:44:12Z
 title = "Probers for my hosting"
-tags = ['automation', 'shell', 'SRE', 'sysadmin', 'website']
+tags = [ "automation", "shell", "SRE", "sysadmin", "website"]
 +++
 
 I have a VM from [Hetzner](https://www.hetzner.com/) for [my wife's
@@ -14,6 +14,7 @@ to ensure that the VM, DNS, Apache, and websites are working properly:
   Checking the development version of my wife's website gives me an early
   notification when I've broken something during development rather than finding
   out after deploying to production.
+
 - I run a separate [prober to check external
   links](/blog/checking_external_links/) on my wife's website and my website.
   This prober is only run on my hosting because 1) it's not easily available for
@@ -28,8 +29,10 @@ to ensure that the VM, DNS, Apache, and websites are working properly:
 - Check that a magic string is present in the response from
   <https://www.arianetobin.ie/> to detect failures:
   [probe-arianetobin.ie](https://github.com/tobinjt/bin/blob/master/probe-arianetobin.ie).
+
 - Check that `A`, `AAAA`, and `MX` records are correct for every domain:
   [check-dns-for-hosting](https://github.com/tobinjt/bin/blob/master/check-dns-for-hosting).
+
 - Check that HTTP requests are redirected to HTTPS, that requests for `DOMAIN`
   are redirected to `www.DOMAIN`, and that requests for dormant domains are
   redirected to the correct domain:

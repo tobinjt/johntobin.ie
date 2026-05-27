@@ -1,7 +1,7 @@
 +++
 lastmod = 2021-05-21T22:41:53+01:00
 title = "Death Guard Plague Marines painting scheme"
-tags = ['Painting', 'Miniatures', 'Warhammer40K', 'Death Guard']
+tags = [ "Painting", "Miniatures", "Warhammer40K", "Death Guard"]
 +++
 
 ## Photos
@@ -23,12 +23,12 @@ arm](https://lh3.googleusercontent.com/OOUDRPI1LaSz162myRp-OkcDep7hoOfVRP1zi_1l4
 - [How to Paint: Lord of Contagion](https://www.youtube.com/watch?v=29Yg2ukwpTo)
 - [Example Death
   Guard](https://www.games-workshop.com/en-GB/Death-Guard-Deathshroud-Bodyguard-2020)
-on GW
+  on GW
 - [HOW TO PAINT: Plague Marine
   Reinforcements](https://www.games-workshop.com/en-GB/Plague-Marine-Reinforcements-2018)
 - [How to Paint: A Pallid Hand Plague
   Marine](https://www.youtube.com/watch?v=ImGHTaS3wNw?&t=) - completely
-different colours for the armour, but the Nurgle tentacle parts might be useful.
+  different colours for the armour, but the Nurgle tentacle parts might be useful.
 - [How to Paint Death Guard:
   Nurglings](https://www.youtube.com/watch?v=mpz9FJlRfQ8)
   - Casandora Yellow looks like a good substitute for Iyanden Yellow
@@ -193,7 +193,7 @@ spots will be harder to see, so it's less of a problem.
 - Bone, skulls, big Nurgle teeth, and horns: Ushabti Bone
   - I found the horns were hard to get right and were a very organic process; I
     ended up covering a **lot** of the horns, I left the recesses and the lower
-  part of the horn shaded and layered most of the rest
+    part of the horn shaded and layered most of the rest
   - Edge highlight: eye sockets, teeth, edges and tips of horns
 - Boils:
   - Averland Sunset over most of the boil, keep it out of the recesses

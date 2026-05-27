@@ -1,7 +1,7 @@
 +++
 lastmod = 2019-06-03T00:31:29+01:00
 title = "Checking external links"
-tags = ['automation', 'shell', 'SRE', 'sysadmin', 'website']
+tags = [ "automation", "shell", "SRE", "sysadmin", "website"]
 +++
 
 [Simple link checking](/blog/simple_link_checking/) describes how I check

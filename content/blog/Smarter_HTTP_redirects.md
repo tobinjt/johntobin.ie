@@ -1,7 +1,7 @@
 +++
 lastmod = 2010-03-10T20:31:05+01:00
-title = 'Smarter HTTP redirects'
-tags = ['sysadmin', 'Apache']
+title = "Smarter HTTP redirects"
+tags = [ "sysadmin", "Apache"]
 +++
 
 If your website is available under more than one FQDN, [standard SEO

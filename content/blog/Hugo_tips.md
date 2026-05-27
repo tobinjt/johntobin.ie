@@ -1,7 +1,7 @@
 +++
 lastmod = 2019-04-28T15:07:02Z
 title = "Hugo tips"
-tags = ['Hugo', 'automation', 'website']
+tags = [ "Hugo", "automation", "website"]
 +++
 
 ## Ikiwiki to Hugo

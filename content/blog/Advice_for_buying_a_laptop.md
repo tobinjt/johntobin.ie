@@ -1,7 +1,7 @@
 +++
 lastmod = 2019-02-26T21:25:13Z
 title = "Advice for buying a laptop"
-tags = ['advice', 'general computer stuff']
+tags = [ "advice", "general computer stuff"]
 +++
 
 Because I work in the tech industry, family and friends will sometimes ask me to

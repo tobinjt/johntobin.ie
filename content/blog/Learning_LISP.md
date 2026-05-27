@@ -1,7 +1,7 @@
 +++
-lastmod = 2009-12-14T00:54:32+00:00
-title = 'Learning LISP'
-tags = ['LISP', 'programming']
+lastmod = 2009-12-14T00:54:32Z
+title = "Learning LISP"
+tags = [ "LISP", "programming"]
 +++
 
 I first thought about learning LISP when I was still an undergrad, but I was
@@ -20,7 +20,7 @@ based solely on reading it. Inspired by the paper, I dug out my books and
 started learning LISP; I've now reached a point where the solutions to some
 exercises are interesting enough to post.
 
----
+______________________________________________________________________
 
 Problem 5-3: Now write a pair of procedures KEEP-FIRST-N-CLEVERLY and
 KEEP-FIRST-N-CLEVERLY-AUX, that together make a list of the first _n_ elements
@@ -51,7 +51,7 @@ part of my mind that thinks "What if my function is run on a list with 1000
 elements? Would I be better writing it iteratively, so that it doesn't run out
 of stack space?".
 
----
+______________________________________________________________________
 
 Problem 5-9: Define SQUASH, a procedure that takes an expression as its argument
 and returns a non-nested list of all atoms found in the expression. Here is an
@@ -81,7 +81,7 @@ My solution:
 )
 ```
 
----
+______________________________________________________________________
 
 Problem 5-12: The version of Fibonacci we have already exhibited is inefficient
 beyond comparison. Many computations are repeated. Write a version with optional

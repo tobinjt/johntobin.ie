@@ -2,7 +2,7 @@
 date = 2023-06-11T07:12:14+01:00
 lastmod = 2023-06-11T07:12:14+01:00
 title = "Reliable wheelie bins"
-tags = ['automation', 'programming', 'SRE']
+tags = [ "automation", "programming", "SRE"]
 +++
 
 <!-- https://commons.wikimedia.org/wiki/File:Irish_Panda_wheelie_bin.jpg -->
@@ -39,6 +39,7 @@ Some implementation notes:
   config used the wrong parser, and the error messages from ESLint when there is
   a configuration problem are very unclear for a beginner because they do not
   include filenames or line numbers. I got it working eventually though.
+
 - Unlike most of my code it doesn't have any tests, because testing Typescript
   and Google Apps Script in particular seems to be very poorly supported - you
   need to manually mock every App Script function you call, or use one of the
@@ -46,6 +47,7 @@ Some implementation notes:
   written Typescript tests, and there are many testing frameworks to chose from
   rather than a standard framework. I didn't have the time or mental bandwidth
   to figure out Typescript testing.
+
 - I use [CLASP](https://github.com/google/clasp) to develop locally and push to
   Google Apps. It was very simple to set up:
 

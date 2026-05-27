@@ -1,7 +1,7 @@
 +++
 lastmod = 2019-04-15T12:33:19+01:00
 title = "Restarting an app automatically on MacOS X"
-tags = ['automation', 'MacOS', 'shell', 'sysadmin']
+tags = [ "automation", "MacOS", "shell", "sysadmin"]
 +++
 
 There are several apps I run in the background on my laptop that occasionally
