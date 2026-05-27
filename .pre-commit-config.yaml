@@ -105,9 +105,15 @@ repos:
         name: Check for inconsistent tag capitalisation
         description: >-
           When tags are inconsistently capitalised Hugo will use a random tag,
-          causing unnecessary changes in output.  Prevent checking in inconsistent
-          tags.
+          causing unnecessary changes in output.  Prevent checking in
+          inconsistent tags.
         language: script
         types: [markdown]
         pass_filenames: false
         entry: check-for-inconsistent-tags
+      - id: hugo
+        name: Check that hugo build succeeds
+        language: system
+        types_or: [markdown, toml]
+        pass_filenames: false
+        entry: hugo build
