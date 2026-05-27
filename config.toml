@@ -1,5 +1,5 @@
 baseURL = "https://www.johntobin.ie/"
-languageCode = "en-us"
+locale = "en-us"
 title = "John Tobin"
 theme = "hugo-coder"
 googleAnalytics = 'G-MYL6PFZFFX'
